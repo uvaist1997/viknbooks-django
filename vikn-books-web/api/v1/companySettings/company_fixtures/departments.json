@@ -1,0 +1,47 @@
+[
+	{
+	    "model": "brands.Department",
+	    "pk": 1,
+	    "fields": {
+	      "CompanyID" : "",
+	      "DepartmentID": 1,
+	      "BranchID" : 1,
+	      "DepartmentName" : "Administrator",
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.Department",
+	    "pk": 2,
+	    "fields": {
+	      "CompanyID" : "",
+	      "DepartmentID": 2,
+	      "BranchID" : 1,
+	      "DepartmentName" : "Inventory",
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.Department",
+	    "pk": 3,
+	    "fields": {
+	      "CompanyID" : "",
+	      "DepartmentID": 3,
+	      "BranchID" : 1,
+	      "DepartmentName" : "Marketing",
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

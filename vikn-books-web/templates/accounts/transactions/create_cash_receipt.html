@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+
+
+ <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Transactions</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">{{title}}</a></li>
+                                            <li class="breadcrumb-item active">{{title}}</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">{{title}}</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form enctype="multipart/form-data" method="post" class="ajax reset redirect">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                            <div class="col-xl-12">                        
+
+                                                <div class="row">
+                                                        <!-- Date View -->
+                                                    {% for form_data in form %}
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form_data.label }}
+                                                            {{ form_data }}
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>                                              
+
+                                            </div> <!-- end col-->
+                                        </div>
+                                        <!-- end row -->
+
+                                        <div class="col-12">
+                                            <div class="card table-responsive">
+                                                <div class="receipt_details_formset card-body">
+                                                    <h2>Payment Details</h2>
+                                                    <table id="datatable" class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>PaymentGateway</th>
+                                                                <th>RefferenceNo</th>
+                                                                <th>CardNetwork</th>
+                                                                <th>PaymentStatus</th>
+                                                                <th>DueDate</th>
+                                                                <th>LedgerID</th>
+                                                                <th>Amount</th>
+                                                                <th>Balance</th>
+                                                                <th>Discount</th>
+                                                                <th>NetAmount</th>
+                                                                <th>Narration</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        
+                                                        <tbody>
+                                                            {% for item in receipt_details_formset.forms %}
+                                                                <tr class="form_set_row">
+                                                                    <td class="hidden">{{ item.id }}</td>
+                                                                     <td class="PaymentGateway">
+                                                                        <div class="">
+                                                                            {{item.PaymentGateway}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="RefferenceNo">
+                                                                        <div class="">
+                                                                            {{item.RefferenceNo}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="CardNetwork">
+                                                                        <div class="">
+                                                                            {{item.CardNetwork}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="PaymentStatus">
+                                                                        <div class="">
+                                                                            {{item.PaymentStatus}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="DueDate">
+                                                                        <div class="">
+                                                                            {{item.DueDate}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="LedgerID">
+                                                                        <div class="">
+                                                                            {{item.LedgerID}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="Amount">
+                                                                        <div class="">
+                                                                            {{item.Amount}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="Balance">
+                                                                        <div class="">
+                                                                            {{item.Balance}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="Discount">
+                                                                        <div class="">
+                                                                            {{item.Discount}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="NetAmount">
+                                                                        <div class="">
+                                                                            {{item.NetAmount}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="Narration">
+                                                                        <div class="">
+                                                                            {{item.Narration}}
+                                                                        </div>
+                                                                    </td>
+                                                                     
+                                                                    <td class="one">{% if form.instance.pk %}{{ item.DELETE }}{% endif %}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                    {{ receipt_details_formset.management_form }}
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col -->
+
+
+                                            <div class="row mt-3">
+                                                <div class="col-12 text-center">
+                                                    <button type="submit" class="btn btn-success waves-effect waves-light m-1"> Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('.receipt_details_formset table tr.form_set_row').formset({
+                prefix: '{{ receipt_details_formset.prefix }}',
+                formCssClass: 'dynamic-formset1',
+
+            });
+            $('input[type=text]').focus(function () { 
+                $(this).select();
+            });
+            $('input[type=text]').mouseup(function (e) { // fix for chrome and safari
+                e.preventDefault();
+            });
+            $('input[type=text]').select(function () {
+                $('.log').append(' Handler for .select() called. ');
+            });
+
+        });
+
+    
+</script>
+<!-- <script type="text/javascript">
+    $(document).ready(function(){
+        $('input[type=text]').focus(function () {
+        $(this).select();
+            });
+        $('.receipt_details_formset table tr.form_set_row').formset({
+            prefix: '{{ receipt_details_formset.prefix }}', 
+            formCssClass: 'dynamic-formset1',
+            'added' : function (row) {
+                row.find('.receipt_details_formset select').selectpicker();
+            }
+        }); 
+    });
+</script> -->
+{% endblock %}

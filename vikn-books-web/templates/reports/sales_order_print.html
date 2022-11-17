@@ -1,0 +1,65 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      {% include 'reports/print_header.html' %}
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            <td>{% trans 'Sl No' %}</td>
+            <td>{% trans 'Voucher No' %}</td>
+            <td>{% trans 'Voucher Date' %}</td>
+            <td class="product-name">{% trans 'Ledger Name' %}</td>
+            <td class="product-name">{% trans 'Party Name' %}</td>
+            <td class="right">{% trans 'Net Amount' %}</td>
+            <td class="right">{% trans 'Total Tax' %}</td>
+            <td class="right">{% trans 'Grand Total' %}</td>
+            <td>{% trans 'Status' %}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in details %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.VoucherNo}}</td>
+            <td>{{i.VoucherDate}}</td>
+            <td>{{i.LedgerName}}</td>
+            {% if i.CustomerName == None %}
+            <td>-</td>
+            {% else %}
+            <td>{{i.CustomerName}}</td>
+            {% endif %}
+            <td class="right">{{i.NetAmount|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalTax|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.GrandTotal|floatformat:PriceRounding}}</td>
+            <td>{{i.Status}}</td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+ {% endinlinecss %}

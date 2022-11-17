@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<div class="content-page" {% if is_superuser %} style="margin-left: 0;" {% endif %}>
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
+                                <li class="breadcrumb-item active">Create Project</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{title}}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <form enctype="multipart/form-data" method="post" action="" class="ajax reset redirect ahs-input" novalidate>
+                                        {% csrf_token %}
+                                        {% for form_data in form %}
+                                        <div class="form-group mb-3">
+                                            {{ form_data.label }}
+                                            {{ form_data }}
+                                        </div>
+                                        {% endfor %}
+                                        <div class="form-group mb-3">
+                                            <label for="">User Type</label>
+                                            <select class="custom-select" name="UserTypeID">
+                                                {% for user_type in user_types %}
+                                                <option value="{{ user_type.ID }}">{{ user_type.UserTypeName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="">Cash Account</label>
+                                            <select class="custom-select" name="Cash_Account">
+                                                {% for cash_account in cash_accounts %}
+                                                <option value="{{ cash_account.LedgerID }}">{{ cash_account.LedgerName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">Bank Account</label>
+                                            <select class="custom-select" name="Bank_Account">
+                                                {% for bank_account in bank_accounts %}
+                                                <option value="{{ bank_account.LedgerID }}">{{ bank_account.LedgerName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">Warehouse</label>
+                                            <select class="custom-select" name="Warehouse">
+                                                {% for warehouse in warehouses %}
+                                                <option value="{{ warehouse.WarehouseID }}">{{ warehouse.WarehouseName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">Sales Account</label>
+                                            <select class="custom-select" name="Sales_Account">
+                                                {% for sales_account in sales_accounts %}
+                                                <option value="{{ sales_account.LedgerID }}">{{ sales_account.LedgerName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">Sales Return Account</label>
+                                            <select class="custom-select" name="Sales_Return_Account">
+                                                {% for sales_account in sales_accounts %}
+                                                <option value="{{ sales_account.LedgerID }}">{{ sales_account.LedgerName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">Purchase Account</label>
+                                            <select class="custom-select" name="Purchase_Account">
+                                                {% for purchase_account in purchase_accounts %}
+                                                <option value="{{ purchase_account.LedgerID }}">{{ purchase_account.LedgerName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">Purchase Return Account</label>
+                                            <select class="custom-select" name="Purchase_Return_Account">
+                                                {% for purchase_account in purchase_accounts %}
+                                                <option value="{{ purchase_account.LedgerID }}">{{ purchase_account.LedgerName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">Sales GST Type</label>
+                                            <select class="custom-select" name="Sales_GST_Type">
+                                                {% for sales_gst_type in sales_gst_types %}
+                                                <option value="{{ sales_gst_type.TransactionTypesID }}">{{ sales_gst_type.Name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">Purchase GST Type</label>
+                                            <select class="custom-select" name="Purchase_GST_Type">
+                                                {% for purchase_gst_type in purchase_gst_types %}
+                                                <option value="{{ purchase_gst_type.TransactionTypesID }}">{{ purchase_gst_type.Name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="">VAT Type</label>
+                                            <select class="custom-select" name="VAT_Type">
+                                                {% for vat_type in vat_types %}
+                                                <option value="{{ vat_type.TransactionTypesID }}">{{ vat_type.Name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label>Expiry Date</label>
+                                            <input type="date" class="required form-control dateinput" type="" value="" name="ExpiryDate" placeholder="Expiry Date">
+                                        </div>
+
+
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </form>
+
+                                </div> <!-- end col-->
+                            </div>
+                            <!-- end row -->
+
+                        </div> <!-- end card-body -->
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row-->
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+{% endblock %}

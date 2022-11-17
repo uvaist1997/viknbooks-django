@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load main_template_tags %}
+{% block content %}
+<div class="content-page" {% if is_superuser %} style="margin-left: 0;" {% endif %}>
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
+                                <li class="breadcrumb-item active">{{title}}</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{ title }}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form enctype="multipart/form-data" method="post" action="" class="ajax reset redirect ahs-input" novalidate>
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group mb-3">
+                                                    {{ form.FirstName.label }}
+                                                    {{ form.FirstName }}
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group mb-3">
+                                                    {{ form.LastName.label }}
+                                                    {{ form.LastName }}
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group mb-3">
+                                                    {{ form.OpeningBalance.label }}
+                                                    {{ form.OpeningBalance }}
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="form-group mb-3">
+                                                    Credit or Debit
+                                                    <select class="required form-control custom-select" name="CrODr">
+                                                        <option value="Dr">Debit</option>
+                                                        <option value="Cr">Credit</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- <div class="col-6">
+                                                <div class="form-group mb-3">
+                                                    
+                                                </div>
+                                            </div> -->
+                                            
+                                                
+                                            
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h4 class="header-title mb-3"> Basic Wizard</h4>
+
+                                                    <div id="basicwizard">
+
+                                                        <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-4">
+                                                            <li class="nav-item">
+                                                                <a href="#basictab1" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2"> 
+                                                                    <i class="mdi mdi-account-circle mr-1"></i>
+                                                                    <span class="d-none d-sm-inline">Customer Details</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a href="#basictab2" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                                                    <i class="mdi mdi-face-profile mr-1"></i>
+                                                                    <span class="d-none d-sm-inline">Transaction Details</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a href="#basictab3" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                                                    <i class="mdi mdi-checkbox-marked-circle-outline mr-1"></i>
+                                                                    <span class="d-none d-sm-inline">Bank Details</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+
+                                                        <div class="tab-content b-0 mb-0 pt-0">
+                                                            <div class="tab-pane" id="basictab1">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="userName">{{ form.ContactPerson.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.ContactPerson }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.Address1.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Address1 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.Address2.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Address2 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.Address3.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Address3 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.Address4.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Address4 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.City.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.City }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.State.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.State }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.Country.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Country }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.PostalCode.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.PostalCode }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.OfficePhone.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.OfficePhone }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="password"> {{ form.WorkPhone.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.WorkPhone }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="password"> {{ form.Mobile.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Mobile }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.WebURL.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.WebURL }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="password"> {{ form.Email.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Email }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="password"> {{ form.IsActive.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.IsActive }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="password"> {{ form.PartyImage.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.PartyImage }}
+                                                                                {% if is_edit %}
+                                                                             <span>current image:<img src="{{ instance.PartyImage.crop.80x80 }}"></span>
+                                                                            {% endif %}
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="password"> {{ form.img.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.img }}
+                                                                                {% if is_edit %}
+                                                                             <span>current image:<img src="{{ instance.img.crop.80x80 }}"></span>
+                                                                            {% endif %}
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div> <!-- end col -->
+                                                                </div> <!-- end row -->
+                                                            </div>
+
+                                                            <div class="tab-pane" id="basictab2">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.IsBillwiseApplicable.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.IsBillwiseApplicable }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.CreditPeriod.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.CreditPeriod }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.CreditLimit.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.CreditLimit }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.PriceCategoryID.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.PriceCategoryID }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.CurrencyID.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.CurrencyID }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.InterestOrNot.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.InterestOrNot }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.RouteID.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.RouteID }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.VATNumber.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.VATNumber }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.GSTNumber.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.GSTNumber }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.Tax1Number.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Tax1Number }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.Tax2Number.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Tax2Number }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.Tax3Number.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.Tax3Number }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.PanNumber.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.PanNumber }}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> <!-- end col -->
+                                                                </div> <!-- end row -->
+                                                            </div>
+
+                                                            <div class="tab-pane" id="basictab3">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.BankName1.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.BankName1 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.AccountName1.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.AccountName1 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.AccountNo1.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.AccountNo1 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.IBANOrIFSCCode1.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.IBANOrIFSCCode1 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.BankName2.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.BankName2 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.AccountName2.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.AccountName2 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.AccountNo2.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.AccountNo2 }}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <label class="col-md-2 col-form-label" for="confirm">{{ form.IBANOrIFSCCode2.label }}</label>
+                                                                            <div class="col-md-9">
+                                                                                {{ form.IBANOrIFSCCode2 }}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> <!-- end col -->
+                                                                </div> <!-- end row -->
+                                                            </div>
+
+                                                        </div> <!-- tab-content -->
+                                                    </div> <!-- end #basicwizard-->
+
+                                                </div> <!-- end card-body -->
+                                            </div> <!-- end card-->
+                                        </div> <!-- end col -->
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </form>
+
+                                </div> <!-- end col-->
+                            </div>
+                            <!-- end row -->
+
+                        </div> <!-- end card-body -->
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+                
+ 
+            <!-- end row -->
+            </div>
+            <!-- end row-->
+
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+{% endblock %}

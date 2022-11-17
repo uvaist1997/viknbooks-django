@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+{% load main_template_tags %}
+
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
+                                <li class="breadcrumb-item active">{{title}}</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{title}} - {{instance.ProductName}}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box">
+
+                        <div class="row mb-2">
+                                <div class="col-md-12">
+                                    <div class="text-md-right">
+                                        <a href="{% url 'accounts:edit_bank_payment' pk=instance.pk %}" class="btn btn-info waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-pencil mr-1"></i>Edit {{title}}</a>
+
+                                        <a data-id="{{instance.pk}}" href="{% url 'accounts:delete_bank_payment' pk=instance.pk %}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" class="action-button remove btn btn-info waves-effect waves-light mb-2 mr-2 redirect"><i class="mdi mdi-delete mr-1"></i>Delete {{title}}</a>
+
+                               
+
+                                    </div>
+                                </div><!-- end col-->
+                            </div>
+
+                        <div class="table-responsive mt-4">
+                            <h4 class="page-title">{{title}}</h4>
+                            <table class="table table-bordered table-centered mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td>PaymentMasterID</td>
+                                        <td>{{instance.PaymentMasterID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BranchID</td>
+                                        <td>{{instance.BranchID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Action</td>
+                                        <td>{{instance.Action}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VoucherNo</td>
+                                        <td>{{instance.VoucherNo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VoucherType</td>
+                                        <td>{{instance.VoucherType}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LedgerID</td>
+                                        <td>{{instance.LedgerID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EmployeeID</td>
+                                        <td>{{instance.EmployeeID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PaymentNo</td>
+                                        <td>{{instance.PaymentNo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FinancialYearID</td>
+                                        <td>{{instance.FinancialYearID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>{{instance.Date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TotalAmount </td>
+                                        <td>{{instance.TotalAmount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Notes</td>
+                                        <td>{{instance.Notes}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IsActive</td>
+                                        <td>{{instance.IsActive}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CreatedDate</td>
+                                        <td>{{instance.CreatedDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UpdatedDate</td>
+                                        <td>{{instance.UpdatedDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CreatedUserID</td>
+                                        <td>{{instance.CreatedUserID}}</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-responsive mt-4">
+                            <h4 class="page-title">Price Details</h4>
+                        {% if payment_details %}
+                            <table class="table table-centered table-nowrap table-borderless table-hover mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>PaymentGateway</th>
+                                        <th>RefferenceNo</th>
+                                        <th>CardNetwork</th>
+                                        <th>PaymentStatus</th>
+                                        <th>DueDate</th>
+                                        <th>LedgerID</th>
+                                        <th>Amount</th>
+                                        <th>Balance</th>
+                                        <th>Discount</th>
+                                        <th>NetAmount</th>
+                                        <th>Narration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for payment_detail in payment_details %}
+                                    <tr>
+                                        <td>
+                                            {{ payment_detail.PaymentGateway }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.RefferenceNo }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.CardNetwork }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.PaymentStatus }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.DueDate }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.LedgerID }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.Amount }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.Balance }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.Discount }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.NetAmount }}
+                                        </td>
+                                        <td>
+                                            {{ payment_detail.Narration }}
+                                        </td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                        {% include 'includes/not_found.html' %}
+                        {% endif %}
+                        </div>
+
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row-->
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+{% endblock %}

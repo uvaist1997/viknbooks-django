@@ -1,0 +1,35 @@
+[
+	{
+	    "model": "brands.TaxCategory",
+	    "pk": 1,
+	    "fields": {
+	      "TaxID": 1,
+	      "BranchID" : 1,
+	      "TaxName" : "None",
+	      "TaxType" : 6,
+	      "PurchaseTax" : "0",
+	      "SalesTax" : "0",
+	      "Inclusive" : false,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TaxCategory_Log",
+	    "pk": 1,
+	    "fields": {
+	      "ID": 1,
+	      "BranchID" : 1,
+	      "TransactionID": 1,
+	      "TaxName" : "Default TaxName",
+	      "TaxType" : 6,
+	      "PurchaseTax" : "0",
+	      "SalesTax" : "0",
+	      "Inclusive" : false,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

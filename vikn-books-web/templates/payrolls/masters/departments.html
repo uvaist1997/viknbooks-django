@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
+                                <li class="breadcrumb-item active">{{title}}</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{title}}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <form class="search-bar form-inline">
+                                        <div class="position-relative">
+                                            <input type="text" name="q" class="form-control" placeholder="Search...">
+                                            <span class="mdi mdi-magnify"></span>
+                                        </div>
+                                    </form>                          
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-right">
+                                        <a href="{% url 'payrolls:create_department' %}" class="btn btn-info waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i>Create {{title}}</a>
+                                    </div>
+                                </div><!-- end col-->
+                            </div>
+                        
+                        {% if instances %}
+                            <div class="table-responsive">
+                                <table class="table table-centered table-nowrap table-borderless table-hover mb-0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>DepartmentID</th>
+                                            <th>BranchID</th>
+                                            <th>DepartmentName</th>
+                                            <th>Notes</th>
+                                            <th style="width: 82px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% load el_pagination_tags %}
+                                        {% paginate 21 instances %}
+                                        {% for instance in instances %}
+                                        <tr>
+                                            <td class="table-user">
+                                                <a href="javascript:void(0);" class="text-body font-weight-semibold">{{ instance.id }}</a>
+                                            </td>
+                                            <td>
+                                                {{ instance.DepartmentID }}
+                                            </td>
+                                            <td>
+                                                {{ instance.BranchID }}
+                                            </td>
+                                            <td>
+                                                {{ instance.DepartmentName }}
+                                            </td>
+                                            <td>
+                                                 {{ instance.Notes }}
+                                            </td>
+        
+                                            <td>
+                                                <a href="{% url 'payrolls:view_department' pk=instance.pk %}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                                <a href="{% url 'payrolls:edit_department' pk=instance.pk %}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                <a data-id="{{instance.pk}}" href="{% url 'payrolls:delete_department' pk=instance.pk %}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" class="action-icon action-button remove"> <i class="mdi mdi-delete"></i></a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!--pagination -->
+                            {% get_pages %}
+                             <div class="pagination pagination-rounded justify-content-end my-2">
+                                {% show_pages %}
+                            </div>
+                            <!--pagination-->
+                            {% else %}
+                            {% include 'includes/not_found.html' %}
+                            {% endif %}
+
+                        </div> <!-- end card-body-->
+                    </div> <!-- end card-->
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+{% endblock %}

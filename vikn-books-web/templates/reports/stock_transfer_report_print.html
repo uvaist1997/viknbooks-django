@@ -1,0 +1,63 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      {% include 'reports/print_header.html' %}
+
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            <td>{% trans 'Sl No' %}</td>
+            <td class="product-name">{% trans 'VoucherNo' %}</td>
+            <td class="product-name">{% trans 'Date' %}</td>
+            <td>{% trans 'User' %}</td>
+            <td>{% trans 'WarehouseFrom' %}</td>
+            <td>{% trans 'WarehouseTo' %}</td>
+            <td class="right">{% trans 'TotalQty' %}</td>
+            <td class="right">{% trans 'GrandTotal' %}</td>
+            <td class="right">{% trans 'MaxGrandTotal' %}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in details %}
+          <tr class="{% if i.VoucherNo == 'Total' %} all-total{% endif %}">
+            <td>
+              {% if not i.VoucherNo == 'Total' %} {{forloop.counter}}{% endif %}
+            </td>
+            <td>{{i.VoucherNo}}</td>
+            <td>{{i.Date}}</td>
+            <td>{{i.User}}</td>
+            <td>{{i.WarehouseFrom}}</td>
+            <td>{{i.WarehouseTo}}</td>
+            <td class="right">{{i.TotalQty|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.GrandTotal|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.MaxGrandTotal|floatformat:PriceRounding}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+ {% endinlinecss %}

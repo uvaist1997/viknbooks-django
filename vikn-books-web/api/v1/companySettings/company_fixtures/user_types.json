@@ -1,0 +1,32 @@
+[
+	{
+	    "model": "brands.UserType",
+	    "pk": 1,
+	    "fields": {
+	      "ID": 1,
+	      "UserTypeName" : "Admin",
+	      "BranchID" : 1,
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "IsActive" : false,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.UserType",
+	    "pk": 2,
+	    "fields": {
+	      "ID": 2,
+	      "UserTypeName" : "Staff",
+	      "BranchID" : 1,
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "IsActive" : false,
+	      "Action" : "A"
+	    }
+	}
+]

@@ -1,0 +1,12 @@
+[
+	{
+	    "model": "brands.Color",
+	    "pk": 1,
+	    "fields": {
+	      "ColorID": 1,
+	      "ColorName" : "Primary Color",
+	      "ColorValue" : "Default Color Value",
+	      "Action" : "A"
+	    }
+	}
+]

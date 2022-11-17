@@ -1,0 +1,12 @@
+from django.conf.urls import url,include
+from api.v1.priceLists import views
+
+
+urlpatterns = [
+	url(r'^create-priceList/$', views.create_priceList, name='create_priceList'),
+    url(r'^priceLists/$', views.priceLists, name='priceLists'),
+    url(r'^view/priceList/(?P<pk>.*)/$', views.priceList, name='priceList'),
+    url(r'^edit/priceList/(?P<pk>.*)/$', views.edit_priceList, name='edit_priceList'),
+    url(r'^delete/priceList/(?P<pk>.*)/$', views.delete_priceList, name='delete_priceList'),
+    url(r'^single-priceList/$', views.single_priceList, name='single_priceList'),
+]

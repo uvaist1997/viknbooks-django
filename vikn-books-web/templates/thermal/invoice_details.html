@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        width: 130mm;
+        font-size: 20px;
+        background: #fff;
+      }
+      .leftToright {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10px;
+        margin-right: 25px;
+      }
+      hr {
+        border-top: 1px dashed;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 20px;
+      }
+      table th {
+        text-align: left;
+        border-bottom: 1px dashed #000;
+      }
+      .textCenter {
+        text-align: center;
+      }
+      .textRight {
+        text-align: right;
+      }
+      .textLeft {
+        text-align: left;
+      }
+      .paddingRight {
+        padding-right: 25px;
+      }
+      .w-260{
+        width: 260px;    
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Head Section Starts Here -->
+    <center>
+      <font size="6">
+        <bdo>الرقم الضريبي : {{companyTaxNumber}}</bdo>
+        <br />
+        <bdo>هاتف : {{companyPhone}}</bdo>
+        <br /><br />
+        <u>{{InvoiceTypeEng}}</u>
+        <br />
+        {{InvoiceTypeArabic}}
+        <br />
+        <hr />
+      </font>
+    </center>
+    <!-- Head Section Ends Here -->
+    <!-- Sub Section Starts Here -->
+    <font size="5">
+      <div class="textLeft">
+        <label class="w-260">Voucher No (رقم الفاتورة)</label>
+        <label>{{VoucherNumber}}</label>
+      </div>
+      <div class="textLeft">
+        <label class="w-260">Date (تاريخ)</label>
+        <label>{{simpleDate}}</label>
+      </div>
+      <div class="textLeft">
+        <label class="w-260">Name (اسم)</label>
+        <label>{{custName}}</label>
+      </div>
+      <div class="textLeft">
+        <label class="w-260">Phone (هاتف)</label>
+        <label>{{Phone}}</label>
+      </div>
+    </font>
+    <hr />
+  </body>
+</html>

@@ -1,0 +1,168 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      {% include 'reports/print_header.html' %}
+
+      <table class="item-table">
+          <p>{% trans 'Daily Report' %}</p>
+        <thead class="table-heading">
+          <tr>
+            <td>{% trans 'Type' %}</td>
+            <td class="right">{% trans 'Cash' %}</td>
+            <td class="right">{% trans 'Bank' %}</td>
+            <td class="right">{% trans 'Credit' %}</td>
+            <td class="right">{% trans 'Total' %}</td>
+            <td class="right">{% trans 'Profit %' %}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data_cards %}
+          {% if i.type == 'Sales Invoice' %} 
+            <tr>
+                <td>{{i.type}}</td>
+                <td class="right">{{i.CashSales|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.BankSales|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.CreditSales|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.GrandTotal|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.sales_perc|floatformat:PriceRounding}}</td>
+            </tr>
+            {% elif i.type == 'Purchase Invoice' %}
+            <tr>
+                <td>{{i.type}}</td>
+                <td class="right">{{i.CashPurchase|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.BankPurchase|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.CreditPurchase|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.GrandTotal|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.purchase_perc|floatformat:PriceRounding}}</td>
+            </tr>
+            {% elif i.type == 'Sales Return' %}
+            <tr>
+                <td>{{i.type}}</td>
+                <td class="right">{{i.CashSalesReturn|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.BankSalesReturn|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.CreditSalesReturn|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.GrandTotal|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.salesReturn_perc|floatformat:PriceRounding}}</td>
+            </tr>
+            {% elif i.type == 'Expense' %}
+            <tr>
+                <td>{{i.type}}</td>
+                <td class="right">-</td>
+                <td class="right">-</td>
+                <td class="right">-</td>
+                <td class="right">{{i.GrandTotal|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.expense_perc|floatformat:PriceRounding}}</td>
+            </tr>
+            {% elif i.type == 'Payments' %}
+            <tr>
+                <td>{{i.type}}</td>
+                <td class="right">-</td>
+                <td class="right">-</td>
+                <td class="right">-</td>
+                <td class="right">{{i.GrandTotal|floatformat:PriceRounding}}</td>
+                <td class="right">{{i.payment_perc|floatformat:PriceRounding}}</td>
+            </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <table class="item-table">
+        <p>{% trans 'Top Products' %}</p>
+      <thead class="table-heading">
+        <tr>
+          <td>{% trans 'Product Name' %}</td>
+          <td>{% trans 'Unit Name' %}</td>
+          <td class="right">{% trans 'Qty Sold' %}</td>
+          <td class="right">{% trans 'Total' %}</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in productItems %}
+        <tr>
+            <td >{{i.ProductName}}</td>
+            <td>{{i.UnitName}}</td>
+            <td class="right">{{i.unit_sold|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.amount_sum|floatformat:PriceRounding}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <table class="item-table">
+        <p>{% trans 'Top Accounts' %}</p>
+      <thead class="table-heading">
+        <tr>
+          <td>{% trans 'Type' %}</td>
+          <td>{% trans 'Accounts' %}</td>
+          <td class="right">{% trans 'Balance' %}</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in cusomer_account_datas %}
+        <tr>
+            <td >{{i.type}}</td>
+            <td>{{i.name}}</td>
+            <td class="right">{{i.balance|floatformat:PriceRounding}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <table class="item-table">
+        <p>{% trans 'Transactions' %}</p>
+      <thead class="table-heading">
+        <tr>
+          <td>{% trans 'Type' %}</td>
+          <td class="right">{% trans 'Modified Nos' %}</td>
+          <td class="right">{% trans 'Deleted Nos' %}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td >{% trans 'Sales' %}</td>
+            <td class="right">{{TransactionsDatas.modified_sales|floatformat:PriceRounding}}</td>
+            <td class="right">{{TransactionsDatas.deleted_sales|floatformat:PriceRounding}}</td>
+        </tr>
+        <tr>
+            <td >{% trans 'Purchase' %}</td>
+            <td class="right">{{TransactionsDatas.modified_purchase|floatformat:PriceRounding}}</td>
+            <td class="right">{{TransactionsDatas.deleted_purchase|floatformat:PriceRounding}}</td>
+        </tr>
+        <tr>
+            <td >{% trans 'Payment' %}</td>
+            <td class="right">{{TransactionsDatas.modified_payment|floatformat:PriceRounding}}</td>
+            <td class="right">{{TransactionsDatas.deleted_payment|floatformat:PriceRounding}}</td>
+        </tr>
+        <tr>
+            <td >{% trans 'Receipt' %}</td>
+            <td class="right">{{TransactionsDatas.modified_receipt|floatformat:PriceRounding}}</td>
+            <td class="right">{{TransactionsDatas.deleted_receipt|floatformat:PriceRounding}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+ {% endinlinecss %}

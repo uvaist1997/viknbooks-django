@@ -1,0 +1,4112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-30 11:29+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: accounts/forms.py:38
+msgid "AccountGroupName"
+msgstr ""
+
+#: accounts/forms.py:39
+msgid "GroupCode"
+msgstr ""
+
+#: accounts/forms.py:40 accounts/forms.py:59 accounts/forms.py:106
+#: accounts/forms.py:107 accounts/forms.py:190 accounts/forms.py:210
+#: accounts/forms.py:258 accounts/forms.py:277 accounts/forms.py:318
+#: administrations/forms.py:107 administrations/forms.py:125 brands/forms.py:42
+#: inventories/forms.py:31 inventories/forms.py:65 inventories/forms.py:87
+#: inventories/forms.py:125 inventories/forms.py:195 inventories/forms.py:232
+#: inventories/forms.py:247 inventories/forms.py:275 payrolls/forms.py:69
+#: payrolls/forms.py:101 payrolls/forms.py:172 web/forms.py:15 web/forms.py:50
+#: web/forms.py:75 web/forms.py:76
+msgid "Notes"
+msgstr ""
+
+#: accounts/forms.py:47
+msgid "AccountGroupName field is required."
+msgstr ""
+
+#: accounts/forms.py:58 accounts/forms.py:104 accounts/forms.py:135
+#: accounts/forms.py:189 web/forms.py:49 web/forms.py:74
+msgid "OpeningBalance"
+msgstr ""
+
+#: accounts/forms.py:66 accounts/forms.py:197 web/forms.py:57
+msgid "LedgerName field is required."
+msgstr ""
+
+#: accounts/forms.py:78 web/forms.py:31
+msgid "BranchName"
+msgstr ""
+
+#: accounts/forms.py:79 web/forms.py:32
+msgid "BranchLocation"
+msgstr ""
+
+#: accounts/forms.py:83 accounts/forms.py:262 web/forms.py:36
+msgid "BranchName field is required."
+msgstr ""
+
+#: accounts/forms.py:98 accounts/forms.py:209 web/forms.py:68
+msgid "Name"
+msgstr ""
+
+#: accounts/forms.py:99 web/forms.py:69
+msgid "AccountNumber"
+msgstr ""
+
+#: accounts/forms.py:100 web/forms.py:70
+msgid "BranchCode"
+msgstr ""
+
+#: accounts/forms.py:101 web/forms.py:71
+msgid "IFSCCode"
+msgstr ""
+
+#: accounts/forms.py:102 web/forms.py:72
+msgid "MICRCode"
+msgstr ""
+
+#: accounts/forms.py:105
+msgid "Credit or Debit"
+msgstr ""
+
+#: accounts/forms.py:108 accounts/forms.py:141 web/forms.py:77
+msgid "City"
+msgstr ""
+
+#: accounts/forms.py:109 accounts/forms.py:142 payrolls/forms.py:117
+#: web/forms.py:78
+msgid "State"
+msgstr ""
+
+#: accounts/forms.py:110 accounts/forms.py:143 web/forms.py:79
+msgid "Country"
+msgstr ""
+
+#: accounts/forms.py:111 accounts/forms.py:144 web/forms.py:80
+msgid "PostalCode"
+msgstr ""
+
+#: accounts/forms.py:112 payrolls/forms.py:119 web/forms.py:81
+msgid "Phone"
+msgstr ""
+
+#: accounts/forms.py:113 accounts/forms.py:147 payrolls/forms.py:120
+#: web/forms.py:82
+msgid "Mobile"
+msgstr ""
+
+#: accounts/forms.py:114 accounts/forms.py:149 administrations/forms.py:44
+#: payrolls/forms.py:121 users/forms.py:164 web/forms.py:83
+msgid "Email"
+msgstr ""
+
+#: accounts/forms.py:118 accounts/forms.py:216 web/forms.py:87
+msgid "Name field is required."
+msgstr ""
+
+#: accounts/forms.py:121 web/forms.py:90
+msgid "AccountNumber field is required."
+msgstr ""
+
+#: accounts/forms.py:133
+msgid "FirstName"
+msgstr ""
+
+#: accounts/forms.py:134
+msgid "LastName"
+msgstr ""
+
+#: accounts/forms.py:136
+msgid "ContactPerson"
+msgstr ""
+
+#: accounts/forms.py:137 inventories/forms.py:272
+msgid "Address1"
+msgstr ""
+
+#: accounts/forms.py:138 inventories/forms.py:273
+msgid "Address2"
+msgstr ""
+
+#: accounts/forms.py:139 inventories/forms.py:274
+msgid "Address3"
+msgstr ""
+
+#: accounts/forms.py:140
+msgid "Address4"
+msgstr ""
+
+#: accounts/forms.py:145
+msgid "OfficePhone"
+msgstr ""
+
+#: accounts/forms.py:146
+msgid "WorkPhone"
+msgstr ""
+
+#: accounts/forms.py:148
+msgid "WebURL"
+msgstr ""
+
+#: accounts/forms.py:150
+msgid "IsBillwiseApplicable"
+msgstr ""
+
+#: accounts/forms.py:151 inventories/forms.py:269
+msgid "CreditPeriod"
+msgstr ""
+
+#: accounts/forms.py:152
+msgid "CreditLimit"
+msgstr ""
+
+#: accounts/forms.py:153
+msgid "PriceCategoryID"
+msgstr ""
+
+#: accounts/forms.py:154
+msgid "CurrencyID"
+msgstr ""
+
+#: accounts/forms.py:155
+msgid "InterestOrNot"
+msgstr ""
+
+#: accounts/forms.py:156
+msgid "RouteID"
+msgstr ""
+
+#: accounts/forms.py:157
+msgid "VATNumber"
+msgstr ""
+
+#: accounts/forms.py:158
+msgid "GSTNumber"
+msgstr ""
+
+#: accounts/forms.py:159
+msgid "Tax1Number"
+msgstr ""
+
+#: accounts/forms.py:160
+msgid "Tax2Number"
+msgstr ""
+
+#: accounts/forms.py:161
+msgid "Tax3Number"
+msgstr ""
+
+#: accounts/forms.py:162
+msgid "PanNumber"
+msgstr ""
+
+#: accounts/forms.py:163
+msgid "BankName1"
+msgstr ""
+
+#: accounts/forms.py:164
+msgid "AccountName1"
+msgstr ""
+
+#: accounts/forms.py:165
+msgid "AccountNo1"
+msgstr ""
+
+#: accounts/forms.py:166
+msgid "IBANOrIFSCCode1"
+msgstr ""
+
+#: accounts/forms.py:167
+msgid "BankName2"
+msgstr ""
+
+#: accounts/forms.py:168
+msgid "AccountName2"
+msgstr ""
+
+#: accounts/forms.py:169
+msgid "AccountNo2"
+msgstr ""
+
+#: accounts/forms.py:170
+msgid "IBANOrIFSCCode2"
+msgstr ""
+
+#: accounts/forms.py:172
+msgid "PartyImage"
+msgstr ""
+
+#: accounts/forms.py:173
+msgid "img"
+msgstr ""
+
+#: accounts/forms.py:177
+msgid "FirstName field is required."
+msgstr ""
+
+#: accounts/forms.py:208
+msgid "MasterType"
+msgstr ""
+
+#: accounts/forms.py:226 accounts/forms.py:292 accounts/forms.py:336
+#: accounts/forms.py:337 accounts/forms.py:338 accounts/forms.py:339
+msgid "PaymentGateway"
+msgstr ""
+
+#: accounts/forms.py:227 accounts/forms.py:293
+msgid "RefferenceNo"
+msgstr ""
+
+#: accounts/forms.py:228 accounts/forms.py:294
+msgid "CardNetwork"
+msgstr ""
+
+#: accounts/forms.py:229 accounts/forms.py:295
+msgid "PaymentStatus"
+msgstr ""
+
+#: accounts/forms.py:230 accounts/forms.py:296
+msgid "DueDate"
+msgstr ""
+
+#: accounts/forms.py:231 accounts/forms.py:253 accounts/forms.py:274
+#: accounts/forms.py:297
+msgid "LedgerID"
+msgstr ""
+
+#: accounts/forms.py:234 accounts/forms.py:300
+#: api/v9/sales/functions.py:7821
+msgid "Discount"
+msgstr "خصم"
+
+#: accounts/forms.py:236 accounts/forms.py:302
+msgid "Narration"
+msgstr ""
+
+#: accounts/forms.py:240 accounts/forms.py:307 accounts/forms.py:344
+msgid "PaymentGateway field is required."
+msgstr ""
+
+
+#: accounts/forms.py:252
+msgid "VoucherType"
+msgstr ""
+
+#: accounts/forms.py:254
+msgid "EmployeeID"
+msgstr ""
+
+#: accounts/forms.py:255
+msgid "PaymentNo"
+msgstr ""
+
+#: accounts/forms.py:256 accounts/forms.py:275 accounts/forms.py:317
+#: inventories/forms.py:267
+#: api/v9/sales/functions.py:7821
+msgid "Date"
+msgstr "رقم SL"
+
+#: accounts/forms.py:257
+msgid "TotalAmount "
+msgstr ""
+
+#: accounts/forms.py:276
+msgid "TotalAmount"
+msgstr ""
+
+#: accounts/forms.py:281 accounts/forms.py:325
+msgid "LedgerID field is required."
+msgstr ""
+
+#: accounts/forms.py:319
+msgid "TotalDebit"
+msgstr ""
+
+#: accounts/forms.py:320
+msgid "TotalCredit"
+msgstr ""
+
+#: accounts/forms.py:321
+msgid "Difference"
+msgstr ""
+
+#: accounts/views.py:87 accounts/views.py:539 accounts/views.py:807
+#: accounts/views.py:1154 accounts/views.py:1347 accounts/views.py:1537
+#: accounts/views.py:1756 accounts/views.py:2243 accounts/views.py:3035
+#: accounts/views.py:3670 accounts/views.py:4334 accounts/views.py:4664
+#: accounts/views.py:5077 accounts/views.py:5398 accounts/views.py:5700
+#: accounts/views.py:5913 accounts/views.py:6260 accounts/views.py:6603
+#: accounts/views.py:7020 accounts/views.py:7341 administrations/views.py:150
+#: administrations/views.py:685 administrations/views.py:887
+#: inventories/views.py:76 inventories/views.py:193 inventories/views.py:322
+#: inventories/views.py:481 inventories/views.py:645 inventories/views.py:941
+#: inventories/views.py:1494 inventories/views.py:1807
+#: inventories/views.py:2154 inventories/views.py:2450
+#: inventories/views.py:3209 payrolls/views.py:73 payrolls/views.py:475
+#: payrolls/views.py:727 payrolls/views.py:817 payrolls/views.py:1039
+#: web/views.py:77 web/views.py:163 web/views.py:283 web/views.py:533
+#: web/views.py:679 web/views.py:1034 web/views.py:1214
+msgid "Successfully Created"
+msgstr ""
+
+#: accounts/views.py:88
+msgid "AccountGroup Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:95 accounts/views.py:195
+msgid "AccountGroup Already Exist"
+msgstr ""
+
+#: accounts/views.py:96 accounts/views.py:196
+msgid "AccountGroup Name is Already exist with in the BranchID"
+msgstr ""
+
+#: accounts/views.py:105 accounts/views.py:235 accounts/views.py:557
+#: accounts/views.py:993 accounts/views.py:1164 accounts/views.py:1250
+#: accounts/views.py:1365 accounts/views.py:1555 accounts/views.py:1892
+#: accounts/views.py:2262 accounts/views.py:2669 accounts/views.py:3054
+#: accounts/views.py:3459 accounts/views.py:3688 accounts/views.py:3815
+#: accounts/views.py:4355 accounts/views.py:5098 accounts/views.py:5722
+#: accounts/views.py:6281 accounts/views.py:7041 administrations/views.py:168
+#: administrations/views.py:566 administrations/views.py:695
+#: administrations/views.py:768 administrations/views.py:991
+#: administrations/views.py:1126 inventories/views.py:94
+#: inventories/views.py:236 inventories/views.py:332 inventories/views.py:401
+#: inventories/views.py:491 inventories/views.py:561 inventories/views.py:655
+#: inventories/views.py:730 inventories/views.py:961 inventories/views.py:1512
+#: inventories/views.py:1675 inventories/views.py:1825
+#: inventories/views.py:1983 inventories/views.py:2178
+#: inventories/views.py:2335 inventories/views.py:2472
+#: inventories/views.py:2579 inventories/views.py:3231 payrolls/views.py:91
+#: payrolls/views.py:249 payrolls/views.py:494 payrolls/views.py:829
+#: payrolls/views.py:1057 payrolls/views.py:1215 web/views.py:95
+#: web/views.py:206 web/views.py:293 web/views.py:350 web/views.py:551
+#: web/views.py:777 web/views.py:1052 web/views.py:1348
+msgid "Form validation error"
+msgstr ""
+
+#: accounts/views.py:185 accounts/views.py:224 accounts/views.py:983
+#: accounts/views.py:1239 accounts/views.py:1882 accounts/views.py:2507
+#: accounts/views.py:2658 accounts/views.py:3297 accounts/views.py:3448
+#: accounts/views.py:3797 administrations/views.py:555
+#: administrations/views.py:757 administrations/views.py:980
+#: administrations/views.py:1116 inventories/views.py:226
+#: inventories/views.py:390 inventories/views.py:550 inventories/views.py:719
+#: inventories/views.py:1629 inventories/views.py:1664
+#: inventories/views.py:1935 inventories/views.py:1971
+#: inventories/views.py:2290 inventories/views.py:2323
+#: inventories/views.py:2558 payrolls/views.py:205 payrolls/views.py:239
+#: payrolls/views.py:1171 payrolls/views.py:1205 web/views.py:196
+#: web/views.py:339 web/views.py:767 web/views.py:1338
+msgid "Successfully Updated"
+msgstr ""
+
+#: accounts/views.py:186 accounts/views.py:225
+msgid "AccountGroup Updated Successfully!"
+msgstr ""
+
+#: accounts/views.py:319 accounts/views.py:1102 accounts/views.py:1295
+#: accounts/views.py:2003 accounts/views.py:2816 accounts/views.py:3604
+#: accounts/views.py:3857 accounts/views.py:4833 accounts/views.py:5560
+#: accounts/views.py:6021 accounts/views.py:6776 accounts/views.py:7503
+#: administrations/views.py:648 administrations/views.py:812
+#: administrations/views.py:1036 inventories/views.py:282
+#: inventories/views.py:442 inventories/views.py:603 inventories/views.py:774
+#: inventories/views.py:1438 inventories/views.py:1741
+#: inventories/views.py:2054 inventories/views.py:2386
+#: inventories/views.py:2637 payrolls/views.py:302 payrolls/views.py:982
+#: payrolls/views.py:1268 web/views.py:245 web/views.py:388 web/views.py:878
+msgid "Successfully Deleted"
+msgstr ""
+
+#: accounts/views.py:320
+msgid "AccountGroup Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:540 accounts/views.py:808 web/views.py:534
+#: web/views.py:680 web/views.py:1215
+msgid "AccountLedger Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:547 accounts/views.py:816 web/views.py:541
+#: web/views.py:688 web/views.py:1223
+msgid "AccountLedger Already Exist"
+msgstr ""
+
+#: accounts/views.py:548 accounts/views.py:817 web/views.py:542
+#: web/views.py:689 web/views.py:1224
+msgid "AccountLedger Name is Already exist with in the BranchID"
+msgstr ""
+
+#: accounts/views.py:984 web/views.py:768
+msgid "AccountLedger Updated Successfully!"
+msgstr ""
+
+#: accounts/views.py:1103 web/views.py:879
+msgid "AccountLedger Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:1113 accounts/views.py:1121 web/views.py:889
+#: web/views.py:897
+msgid "can't delete this AccountLedger"
+msgstr ""
+
+#: accounts/views.py:1114 accounts/views.py:1122 web/views.py:890
+#: web/views.py:898
+msgid "Can't delete this AccountLedger!"
+msgstr ""
+
+#: accounts/views.py:1155 web/views.py:284
+msgid "Branch Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:1240 inventories/views.py:227 web/views.py:197
+#: web/views.py:340
+msgid "Branch Updated Successfully!"
+msgstr ""
+
+#: accounts/views.py:1277 inventories/views.py:264 web/views.py:227
+#: web/views.py:371
+msgid "can't delete this brand"
+msgstr ""
+
+#: accounts/views.py:1278 inventories/views.py:265 web/views.py:228
+#: web/views.py:372
+msgid "Can't delete this brand! this is default brand!"
+msgstr ""
+
+#: accounts/views.py:1296 web/views.py:389
+msgid "Branch Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:1348 inventories/views.py:77 inventories/views.py:194
+#: web/views.py:78 web/views.py:164
+msgid "Brand Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:1355 inventories/views.py:84 inventories/views.py:202
+#: web/views.py:85 web/views.py:172
+msgid "Brand Already Exist"
+msgstr ""
+
+#: accounts/views.py:1356 inventories/views.py:85 inventories/views.py:203
+#: web/views.py:86 web/views.py:173
+msgid "Brand Name is Already exist with in the BranchID"
+msgstr ""
+
+#: accounts/views.py:1538 accounts/views.py:1757 web/views.py:1035
+msgid "Bank Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:1545 accounts/views.py:1765 web/views.py:1042
+msgid "Bank Already Exist"
+msgstr ""
+
+#: accounts/views.py:1546 accounts/views.py:1766 web/views.py:1043
+msgid "Bank Name is Already exist with in the BranchID"
+msgstr ""
+
+#: accounts/views.py:1883 web/views.py:1339
+msgid "Bank Updated Successfully!"
+msgstr ""
+
+#: accounts/views.py:2004
+msgid "Bank Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:2013 accounts/views.py:2022
+msgid "can't delete this Bank"
+msgstr ""
+
+#: accounts/views.py:2014
+msgid "Can't delete this Bank! data exist in Ledgerposting with LedgerID"
+msgstr ""
+
+#: accounts/views.py:2023
+msgid "Can't delete this Bank!"
+msgstr ""
+
+#: accounts/views.py:2030 accounts/views.py:2031
+msgid "Bank is Not Fount!"
+msgstr ""
+
+#: accounts/views.py:2173 accounts/views.py:2251 accounts/views.py:2516
+msgid "Customer Already Exist"
+msgstr ""
+
+#: accounts/views.py:2174 accounts/views.py:2252 accounts/views.py:2517
+msgid "Customer Name is Already exist with in the BranchID"
+msgstr ""
+
+#: accounts/views.py:2244
+msgid "Customer Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:2508 accounts/views.py:2659 accounts/views.py:3449
+msgid "Customer Updated Successfully!"
+msgstr ""
+
+#: accounts/views.py:2817
+msgid "Customer Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:2828 accounts/views.py:2829
+msgid "Customer is Not Fount!"
+msgstr ""
+
+#: accounts/views.py:2965 accounts/views.py:3043
+msgid "Supplier Already Exist"
+msgstr ""
+
+#: accounts/views.py:2966 accounts/views.py:3044
+msgid "Supplier Name is Already exist with in the BranchID"
+msgstr ""
+
+#: accounts/views.py:3036
+msgid "Supplier Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:3298
+msgid "Suppliers Updated Successfully!"
+msgstr ""
+
+#: accounts/views.py:3306
+msgid "Suppliers Already Exist"
+msgstr ""
+
+#: accounts/views.py:3307
+msgid "Suppliers Name is Already exist with in the BranchID"
+msgstr ""
+
+#: accounts/views.py:3605
+msgid "Supplier Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:3616 accounts/views.py:3617
+msgid "Supplier is Not Fount!"
+msgstr ""
+
+#: accounts/views.py:3671
+msgid "Transaction Types Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:3678 accounts/views.py:3805
+msgid "Transaction Type Already Exist"
+msgstr ""
+
+#: accounts/views.py:3679 accounts/views.py:3806
+msgid "Transaction Type Name is Already exist with in the BranchID"
+msgstr ""
+
+#: accounts/views.py:3798
+msgid "Transaction Types Updated Successfully!"
+msgstr ""
+
+#: accounts/views.py:3858
+msgid "Transaction Types Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:4335 accounts/views.py:4665
+msgid "Cash Payment Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:4344 accounts/views.py:4674 accounts/views.py:5087
+#: accounts/views.py:5711 accounts/views.py:6270 accounts/views.py:6613
+#: accounts/views.py:7030 inventories/views.py:951 inventories/views.py:1261
+msgid "Name Already Exist"
+msgstr ""
+
+#: accounts/views.py:4834
+msgid "Cash Payment Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:5078 accounts/views.py:5399 accounts/views.py:5914
+#: accounts/views.py:7021 accounts/views.py:7342
+msgid "Cash Receipt Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:5561 accounts/views.py:7504
+msgid "Cash Receipt Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:5701
+msgid "Journal Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:6022
+msgid "Journal Entry Deleted Successfully."
+msgstr ""
+
+#: accounts/views.py:6261 accounts/views.py:6604
+msgid "Bank Payment Created Successfully!"
+msgstr ""
+
+#: accounts/views.py:6777
+msgid "Bank Payment Deleted Successfully."
+msgstr ""
+
+#: administrations/forms.py:32 inventories/forms.py:200
+msgid "GroupName field is required."
+msgstr ""
+
+#: administrations/forms.py:39 users/forms.py:159
+msgid "Username"
+msgstr ""
+
+#: administrations/forms.py:49 users/forms.py:135 users/forms.py:169
+msgid "Password"
+msgstr ""
+
+#: administrations/forms.py:53 users/forms.py:173
+msgid "Repeat Password"
+msgstr ""
+
+#: administrations/forms.py:106
+msgid "User Type Name"
+msgstr ""
+
+#: administrations/forms.py:112 administrations/forms.py:130
+msgid "User Type Name field is required."
+msgstr ""
+
+#: administrations/forms.py:123 users/forms.py:271
+msgid "From Date"
+msgstr ""
+
+#: administrations/forms.py:124 users/forms.py:272
+msgid "To Date"
+msgstr ""
+
+#: administrations/forms.py:164 users/forms.py:49
+msgid "Company Name field is required."
+msgstr ""
+
+#: administrations/forms.py:167 users/forms.py:52
+msgid "Address1 field is required."
+msgstr ""
+
+#: administrations/forms.py:170 users/forms.py:55
+msgid "Address2 field is required."
+msgstr ""
+
+#: administrations/forms.py:173 users/forms.py:58
+msgid "Address3 field is required."
+msgstr ""
+
+#: administrations/forms.py:176 users/forms.py:61
+msgid "city field is required."
+msgstr ""
+
+#: administrations/forms.py:179 users/forms.py:64
+msgid "state field is required."
+msgstr ""
+
+#: administrations/forms.py:182 users/forms.py:67
+msgid "country field is required."
+msgstr ""
+
+#: administrations/forms.py:185 users/forms.py:70
+msgid "postalcode field is required."
+msgstr ""
+
+#: administrations/forms.py:188 users/forms.py:73
+msgid "phone field is required."
+msgstr ""
+
+#: administrations/forms.py:191 users/forms.py:76
+msgid "mobile field is required."
+msgstr ""
+
+#: administrations/forms.py:194 users/forms.py:79
+msgid "email field is required."
+msgstr ""
+
+#: administrations/forms.py:197 users/forms.py:82
+msgid "website field is required."
+msgstr ""
+
+#: administrations/forms.py:200 users/forms.py:85
+msgid "currency field is required."
+msgstr ""
+
+#: administrations/forms.py:203 users/forms.py:88
+msgid "fractionalunit field is required."
+msgstr ""
+
+#: administrations/forms.py:206 users/forms.py:91
+msgid "vatnumber field is required."
+msgstr ""
+
+#: administrations/forms.py:209 users/forms.py:94
+msgid "gstnumber field is required."
+msgstr ""
+
+#: administrations/forms.py:212 users/forms.py:97
+msgid "tax1 field is required."
+msgstr ""
+
+#: administrations/forms.py:215 users/forms.py:100
+msgid "tax2 field is required."
+msgstr ""
+
+#: administrations/forms.py:218 users/forms.py:103
+msgid "tax3 field is required."
+msgstr ""
+
+#: administrations/views.py:151
+msgid "General Settings Created Successfully!"
+msgstr ""
+
+#: administrations/views.py:157
+msgid "Please enter a number"
+msgstr ""
+
+#: administrations/views.py:556
+msgid "User Updated Successfully!"
+msgstr ""
+
+#: administrations/views.py:605 administrations/views.py:613
+msgid "Can't delete this User"
+msgstr ""
+
+#: administrations/views.py:606
+msgid "You are deleting your own credentials"
+msgstr ""
+
+#: administrations/views.py:614
+msgid "Can't delete this User! this is default User!"
+msgstr ""
+
+#: administrations/views.py:649
+msgid "User Deleted Successfully."
+msgstr ""
+
+#: administrations/views.py:686
+msgid "User Type Created Successfully!"
+msgstr ""
+
+#: administrations/views.py:758
+msgid "User Type Updated Successfully!"
+msgstr ""
+
+#: administrations/views.py:792
+msgid "can't delete this User Type"
+msgstr ""
+
+#: administrations/views.py:793
+msgid "Can't delete this User Type! this is default User Type!"
+msgstr ""
+
+#: administrations/views.py:813
+msgid "User Type Deleted Successfully."
+msgstr ""
+
+#: administrations/views.py:888
+msgid "Financial Year created successfully"
+msgstr ""
+
+#: administrations/views.py:981
+msgid "Financial Year Updated Successfully!"
+msgstr ""
+
+#: administrations/views.py:1016
+msgid "can't delete this Financial Year"
+msgstr ""
+
+#: administrations/views.py:1017
+msgid "Can't delete this Financial! this is default Financial!"
+msgstr ""
+
+#: administrations/views.py:1037
+msgid "Financial Deleted Successfully."
+msgstr ""
+
+#: administrations/views.py:1117
+msgid "Company Updated Successfully!"
+msgstr ""
+
+#: brands/forms.py:16 inventories/forms.py:103
+msgid "ProductName"
+msgstr ""
+
+#: brands/forms.py:17 inventories/forms.py:104
+msgid "DisplayName"
+msgstr ""
+
+#: brands/forms.py:18 inventories/forms.py:105
+msgid "Description"
+msgstr ""
+
+#: brands/forms.py:19 inventories/forms.py:106
+msgid "ProductGroupID"
+msgstr ""
+
+#: brands/forms.py:20 inventories/forms.py:107
+msgid "BrandID"
+msgstr ""
+
+#: brands/forms.py:21 inventories/forms.py:108
+msgid "InventoryType"
+msgstr ""
+
+#: brands/forms.py:22 inventories/forms.py:109
+msgid "VatID"
+msgstr ""
+
+#: brands/forms.py:23 inventories/forms.py:110
+msgid "StockMinimum"
+msgstr ""
+
+#: brands/forms.py:24 inventories/forms.py:111
+msgid "StockReOrder"
+msgstr ""
+
+#: brands/forms.py:25 inventories/forms.py:112
+msgid "StockMaximum"
+msgstr ""
+
+#: brands/forms.py:26 inventories/forms.py:113
+msgid "MarginPercent"
+msgstr ""
+
+#: brands/forms.py:27 inventories/forms.py:114
+msgid "ProductImage"
+msgstr ""
+
+#: brands/forms.py:28 inventories/forms.py:115
+msgid "Active"
+msgstr ""
+
+#: brands/forms.py:29 inventories/forms.py:116
+msgid "IsWeighingScale"
+msgstr ""
+
+#: brands/forms.py:30 inventories/forms.py:117
+msgid "IsRawMaterial"
+msgstr ""
+
+#: brands/forms.py:31 inventories/forms.py:118
+msgid "IsFinishedProduct"
+msgstr ""
+
+#: brands/forms.py:32 inventories/forms.py:119
+msgid "IsSales"
+msgstr ""
+
+#: brands/forms.py:33 inventories/forms.py:120
+msgid "IsPurchase"
+msgstr ""
+
+#: brands/forms.py:34 inventories/forms.py:121
+msgid "WeighingCalcType"
+msgstr ""
+
+#: brands/forms.py:35 inventories/forms.py:122
+msgid "PLUNo"
+msgstr ""
+
+#: brands/forms.py:36 inventories/forms.py:123
+msgid "IsFavourite"
+msgstr ""
+
+#: brands/forms.py:37
+msgid "GST"
+msgstr ""
+
+#: brands/forms.py:38
+msgid "Tax1"
+msgstr ""
+
+#: brands/forms.py:39
+msgid "Tax2"
+msgstr ""
+
+#: brands/forms.py:40
+msgid "Tax3"
+msgstr ""
+
+#: brands/forms.py:46 inventories/forms.py:129
+msgid "Product Name field is required."
+msgstr ""
+
+#: brands/forms.py:87 inventories/forms.py:170
+msgid "UnitName"
+msgstr ""
+
+#: brands/forms.py:88 inventories/forms.py:171
+msgid "SalesPrice"
+msgstr ""
+
+#: brands/forms.py:89 inventories/forms.py:172
+msgid "PurchasePrice"
+msgstr ""
+
+#: brands/forms.py:90 inventories/forms.py:173
+msgid "MultiFactor"
+msgstr ""
+
+#: brands/forms.py:91 inventories/forms.py:174
+msgid "Barcode"
+msgstr ""
+
+#: brands/forms.py:92 inventories/forms.py:175
+msgid "SalesPrice1"
+msgstr ""
+
+#: brands/forms.py:93 inventories/forms.py:176
+msgid "SalesPrice2"
+msgstr ""
+
+#: brands/forms.py:94 inventories/forms.py:177
+msgid "SalesPrice3"
+msgstr ""
+
+#: brands/forms.py:95 inventories/forms.py:178
+msgid "MRP"
+msgstr ""
+
+#: brands/forms.py:99 inventories/forms.py:182
+msgid "UnitName field is required."
+msgstr ""
+
+#: brands/models.py:47
+msgid "userType"
+msgstr ""
+
+#: brands/models.py:48
+msgid "usersType"
+msgstr ""
+
+#: brands/models.py:73
+msgid "userTypeLog"
+msgstr ""
+
+#: brands/models.py:74
+msgid "usersTypeLog"
+msgstr ""
+
+#: brands/models.py:128
+msgid "userTable"
+msgstr ""
+
+#: brands/models.py:129
+msgid "usersTable"
+msgstr ""
+
+#: brands/models.py:184
+msgid "userTableLog"
+msgstr ""
+
+#: brands/models.py:185
+msgid "usersTableLog"
+msgstr ""
+
+#: brands/models.py:208
+msgid "brand"
+msgstr ""
+
+#: brands/models.py:209
+msgid "brands"
+msgstr ""
+
+#: brands/models.py:237
+msgid "brandLog"
+msgstr ""
+
+#: brands/models.py:238
+msgid "brandLogss"
+msgstr ""
+
+#: brands/models.py:261
+msgid "route"
+msgstr ""
+
+#: brands/models.py:262
+msgid "routes"
+msgstr ""
+
+#: brands/models.py:286
+msgid "routeLog"
+msgstr ""
+
+#: brands/models.py:287
+msgid "routeLogs"
+msgstr ""
+
+#: brands/models.py:305
+msgid "taxType"
+msgstr ""
+
+#: brands/models.py:306
+msgid "taxTypes"
+msgstr ""
+
+#: brands/models.py:335
+msgid "taxcategory"
+msgstr ""
+
+#: brands/models.py:336
+msgid "taxcategories"
+msgstr ""
+
+#: brands/models.py:365
+msgid "taxcategoryLog"
+msgstr ""
+
+#: brands/models.py:366
+msgid "taxcategoryLogs"
+msgstr ""
+
+#: brands/models.py:389
+msgid "productcategory"
+msgstr ""
+
+#: brands/models.py:390
+msgid "productcategories"
+msgstr ""
+
+#: brands/models.py:414
+msgid "productcategoryLog"
+msgstr ""
+
+#: brands/models.py:415
+msgid "productcategoryLogs"
+msgstr ""
+
+#: brands/models.py:441
+msgid "productgroup"
+msgstr ""
+
+#: brands/models.py:442
+msgid "productgroups"
+msgstr ""
+
+#: brands/models.py:469
+msgid "productgroupLog"
+msgstr ""
+
+#: brands/models.py:470
+msgid "productgroupLogs"
+msgstr ""
+
+#: brands/models.py:493
+msgid "warehouse"
+msgstr ""
+
+#: brands/models.py:494
+msgid "warehouses"
+msgstr ""
+
+#: brands/models.py:518
+msgid "warehouseLog"
+msgstr ""
+
+#: brands/models.py:519
+msgid "warehouseLogs"
+msgstr ""
+
+#: brands/models.py:544
+msgid "pricecategory"
+msgstr ""
+
+#: brands/models.py:545
+msgid "pricecategorys"
+msgstr ""
+
+#: brands/models.py:571
+msgid "pricecategoryLog"
+msgstr ""
+
+#: brands/models.py:572
+msgid "pricecategoryLogs"
+msgstr ""
+
+#: brands/models.py:598
+msgid "accountgroup"
+msgstr ""
+
+#: brands/models.py:599
+msgid "accountgroups"
+msgstr ""
+
+#: brands/models.py:625
+msgid "accountgroupLog"
+msgstr ""
+
+#: brands/models.py:626
+msgid "accountgroupLogs"
+msgstr ""
+
+#: brands/models.py:659
+msgid "accountLedger"
+msgstr ""
+
+#: brands/models.py:660
+msgid "accountLedgers"
+msgstr ""
+
+#: brands/models.py:694
+msgid "accountLedgerLog"
+msgstr ""
+
+#: brands/models.py:695
+msgid "accountLedgerLogs"
+msgstr ""
+
+#: brands/models.py:772
+msgid "branch"
+msgstr ""
+
+#: brands/models.py:773
+msgid "branchs"
+msgstr ""
+
+#: brands/models.py:866
+msgid "branchLog"
+msgstr ""
+
+#: brands/models.py:867
+msgid "branchLogs"
+msgstr ""
+
+#: brands/models.py:954
+msgid "parties"
+msgstr ""
+
+#: brands/models.py:955
+msgid "partiess"
+msgstr ""
+
+#: brands/models.py:1042
+msgid "partiesLog"
+msgstr ""
+
+#: brands/models.py:1043
+msgid "partiesLogs"
+msgstr ""
+
+#: brands/models.py:1104
+msgid "product"
+msgstr ""
+
+#: brands/models.py:1105
+msgid "products"
+msgstr ""
+
+#: brands/models.py:1172
+msgid "productLog"
+msgstr ""
+
+#: brands/models.py:1173
+msgid "productLogs"
+msgstr ""
+
+#: brands/models.py:1197 brands/models.py:1198
+msgid "product_barcode"
+msgstr ""
+
+#: brands/models.py:1223
+msgid "product_barcode_Log"
+msgstr ""
+
+#: brands/models.py:1224
+msgid "product_barcode_Logs"
+msgstr ""
+
+#: brands/models.py:1269
+msgid "pricelist"
+msgstr ""
+
+#: brands/models.py:1270
+msgid "pricelists"
+msgstr ""
+
+#: brands/models.py:1315
+msgid "pricelistLog"
+msgstr ""
+
+#: brands/models.py:1316
+msgid "pricelistLogs"
+msgstr ""
+
+#: brands/models.py:1341
+msgid "mastertype"
+msgstr ""
+
+#: brands/models.py:1342
+msgid "mastertypes"
+msgstr ""
+
+#: brands/models.py:1368
+msgid "mastertypeLog"
+msgstr ""
+
+#: brands/models.py:1369
+msgid "mastertypeLogs"
+msgstr ""
+
+#: brands/models.py:1394
+msgid "transactionType"
+msgstr ""
+
+#: brands/models.py:1395
+msgid "transactionTypes"
+msgstr ""
+
+#: brands/models.py:1421
+msgid "transactionTypeLog"
+msgstr ""
+
+#: brands/models.py:1422
+msgid "transactionTypeLogs"
+msgstr ""
+
+#: brands/models.py:1441
+msgid "color"
+msgstr ""
+
+#: brands/models.py:1442
+msgid "colors"
+msgstr ""
+
+#: brands/models.py:1461
+msgid "colorLog"
+msgstr ""
+
+#: brands/models.py:1462
+msgid "colorLogs"
+msgstr ""
+
+#: brands/models.py:1525
+msgid "companySettings"
+msgstr ""
+
+#: brands/models.py:1526
+msgid "companySettingss"
+msgstr ""
+
+#: brands/models.py:1589
+msgid "companySettingsLog"
+msgstr ""
+
+#: brands/models.py:1590
+msgid "companySettingsLogs"
+msgstr ""
+
+#: brands/models.py:1613 brands/models.py:1660
+msgid "generalSettings"
+msgstr ""
+
+#: brands/models.py:1614 brands/models.py:1661
+msgid "generalSettingss"
+msgstr ""
+
+#: brands/models.py:1636
+msgid "branchSettings"
+msgstr ""
+
+#: brands/models.py:1637
+msgid "branchSettingss"
+msgstr ""
+
+#: brands/models.py:1686
+msgid "designation"
+msgstr ""
+
+#: brands/models.py:1687
+msgid "designations"
+msgstr ""
+
+#: brands/models.py:1713
+msgid "designationLogs"
+msgstr ""
+
+#: brands/models.py:1714
+msgid "designationLogss"
+msgstr ""
+
+#: brands/models.py:1739
+msgid "department"
+msgstr ""
+
+#: brands/models.py:1740
+msgid "departments"
+msgstr ""
+
+#: brands/models.py:1766
+msgid "departmentLogs"
+msgstr ""
+
+#: brands/models.py:1767
+msgid "departmentLogss"
+msgstr ""
+
+#: brands/models.py:1840
+msgid "employees"
+msgstr ""
+
+#: brands/models.py:1841
+msgid "employeess"
+msgstr ""
+
+#: brands/models.py:1916
+msgid "employeesLog"
+msgstr ""
+
+#: brands/models.py:1917
+msgid "employeesLogs"
+msgstr ""
+
+#: brands/models.py:1941
+msgid "financialYear"
+msgstr ""
+
+#: brands/models.py:1942
+msgid "financialYears"
+msgstr ""
+
+#: brands/models.py:1966
+msgid "financialYearLog"
+msgstr ""
+
+#: brands/models.py:1967
+msgid "financialYearLogs"
+msgstr ""
+
+#: brands/models.py:1988
+msgid "flavour"
+msgstr ""
+
+#: brands/models.py:1989
+msgid "flavours"
+msgstr ""
+
+#: brands/models.py:2011
+msgid "flavourLog"
+msgstr ""
+
+#: brands/models.py:2012
+msgid "flavourLogs"
+msgstr ""
+
+#: brands/models.py:2041
+msgid "journalDetail"
+msgstr ""
+
+#: brands/models.py:2042
+msgid "journalDetails"
+msgstr ""
+
+#: brands/models.py:2071
+msgid "journalDetailLog"
+msgstr ""
+
+#: brands/models.py:2072
+msgid "journalDetailLogs"
+msgstr ""
+
+#: brands/models.py:2103 brands/models.py:2104
+msgid "journalMaster"
+msgstr ""
+
+#: brands/models.py:2136
+msgid "journalMasterLog"
+msgstr ""
+
+#: brands/models.py:2137
+msgid "journalMasterLogs"
+msgstr ""
+
+#: brands/models.py:2162
+msgid "kitchen"
+msgstr ""
+
+#: brands/models.py:2163
+msgid "kitchens"
+msgstr ""
+
+#: brands/models.py:2189
+msgid "kitchenLog"
+msgstr ""
+
+#: brands/models.py:2190
+msgid "kitchenLogs"
+msgstr ""
+
+#: brands/models.py:2223
+msgid "ledgerPosting"
+msgstr ""
+
+#: brands/models.py:2224
+msgid "ledgerPostings"
+msgstr ""
+
+#: brands/models.py:2258
+msgid "ledgerPostingLog"
+msgstr ""
+
+#: brands/models.py:2259
+msgid "ledgerPostingLogs"
+msgstr ""
+
+#: brands/models.py:2287
+msgid "openingStockDetails"
+msgstr ""
+
+#: brands/models.py:2288
+msgid "openingStockDetailss"
+msgstr ""
+
+#: brands/models.py:2316
+msgid "openingStockDetailsLog"
+msgstr ""
+
+#: brands/models.py:2317
+msgid "openingStockDetailsLogs"
+msgstr ""
+
+#: brands/models.py:2347
+msgid "openingStockMaster"
+msgstr ""
+
+#: brands/models.py:2348
+msgid "openingStockMasters"
+msgstr ""
+
+#: brands/models.py:2379
+msgid "openingStockMasterLog"
+msgstr ""
+
+#: brands/models.py:2380
+msgid "openingStockMasterLogs"
+msgstr ""
+
+#: brands/models.py:2421
+msgid "paymentDetail"
+msgstr ""
+
+#: brands/models.py:2422
+msgid "paymentDetails"
+msgstr ""
+
+#: brands/models.py:2462
+msgid "paymentDetailLog"
+msgstr ""
+
+#: brands/models.py:2463
+msgid "paymentDetailLogs"
+msgstr ""
+
+#: brands/models.py:2495
+msgid "paymentMaster"
+msgstr ""
+
+#: brands/models.py:2496
+msgid "paymentMasters"
+msgstr ""
+
+#: brands/models.py:2529
+msgid "paymentMasterLog"
+msgstr ""
+
+#: brands/models.py:2530
+msgid "paymentMasterLogs"
+msgstr ""
+
+#: brands/models.py:2590
+msgid "posholdDetails"
+msgstr ""
+
+#: brands/models.py:2591
+msgid "posholdDetailses"
+msgstr ""
+
+#: brands/models.py:2652
+msgid "posholdDetailsLog"
+msgstr ""
+
+#: brands/models.py:2653
+msgid "posholdDetailsLoges"
+msgstr ""
+
+#: brands/models.py:2710
+msgid "posholdMaster"
+msgstr ""
+
+#: brands/models.py:2711
+msgid "posholdMasteres"
+msgstr ""
+
+#: brands/models.py:2769
+msgid "posholdMasterLog"
+msgstr ""
+
+#: brands/models.py:2770
+msgid "posholdMasterLogs"
+msgstr ""
+
+#: brands/models.py:2858
+msgid "purchaseDetails"
+msgstr ""
+
+#: brands/models.py:2859
+msgid "purchaseDetailses"
+msgstr ""
+
+#: brands/models.py:2944
+msgid "purchaseDetailsLog"
+msgstr ""
+
+#: brands/models.py:2945
+msgid "purchaseDetailsLogs"
+msgstr ""
+
+#: brands/models.py:3052
+msgid "purchaseMaster"
+msgstr ""
+
+#: brands/models.py:3053
+msgid "purchaseMasters"
+msgstr ""
+
+#: brands/models.py:3158
+msgid "purchaseMasterLog"
+msgstr ""
+
+#: brands/models.py:3159
+msgid "purchaseMasterLogs"
+msgstr ""
+
+#: brands/models.py:3244
+msgid "purchaseOrderDetail"
+msgstr ""
+
+#: brands/models.py:3245
+msgid "purchaseOrderDetails"
+msgstr ""
+
+#: brands/models.py:3331
+msgid "purchaseOrderDetailLog"
+msgstr ""
+
+#: brands/models.py:3332
+msgid "purchaseOrderDetailLogs"
+msgstr ""
+
+#: brands/models.py:3420
+msgid "purchaseOrderMaster"
+msgstr ""
+
+#: brands/models.py:3421
+msgid "purchaseOrderMasters"
+msgstr ""
+
+#: brands/models.py:3510
+msgid "purchaseOrderMasterLog"
+msgstr ""
+
+#: brands/models.py:3511
+msgid "purchaseOrderMasterLogs"
+msgstr ""
+
+#: brands/models.py:3594
+msgid "purchaseReturnDetail"
+msgstr ""
+
+#: brands/models.py:3595
+msgid "purchaseReturnDetails"
+msgstr ""
+
+#: brands/models.py:3679
+msgid "purchaseReturnDetailLog"
+msgstr ""
+
+#: brands/models.py:3680
+msgid "purchaseReturnDetailLogs"
+msgstr ""
+
+#: brands/models.py:3769
+msgid "purchaseReturnMaster"
+msgstr ""
+
+#: brands/models.py:3770
+msgid "purchaseReturnMasters"
+msgstr ""
+
+#: brands/models.py:3857
+msgid "purchaseReturnMasterLog"
+msgstr ""
+
+#: brands/models.py:3858
+msgid "purchaseReturnMasterLogs"
+msgstr ""
+
+#: brands/models.py:3898
+msgid "receiptDetails"
+msgstr ""
+
+#: brands/models.py:3899
+msgid "receiptDetailses"
+msgstr ""
+
+#: brands/models.py:3938
+msgid "receiptDetailsLog"
+msgstr ""
+
+#: brands/models.py:3939
+msgid "receiptDetailsLogs"
+msgstr ""
+
+#: brands/models.py:3971
+msgid "receiptMaster"
+msgstr ""
+
+#: brands/models.py:3972
+msgid "receiptMasters"
+msgstr ""
+
+#: brands/models.py:4005
+msgid "receiptMasterLogs"
+msgstr ""
+
+#: brands/models.py:4006
+msgid "receiptMasterLogss"
+msgstr ""
+
+#: brands/models.py:4096
+msgid "salesDetail"
+msgstr ""
+
+#: brands/models.py:4097
+msgid "salesDetails"
+msgstr ""
+
+#: brands/models.py:4187
+msgid "salesDetailLog"
+msgstr ""
+
+#: brands/models.py:4188
+msgid "salesDetailLogs"
+msgstr ""
+
+#: brands/models.py:4343
+msgid "salesMaster"
+msgstr ""
+
+#: brands/models.py:4344
+msgid "salesMasters"
+msgstr ""
+
+#: brands/models.py:4471
+msgid "salesMasterLog"
+msgstr ""
+
+#: brands/models.py:4472
+msgid "salesMasterLogs"
+msgstr ""
+
+#: brands/models.py:4558
+msgid "salesOrderDetail"
+msgstr ""
+
+#: brands/models.py:4559
+msgid "salesOrderDetails"
+msgstr ""
+
+#: brands/models.py:4645
+msgid "salesOrderDetailLog"
+msgstr ""
+
+#: brands/models.py:4646
+msgid "salesOrderDetailLogs"
+msgstr ""
+
+#: brands/models.py:4742
+msgid "salesOrderMaster"
+msgstr ""
+
+#: brands/models.py:4743
+msgid "salesOrderMasters"
+msgstr ""
+
+#: brands/models.py:4840
+msgid "salesOrderMasterLog"
+msgstr ""
+
+#: brands/models.py:4841
+msgid "salesOrderMasterLogs"
+msgstr ""
+
+#: brands/models.py:4931
+msgid "salesReturnDetail"
+msgstr ""
+
+#: brands/models.py:4932
+msgid "salesReturnDetails"
+msgstr ""
+
+#: brands/models.py:5022
+msgid "salesReturnDetailLog"
+msgstr ""
+
+#: brands/models.py:5023
+msgid "salesReturnDetailLogs"
+msgstr ""
+
+#: brands/models.py:5129
+msgid "salesReturnMaster"
+msgstr ""
+
+#: brands/models.py:5130
+msgid "salesReturnMasters"
+msgstr ""
+
+#: brands/models.py:5233
+msgid "salesReturnMasterLog"
+msgstr ""
+
+#: brands/models.py:5234
+msgid "salesReturnMasterLogs"
+msgstr ""
+
+#: brands/models.py:5259
+msgid "settings"
+msgstr ""
+
+#: brands/models.py:5260
+msgid "settingses"
+msgstr ""
+
+#: brands/models.py:5286
+msgid "settingsLog"
+msgstr ""
+
+#: brands/models.py:5287
+msgid "settingsLogs"
+msgstr ""
+
+#: brands/models.py:5314
+msgid "stockAdjustmentDetails"
+msgstr ""
+
+#: brands/models.py:5315
+msgid "stockAdjustmentDetailses"
+msgstr ""
+
+#: brands/models.py:5344
+msgid "stockAdjustmentDetailsLog"
+msgstr ""
+
+#: brands/models.py:5345
+msgid "stockAdjustmentDetailsLogs"
+msgstr ""
+
+#: brands/models.py:5373
+msgid "stockAdjustmentMaster"
+msgstr ""
+
+#: brands/models.py:5374
+msgid "StockAdjustmentMasters"
+msgstr ""
+
+#: brands/models.py:5404
+msgid "stockAdjustmentMasterLog"
+msgstr ""
+
+#: brands/models.py:5405
+msgid "stockAdjustmentMasterLogs"
+msgstr ""
+
+#: brands/models.py:5432
+msgid "stockReceiptDetails"
+msgstr ""
+
+#: brands/models.py:5433
+msgid "stockReceiptDetailses"
+msgstr ""
+
+#: brands/models.py:5461
+msgid "stockReceiptDetailsLog"
+msgstr ""
+
+#: brands/models.py:5462
+msgid "stockReceiptDetailsLogs"
+msgstr ""
+
+#: brands/models.py:5489
+msgid "stockReceiptMasterID"
+msgstr ""
+
+#: brands/models.py:5490
+msgid "stockReceiptMasterIDs"
+msgstr ""
+
+#: brands/models.py:5518
+msgid "stockReceiptMasterIDLog"
+msgstr ""
+
+#: brands/models.py:5519
+msgid "stockReceiptMasterIDLogs"
+msgstr ""
+
+#: brands/models.py:5551
+msgid "stockTransferDetails"
+msgstr ""
+
+#: brands/models.py:5552
+msgid "stockTransferDetailses"
+msgstr ""
+
+#: brands/models.py:5585
+msgid "stockTransferDetailsLog"
+msgstr ""
+
+#: brands/models.py:5586
+msgid "stockTransferDetailsLogs"
+msgstr ""
+
+#: brands/models.py:5622
+msgid "stockTransferMaster_ID"
+msgstr ""
+
+#: brands/models.py:5623
+msgid "stockTransferMaster_IDs"
+msgstr ""
+
+#: brands/models.py:5660
+msgid "stockTransferMaster_IDLog"
+msgstr ""
+
+#: brands/models.py:5661
+msgid "stockTransferMaster_IDLogs"
+msgstr ""
+
+#: brands/models.py:5701
+msgid "stockPosting"
+msgstr ""
+
+#: brands/models.py:5702
+msgid "stockPostings"
+msgstr ""
+
+#: brands/models.py:5751
+msgid "stockPosting_Log"
+msgstr ""
+
+#: brands/models.py:5752
+msgid "stockPosting_Logs"
+msgstr ""
+
+#: brands/models.py:5827
+msgid "salesDetailDummy"
+msgstr ""
+
+#: brands/models.py:5828
+msgid "salesDetailsDummy"
+msgstr ""
+
+#: brands/models.py:5889
+msgid "salesOrderDetailDummy"
+msgstr ""
+
+#: brands/models.py:5890
+msgid "salesOrderDetailsDummy"
+msgstr ""
+
+#: brands/models.py:5972
+msgid "salesReturnDetailDummy"
+msgstr ""
+
+#: brands/models.py:5973
+msgid "salesReturnDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6047
+msgid "purchasesDetailDummy"
+msgstr ""
+
+#: brands/models.py:6048
+msgid "purchasesDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6108
+msgid "purchasesOrderDetailDummy"
+msgstr ""
+
+#: brands/models.py:6109
+msgid "purchasesOrderDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6186
+msgid "purchaseReturnDetailDummy"
+msgstr ""
+
+#: brands/models.py:6187
+msgid "purchaseReturnDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6212
+msgid "damageStockDetailDummy"
+msgstr ""
+
+#: brands/models.py:6213
+msgid "damageStockDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6241
+msgid "openingStockDetailDummy"
+msgstr ""
+
+#: brands/models.py:6242
+msgid "openingStockDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6275
+msgid "paymentDetailDummy"
+msgstr ""
+
+#: brands/models.py:6276
+msgid "paymentDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6334
+msgid "posHoldDetailDummy"
+msgstr ""
+
+#: brands/models.py:6335
+msgid "posHoldDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6368
+msgid "receiptDetailDummy"
+msgstr ""
+
+#: brands/models.py:6369
+msgid "receiptDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6394
+msgid "stockAdjustmentDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6395
+msgid "stockAdjustmentDetailssDummy"
+msgstr ""
+
+#: brands/models.py:6420 brands/models.py:6421
+msgid "stockReceiptDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6448 brands/models.py:6449
+msgid "stockTransferDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6472 brands/models.py:6473
+msgid "journalDetailsDummy"
+msgstr ""
+
+#: brands/models.py:6505
+msgid "stockRate"
+msgstr ""
+
+#: brands/models.py:6506
+msgid "stockRates"
+msgstr ""
+
+#: brands/models.py:6530 brands/models.py:6531
+msgid "stockTrans"
+msgstr ""
+
+#: brands/models.py:6573
+msgid "Bank"
+msgstr ""
+
+#: brands/models.py:6574
+msgid "Banks"
+msgstr ""
+
+#: brands/models.py:6616
+msgid "BankLog"
+msgstr ""
+
+#: brands/models.py:6617
+msgid "BankLogs"
+msgstr ""
+
+#: brands/models.py:6642
+msgid "country"
+msgstr ""
+
+#: brands/models.py:6643
+msgid "countries"
+msgstr ""
+
+#: brands/models.py:6661
+msgid "state"
+msgstr ""
+
+#: brands/models.py:6662
+msgid "states"
+msgstr ""
+
+#: brands/models.py:6675 brands/models.py:6676
+msgid "business"
+msgstr ""
+
+#: brands/models.py:6692
+msgid "testImage"
+msgstr ""
+
+#: brands/models.py:6693
+msgid "testImages"
+msgstr ""
+
+#: brands/models.py:6744
+msgid "testForm"
+msgstr ""
+
+#: brands/models.py:6745
+msgid "testForms"
+msgstr ""
+
+#: brands/models.py:6790
+msgid "testFormSet"
+msgstr ""
+
+#: brands/models.py:6791
+msgid "testFormSets"
+msgstr ""
+
+#: brands/models.py:6816
+msgid "unit"
+msgstr ""
+
+#: brands/models.py:6817
+msgid "units"
+msgstr ""
+
+#: brands/models.py:6845
+msgid "unitLog"
+msgstr ""
+
+#: brands/models.py:6846
+msgid "unitLogss"
+msgstr ""
+
+#: brands/models.py:6878
+msgid "Customer"
+msgstr ""
+
+#: brands/models.py:6879
+msgid "Customers"
+msgstr ""
+
+#: brands/models.py:6906
+msgid "Activity Log"
+msgstr ""
+
+#: brands/models.py:6907
+msgid "Activity Logs"
+msgstr ""
+
+#: brands/models.py:6937
+msgid "excessStockMaster"
+msgstr ""
+
+#: brands/models.py:6938
+msgid "excessStockMasters"
+msgstr ""
+
+#: brands/models.py:6969
+msgid "excessStockMaster_log"
+msgstr ""
+
+#: brands/models.py:6970
+msgid "excessStockMasters_log"
+msgstr ""
+
+#: brands/models.py:7002
+msgid "excessStockDetails"
+msgstr ""
+
+#: brands/models.py:7003
+msgid "excessStockDetailses"
+msgstr ""
+
+#: brands/models.py:7035
+msgid "excessStockDetails_log"
+msgstr ""
+
+#: brands/models.py:7036
+msgid "excessStockDetailses_log"
+msgstr ""
+
+#: brands/models.py:7066
+msgid "shortageStockMaster"
+msgstr ""
+
+#: brands/models.py:7067
+msgid "shortageStockMasters"
+msgstr ""
+
+#: brands/models.py:7098
+msgid "shortageStockMaster_log"
+msgstr ""
+
+#: brands/models.py:7099
+msgid "shortageStockMasters_log"
+msgstr ""
+
+#: brands/models.py:7131
+msgid "shortageStockDetails"
+msgstr ""
+
+#: brands/models.py:7132
+msgid "shortageStockDetailses"
+msgstr ""
+
+#: brands/models.py:7165
+msgid "shortageStockDetails_log"
+msgstr ""
+
+#: brands/models.py:7166
+msgid "shortageStockDetailses_log"
+msgstr ""
+
+#: brands/models.py:7196
+msgid "damageStockMaster"
+msgstr ""
+
+#: brands/models.py:7197
+msgid "damageStockMasters"
+msgstr ""
+
+#: brands/models.py:7228
+msgid "damageStockMaster_log"
+msgstr ""
+
+#: brands/models.py:7229
+msgid "damageStockMasters_log"
+msgstr ""
+
+#: brands/models.py:7261
+msgid "damageStockDetails"
+msgstr ""
+
+#: brands/models.py:7262
+msgid "damageStockDetailses"
+msgstr ""
+
+#: brands/models.py:7294
+msgid "damageStockDetails_log"
+msgstr ""
+
+#: brands/models.py:7295
+msgid "damageStockDetailses_log"
+msgstr ""
+
+#: brands/models.py:7325
+msgid "usedStockMaster"
+msgstr ""
+
+#: brands/models.py:7326
+msgid "usedStockMasters"
+msgstr ""
+
+#: brands/models.py:7357
+msgid "usedStockMaster_log"
+msgstr ""
+
+#: brands/models.py:7358
+msgid "usedStockMasters_log"
+msgstr ""
+
+#: brands/models.py:7390
+msgid "usedStockDetails"
+msgstr ""
+
+#: brands/models.py:7391
+msgid "usedStockDetailses"
+msgstr ""
+
+#: brands/models.py:7423
+msgid "usedStockDetails_log"
+msgstr ""
+
+#: brands/models.py:7424
+msgid "usedStockDetailses_log"
+msgstr ""
+
+#: brands/models.py:7438
+msgid "logged in user"
+msgstr ""
+
+#: brands/models.py:7439
+msgid "logged in users"
+msgstr ""
+
+#: brands/models.py:7525 brands/models.py:7526
+msgid "print_settings"
+msgstr ""
+
+#: brands/models.py:7571 brands/models.py:7572
+msgid "barcode_settings"
+msgstr ""
+
+#: brands/models.py:7588 brands/models.py:7589
+msgid "language"
+msgstr ""
+
+#: brands/models.py:7607 brands/models.py:7608
+msgid "product upload"
+msgstr ""
+
+#: brands/models.py:7644
+msgid "batch"
+msgstr ""
+
+#: brands/models.py:7645
+msgid "batchs"
+msgstr ""
+
+#: brands/models.py:7680
+msgid "workOrderDetail"
+msgstr ""
+
+#: brands/models.py:7681
+msgid "workOrderDetails"
+msgstr ""
+
+#: brands/models.py:7715
+msgid "workOrderDetailLog"
+msgstr ""
+
+#: brands/models.py:7716
+msgid "workOrderDetailLogs"
+msgstr ""
+
+#: brands/models.py:7761
+msgid "WorkOrderMaster"
+msgstr ""
+
+#: brands/models.py:7762
+msgid "WorkOrderMasters"
+msgstr ""
+
+#: brands/models.py:7808
+msgid "WorkOrderMasterLog"
+msgstr ""
+
+#: brands/models.py:7809
+msgid "WorkOrderMasterLogs"
+msgstr ""
+
+#: brands/models.py:7834 brands/models.py:7835
+msgid "userTypeSettings"
+msgstr ""
+
+#: brands/models.py:7859 brands/models.py:7860
+msgid "userTypeSettingsLog"
+msgstr ""
+
+#: brands/models.py:7878 brands/models.py:7879
+msgid "Software Version"
+msgstr ""
+
+#: brands/models.py:7900 brands/models.py:7901
+msgid "Software Version Log"
+msgstr ""
+
+#: brands/models.py:7923
+msgid "category"
+msgstr ""
+
+#: brands/models.py:7924
+msgid "categories"
+msgstr ""
+
+#: brands/models.py:7948
+msgid "category log"
+msgstr ""
+
+#: brands/models.py:7949
+msgid "category logs"
+msgstr ""
+
+#: brands/models.py:8010
+msgid "holiday"
+msgstr ""
+
+#: brands/models.py:8011
+msgid "holidays"
+msgstr ""
+
+#: brands/models.py:8072
+msgid "holiday_log"
+msgstr ""
+
+#: brands/models.py:8073
+msgid "holiday logs"
+msgstr ""
+
+#: brands/models.py:8099
+msgid "working time"
+msgstr ""
+
+#: brands/models.py:8100
+msgid "working times"
+msgstr ""
+
+#: brands/models.py:8127
+msgid "working time log"
+msgstr ""
+
+#: brands/models.py:8128
+msgid "working time logs"
+msgstr ""
+
+#: brands/models.py:8152 brands/models.py:8153
+msgid "database sync"
+msgstr ""
+
+#: brands/models.py:8238
+msgid "salesEstimateDetail"
+msgstr ""
+
+#: brands/models.py:8239
+msgid "salesEstimateDetails"
+msgstr ""
+
+#: brands/models.py:8325
+msgid "salesEstimateDetailLog"
+msgstr ""
+
+#: brands/models.py:8326
+msgid "salesEstimateDetailLogs"
+msgstr ""
+
+#: brands/models.py:8401
+msgid "salesEstimateMaster"
+msgstr ""
+
+#: brands/models.py:8402
+msgid "salesEstimateMasters"
+msgstr ""
+
+#: brands/models.py:8472
+msgid "salesEstimateMasterLog"
+msgstr ""
+
+#: brands/models.py:8473
+msgid "salesEstimateMasterLogs"
+msgstr ""
+
+#: brands/models.py:8502
+msgid "salary_component"
+msgstr ""
+
+#: brands/models.py:8503
+msgid "salary_components"
+msgstr ""
+
+#: brands/models.py:8533
+msgid "salary_component_log"
+msgstr ""
+
+#: brands/models.py:8534
+msgid "salary_component_logs"
+msgstr ""
+
+#: brands/models.py:8578
+msgid "salary_kit"
+msgstr ""
+
+#: brands/models.py:8579
+msgid "salary_kits"
+msgstr ""
+
+#: brands/models.py:8618
+msgid "salary_kit_log"
+msgstr ""
+
+#: brands/models.py:8619
+msgid "salary_kit_logs"
+msgstr ""
+
+#: brands/models.py:8646
+msgid "salary_kit_detail"
+msgstr ""
+
+#: brands/models.py:8647
+msgid "salary_kit_details"
+msgstr ""
+
+#: brands/models.py:8673
+msgid "salary_kit_detail_log"
+msgstr ""
+
+#: brands/models.py:8674
+msgid "salary_kit_detail_logs"
+msgstr ""
+
+#: brands/models.py:8702
+msgid "salary_period"
+msgstr ""
+
+#: brands/models.py:8703
+msgid "salary_periods"
+msgstr ""
+
+#: brands/models.py:8732
+msgid "salary_period_log"
+msgstr ""
+
+#: brands/models.py:8733
+msgid "salary_period_logs"
+msgstr ""
+
+#: brands/models.py:8759
+msgid "leave_type"
+msgstr ""
+
+#: brands/models.py:8760
+msgid "leave_types"
+msgstr ""
+
+#: brands/models.py:8786
+msgid "leave_type_log"
+msgstr ""
+
+#: brands/models.py:8787
+msgid "leave_type_logs"
+msgstr ""
+
+#: brands/models.py:8813
+msgid "loan_type"
+msgstr ""
+
+#: brands/models.py:8814
+msgid "loan_types"
+msgstr ""
+
+#: brands/models.py:8840
+msgid "loan_type_log"
+msgstr ""
+
+#: brands/models.py:8841
+msgid "loan_type_logs"
+msgstr ""
+
+#: brands/models.py:8877
+msgid "leave"
+msgstr ""
+
+#: brands/models.py:8878
+msgid "leaves"
+msgstr ""
+
+#: brands/models.py:8909
+msgid "leave_detail"
+msgstr ""
+
+#: brands/models.py:8910
+msgid "leave_details"
+msgstr ""
+
+#: brands/models.py:8941
+msgid "leave_detail_log"
+msgstr ""
+
+#: brands/models.py:8942
+msgid "leave_detail_logs"
+msgstr ""
+
+#: brands/models.py:8978
+msgid "leave_log"
+msgstr ""
+
+#: brands/models.py:8979
+msgid "leave_logs"
+msgstr ""
+
+#: brands/models.py:9009
+msgid "attendance_master"
+msgstr ""
+
+#: brands/models.py:9010
+msgid "attendance_masters"
+msgstr ""
+
+#: brands/models.py:9040
+msgid "attendance_master_log"
+msgstr ""
+
+#: brands/models.py:9041
+msgid "attendance_master_logs"
+msgstr ""
+
+#: brands/models.py:9073
+msgid "attendance_detail"
+msgstr ""
+
+#: brands/models.py:9074
+msgid "attendance_details"
+msgstr ""
+
+#: brands/models.py:9105
+msgid "attendance_detail_log"
+msgstr ""
+
+#: brands/models.py:9106
+msgid "attendance_detail_logs"
+msgstr ""
+
+#: brands/models.py:9132
+msgid "serailNos"
+msgstr ""
+
+#: brands/models.py:9133
+msgid "serailNoss"
+msgstr ""
+
+#: brands/models.py:9171
+msgid "advance_request"
+msgstr ""
+
+#: brands/models.py:9172
+msgid "advance_requests"
+msgstr ""
+
+#: brands/models.py:9211
+msgid "advance_request_log"
+msgstr ""
+
+#: brands/models.py:9212
+msgid "advance_request_logs"
+msgstr ""
+
+#: brands/models.py:9256
+msgid "loan_request"
+msgstr ""
+
+#: brands/models.py:9257
+msgid "loan_requests"
+msgstr ""
+
+#: brands/models.py:9301
+msgid "loan_request_log"
+msgstr ""
+
+#: brands/models.py:9302
+msgid "loan_request_logs"
+msgstr ""
+
+#: brands/models.py:9338
+msgid "relieve_request"
+msgstr ""
+
+#: brands/models.py:9339
+msgid "relieve_requests"
+msgstr ""
+
+#: brands/models.py:9374
+msgid "relieve_request_log"
+msgstr ""
+
+#: brands/models.py:9375
+msgid "relieve_request_logs"
+msgstr ""
+
+#: brands/models.py:9413
+msgid "leave_request"
+msgstr ""
+
+#: brands/models.py:9414
+msgid "leave_requests"
+msgstr ""
+
+#: brands/models.py:9451
+msgid "leave_request_log"
+msgstr ""
+
+#: brands/models.py:9452
+msgid "leave_request_logs"
+msgstr ""
+
+#: brands/models.py:9518
+msgid "loyality_customer"
+msgstr ""
+
+#: brands/models.py:9519
+msgid "loyality_customers"
+msgstr ""
+
+#: brands/models.py:9557
+msgid "loyality_customer_log"
+msgstr ""
+
+#: brands/models.py:9558
+msgid "loyality_customer_logs"
+msgstr ""
+
+#: brands/models.py:9611
+msgid "loyality_program"
+msgstr ""
+
+#: brands/models.py:9612
+msgid "loyality_programs"
+msgstr ""
+
+#: brands/models.py:9664
+msgid "loyality_program_log"
+msgstr ""
+
+#: brands/models.py:9665
+msgid "loyality_program_logs"
+msgstr ""
+
+#: brands/models.py:9703
+msgid "loyalty_point"
+msgstr ""
+
+#: brands/models.py:9704
+msgid "loyalty_points"
+msgstr ""
+
+#: brands/models.py:9742
+msgid "loyalty_point_log"
+msgstr ""
+
+#: brands/models.py:9743
+msgid "loyalty_point_logs"
+msgstr ""
+
+#: brands/models.py:9760 brands/models.py:9761
+msgid "product_demo"
+msgstr ""
+
+#: brands/models.py:9773
+msgid "UQC"
+msgstr ""
+
+#: brands/models.py:9774
+msgid "UQCs"
+msgstr ""
+
+#: brands/models.py:9787
+msgid "edition"
+msgstr ""
+
+#: brands/models.py:9788
+msgid "editions"
+msgstr ""
+
+#: brands/models.py:9807
+msgid "voucherTable"
+msgstr ""
+
+#: brands/models.py:9808
+msgid "voucherTables"
+msgstr ""
+
+#: brands/models.py:9830
+msgid "pos_role"
+msgstr ""
+
+#: brands/models.py:9831
+msgid "pos_roles"
+msgstr ""
+
+#: brands/models.py:9853
+msgid "pos_role_log"
+msgstr ""
+
+#: brands/models.py:9854
+msgid "pos_roles_log"
+msgstr ""
+
+#: brands/models.py:9874
+msgid "pos_user"
+msgstr ""
+
+#: brands/models.py:9875
+msgid "pos_users"
+msgstr ""
+
+#: brands/models.py:9897
+msgid "pos_user_log"
+msgstr ""
+
+#: brands/models.py:9898
+msgid "pos_user_logs"
+msgstr ""
+
+#: brands/models.py:9920
+msgid "pos_table"
+msgstr ""
+
+#: brands/models.py:9921
+msgid "pos_tables"
+msgstr ""
+
+#: brands/models.py:9944
+msgid "pos_table_log"
+msgstr ""
+
+#: brands/models.py:9945
+msgid "pos_table_logs"
+msgstr ""
+
+#: brands/models.py:9962
+msgid "pos_settings"
+msgstr ""
+
+#: brands/models.py:9963
+msgid "pos_settingss"
+msgstr ""
+
+#: brands/models.py:9980
+msgid "cancel_reason"
+msgstr ""
+
+#: brands/models.py:9981
+msgid "cancel_reasons"
+msgstr ""
+
+#: brands/models.py:10034
+msgid "expenseDetail"
+msgstr ""
+
+#: brands/models.py:10035
+msgid "expenseDetails"
+msgstr ""
+
+#: brands/models.py:10092
+msgid "expenseDetailLog"
+msgstr ""
+
+#: brands/models.py:10093
+msgid "expenseDetailLogs"
+msgstr ""
+
+#: brands/models.py:10158
+msgid "expenseMaster"
+msgstr ""
+
+#: brands/models.py:10159
+msgid "expenseMasters"
+msgstr ""
+
+#: brands/models.py:10225
+msgid "expenseMasterLog"
+msgstr ""
+
+#: brands/models.py:10226
+msgid "expenseMasterLogs"
+msgstr ""
+
+#: brands/models.py:10262 brands/models.py:10263
+msgid "userAddress"
+msgstr ""
+
+#: brands/models.py:10281
+msgid "fromsetSettings"
+msgstr ""
+
+#: brands/models.py:10282
+msgid "fromsetSettingss"
+msgstr ""
+
+#: brands/models.py:10354 brands/models.py:10355
+msgid "print_settings_new"
+msgstr ""
+
+#: brands/models.py:10378 brands/models.py:10379
+msgid "party_bank_details"
+msgstr ""
+
+#: brands/models.py:10415 brands/models.py:10416
+msgid "invitedUsers"
+msgstr ""
+
+#: brands/models.py:10435
+msgid "voucherGenerateTable"
+msgstr ""
+
+#: brands/models.py:10436
+msgid "voucherGenerateTables"
+msgstr ""
+
+#: brands/models.py:10458
+msgid "pos_devices"
+msgstr ""
+
+#: brands/models.py:10459
+msgid "pos_devicess"
+msgstr ""
+
+#: brands/models.py:10487 brands/models.py:10488
+msgid "userRoleSettings"
+msgstr ""
+
+#: brands/models.py:10501 brands/models.py:10502
+msgid "pos Version"
+msgstr ""
+
+#: inventories/forms.py:30 web/forms.py:14
+msgid "BrandName"
+msgstr ""
+
+#: inventories/forms.py:35 web/forms.py:19
+msgid "BrandName field is required."
+msgstr ""
+
+#: inventories/forms.py:47
+msgid "FlavourName"
+msgstr ""
+
+#: inventories/forms.py:48
+msgid "BgColor"
+msgstr ""
+
+#: inventories/forms.py:53
+msgid "FlavourName field is required."
+msgstr ""
+
+#: inventories/forms.py:64
+msgid "Route Name"
+msgstr ""
+
+#: inventories/forms.py:69 inventories/forms.py:251
+msgid "Route Name field is required."
+msgstr ""
+
+#: inventories/forms.py:72 inventories/forms.py:254 users/forms.py:287
+msgid "Notes field is required."
+msgstr ""
+
+#: inventories/forms.py:84
+msgid "KitchenName"
+msgstr ""
+
+#: inventories/forms.py:85
+msgid "PrinterName"
+msgstr ""
+
+#: inventories/forms.py:91
+msgid "KitchenName field is required."
+msgstr ""
+
+#: inventories/forms.py:194
+msgid "GroupName"
+msgstr ""
+
+#: inventories/forms.py:211
+msgid "TaxName"
+msgstr ""
+
+#: inventories/forms.py:212
+msgid "TaxType"
+msgstr ""
+
+#: inventories/forms.py:213
+msgid "PurchaseTax"
+msgstr ""
+
+#: inventories/forms.py:214
+msgid "SalesTax"
+msgstr ""
+
+#: inventories/forms.py:220
+msgid "TaxName field is required."
+msgstr ""
+
+#: inventories/forms.py:231
+msgid "CategoryName"
+msgstr ""
+
+#: inventories/forms.py:236
+msgid "CategoryName field is required."
+msgstr ""
+
+#: inventories/forms.py:246
+msgid "Warehouse Name"
+msgstr ""
+
+#: inventories/forms.py:266
+msgid "RefferenceBillNo"
+msgstr ""
+
+#: inventories/forms.py:268
+msgid "VenderInvoiceDate"
+msgstr ""
+
+#: inventories/forms.py:276
+msgid "TotalGrossAmt"
+msgstr ""
+
+#: inventories/forms.py:277 inventories/forms.py:320
+msgid "AddlDiscAmt"
+msgstr ""
+
+#: inventories/forms.py:278
+msgid "AddlDiscPercent"
+msgstr ""
+
+#: inventories/forms.py:279
+msgid "IsActive"
+msgstr ""
+
+#: inventories/forms.py:281
+msgid "NetTotal"
+msgstr ""
+
+#: inventories/forms.py:282
+msgid "TotalDiscount"
+msgstr ""
+
+#: inventories/forms.py:284
+msgid "RoundOff"
+msgstr ""
+
+#: inventories/forms.py:285 inventories/forms.py:323
+msgid "VATAmount"
+msgstr ""
+
+#: inventories/forms.py:286 inventories/forms.py:325
+msgid "SGSTAmount"
+msgstr ""
+
+#: inventories/forms.py:287 inventories/forms.py:327
+msgid "CGSTAmount"
+msgstr ""
+
+#: inventories/forms.py:288 inventories/forms.py:329
+msgid "IGSTAmount"
+msgstr ""
+
+#: inventories/forms.py:289 inventories/forms.py:332
+msgid "TAX1Amount"
+msgstr ""
+
+#: inventories/forms.py:290 inventories/forms.py:334
+msgid "TAX2Amount"
+msgstr ""
+
+#: inventories/forms.py:291 inventories/forms.py:336
+msgid "TAX3Amount"
+msgstr ""
+
+#: inventories/forms.py:292
+msgid "BillDiscPercent"
+msgstr ""
+
+#: inventories/forms.py:293
+msgid "BillDiscAmt"
+msgstr ""
+
+#: inventories/forms.py:299
+msgid "Customer Name field is required."
+msgstr ""
+
+#: inventories/forms.py:313
+msgid "FreeQty"
+msgstr ""
+
+#: inventories/forms.py:314
+msgid "UnitPrice"
+msgstr ""
+
+#: inventories/forms.py:315
+msgid "RateWithTax"
+msgstr ""
+
+#: inventories/forms.py:316
+msgid "CostPerItem"
+msgstr ""
+
+#: inventories/forms.py:317
+msgid "DiscountPerc"
+msgstr ""
+
+#: inventories/forms.py:318
+msgid "DiscountAmount"
+msgstr ""
+
+#: inventories/forms.py:319
+msgid "AddlDiscPerc"
+msgstr ""
+
+#: inventories/forms.py:321
+msgid "TaxableAmount"
+msgstr ""
+
+#: inventories/forms.py:322
+msgid "VATPerc"
+msgstr ""
+
+#: inventories/forms.py:324
+msgid "SGSTPerc"
+msgstr ""
+
+#: inventories/forms.py:326
+msgid "CGSTPerc"
+msgstr ""
+
+#: inventories/forms.py:328
+msgid "IGSTPerc"
+msgstr ""
+
+#: inventories/forms.py:331
+msgid "TAX1Perc"
+msgstr ""
+
+#: inventories/forms.py:333
+msgid "TAX2Perc"
+msgstr ""
+
+#: inventories/forms.py:335
+msgid "TAX3Perc"
+msgstr ""
+
+#: inventories/forms.py:337
+msgid "ProductID"
+msgstr ""
+
+#: inventories/forms.py:338
+msgid "PriceListID"
+msgstr ""
+
+#: inventories/models.py:14 inventories/models.py:15
+msgid "taskForm"
+msgstr ""
+
+#: inventories/models.py:27 inventories/models.py:28
+msgid "taskFormSet"
+msgstr ""
+
+#: inventories/views.py:283 web/views.py:246
+msgid "Brand Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:323
+msgid "Flavours Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:391
+msgid "Flavour Updated Successfully!"
+msgstr ""
+
+#: inventories/views.py:425
+msgid "can't delete this Flavour"
+msgstr ""
+
+#: inventories/views.py:426
+msgid "Can't delete this Flavour! this is default Flavour!"
+msgstr ""
+
+#: inventories/views.py:443
+msgid "Flavour Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:482
+msgid "Kitchen Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:551
+msgid "Kitchen Updated Successfully!"
+msgstr ""
+
+#: inventories/views.py:585
+msgid "can't delete this Kitchen"
+msgstr ""
+
+#: inventories/views.py:586
+msgid "Can't delete this Kitchen! this is default Kitchen!"
+msgstr ""
+
+#: inventories/views.py:604
+msgid "Kitchen Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:646
+msgid "Route Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:720
+msgid "Route Updated Successfully!"
+msgstr ""
+
+#: inventories/views.py:755
+msgid "can't delete this Route"
+msgstr ""
+
+#: inventories/views.py:756
+msgid "Can't delete this Route! this is default Route!"
+msgstr ""
+
+#: inventories/views.py:775
+msgid "Route Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:942
+msgid "Product Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:1439
+msgid "Product Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:1495
+msgid "Product Groups Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:1502 inventories/views.py:1638
+msgid "Product Group Already Exist"
+msgstr ""
+
+#: inventories/views.py:1503 inventories/views.py:1639
+msgid "Product Group Name is Already exist with in the BranchID"
+msgstr ""
+
+#: inventories/views.py:1630 inventories/views.py:1665
+msgid "Product Groups Updated Successfully!"
+msgstr ""
+
+#: inventories/views.py:1713 inventories/views.py:1751
+#: inventories/views.py:2018 inventories/views.py:2063
+#: inventories/views.py:2363 inventories/views.py:2395
+msgid "Can't be Deleted"
+msgstr ""
+
+#: inventories/views.py:1714
+msgid ""
+"This ProductGroup Can't Be Deleted Successfully!!this is a Default "
+"ProductGroup."
+msgstr ""
+
+#: inventories/views.py:1742
+msgid "Product Group Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:1752
+msgid ""
+"You Cant Delete this ProductGroup,this ProductGroup is already using "
+"somewhere!!"
+msgstr ""
+
+#: inventories/views.py:1808
+msgid "TaxCategory Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:1815
+msgid "Tax Already Exist"
+msgstr ""
+
+#: inventories/views.py:1816
+msgid "Tax Name is Already exist with in the BranchID"
+msgstr ""
+
+#: inventories/views.py:1936 inventories/views.py:1972
+msgid "TaxCategory Updated Successfully!"
+msgstr ""
+
+#: inventories/views.py:1944
+msgid "TaxCategory Already Exist"
+msgstr ""
+
+#: inventories/views.py:1945
+msgid "TaxCategory Name is Already exist with in the Branch"
+msgstr ""
+
+#: inventories/views.py:2019
+msgid ""
+"This TaxCategory Can't Be Deleted Successfully!!this is a Default "
+"TaxCategory."
+msgstr ""
+
+#: inventories/views.py:2055
+msgid "TaxCategory Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:2064
+msgid "You Cant Delete this TaxCategory,this Tax is already using somewhere!!"
+msgstr ""
+
+#: inventories/views.py:2155
+msgid "ProductCategory Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:2162
+msgid "Product Category Already Exist"
+msgstr ""
+
+#: inventories/views.py:2163
+msgid "Product Category Name is Already exist with in the BranchID"
+msgstr ""
+
+#: inventories/views.py:2291 inventories/views.py:2324
+msgid "ProductCategory Updated Successfully!"
+msgstr ""
+
+#: inventories/views.py:2299
+msgid "ProductCategory Already Exist"
+msgstr ""
+
+#: inventories/views.py:2300
+msgid "ProductCategory Name is Already exist with in the Branch"
+msgstr ""
+
+#: inventories/views.py:2364
+msgid "This Product Category Can't Be Deleted!!this is a Default TaxCategory."
+msgstr ""
+
+#: inventories/views.py:2387
+msgid "ProductCategory Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:2396
+msgid ""
+"You Cant Delete this ProductCategory,this Category is already using "
+"somewhere!!"
+msgstr ""
+
+#: inventories/views.py:2451
+msgid "Warehouse Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:2460 inventories/views.py:2568
+msgid "Warehouse Name Already exist"
+msgstr ""
+
+#: inventories/views.py:2559
+msgid "Warehouse Updated Successfully!"
+msgstr ""
+
+#: inventories/views.py:2604
+msgid "can't delete this Warehouse"
+msgstr ""
+
+#: inventories/views.py:2605
+msgid "Can't delete this Warehouse! this is default Warehouse!"
+msgstr ""
+
+#: inventories/views.py:2638
+msgid "Warehouse Deleted Successfully."
+msgstr ""
+
+#: inventories/views.py:3210
+msgid "Purchase Created Successfully!"
+msgstr ""
+
+#: inventories/views.py:3219
+msgid "VoucherNo already exist!"
+msgstr ""
+
+#: main/models.py:85 main/models.py:86
+msgid "theme settings"
+msgstr ""
+
+#: payrolls/forms.py:66
+msgid "DesignationName"
+msgstr ""
+
+#: payrolls/forms.py:67
+msgid "Short Name"
+msgstr ""
+
+#: payrolls/forms.py:68
+msgid "Designation Under"
+msgstr ""
+
+#: payrolls/forms.py:73
+msgid "DesignationName field is required."
+msgstr ""
+
+#: payrolls/forms.py:88
+msgid "First Name"
+msgstr ""
+
+#: payrolls/forms.py:89
+msgid "Last Name"
+msgstr ""
+
+#: payrolls/forms.py:90
+msgid "Probation Period"
+msgstr ""
+
+#: payrolls/forms.py:91
+msgid "Period Type"
+msgstr ""
+
+#: payrolls/forms.py:92
+msgid "No. of Casual Leave"
+msgstr ""
+
+#: payrolls/forms.py:93
+msgid "Department"
+msgstr ""
+
+#: payrolls/forms.py:94
+msgid "Designation"
+msgstr ""
+
+#: payrolls/forms.py:95
+msgid "Date Of Joining"
+msgstr ""
+
+#: payrolls/forms.py:96
+msgid "Salary"
+msgstr ""
+
+#: payrolls/forms.py:97
+msgid "AccountHolderName"
+msgstr ""
+
+#: payrolls/forms.py:98
+msgid "AccountName"
+msgstr ""
+
+#: payrolls/forms.py:99
+msgid "AccountBranch"
+msgstr ""
+
+#: payrolls/forms.py:100 payrolls/forms.py:109
+msgid "AccountIFSC"
+msgstr ""
+
+#: payrolls/forms.py:102
+msgid "Qualification"
+msgstr ""
+
+#: payrolls/forms.py:103
+msgid "Emergency Contact Number"
+msgstr ""
+
+#: payrolls/forms.py:104
+msgid "Emergency Email"
+msgstr ""
+
+#: payrolls/forms.py:105
+msgid "Emergency Address"
+msgstr ""
+
+#: payrolls/forms.py:106
+msgid "Date Of Birth"
+msgstr ""
+
+#: payrolls/forms.py:107
+msgid "Gender"
+msgstr ""
+
+#: payrolls/forms.py:108
+msgid "Blood Group"
+msgstr ""
+
+#: payrolls/forms.py:110
+msgid "Passport ExpiryDate"
+msgstr ""
+
+#: payrolls/forms.py:111
+msgid "Visa Details"
+msgstr ""
+
+#: payrolls/forms.py:112
+msgid "Visa Expiry Date"
+msgstr ""
+
+#: payrolls/forms.py:113
+msgid "Address 1"
+msgstr ""
+
+#: payrolls/forms.py:114
+msgid "Address 2"
+msgstr ""
+
+#: payrolls/forms.py:115
+msgid "Address 3"
+msgstr ""
+
+#: payrolls/forms.py:116
+msgid "Nationality"
+msgstr ""
+
+#: payrolls/forms.py:118
+msgid "Post"
+msgstr ""
+
+#: payrolls/forms.py:125
+msgid "EmployeeName field is required."
+msgstr ""
+
+#: payrolls/forms.py:171
+msgid "Department Name"
+msgstr ""
+
+#: payrolls/forms.py:176
+msgid "DepartmentName field is required."
+msgstr ""
+
+#: payrolls/views.py:74
+msgid "Designation Created Successfully!"
+msgstr ""
+
+#: payrolls/views.py:81 payrolls/views.py:214 payrolls/views.py:483
+msgid "Designation Already Exist"
+msgstr ""
+
+#: payrolls/views.py:82 payrolls/views.py:215 payrolls/views.py:484
+msgid "Designation Name is Already exist with in the BranchID"
+msgstr ""
+
+#: payrolls/views.py:206 payrolls/views.py:240
+msgid "Designation Updated Successfully!"
+msgstr ""
+
+#: payrolls/views.py:283
+msgid "can't delete this Designation"
+msgstr ""
+
+#: payrolls/views.py:284
+msgid "Can't delete this Designation! this is default Designation!"
+msgstr ""
+
+#: payrolls/views.py:303
+msgid "Designation Deleted Successfully."
+msgstr ""
+
+#: payrolls/views.py:476 payrolls/views.py:728 payrolls/views.py:818
+msgid "Employee Created Successfully!"
+msgstr ""
+
+#: payrolls/views.py:737
+msgid "Employee Already Exist"
+msgstr ""
+
+#: payrolls/views.py:738
+msgid "Employee Name Already exist with this Branch ID"
+msgstr ""
+
+#: payrolls/views.py:983
+msgid "Employee Deleted Successfully."
+msgstr ""
+
+#: payrolls/views.py:1040
+msgid "Department Created Successfully!"
+msgstr ""
+
+#: payrolls/views.py:1047 payrolls/views.py:1180
+msgid "Department Already Exist"
+msgstr ""
+
+#: payrolls/views.py:1048 payrolls/views.py:1181
+msgid "Department Name is Already exist with in the BranchID"
+msgstr ""
+
+#: payrolls/views.py:1172 payrolls/views.py:1206
+msgid "Department Updated Successfully!"
+msgstr ""
+
+#: payrolls/views.py:1249
+msgid "can't delete this Department"
+msgstr ""
+
+#: payrolls/views.py:1250
+msgid "Can't delete this Department! this is default Department!"
+msgstr ""
+
+#: payrolls/views.py:1269
+msgid "Department Deleted Successfully."
+msgstr ""
+
+#: templates/email/password_reset_conform.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: templates/email/password_reset_conform.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: templates/email/password_reset_conform.html:8
+#: templates/email/signup_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: templates/email/password_reset_conform.html:10
+#: templates/email/signup_email.html:10 templates/email/user_invitation.html:9
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: templates/email/password_reset_conform.html:12
+#: templates/email/signup_email.html:12 templates/email/user_invitation.html:11
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: templates/email/signup_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email  for verifying user account at %(site_name)s."
+msgstr ""
+
+#: templates/email/signup_email.html:4
+msgid "Please go to the following page and verify your account:"
+msgstr ""
+
+#: templates/email/user_invitation.html:2
+#, python-format
+msgid ""
+"You're receiving this email  for invitation to Register at %(site_name)s."
+msgstr ""
+
+#: templates/email/user_invitation.html:4
+msgid "Please go to the following page:"
+msgstr ""
+
+#: templates/inventories/masters/editFormset.py:269
+msgid "Financial Year is not exists"
+msgstr ""
+
+#: templates/inventories/masters/editFormset.py:283
+msgid "Edit Purchase :"
+msgstr ""
+
+#: templates/registration/activate.html:15
+msgid "Account successfully activated."
+msgstr ""
+
+#: templates/registration/activate.html:15
+msgid "Log in"
+msgstr ""
+
+#: templates/registration/activate.html:17
+msgid "Account activation failed or already activated."
+msgstr ""
+
+#: templates/registration/activation_complete.html:15
+msgid "Your account is now activated."
+msgstr ""
+
+#: templates/registration/activation_email.txt:2
+msgid "Activate account at"
+msgstr ""
+
+#: templates/registration/activation_email.txt:6
+#, python-format
+msgid "Link is valid for %(expiration_days)s days."
+msgstr ""
+
+#: templates/registration/activation_email_subject.txt:1
+msgid "Account activation on"
+msgstr ""
+
+#: templates/registration/password_change_done.html:14
+msgid "Password changed successfully."
+msgstr ""
+
+#: templates/registration/password_change_done.html:14
+#: templates/registration/password_reset_complete.html:14
+msgid "Log in now"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:14
+msgid "Password reset completed successfully."
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:38
+msgid "Password reset failed"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:2
+#, python-format
+msgid "Reset password at %(app_title)s"
+msgstr ""
+
+#: templates/registration/registration_closed.html:14
+msgid "Registration is currently closed."
+msgstr ""
+
+#: testproject/settings.py:272
+msgid "Arabic"
+msgstr ""
+
+#: testproject/settings.py:273
+msgid "English"
+msgstr ""
+
+#: users/forms.py:142
+#, python-format
+msgid ""
+"Please enter a correct %(username)s and password. Note that both fields may "
+"be case-sensitive."
+msgstr ""
+
+#: users/forms.py:145
+msgid "This account is inactive."
+msgstr ""
+
+#: users/forms.py:183
+msgid "This email address is already in use."
+msgstr ""
+
+#: users/forms.py:185
+#, python-format
+msgid ""
+"Registration using %s email addresses is not allowed. Please supply a "
+"different email address."
+msgstr ""
+
+#: users/forms.py:213
+msgid "A user with that username already exists."
+msgstr ""
+
+#: users/forms.py:236
+msgid "First Name field is required."
+msgstr ""
+
+#: users/forms.py:239
+msgid "Last Name field is required."
+msgstr ""
+
+#: users/forms.py:242
+msgid "Designation ID field is required."
+msgstr ""
+
+#: users/forms.py:245
+msgid "Department ID field is required."
+msgstr ""
+
+#: users/forms.py:248
+msgid "Gender field is required."
+msgstr ""
+
+#: users/forms.py:251
+msgid "Email field is required."
+msgstr ""
+
+#: users/forms.py:278
+msgid "From Date field is required."
+msgstr ""
+
+#: users/forms.py:281
+msgid "To Date field is required."
+msgstr ""
+
+#: users/forms.py:284
+msgid "Close field is required."
+msgstr ""
+
+#: users/models.py:42
+msgid "db_store"
+msgstr ""
+
+#: users/models.py:43
+msgid "db_stores"
+msgstr ""
+
+#: users/models.py:85
+msgid "customer user"
+msgstr ""
+
+#: users/models.py:86
+msgid "customer users"
+msgstr ""
+
+#: users/models.py:112
+msgid "user employees"
+msgstr ""
+
+#: users/models.py:113
+msgid "user employeess"
+msgstr ""
+
+#: users/models.py:138
+msgid "account Ledger"
+msgstr ""
+
+#: users/models.py:139
+msgid "account Ledgers"
+msgstr ""
+
+#: users/models.py:162
+msgid "companyfinancialYear"
+msgstr ""
+
+#: users/models.py:163
+msgid "companyfinancialYears"
+msgstr ""
+
+#: api/v9:
+msgid "Ledger Name"
+msgstr "اسم دفتر الأستاذ"
+
+#: api/v9:
+msgid "LedgerName"
+msgstr "اسم دفتر الأستاذ"
+
+#: api/v9:
+msgid "Voucher No"
+msgstr "رقم القسيمة"
+
+#: api/v9:
+msgid "VoucherNo"
+msgstr "رقم القسيمة"
+
+#: api/v9:
+msgid "Voucher Date"
+msgstr "تاريخ القسيمة"
+
+#: api/v9:
+msgid "VoucherDate"
+msgstr "تاريخ القسيمة"
+
+#: api/v9:
+msgid "Cash Sales"
+msgstr "مبيعات نقدية"
+
+#: api/v9:
+msgid "CashSales"
+msgstr "مبيعات نقدية"
+
+#: api/v9:
+msgid "Bank Sales"
+msgstr "مبيعات البنوك"
+
+#: api/v9:
+msgid "BankSales"
+msgstr "مبيعات البنوك"
+
+#: api/v9:
+msgid "Credit Sales"
+msgstr "مبيعات الائتمان"
+
+#: api/v9:
+msgid "CreditSales"
+msgstr "مبيعات الائتمان"
+
+#: api/v9:
+msgid "Gross Amount"
+msgstr "المبلغ الإجمالي"
+
+#: api/v9:
+msgid "GrossAmount"
+msgstr "المبلغ الإجمالي"
+
+#: api/v9:
+msgid "Total Tax"
+msgstr "مجموع الضريبة"
+
+#: api/v9:
+msgid "TotalTax"
+msgstr "مجموع الضريبة"
+
+#: api/v9:
+msgid "Bill Discount"
+msgstr "خصم الفاتورة"
+
+#: api/v9:
+msgid "BillDiscount"
+msgstr "خصم الفاتورة"
+
+#: api/v9:
+msgid "Grand Total"
+msgstr "مجموع المنح"
+
+#: api/v9:
+msgid "GrandTotal"
+msgstr "مجموع المنح"
+
+#: api/v9:
+msgid "Total"
+msgstr "مجموع"
+
+#: api/v9:
+msgid " TO "
+msgstr "ل"
+
+#: api/v9:
+msgid "Sl No"
+msgstr "رقم SL"
+
+#: api/v9:
+msgid "Amount"
+msgstr "كمية"
+
+#: api/v9:
+msgid "Total Amount"
+msgstr "المبلغ الإجمالي"
+
+#: api/v9:
+msgid "SALES REPORT"
+msgstr "تقرير المبيعات"
+
+#: api/v9:
+msgid "RETURN REPORT"
+msgstr "تقرير العودة"
+
+#: api/v9:
+msgid "PURCHASE REPORT"
+msgstr "تقرير الشراء"
+
+#: api/v9:
+msgid "TAX SUMMARY"
+msgstr "تقرير ليدجر"
+
+#: api/v9:
+msgid "LEDGER REPORT"
+msgstr "كمية"
+
+#: api/v9:
+msgid "PAYMENT REPORT"
+msgstr "تقرير الدفع"
+
+#: api/v9:
+msgid "RECEIPT REPORT"
+msgstr "تقرير استلام"
+
+#: api/v9:
+msgid "OUTSTANDING REPORT"
+msgstr "تقرير مميز"
+
+#: api/v9:
+msgid "TRAIL BALANCE"
+msgstr "ميزان المراجعة"
+
+#: api/v9:
+msgid "BILL WISE REPORT"
+msgstr "تقرير بيل وايز"
+
+#: api/v9:
+msgid "GST No"
+msgstr "ضريبة السلع والخدمات لا"
+
+#: api/v9:
+msgid "VAT No"
+msgstr "ضريبة القيمة المضافة لا"
+
+#: api/v9:
+msgid "From"
+msgstr "من"
+
+#: api/v9:
+msgid "To"
+msgstr "ل"
+
+#: api/v9:
+msgid "PHONE"
+msgstr "هاتف"
+
+#: api/v9:
+msgid "EMAIL"
+msgstr "البريد الإلكتروني"
+
+#: api/v9:
+msgid "CR No"
+msgstr "رقم السجل التجاري"
+
+#: api/v9:
+msgid "VoucherNo already exist"
+msgstr "رقم القسيمة موجود بالفعل"
+
+#: api/v9:
+msgid "STOCK REPORT"
+msgstr "تقرير الاسهم"
+
+#: api/v9:
+msgid "Auto Barcode"
+msgstr "الباركود السيارة"
+
+#: api/v9:
+msgid "Product"
+msgstr "منتج"
+
+#: api/v9:
+msgid "Current Stock"
+msgstr "المخزون في وحدة القاعدة"
+
+#: api/v9:
+msgid "Purchase Price"
+msgstr "سعر المبيعات"
+
+#: api/v9:
+msgid "Sales Price"
+msgstr "سعر المبيعات"
+
+#: api/v9:
+msgid "Debit"
+msgstr "مدين"
+
+#: api/v9:
+msgid "Credit"
+msgstr "ائتمان"
+
+#: api/v9:
+msgid "Serial No"
+msgstr "رقم سري"
+
+#: api/v9:
+msgid "Group Name"
+msgstr "ائتمان"
+
+#: api/v9:
+msgid "Expense"
+msgstr "ائتمان"
+
+#: api/v9:
+msgid "Income"
+msgstr "ائتمان"
+
+#: api/v9:
+msgid "PROFIT AND LOSS REPORT"
+msgstr "تقرير الربح والخسارة"
+
+#: api/v9:
+msgid "PROFIT&LOSS REPORT"
+msgstr "تقرير الربح والخسارة"
+
+#: api/v9:
+msgid "Particulars"
+msgstr "تفاصيل"
+
+#: api/v9:
+msgid "Receipts"
+msgstr "الإيصالات"
+
+#: api/v9:
+msgid "Payments"
+msgstr "المدفوعات"
+
+#: api/v9:
+msgid "Balance"
+msgstr "الرصيد"
+
+#: api/v9:
+msgid "CASH BOOK REPORT"
+msgstr "تقرير الكتاب النقدي"
+
+#: api/v9:
+msgid "BANK BOOK REPORT"
+msgstr "تقرير دفتر البنك"
+
+#: api/v9:
+msgid "CustomerName"
+msgstr "اسم الزبون"
+
+#: api/v9:
+msgid "EmployeeName"
+msgstr "اسم الموظف"
+
+#: api/v9:
+msgid "ReferenceNo"
+msgstr "رقم المرجع"
+
+#: api/v9:
+msgid "NetAmount"
+msgstr "كمية الشبكة"
+
+#: api/v9:
+msgid "ReferenceDate"
+msgstr "تاريخ المرجع"
+
+#: api/v9:
+msgid "Expence"
+msgstr "نفقة"
+
+#: api/v9:
+msgid "Status"
+msgstr "حالة"
+
+#: api/v9:
+msgid "PURCHASE RETURN REPORT"
+msgstr "تقرير إرجاع الشراء"
+
+#: api/v9:
+msgid "PURCHASE BOTH REPORT"
+msgstr "شراء كلا التقرير"
+
+#: api/v9:
+msgid "SALES SUMMARY REPORT"
+msgstr "تقرير موجز المبيعات"
+
+#: api/v9:
+msgid "STOCK LEDGER REPORT"
+msgstr "تقرير الأسهم ليدجر"
+
+#: api/v9:
+msgid "STOCK VALUE REPORT"
+msgstr "تقرير قيمة المخزون"
+
+#: api/v9:
+msgid "DAY BOOK"
+msgstr "كتاب اليوم"
+
+#: api/v9:
+msgid "Sales Integrated Report"
+msgstr "تقرير المبيعات المتكاملة"
+
+
+#: api/v9:
+msgid "Purchase Integrated Report"
+msgstr "تقرير شراء متكامل"
+
+#: api/v9:
+msgid "Billwise Profit Report"
+msgstr "تقرير الربح بيلوايز"
+
+#: api/v9:
+msgid "Supplier Vs Product Report"
+msgstr "المورد أو تقرير المنتج"
+
+#: api/v9:
+msgid "Opening Stock Report"
+msgstr "تقرير المخزون الافتتاحي"
+
+#: api/v9:
+msgid "Stock Transfer Report"
+msgstr "تقرير تحويل المخزون"
+
+#: api/v9:
+msgid "Purchase Order Report"
+msgstr "تقرير طلب الشراء"
+
+#: api/v9:
+msgid "Sales Order Report"
+msgstr "تقرير أوامر المبيعات"
+
+#: api/v9:
+msgid "Purchase Register Report"
+msgstr "تقرير سجل الشراء"
+
+#: api/v9:
+msgid "Sales Return Register Report"
+msgstr "تقرير سجل مرتجعات المبيعات"
+
+#: api/v9:
+msgid "Purchase Return Register Report"
+msgstr "تقرير سجل إرجاع المشتريات"
+
+#: api/v9:
+msgid "Expense Summary Report"
+msgstr "تقرير ملخص المصاريف"

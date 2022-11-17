@@ -1,0 +1,14 @@
+[
+	{
+	    "model": "brands.Flavours",
+	    "pk": 1,
+	    "fields": {
+	      "FlavourID": 1,
+	      "BranchID" : 1,
+	      "FlavourName" : "Primary Flavour",
+	      "BgColor" : "Default BgColor",
+	      "IsActive" : 1,
+	      "Action" : "A"
+	    }
+	}
+]

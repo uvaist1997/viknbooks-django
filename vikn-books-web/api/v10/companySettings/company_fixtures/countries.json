@@ -1,0 +1,1702 @@
+[
+	{
+	    "model": "brands.Country",
+	    "pk": 1,
+	    "fields": {
+			"CountryID": "1",
+			"CountryCode": "AFN",
+			"Currency_Name": "Afghani",
+			"Currency_Description": "Afghanistan",
+			"Change": "Puls",
+			"Symbol": "Af",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Afghanistan",
+			"Country_Description": "Afghani",
+			"ISD_Code": "93"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 2,
+	    "fields": {
+			"CountryID": "2",
+			"CountryCode": "ALL",
+			"Currency_Name": "Lek",
+			"Currency_Description": "Albania",
+			"Change": "Qindarka",
+			"Symbol": "L",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Albania",
+			"Country_Description": "Lek",
+			"ISD_Code": "355"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 3,
+	    "fields": {
+			"CountryID": "3",
+			"CountryCode": "DZD",
+			"Currency_Name": "Dinar",
+			"Currency_Description": "Algeria",
+			"Change": "Centimes",
+			"Symbol": "DA",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Algeria",
+			"Country_Description": "Dinar",
+			"ISD_Code": "213"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 4,
+	    "fields": {
+			"CountryID": "4",
+			"CountryCode": "USD1",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "AmericanSamoa",
+			"Change": "Cents",
+			"Symbol": "$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "AmericanSamoa",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1684"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 5,
+	    "fields": {
+			"CountryID": "5",
+			"CountryCode": "EUR1",
+			"Currency_Name": "Euro",
+			"Currency_Description": "Andorra",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Andorra",
+			"Country_Description": "Euro",
+			"ISD_Code": "376"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 6,
+	    "fields": {
+			"CountryID": "6",
+			"CountryCode": "AOA",
+			"Currency_Name": "NewKwanza",
+			"Currency_Description": "Angola",
+			"Change": "Lwei",
+			"Symbol": "Kz",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Angola",
+			"Country_Description": "NewKwanza",
+			"ISD_Code": "244"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 7,
+	    "fields": {
+			"CountryID": "7",
+			"CountryCode": "XCD1",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Anguilla",
+			"Change": "Cents",
+			"Symbol": "EC$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Anguilla",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1264"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 8,
+	    "fields": {
+			"CountryID": "8",
+			"CountryCode": "XCD2",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "AntiguaandBarbuda",
+			"Change": "Cents",
+			"Symbol": "EC$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "AntiguaandBarbuda",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1268"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 9,
+	    "fields": {
+			"CountryID": "9",
+			"CountryCode": "ARS",
+			"Currency_Name": "Peso",
+			"Currency_Description": "Argentina",
+			"Change": "Centavos",
+			"Symbol": "$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Argentina",
+			"Country_Description": "Peso",
+			"ISD_Code": "54"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 10,
+	    "fields": {
+			"CountryID": "10",
+			"CountryCode": "AMD",
+			"Currency_Name": "Dram",
+			"Currency_Description": "Armenia",
+			"Change": "Luma",
+			"Symbol": "",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Armenia",
+			"Country_Description": "Dram",
+		"ISD_Code": "374"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 11,
+	    "fields": {
+			"CountryID": "11",
+			"CountryCode": "AWG",
+			"Currency_Name": "Guilder",
+			"Currency_Description": "Aruba",
+			"Change": "Cents",
+			"Symbol": "Afl.",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Aruba",
+			"Country_Description": "Guilder",
+			"ISD_Code": "297"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 12,
+	    "fields": {
+			"CountryID": "12",
+			"CountryCode": "AUD",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Australia",
+			"Change": "Cents",
+			"Symbol": "A$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Australia",
+			"Country_Description": "Dollar",
+			"ISD_Code": "61"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 13,
+	    "fields": {
+			"CountryID": "13",
+			"CountryCode": "EUR2",
+			"Currency_Name": "Euro",
+			"Currency_Description": "Austria",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Austria",
+			"Country_Description": "Euro",
+			"ISD_Code": "43"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 14,
+	    "fields": {
+			"CountryID": "14",
+			"CountryCode": "AZM",
+			"Currency_Name": "Manat",
+			"Currency_Description": "Azerbaijan",
+			"Change": "Gopik",
+			"Symbol": "",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Azerbaijan",
+			"Country_Description": "Manat",
+			"ISD_Code": "994"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 15,
+	    "fields": {
+			"CountryID": "15",
+			"CountryCode": "BSD",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Bahamas",
+			"Change": "Cents",
+			"Symbol": "B$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Bahamas",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1242"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 16,
+	    "fields": {
+			"CountryID": "16",
+			"CountryCode": "BHD",
+			"Currency_Name": "Dinar",
+			"Currency_Description": "Bahrain",
+			"Change": "Fils",
+			"Symbol": "BD",
+			"FractionalUnits": "1000",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Bahrain",
+			"Country_Description": "Dinar",
+			"ISD_Code": "973"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 17,
+	    "fields": {
+			"CountryID": "17",
+			"CountryCode": "BDT",
+			"Currency_Name": "Taka",
+			"Currency_Description": "Bangladesh",
+			"Change": "Paisa",
+			"Symbol": "Tk",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Bangladesh",
+			"Country_Description": "Taka",
+			"ISD_Code": "880"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 18,
+	    "fields": {
+			"CountryID": "18",
+		"CountryCode": "BBD",
+		"Currency_Name": "Dollar",
+		"Currency_Description": "Barbados",
+		"Change": "Cents",
+		"Symbol": "Bds$",
+		"FractionalUnits": "100",
+		"CurrencySymbolUnicode": "NULL",
+		"Country_Name": "Barbados",
+		"Country_Description": "Dollar",
+		"ISD_Code": "1246"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 19,
+	    "fields": {
+			"CountryID": "19",
+			"CountryCode": "BYR",
+			"Currency_Name": "Ruble",
+			"Currency_Description": "Belarus",
+			"Change": "",
+			"Symbol": "BR",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Belarus",
+			"Country_Description": "Ruble",
+			"ISD_Code": "375"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 20,
+	    "fields": {
+			"CountryID": "20",
+			"CountryCode": "EUR3",
+			"Currency_Name": "Euro",
+			"Currency_Description": "Belgium",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Belgium",
+			"Country_Description": "Euro",
+			"ISD_Code": "32"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 21,
+	    "fields": {
+			"CountryID": "21",
+			"CountryCode": "BZD",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Belize",
+			"Change": "Cents",
+			"Symbol": "BZ$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Belize",
+			"Country_Description": "Dollar",
+			"ISD_Code": "501"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 22,
+	    "fields": {
+			"CountryID": "22",
+			"CountryCode": "XOF1",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Benin",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Benin",
+			"Country_Description": "Franc",
+			"ISD_Code": "229"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 23,
+	    "fields": {
+			"CountryID": "23",
+			"CountryCode": "BMD",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Bermuda",
+			"Change": "Cents",
+			"Symbol": "Bd$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Bermuda",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1441"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 24,
+	    "fields": {
+			"CountryID": "24",
+			"CountryCode": "BTN",
+			"Currency_Name": "Ngultrum",
+			"Currency_Description": "Bhutan",
+			"Change": "Chetrum",
+			"Symbol": "Nu",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Bhutan",
+			"Country_Description": "Ngultrum",
+			"ISD_Code": "975"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 25,
+	    "fields": {
+			"CountryID": "25",
+			"CountryCode": "BOB",
+			"Currency_Name": "Boliviano",
+			"Currency_Description": "Bolivia",
+			"Change": "Centavos",
+			"Symbol": "Bs",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Bolivia",
+			"Country_Description": "Boliviano",
+			"ISD_Code": "591"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 26,
+	    "fields": {
+			"CountryID": "26",
+			"CountryCode": "BAM",
+			"Currency_Name": "ConvertibleMark",
+			"Currency_Description": "Bosnia-Herzegovina",
+			"Change": "Fennig",
+			"Symbol": "KM",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Bosnia-Herzegovina",
+			"Country_Description": "ConvertibleMark",
+			"ISD_Code": "387"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 27,
+	    "fields": {
+			"CountryID": "27",
+			"CountryCode": "BWP",
+			"Currency_Name": "Pula",
+			"Currency_Description": "Botswana",
+			"Change": "Thebe",
+			"Symbol": "P",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Botswana",
+			"Country_Description": "Pula",
+			"ISD_Code": "267"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 28,
+	    "fields": {
+	    	"CountryID": "28",
+	    	"CountryCode": "BRL",
+	    	"Currency_Name": "Real",
+	    	"Currency_Description": "Brazil",
+	    	"Change": "Centavos",
+	    	"Symbol": "R$",
+	    	"FractionalUnits": "100",
+	    	"CurrencySymbolUnicode": "NULL",
+	    	"Country_Name": "Brazil",
+	    	"Country_Description": "Real",
+	    	"ISD_Code": "55"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 29,
+	    "fields": {
+			"CountryID": "29",
+			"CountryCode": "USD2",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "BritishIndianOceanTerritory",
+			"Change": "Cents",
+			"Symbol": "$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "BritishIndianOceanTerritory",
+			"Country_Description": "Dollar",
+			"ISD_Code": "246"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 30,
+	    "fields": {
+			"CountryID": "30",
+			"CountryCode": "USD3",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "BritishVirginIslands",
+			"Change": "Cents",
+			"Symbol": "$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "BritishVirginIslands",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1284"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 31,
+	    "fields": {
+			"CountryID": "31",
+			"CountryCode": "BND",
+			"Currency_Name": "Ringgit",
+			"Currency_Description": "Brunei",
+			"Change": "Sen",
+			"Symbol": "B$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Brunei",
+			"Country_Description": "Ringgit",
+			"ISD_Code": "673"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 32,
+	    "fields": {
+			"CountryID": "32",
+			"CountryCode": "BGN",
+			"Currency_Name": "NewLev",
+			"Currency_Description": "Bulgaria",
+			"Change": "Stotinki",
+			"Symbol": "Lv",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Bulgaria",
+			"Country_Description": "NewLev",
+			"ISD_Code": "359"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 33,
+	    "fields": {
+			"CountryID": "33",
+			"CountryCode": "XOF2",
+			"Currency_Name": "Franc",
+			"Currency_Description": "BurkinaFaso",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "BurkinaFaso",
+			"Country_Description": "Franc",
+			"ISD_Code": "226"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 34,
+	    "fields": {
+			"CountryID": "34",
+			"CountryCode": "BIF",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Burundi",
+			"Change": "Centimes",
+			"Symbol": "FBu",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Burundi",
+			"Country_Description": "Franc",
+			"ISD_Code": "257"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 35,
+	    "fields": {
+			"CountryID": "35",
+			"CountryCode": "XOF3",
+			"Currency_Name": "Franc",
+			"Currency_Description": "CÃ´tedIvoire",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CÃ´tedIvoire",
+			"Country_Description": "Franc",
+			"ISD_Code": "225"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 36,
+	    "fields": {
+			"CountryID": "36",
+			"CountryCode": "KHR1",
+			"Currency_Name": "NewRiel",
+			"Currency_Description": "Cambodia",
+			"Change": "Sen",
+			"Symbol": "CR",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Cambodia",
+			"Country_Description": "NewRiel",
+			"ISD_Code": "855"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 37,
+	    "fields": {
+			"CountryID": "37",
+			"CountryCode": "XAF1",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Cameroon",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Cameroon",
+			"Country_Description": "Franc",
+			"ISD_Code": "237"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 38,
+	    "fields": {
+			"CountryID": "38",
+			"CountryCode": "CAD",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Canada",
+			"Change": "Cents",
+			"Symbol": "Can$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Canada",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 39,
+	    "fields": {
+			"CountryID": "39",
+			"CountryCode": "AUD1",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "CantonandEnderburyIslands",
+			"Change": "Cents",
+			"Symbol": "A$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CantonandEnderburyIslands",
+			"Country_Description": "Dollar",
+			"ISD_Code": "5993"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 40,
+	    "fields": {
+			"CountryID": "40",
+			"CountryCode": "CVE",
+			"Currency_Name": "Escudo",
+			"Currency_Description": "CapeVerdeIsland",
+			"Change": "Centavos",
+			"Symbol": "C.V.Esc.",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CapeVerdeIsland",
+			"Country_Description": "Escudo",
+			"ISD_Code": "238"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 41,
+	    "fields": {
+			"CountryID": "41",
+			"CountryCode": "KYD",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "CaymanIslands",
+			"Change": "Cents",
+			"Symbol": "CI$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CaymanIslands",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1345"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 42,
+	    "fields": {
+			"CountryID": "42",
+			"CountryCode": "XAF",
+			"Currency_Name": "Franc",
+			"Currency_Description": "CentralAfricanRepublic",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CentralAfricanRepublic",
+			"Country_Description": "Franc",
+			"ISD_Code": "236"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 43,
+	    "fields": {
+			"CountryID": "43",
+			"CountryCode": "XAF2",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Chad",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Chad",
+			"Country_Description": "Franc",
+			"ISD_Code": "235"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 44,
+	    "fields": {
+			"CountryID": "44",
+			"CountryCode": "CLP",
+			"Currency_Name": "Peso",
+			"Currency_Description": "Chile",
+			"Change": "Centavos",
+			"Symbol": "Ch$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Chile",
+			"Country_Description": "Peso",
+			"ISD_Code": "56"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 45,
+	    "fields": {
+			"CountryID": "45",
+			"CountryCode": "CNY",
+			"Currency_Name": "YuanRenminbi",
+			"Currency_Description": "China",
+			"Change": "Jiao",
+			"Symbol": "Y",
+			"FractionalUnits": "10",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "China",
+			"Country_Description": "YuanRenminbi",
+			"ISD_Code": "86"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 46,
+	    "fields": {
+			"CountryID": "46",
+			"CountryCode": "AUD2",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "ChristmasIsland",
+			"Change": "Cents",
+			"Symbol": "A$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "ChristmasIsland",
+			"Country_Description": "Dollar",
+			"ISD_Code": "6189164"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 47,
+	    "fields": {
+			"CountryID": "47",
+			"CountryCode": "AUD3",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "CocosIslands",
+			"Change": "Cents",
+			"Symbol": "A$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CocosIslands",
+			"Country_Description": "Dollar",
+			"ISD_Code": "6189162"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 48,
+	    "fields": {
+			"CountryID": "48",
+			"CountryCode": "COP",
+			"Currency_Name": "Peso",
+			"Currency_Description": "Colombia",
+			"Change": "Centavos",
+			"Symbol": "Col$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Colombia",
+			"Country_Description": "Peso",
+			"ISD_Code": "57"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 49,
+	    "fields": {
+			"CountryID": "49",
+			"CountryCode": "KMF",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Comoros",
+			"Change": "",
+			"Symbol": "CF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Comoros",
+			"Country_Description": "Franc",
+			"ISD_Code": "269"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 50,
+	    "fields": {
+			"CountryID": "50",
+			"CountryCode": "XAF3",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Congo",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Congo",
+			"Country_Description": "Franc",
+			"ISD_Code": "242"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 51,
+	    "fields": {
+			"CountryID": "51",
+			"CountryCode": "CDF",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Congo",
+			"Change": "Dem.Rep",
+			"Symbol": "Centimes",
+			"FractionalUnits": "1",
+			"CurrencySymbolUnicode": "100",
+			"Country_Name": "NULL",
+			"Country_Description": "Congo",
+			"ISD_Code": "Dem.Rep"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 52,
+	    "fields": {
+			"CountryID": "52",
+			"CountryCode": "NZD1",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "CookIslands",
+			"Change": "Cents",
+			"Symbol": "NZ$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CookIslands",
+			"Country_Description": "Dollar",
+			"ISD_Code": "682"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 53,
+	    "fields": {
+			"CountryID": "53",
+			"CountryCode": "CRC",
+			"Currency_Name": "Colon",
+			"Currency_Description": "CostaRica",
+			"Change": "Centimos",
+			"Symbol": "",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CostaRica",
+			"Country_Description": "Colon",
+			"ISD_Code": "506"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 54,
+	    "fields": {
+			"CountryID": "54",
+			"CountryCode": "HRK",
+			"Currency_Name": "Kuna",
+			"Currency_Description": "Croatia",
+			"Change": "Lipas",
+			"Symbol": "HRK",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Croatia",
+			"Country_Description": "Kuna",
+			"ISD_Code": "385"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk":55,
+	    "fields": {
+			"CountryID": "55",
+			"CountryCode": "CUP",
+			"Currency_Name": "Peso",
+			"Currency_Description": "Cuba",
+			"Change": "Centavos",
+			"Symbol": "Cu$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Cuba",
+			"Country_Description": "Peso",
+			"ISD_Code": "53"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 56,
+	    "fields": {
+			"CountryID": "56",
+			"CountryCode": "CYP",
+			"Currency_Name": "Pound",
+			"Currency_Description": "Cyprus",
+			"Change": "Cents",
+			"Symbol": "Â£C",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Cyprus",
+			"Country_Description": "Pound",
+			"ISD_Code": "357"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 57,
+	    "fields": {
+			"CountryID": "57",
+			"CountryCode": "TRY1",
+			"Currency_Name": "NewLira",
+			"Currency_Description": "Cyprus(Northern)",
+			"Change": "NewKurus",
+			"Symbol": "YTL",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Cyprus(Northern)",
+			"Country_Description": "NewLira",
+			"ISD_Code": "90392"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 58,
+	    "fields": {
+			"CountryID": "58",
+			"CountryCode": "CZK",
+			"Currency_Name": "Koruna",
+			"Currency_Description": "CzechRepublic",
+			"Change": "Haleru",
+			"Symbol": "Kc",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "CzechRepublic",
+			"Country_Description": "Koruna",
+			"ISD_Code": "420"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 59,
+	    "fields": {
+			"CountryID": "59",
+			"CountryCode": "DKK",
+			"Currency_Name": "Krone",
+			"Currency_Description": "Denmark",
+			"Change": "Ã˜re",
+			"Symbol": "Dkr",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Denmark",
+			"Country_Description": "Krone",
+			"ISD_Code": "45"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 60,
+	    "fields": {
+			"CountryID": "60",
+			"CountryCode": "DJF",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Djibouti",
+			"Change": "Centimes",
+			"Symbol": "DF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Djibouti",
+			"Country_Description": "Franc",
+			"ISD_Code": "253"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 61,
+	    "fields": {
+			"CountryID": "61",
+			"CountryCode": "XCD3",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Dominica",
+			"Change": "Cents",
+			"Symbol": "EC$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Dominica",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1767"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 62,
+	    "fields": {
+			"CountryID": "62",
+			"CountryCode": "DOP",
+			"Currency_Name": "Peso",
+			"Currency_Description": "DominicanRep.",
+			"Change": "Centavos",
+			"Symbol": "RD$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "DominicanRep.",
+			"Country_Description": "Peso",
+			"ISD_Code": "1849"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 63,
+	    "fields": {
+			"CountryID": "63",
+			"CountryCode": "NOK1",
+			"Currency_Name": "Krone",
+			"Currency_Description": "DronningMaudLand",
+			"Change": "Ã˜re",
+			"Symbol": "NKr",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "DronningMaudLand",
+			"Country_Description": "Krone",
+			"ISD_Code": ""
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 64,
+	    "fields": {
+			"CountryID": "64",
+			"CountryCode": "IDR1",
+			"Currency_Name": "Rupiah",
+			"Currency_Description": "EastTimor",
+			"Change": "Sen",
+			"Symbol": "Rp",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "EastTimor",
+			"Country_Description": "Rupiah",
+			"ISD_Code": "670"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 65,
+	    "fields": {
+			"CountryID": "65",
+			"CountryCode": "USD4",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Ecuador",
+			"Change": "Cents",
+			"Symbol": "$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Ecuador",
+			"Country_Description": "Dollar",
+			"ISD_Code": "593"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 66,
+	    "fields": {
+			"CountryID": "66",
+			"CountryCode": "EGP",
+			"Currency_Name": "Pound",
+			"Currency_Description": "Egypt",
+			"Change": "Piasters",
+			"Symbol": "Â£E",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Egypt",
+			"Country_Description": "Pound",
+			"ISD_Code": "20"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 67,
+	    "fields": {
+			"CountryID": "67",
+			"CountryCode": "SVC",
+			"Currency_Name": "Colon",
+			"Currency_Description": "ElSalvador",
+			"Change": "Centavos",
+			"Symbol": "Â¢",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "ElSalvador",
+			"Country_Description": "Colon",
+			"ISD_Code": "503"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 68,
+	    "fields": {
+			"CountryID": "68",
+			"CountryCode": "GQE",
+			"Currency_Name": "Franc",
+			"Currency_Description": "EquatorialGuinea",
+			"Change": "Centimos",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "EquatorialGuinea",
+			"Country_Description": "Franc",
+			"ISD_Code": "240"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 69,
+	    "fields": {
+			"CountryID": "69",
+			"CountryCode": "ERN",
+			"Currency_Name": "Nakfa",
+			"Currency_Description": "Eritrea",
+			"Change": "Cents",
+			"Symbol": "Nfa",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Eritrea",
+			"Country_Description": "Nakfa",
+			"ISD_Code": "291"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 70,
+	    "fields": {
+			"CountryID": "70",
+			"CountryCode": "EEK",
+			"Currency_Name": "Kroon",
+			"Currency_Description": "Estonia",
+			"Change": "Senti",
+			"Symbol": "KR",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Estonia",
+			"Country_Description": "Kroon",
+			"ISD_Code": "372"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 71,
+	    "fields": {
+			"CountryID": "71",
+			"CountryCode": "ETB",
+			"Currency_Name": "Birr",
+			"Currency_Description": "Ethiopia",
+			"Change": "Cents",
+			"Symbol": "Br",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Ethiopia",
+			"Country_Description": "Birr",
+			"ISD_Code": "251"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 72,
+	    "fields": {
+			"CountryID": "72",
+			"CountryCode": "EUR",
+			"Currency_Name": "Euro",
+			"Currency_Description": "EuropeanUnion",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "EuropeanUnion",
+			"Country_Description": "Euro",
+			"ISD_Code": ""
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 73,
+	    "fields": {
+			"CountryID": "73",
+			"CountryCode": "DKK1",
+			"Currency_Name": "Krone",
+			"Currency_Description": "FaeroeIslands",
+			"Change": "Ã˜re",
+			"Symbol": "Dkr",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "FaeroeIslands",
+			"Country_Description": "Krone",
+			"ISD_Code": "298"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 74,
+	    "fields": {
+			"CountryID": "74",
+			"CountryCode": "FKP",
+			"Currency_Name": "Pound",
+			"Currency_Description": "FalklandIslands",
+			"Change": "Pence",
+			"Symbol": "Â£F",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "FalklandIslands",
+			"Country_Description": "Pound",
+			"ISD_Code": "500"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 75,
+	    "fields": {
+			"CountryID": "75",
+			"CountryCode": "FJD",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Fiji",
+			"Change": "Cents",
+			"Symbol": "F$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Fiji",
+			"Country_Description": "Dollar",
+			"ISD_Code": "679"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 76,
+	    "fields": {
+			"CountryID": "76",
+			"CountryCode": "EUR4",
+			"Currency_Name": "Euro",
+			"Currency_Description": "Finland",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Finland",
+			"Country_Description": "Euro",
+			"ISD_Code": "358"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 77,
+	    "fields": {
+			"CountryID": "77",
+			"CountryCode": "EUR5",
+			"Currency_Name": "Euro",
+			"Currency_Description": "France",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "U+20AC",
+			"Country_Name": "France",
+			"Country_Description": "Euro",
+			"ISD_Code": "33"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 78,
+	    "fields": {
+			"CountryID": "78",
+			"CountryCode": "EUR6",
+			"Currency_Name": "Euro",
+			"Currency_Description": "FrenchGuiana",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "FrenchGuiana",
+			"Country_Description": "Euro",
+			"ISD_Code": "594"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 79,
+	    "fields": {
+			"CountryID": "79",
+			"CountryCode": "XPF1",
+			"Currency_Name": "Franc",
+			"Currency_Description": "FrenchPolynesia",
+			"Change": "Centimes",
+			"Symbol": "CFPF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "FrenchPolynesia",
+			"Country_Description": "Franc",
+			"ISD_Code": "689"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 80,
+	    "fields": {
+			"CountryID": "80",
+			"CountryCode": "XAF4",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Gabon",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Gabon",
+			"Country_Description": "Franc",
+			"ISD_Code": "241"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 81,
+	    "fields": {
+			"CountryID": "81",
+			"CountryCode": "GMD",
+			"Currency_Name": "Dalasi",
+			"Currency_Description": "Gambia",
+			"Change": "Butut",
+			"Symbol": "D",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Gambia",
+			"Country_Description": "Dalasi",
+			"ISD_Code": "220"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 82,
+	    "fields": {
+			"CountryID": "82",
+			"CountryCode": "ILS1",
+			"Currency_Name": "NewShekel",
+			"Currency_Description": "Gaza",
+			"Change": "NewAgorot",
+			"Symbol": "NIS",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Gaza",
+			"Country_Description": "NewShekel",
+			"ISD_Code": "970"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 83,
+	    "fields": {
+			"CountryID": "83",
+			"CountryCode": "GEL",
+			"Currency_Name": "Lari",
+			"Currency_Description": "Georgia",
+			"Change": "Tetri",
+			"Symbol": "",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Georgia",
+			"Country_Description": "Lari",
+			"ISD_Code": "995"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 84,
+	    "fields": {
+			"CountryID": "84",
+			"CountryCode": "EUR7",
+			"Currency_Name": "Euro",
+			"Currency_Description": "Germany",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Germany",
+			"Country_Description": "Euro",
+			"ISD_Code": "49"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 85,
+	    "fields": {
+			"CountryID": "85",
+			"CountryCode": "GHC",
+			"Currency_Name": "NewCedi",
+			"Currency_Description": "Ghana",
+			"Change": "Psewas",
+			"Symbol": "Â¢",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Ghana",
+			"Country_Description": "NewCedi",
+			"ISD_Code": "233"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 86,
+	    "fields": {
+			"CountryID": "86",
+			"CountryCode": "GIP",
+			"Currency_Name": "Pound",
+			"Currency_Description": "Gibraltar",
+			"Change": "Pence",
+			"Symbol": "Â£G",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Gibraltar",
+			"Country_Description": "Pound",
+			"ISD_Code": "350"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 87,
+	    "fields": {
+			"CountryID": "87",
+			"CountryCode": "GBP",
+			"Currency_Name": "Pound",
+			"Currency_Description": "GreatBritain",
+			"Change": "Pence",
+			"Symbol": "Â£",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "GreatBritain",
+			"Country_Description": "Pound",
+			"ISD_Code": "44"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 88,
+	    "fields": {
+			"CountryID": "88",
+			"CountryCode": "EUR8",
+			"Currency_Name": "Euro",
+			"Currency_Description": "Greece",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Greece",
+			"Country_Description": "Euro",
+			"ISD_Code": "30"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 89,
+	    "fields": {
+			"CountryID": "89",
+			"CountryCode": "DKK2",
+			"Currency_Name": "Krone",
+			"Currency_Description": "Greenland",
+			"Change": "Ã˜re",
+			"Symbol": "Dkr",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Greenland",
+			"Country_Description": "Krone",
+			"ISD_Code": "299"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 90,
+	    "fields": {
+			"CountryID": "90",
+			"CountryCode": "XCD4",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Grenada",
+			"Change": "Cents",
+			"Symbol": "EC$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Grenada",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1473"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 91,
+	    "fields": {
+			"CountryID": "91",
+			"CountryCode": "EUR9",
+			"Currency_Name": "Euro",
+			"Currency_Description": "Guadeloupe",
+			"Change": "Cents",
+			"Symbol": "â‚¬",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Guadeloupe",
+			"Country_Description": "Euro",
+			"ISD_Code": "590"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 92,
+	    "fields": {
+			"CountryID": "92",
+			"CountryCode": "USD5",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Guam",
+			"Change": "Cents",
+			"Symbol": "$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Guam",
+			"Country_Description": "Dollar",
+			"ISD_Code": "1671"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 93,
+	    "fields": {
+			"CountryID": "93",
+			"CountryCode": "GTQ",
+			"Currency_Name": "Quetzal",
+			"Currency_Description": "Guatemala",
+			"Change": "Centavos",
+			"Symbol": "Q",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Guatemala",
+			"Country_Description": "Quetzal",
+			"ISD_Code": "502"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 94,
+	    "fields": {
+			"CountryID": "94",
+			"CountryCode": "GBP1",
+			"Currency_Name": "Pound",
+			"Currency_Description": "Guernsey",
+			"Change": "Pence",
+			"Symbol": "Â£",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Guernsey",
+			"Country_Description": "Pound",
+			"ISD_Code": "441481"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 95,
+	    "fields": {
+			"CountryID": "95",
+			"CountryCode": "GNS",
+			"Currency_Name": "Syli",
+			"Currency_Description": "Guinea",
+			"Change": "Francs",
+			"Symbol": "FG",
+			"FractionalUnits": "10",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Guinea",
+			"Country_Description": "Syli",
+			"ISD_Code": "224"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 96,
+	    "fields": {
+			"CountryID": "96",
+			"CountryCode": "XOF4",
+			"Currency_Name": "Franc",
+			"Currency_Description": "Guinea-Bissau",
+			"Change": "Centimes",
+			"Symbol": "CFAF",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Guinea-Bissau",
+			"Country_Description": "Franc",
+			"ISD_Code": "245"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 97,
+	    "fields": {
+			"CountryID": "97",
+			"CountryCode": "GYD",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "Guyana",
+			"Change": "Cents",
+			"Symbol": "G$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Guyana",
+			"Country_Description": "Dollar",
+			"ISD_Code": "592"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 98,
+	    "fields": {
+			"CountryID": "98",
+			"CountryCode": "HTG",
+			"Currency_Name": "Gourde",
+			"Currency_Description": "Haiti",
+			"Change": "Centimes",
+			"Symbol": "G",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Haiti",
+			"Country_Description": "Gourde",
+			"ISD_Code": "509"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 99,
+	    "fields": {
+			"CountryID": "99",
+			"CountryCode": "AUD4",
+			"Currency_Name": "Dollar",
+			"Currency_Description": "HeardandMcDonaldIslands",
+			"Change": "Cents",
+			"Symbol": "A$",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "HeardandMcDonaldIslands",
+			"Country_Description": "Dollar",
+			"ISD_Code": "672"
+	    }
+	},
+	{
+	    "model": "brands.Country",
+	    "pk": 100,
+	    "fields": {
+			"CountryID": "100",
+			"CountryCode": "HNL",
+			"Currency_Name": "Lempira",
+			"Currency_Description": "Honduras",
+			"Change": "Centavos",
+			"Symbol": "L",
+			"FractionalUnits": "100",
+			"CurrencySymbolUnicode": "NULL",
+			"Country_Name": "Honduras",
+			"Country_Description": "Lempira",
+			"ISD_Code": "504"
+	    }
+	}
+]

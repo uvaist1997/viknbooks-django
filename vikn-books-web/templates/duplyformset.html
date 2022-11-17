@@ -1,0 +1,2041 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+{% load main_template_tags %}
+
+
+ <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Transactions</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">{{title}}</a></li>
+                                            <li class="breadcrumb-item active">{{title}}</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">{{title}}</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form id="form_id" enctype="multipart/form-data" method="post" class="" action="{{url}}">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                            <div class="col-xl-12">                        
+
+                                                <div class="row">
+                                                    <div class="form-group mb-3 col-6 ledgerid">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Ledger Name
+                                                        </label>
+                                                        <select name="ledger" class="form-control custom-select ">
+                                                       
+                                                            {% for l in ledger_datas %}
+                                                            <option value="{{l.LedgerID}}">{{l.LedgerName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6 taxType">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Tax Types
+                                                        </label>
+                                                        <select name="taxType" class="form-control custom-select taxType">
+                                                            <option value="{{instance|TaxID:DataBase}}" selected="">{{instance.TaxType}}</option>
+                                                            {% for t in taxType_datas %}
+                                                            <option value="{{t.id}}">{{t.Name}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6 purchaseAccount">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Purchase Account
+                                                        </label>
+                                                        <select name="purchaseAccount" class="form-control custom-select ">
+                                                       
+                                                            {% for p in purchaseAccount_datas %}
+                                                            <option value="{{p.LedgerID}}">{{p.LedgerName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6 wareHouse">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Ware House
+                                                        </label>
+                                                        <select name="wareHouse" class="form-control custom-select ">
+                                                       
+                                                            {% for w in wareHouse_datas %}
+                                                            <option value="{{w.WarehouseID}}">{{w.WarehouseName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-6 RefferenceBillNo">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.RefferenceBillNo.label }}
+                                                            {{ form.RefferenceBillNo }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 Date">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Date.label }}
+                                                            {{ form.Date }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 VenderInvoiceDate">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.VenderInvoiceDate.label }}
+                                                            {{ form.VenderInvoiceDate }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 CreditPeriod">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.CreditPeriod.label }}
+                                                            {{ form.CreditPeriod }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 VoucherNo">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.VoucherNo.label }}
+                                                            {{ form.VoucherNo }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 CustomerName">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.CustomerName.label }}
+                                                            {{ form.CustomerName }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 Address1">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Address1.label }}
+                                                            {{ form.Address1 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 Address2">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Address2.label }}
+                                                            {{ form.Address2 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 Address3">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Address3.label }}
+                                                            {{ form.Address3 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 Notes">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Notes.label }}
+                                                            {{ form.Notes }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 TotalGrossAmt">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TotalGrossAmt.label }}
+                                                            {{ form.TotalGrossAmt }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 AddlDiscAmt">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.AddlDiscAmt.label }}
+                                                            {{ form.AddlDiscAmt }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 AddlDiscPercent">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.AddlDiscPercent.label }}
+                                                            {{ form.AddlDiscPercent }}
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-6 TotalTax ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TotalTax.label }}
+                                                            {{ form.TotalTax }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 NetTotal">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.NetTotal.label }}
+                                                            {{ form.NetTotal }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 TotalDiscount">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TotalDiscount.label }}
+                                                            {{ form.TotalDiscount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 GrandTotal">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.GrandTotal.label }}
+                                                            {{ form.GrandTotal }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 RoundOff">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.RoundOff.label }}
+                                                            {{ form.RoundOff }}
+                                                        </div>
+                                                    </div>
+                                                    {% if is_VAT %}
+                                                    <div class="col-6 VATAmount TAX ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.VATAmount.label }}
+                                                            {{ form.VATAmount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_GST %}
+                                                    <div class="col-6 SGSTAmount TAX INTRA GST ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.SGSTAmount.label }}
+                                                            {{ form.SGSTAmount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 CGSTAmount TAX INTRA GST ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.CGSTAmount.label }}
+                                                            {{ form.CGSTAmount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 IGSTAmount TAX GST INTER ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IGSTAmount.label }}
+                                                            {{ form.IGSTAmount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX1 %}
+                                                    <div class="col-6 TAX1Amount TAX ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TAX1Amount.label }}
+                                                            {{ form.TAX1Amount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX2 %}
+                                                    <div class="col-6 TAX2Amount TAX ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TAX2Amount.label }}
+                                                            {{ form.TAX2Amount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX3 %}
+                                                    <div class="col-6 TAX3Amount TAX ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TAX3Amount.label }}
+                                                            {{ form.TAX3Amount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    <div class="col-6 BillDiscPercent ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.BillDiscPercent.label }}
+                                                            {{ form.BillDiscPercent }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 TotalDiscount_print">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TotalDiscount_print.label }}
+                                                            {{ form.TotalDiscount_print }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 Balance">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Balance.label }}
+                                                            {{ form.Balance }}
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6 IsActive">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IsActive.label }}
+                                                            {{ form.IsActive }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 instanceID" style="visibility: hidden;">
+                                                        <div class="form-group mb-3">
+                                                            <input type="" name="instanceID" class="instanceID" id="instanceID" value="{{instance.id}}">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>                                              
+
+                                            </div> <!-- end col-->
+                                        </div>
+                                        <!-- end row -->
+
+                                        <div class="col-12">
+                                            <div class="card table-responsive">
+                                                <div class="purchaseDetails_formset card-body">
+                                                    <h2>Purchase Invoice Details</h2>
+
+                                                    	        <div class="form-group" id="dynamic_form">
+                                                                    <div class="row mb-4 form_set_row">
+                                                    	                <!-- <div class="col-md-4">
+                                                    	                    <input type="text" name="product_name" id="product_name" placeholder="Enter ProductIDe" class="form-control">
+                                                    	                </div> -->
+
+                                                                      <div class="col-md-4 mb-2 product">
+                                                                      	
+                                                                        <label>Products<span style="color: red">*</span></label>
+                                                                          <select class="form-control custom-select product" name="ProductID" id="ProductID">
+   	                                                                            <option class="defltOption">wwww</option>
+                                                                          	{% for pro in product_datas %}
+                                                                            	<option value="{{pro.ProductID}}" style="width: 75px;">{{pro.ProductName}}</option>
+                                                                            {% endfor %}
+                                                                          </select>
+                                                                      </div>
+                                                                      
+                                                                      <div class="col-md-4 mb-2 unitPrice">
+                                                                      	
+                                                                        <label>Unit Name<span style="color: red">*</span></label>
+                                                                          <select class="form-control custom-select unitPrice" name="unitPrice" id="unitPrice">
+                                                                          
+                                                                            	<option> ---------- </option>
+                                                                          </select>
+                                                                      </div>
+                                                    	                <div class="col-md-4 mb-2 unitAmount">
+                                                    	                	
+                                                                            <label>Unit Price<span style="color: red">*</span></label>
+                                                    	                    <input type="text" class="form-control unitAmount" name="UnitPrice" readonly="" id="UnitPrice" placeholder="Enter UnitPrice" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                <div class="col-md-4 mb-2 Qty form-group">
+                                                    	                	<label>Qty<span style="color: red">*</span></label>
+                                                    	                    <input type="text" class="form-control" name="Qty" id="Qty" placeholder="Enter Qty" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                <div class="col-md-4 mb-2 FreeQty form-group">
+                                                    	                	
+                                                                            <label>Free Qty<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="FreeQty" id="FreeQty" placeholder="Enter FreeQty" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                <div class="col-md-4 mb-2 GrossAmount form-group">
+                                                    	                	
+                                                                            <label>GrossAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="GrossAmount" readonly="" id="GrossAmount" placeholder="Enter GrossAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                <div class="col-md-4 mb-2 form-group DiscountAmount">
+                                                    	                	
+                                                                            <label>DiscountAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="DiscountAmount" id="DiscountAmount" placeholder="Enter DiscountAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                <div class="col-md-4 mb-2 form-group DiscountPerc">
+                                                    	                	
+                                                                            <label>DiscountPerc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="DiscountPerc" id="DiscountPerc" placeholder="Enter DiscountPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                <div class="col-md-4 mb-2 form-group AddlDiscAmt">
+                                                    	                	
+                                                                            <label>AddlDiscAmt<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="AddlDiscAmt" readonly="" 
+                                                                             id="AddlDiscAmt" placeholder="Enter AddlDiscAmt" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                <div class="col-md-4 mb-2 form-group AddlDiscPerc">
+                                                    	                	
+                                                                            <label>AddlDiscPerc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="AddlDiscPerc" readonly="" id="AddlDiscPerc" placeholder="Enter AddlDiscPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                 <div class="col-md-4 mb-2 form-group TaxableAmount">
+                                                    	                	
+                                                                            <label>TaxableAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="TaxableAmount" readonly="" 
+                                                                             id="TaxableAmount" placeholder="Enter TaxableAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                 <div class="col-md-4 mb-2 form-group CostPerItem">
+                                                    	                	
+                                                                            <label>CostPerItem<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="CostPerItem" readonly="" id="CostPerItem" placeholder="Enter CostPerItem" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                 <div class="col-md-4 mb-2 form-group RateWithTax">
+                                                    	                	
+                                                                            <label>RateWithTax<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="RateWithTax" readonly="" id="RateWithTax" placeholder="Enter RateWithTax" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                </div>
+                                                    	                  {% if is_VAT %}
+	                                                    	                  <div class="col-md-4 mb-2 form-group VATPerc tax">
+	                                                    	                	
+                                                                                <label>VATPerc<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="VATPerc" readonly="" id="VATPerc" placeholder="Enter VATPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+	                                                    	                	<div class="col-md-4 mb-2 form-group VATAmount tax">
+	                                                    	                	
+                                                                                <label>VATAmount<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="VATAmount" readonly="" id="VATAmount" placeholder="Enter VATAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+                                                    	                	{% else %}
+	                                                    	                	<div class="col-md-4 mb-2 form-group VATPerc tax" style="display: none;">
+	                                                    	                	
+                                                                                <label>VATPerc<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="VATPerc" readonly="" id="VATPerc" placeholder="Enter VATPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+	                                                    	                	<div class="col-md-4 mb-2 form-group VATAmount tax" style="display: none;">
+	                                                    	                	
+                                                                                <label>VATAmount<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="VATAmount" readonly="" id="VATAmount" placeholder="Enter VATAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+                                                    	                  {% endif %}
+                                                    	                 {% if is_GST %}
+                                                    	                <div class="col-md-4 mb-2 form-group SGSTPerc all tax gst intra">
+                                                    	                	
+                                                                            <label>SGSTPerc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="SGSTPerc" readonly="" id="SGSTPerc" placeholder="Enter SGSTPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                <div class="col-md-4 mb-2 form-group SGSTAmount all tax gst intra">
+                                                    	                	
+                                                                            <label>SGSTAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="SGSTAmount" readonly="" id="SGSTAmount" placeholder="Enter SGSTAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                  <div class="col-md-4 mb-2 form-group CGSTPerc gst all tax intra">
+                                                    	                	
+                                                                            <label>CGSTPerc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="CGSTPerc" readonly="" id="CGSTPerc" placeholder="Enter CGSTPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                  <div class="col-md-4 mb-2 form-group CGSTAmount gst all tax intra">
+                                                    	                	
+                                                                            <label>CGSTAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="CGSTAmount" readonly="" id="CGSTAmount" placeholder="Enter CGSTAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                  <div class="col-md-4 mb-2 form-group IGSTPerc all tax inter gst">
+                                                    	                	
+                                                                            <label>IGSTPerc<span ></span></label>
+                                                    	                    <input type="text" class="form-control IGSTPerc" name="IGSTPerc" id="IGSTPerc" readonly="" placeholder="Enter IGSTPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                	<div class="col-md-4 mb-2 form-group IGSTAmount all tax inter gst">
+                                                    	                	
+                                                                            <label>IGSTAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="IGSTAmount" readonly="" id="IGSTAmount" placeholder="Enter IGSTAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                	{% else %}
+                                                    	                	<div class="col-md-4 mb-2 form-group SGSTPerc all gst tax intra" style="display: none;">
+                                                    	                	
+                                                                            <label>SGSTPerc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="SGSTPerc" id="SGSTPerc" readonly="" placeholder="Enter SGSTPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                <div class="col-md-4 mb-2 form-group SGSTAmount all tax gst intra" style="display: none;">
+                                                    	                	
+                                                                            <label>SGSTAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="SGSTAmount" readonly="" id="SGSTAmount" placeholder="Enter SGSTAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                  <div class="col-md-4 mb-2 form-group CGSTPerc all gst tax intra" style="display: none;">
+                                                    	                	
+                                                                            <label>CGSTPerc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="CGSTPerc" readonly="" id="CGSTPerc" placeholder="Enter CGSTPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                  <div class="col-md-4 mb-2 form-group CGSTAmount all gst tax intra" style="display: none;">
+                                                    	                	
+                                                                            <label>CGSTAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="CGSTAmount" readonly="" id="CGSTAmount" placeholder="Enter CGSTAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                  <div class="col-md-4 mb-2 form-group IGSTPerc all tax inter gst" style="display: none;">
+                                                    	                	
+                                                                            <label>IGSTPerc<span ></span></label>
+                                                    	                    <input type="text" class="form-control IGSTPerc" name="IGSTPerc" id="IGSTPerc" readonly="" placeholder="Enter IGSTPerc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                	<div class="col-md-4 mb-2 form-group IGSTAmount all tax inter gst" style="display: none;">
+                                                    	                	
+                                                                            <label>IGSTAmount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="IGSTAmount" readonly="" id="IGSTAmount" placeholder="Enter IGSTAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                  {% endif %}
+                                                    	                  {% if is_TAX1 %}
+                                                    	                  <div class="col-md-4 mb-2 form-group TAX1Perc all tax">
+                                                    	                	
+                                                                            <label>TAX1Perc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="TAX1Perc" readonly="" id="TAX1Perc" placeholder="Enter TAX1Perc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                	<div class="col-md-4 mb-2 form-group TAX1Amount all tax">
+                                                    	                	
+                                                                            <label>TAX1Amount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="TAX1Amount" readonly="" id="TAX1Amount" placeholder="Enter TAX1Amount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                	{% else %}
+	                                                    	                	<div class="col-md-4 mb-2 form-group TAX1Perc all tax" style="display: none;">
+	                                                    	                	
+                                                                                <label>TAX1Perc<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="TAX1Perc" readonly="" id="TAX1Perc" placeholder="Enter TAX1Perc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+	                                                    	                	<div class="col-md-4 mb-2 form-group TAX1Amount all tax" style="display: none;">
+	                                                    	                	
+                                                                                <label>TAX1Amount<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="TAX1Amount" readonly="" id="TAX1Amount" placeholder="Enter TAX1Amount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+                                                    	                  {% endif %}
+                                                    	                  {% if is_TAX2 %}
+	                                                    	                  <div class="col-md-4 mb-2 form-group TAX2Perc all tax">
+	                                                    	                	
+                                                                                <label>TAX2Perc<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="TAX2Perc" readonly="" id="TAX2Perc" placeholder="Enter TAX2Perc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+	                                                    	                	<div class="col-md-4 mb-2 form-group TAX2Amount all tax">
+	                                                    	                	
+                                                                                <label>TAX2Amount<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="TAX2Amount" readonly="" id="TAX2Amount" placeholder="Enter TAX2Amount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+                                                    	                	{% else %}
+	                                                    	                	<div class="col-md-4 mb-2 form-group TAX2Perc all tax" style="display: none;">
+	                                                    	                	
+                                                                                <label>TAX2Perc<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="TAX2Perc" readonly="" id="TAX2Perc" placeholder="Enter TAX2Perc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+	                                                    	                	<div class="col-md-4 mb-2 form-group TAX2Amount all tax" style="display: none;">
+	                                                    	                	
+                                                                                <label>TAX2Amount<span ></span></label>
+	                                                    	                    <input type="text" class="form-control" name="TAX2Amount" readonly="" id="TAX2Amount" placeholder="Enter TAX2Amount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+	                                                    	                	</div>
+                                                    	                  {% endif %}
+                                                    	                  {% if is_TAX3 %}
+                                                    	                  <div class="col-md-4 mb-2 form-group TAX3Perc all tax">
+                                                    	                	
+                                                                            <label>TAX3Perc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="TAX3Perc" readonly="" id="TAX3Perc" placeholder="Enter TAX3Perc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+
+                                                    	                	<div class="col-md-4 mb-2 form-group TAX3Amount all tax">
+                                                    	                	
+                                                                            <label>TAX3Amount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="TAX3Amount" readonly="" id="TAX3Amount" placeholder="Enter TAX3Amount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                	{% else %}
+                                                    	                	<div class="col-md-4 mb-2 form-group TAX3Perc all tax" style="display: none;">
+                                                    	                	
+                                                                            <label>TAX3Perc<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="TAX3Perc" readonly="" id="TAX3Perc" placeholder="Enter TAX3Perc" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+
+                                                    	                	<div class="col-md-4 mb-2 form-group TAX3Amount all tax" style="display: none;">
+                                                    	                	
+                                                                            <label>TAX3Amount<span ></span></label>
+                                                    	                    <input type="text" class="form-control" name="TAX3Amount" readonly="" id="TAX3Amount" placeholder="Enter TAX3Amount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+                                                    	                  {% endif %}
+                                                    	                  <div class="col-md-4 mb-2 form-group TotalTax
+                                                    	                  tax">
+                                                    	                	
+                                                                            <label>TotalTax<span></span></label>
+                                                    	                    <input type="text" class="form-control" name="TotalTax" readonly="" id="TotalTax" placeholder="Enter TotalTax" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+
+                                                    	                	<div class="col-md-4 mb-2 form-group NetAmount">
+                                                    	                	
+                                                                            <label>NetAmount<span></span></label>
+                                                    	                    <input type="text" class="form-control" name="NetAmount" readonly="" id="NetAmount" placeholder="Enter NetAmount" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+
+                                                    	                	<div class="col-md-4 mb-2 form-group pppp" style="visibility: hidden;">
+                                                    	                	ProductID
+                                                    	                    <input type="text" class="form-control pppp" name="pppp" readonly="" id="pppp" placeholder="Enter ProductID" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+
+                                                    	                	<div class="col-md-4 mb-2 form-group PriceListID" style="visibility: hidden;">
+                                                    	                	PriceListID
+                                                    	                    <input type="text" class="form-control PriceListID" name="PriceListID" readonly="" id="PriceListID" placeholder="Enter PriceListID" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                    	                	</div>
+
+                                                    	                  <div class="col-md-4 mb-2 form-group PurchaseDetailUniqID" style="visibility: hidden;">
+                                                                            PurchaseDetailUniqID
+                                                                            <input type="text" class="form-control PurchaseDetailUniqID" name="PurchaseDetailUniqID" readonly="" id="PurchaseDetailUniqID" placeholder="Enter PurchaseDetailUniqID" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-2 form-group ProductName" style="visibility: hidden;">
+                                                                            ProductName
+                                                                            <input type="text" class="form-control ProductName" name="ProductName" readonly="" id="ProductName" placeholder="Enter ProductID" onkeyup = "if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')";>
+                                                                            </div>
+                                                    	                  
+                                                    	                 
+                                                    	                  
+                                                    	                <!-- <div class="col-md-4">
+                                                    	                    <textarea class="form-control" rows="1" name="Qty" placeholder="Enter Remarks" id="Qty"></textarea>
+                                                    	                </div> -->
+                                                    	                <div class="button-group">
+                                                    	                    <a href="javascript:void(0)" class="btn btn-primary addButton" id="plus5">Add More</a>
+                                                    	                    <a href="javascript:void(0)" class="btn btn-danger removeButton" id="minus5">Remove</a>
+                                                    	                </div>
+                                                    	            </div>
+                                                                </div>
+                                                    			<button type="submit" class="btn btn-primary submitButton">Submit</button>
+                                                         
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col -->
+
+
+                                            <!-- <div class="row mt-3">
+                                                <div class="col-12 text-center">
+                                                    <button type="submit" class="btn btn-success waves-effect waves-light m-1"> Submit</button>
+                                                </div>
+                                            </div> -->
+                                        </form>
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+<!-- <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/darkly/bootstrap.min.css"> -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/dynamic-form.js' %}"></script>
+
+<!-- <style>
+
+    .container { margin: 150px auto; }
+    h1 { margin-bottom: 50px; }
+  </style> -->
+
+<!-- starts here -->
+ <script>
+        var print = console.log
+        $(document).ready(function() {
+        	var dynamic_form =  $("#dynamic_form").dynamicForm("#dynamic_form","#plus5", "#minus5", {
+		        limit:10,
+		        formPrefix : "dynamic_form",
+		        normalizeFullForm : false
+		    });
+
+    		myfunction(dynamic_form)
+
+		    $("#dynamic_form #minus5").on('click', function(){
+		    	var initDynamicId = $(this).closest('#dynamic_form').parent().find("[id^='dynamic_form']").length;
+		    	if (initDynamicId === 2) {
+		    		$(this).closest('#dynamic_form').next().find('#minus5').hide();
+		    	}
+		    	$(this).closest('#dynamic_form').remove();
+		    });
+
+		    $('form').on('submit', function(event){
+	        	var values = {};
+				$.each($('form').serializeArray(), function(i, field) {
+				    values[field.name] = field.value;
+				});
+				console.log(values)
+        		event.preventDefault();
+        	})
+
+                
+
+
+
+        });
+
+        function myfunction(dynamic_form) {
+    		var instanceId = $('input#instanceID').val()
+
+            if (instanceId != undefined || instanceId != null || instanceId != ""){
+                var url = "{% url 'inventories:get_purchaseDetails' %}";
+                print("----------------------------")
+                $.ajax({
+                    type : "GET",
+                    url : url,
+                    dataType : 'json',
+                    data : {
+                        id : instanceId,
+                    },
+                    success : function(data) {
+                        var status = data['status'];
+                        if(status=='true'){
+                        	// var myArray = [{ProductID: '1',UnitPrice: '123',Qty: '111',NetAmount: '123'},{ProductID: '1',UnitPrice: '123',Qty: '123',NetAmount: '123'}]
+                        	var myArray = data['test_arr'];
+                            print("myArray")
+                            print(myArray)
+                    		dynamic_form.inject(myArray);
+                            
+                            var $parent = $('.purchaseDetails_formset');
+
+                            var sd = $parent.find('.form_set_row .ProductName input')
+                            var product_array = []
+                            var productid_array = []
+                            for (var i = 0; i < myArray.length; i++) {
+ 
+                                test = myArray[i];
+                                var test_name = test['ProductName']
+                                var pro_id = test['pppp']
+                                product_array.push(test_name)
+                                productid_array.push(pro_id)
+
+                            };
+                            var ProductID = '#ProductID'
+                            for (var i = 0; i < product_array.length; i++) {
+                                test = product_array[i];
+                                var s = $(".product select"+ProductID+i+" option:first").text(test)
+
+                            }
+                            print('product_array')
+                            print(productid_array)
+                            var ProductID = '#ProductID'
+                            for (var i = 0; i < productid_array.length; i++) {
+                                test = productid_array[i];
+                                var s = $(".product select"+ProductID+i+" option:first").val(test)
+
+                            }
+                    
+
+                        }
+                        else{
+                            print("----------------------------")
+                        }
+                    },
+                    error : function(data){
+                        print("hello")
+                        print(data)
+                    }
+                });
+            } 
+
+    }
+
+    </script>
+
+<!-- myscripts -->
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.form_set_row').not(':hidden').each(function() {
+           
+        });
+       
+        $('input[type=text]').focus(function () { 
+            $(this).select();
+        });
+        $('input[type=text]').mouseup(function (e) { // fix for chrome and safari
+            e.preventDefault();
+        });
+        $('input[type=text]').select(function () {
+            $('.log').append(' Handler for .select() called. ');
+        });
+
+        // get_product()
+        // get_totalGrossAmt()
+        taxSet()
+        initialize_fields()
+        // tax_calculations()
+
+        $("div.VoucherNo input").attr("readonly","True")        
+
+
+    });
+
+    $(document).on('click', 'a.addButton', function() {
+        initialize_fields()
+         
+    });
+    $(document).on('click', 'a.removeButton', function() {
+        tax_calculations()
+         
+    });
+
+    $(document).on('change', 'div.product input, .product select', function() {
+
+        var $parent = $(this).parents('.form_set_row');
+        var $this = $(this);
+
+        get_ProductID()
+        get_product($parent,$this)
+        // tax_calculations()
+
+
+    });
+    $(document).on('change keyup', 'div.unitPrice select.unitPrice', function() {
+
+        var $parent = $(this).parents('.form_set_row');
+        var $this = $(this);
+
+         get_PriceListID()
+         get_Amount($parent,$this)
+         // get_taxableAmount()
+         tax_calculations()
+         // get_grossAmount()
+
+    });
+
+    $(document).on('change', 'div.taxType select.taxType', function() {
+
+       taxSet()
+       // tax_calculations()
+
+    });
+
+    $(document).on('keyup', 'div.Qty input', function() {
+
+         get_grossAmount()
+         tax_calculations()
+         get_BillDiscPercent()
+         get_coastPerItem()
+         get_totalGrossAmt()
+
+         var $parent = $(this).parents('.form_set_row');
+
+         unitAmount = $parent.find('div.unitAmount input.unitAmount').val();
+
+
+    });
+
+    $(document).on('keyup', 'div.FreeQty input', function() {
+
+         get_grossAmount()
+         get_totalGrossAmt()
+         get_BillDiscPercent()
+         tax_calculations()
+
+
+    });
+
+    $(document).on('keyup', 'div.DiscountAmount input', function() {
+
+         get_coastPerItem()
+         get_discountPerc()
+         tax_calculations()
+         get_BillDiscPercent()
+
+    });
+
+    $(document).on('keyup', 'input#AddlDiscAmt', function() {
+
+         get_coastPerItem()
+         get_AddlDiscPerc()
+         // tax_calculations()
+         get_BillDiscPercent()
+
+    });
+    $(document).on('keyup', 'input#AddlDiscPercent', function() {
+
+         // get_taxableAmount()
+         get_coastPerItem()
+         get_AddlDiscAmt()
+         // tax_calculations()
+         get_BillDiscPercent()
+
+
+    });
+    $(document).on('keyup', 'input#id_TotalDiscount_print', function() {
+
+         get_BillDiscPercent()
+
+    });
+    $(document).on('keyup', 'input#id_BillDiscPercent', function() {
+
+         get_TotalDiscount_print()
+
+    });
+    $(document).on('keyup', 'div.TaxableAmount input', function() {
+
+         get_coastPerItem()
+
+    });
+
+    $(document).on('keyup', 'div.DiscountPerc input', function() {
+
+        get_discountAmount()
+        // get_taxableAmount()
+        get_coastPerItem()
+        tax_calculations()
+
+    });
+
+
+    function get_product($parent,$this) {
+
+        total_TAX1Amount = 0
+        var tax_type = $('div.taxType select').val()
+
+        // $('.form_set_row').not(':hidden').each(function() {
+            
+        //     var product_id = $(this).find('div.product input, .product select').val();
+
+        //     $(this).find('div.productID input').val(product_id);
+
+        //     $this = $(this)
+            // var $parent = $(this).parents('div.form_set_row');
+        var product_id = $this.val();
+
+        if (product_id != undefined || product_id != null || product_id != ""){
+            var url = "{% url 'inventories:get_unitPrice' %}";
+            $.ajax({
+                type : "GET",
+                url : url,
+                dataType : 'json',
+                data : {
+                    product_id : product_id,
+                },
+                success : function(data) {
+                    var status = data['status'];
+                    if(status=='true'){
+                    
+                        options = '<option value=""> ---------- </option>';
+                        var test_details = data.test_arr;
+
+                        for (var i = 0; i < test_details.length; i++) {
+                            option = test_details[i];
+
+                             options += '<option value="' + option['PriceListID'] + '">' + option['UnitName'] + '</option>';
+
+                        }
+                        $parent.find('select.unitPrice').html(options);
+
+                        var Tax1_PurchaseTax = data['Tax1_PurchaseTax'];
+                        var Tax2_PurchaseTax = data['Tax2_PurchaseTax'];
+                        var Tax3_PurchaseTax = data['Tax3_PurchaseTax'];
+                        var GST_PurchaseTax = data['GST_PurchaseTax'];
+                        var Vat_PurchaseTax = data['Vat_PurchaseTax'];
+
+                        var half_gst = GST_PurchaseTax / 2
+
+                        // var GST_PurchaseTax = GST_PurchaseTax
+                        // var cgstAndSgst_purchaseTax = half_gst
+
+
+                        if (tax_type == 30){
+                            Tax1_PurchaseTax = 0
+                            Tax2_PurchaseTax = 0
+                            Tax3_PurchaseTax = 0
+                            GST_PurchaseTax = 0
+                            Vat_PurchaseTax = 0
+                        }
+                        else if (tax_type == 29) {
+                            half_gst = 0
+                        }
+                        else if (tax_type == 28) {
+                            GST_PurchaseTax = 0
+                        }
+                        else if (tax_type == 27) {
+                            GST_PurchaseTax = 0
+                        }
+                        else if (tax_type == 26) {
+                            GST_PurchaseTax = 0
+                            Vat_PurchaseTax = 0
+                            half_gst = 0
+                        }
+
+                        $parent.find('div.TAX1Perc input').val(Tax1_PurchaseTax);
+                        $parent.find('div.TAX2Perc input').val(Tax2_PurchaseTax);
+                        $parent.find('div.TAX3Perc input').val(Tax3_PurchaseTax);
+
+                        $parent.find('div.IGSTPerc input').val(GST_PurchaseTax);
+                        $parent.find('div.SGSTPerc input').val(half_gst);
+                        $parent.find('div.CGSTPerc input').val(half_gst);
+
+                        $parent.find('div.VATPerc input').val(Vat_PurchaseTax);
+                  
+                    }
+                    else{
+                        var options = '<option value=""> ---------- </option>';
+                        var message = data.message;
+                        options += '<option value="' + message + '">' + message + '</option>';
+
+                        $parent.find('select.unitPrice').html(options);
+                        
+                    }
+                },
+                error : function(data){
+                }
+            });
+        }
+            
+
+        // });
+
+        
+    }
+
+
+    function get_PriceListID() {
+
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            var PriceListID = $(this).find('div.unitPrice select.unitPrice').val();
+
+            $(this).find('div.PriceListID input.PriceListID').val(PriceListID);
+
+        });
+    }
+    function get_ProductID() {
+
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            var ProductID = $(this).find('div.product select.product').val();
+
+            $(this).find('div.pppp input.pppp').val(ProductID);
+
+            // $(this).find('div.product select').val(ProductID)
+            // $(this).find('div.product select').val($("div.product select option:first").val());
+            // print("////////////////////")
+            // print(ProductID)
+            // $(this).find('div.product select').prepend("<option value='"+ProductID+"' selected='selected'>"+ProductID+"</option>");
+        });
+    }
+
+    function get_grossAmount() {
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var unit_price = parsefloat($(this).find('div.unitAmount input').val());
+
+            var Qty = parsefloat($(this).find('div.Qty input').val());
+            var FreeQty = parsefloat($(this).find('div.FreeQty input').val());
+
+            if (!unit_price){
+                unit_price = 0    
+            }
+            if (!Qty){
+                Qty = 0    
+            }
+            if (!FreeQty){
+                FreeQty = 0    
+            }
+            var qty = Qty - FreeQty
+            var GrossAmount = unit_price * qty
+
+            $(this).find('div.GrossAmount input').val(GrossAmount);
+
+
+        });
+    }
+
+    // function get_taxableAmount() {
+    //     $('.form_set_row').not(':hidden').each(function() {
+
+    //         var GrossAmount = parsefloat($(this).find('div.GrossAmount input').val());
+    //         var DiscountAmount = parsefloat($(this).find('div.DiscountAmount input').val());
+    //         var AddlDiscAmt = parsefloat($('input#AddlDiscAmt').val());
+
+    //         var total_discount = DiscountAmount + AddlDiscAmt
+    //         var TaxableAmount = GrossAmount - total_discount
+
+    //         $(this).find('div.TaxableAmount input').val(TaxableAmount);
+
+
+    //     });
+    // }
+
+    function get_coastPerItem() {
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var TaxableAmount = parsefloat($(this).find('div.TaxableAmount input').val());
+            var Qty = parsefloat($(this).find('div.Qty input').val());
+            var FreeQty = parsefloat($(this).find('div.FreeQty input').val());
+
+            if (!TaxableAmount){
+                TaxableAmount = 0    
+            }
+            if (!Qty){
+                Qty = 0    
+            }
+            if (!FreeQty){
+                FreeQty = 0    
+            }
+            
+            var total_qty = Qty + FreeQty
+            var CostPerItem = TaxableAmount / total_qty
+
+            CPI = Number((CostPerItem).toFixed(2));
+
+            $(this).find('div.CostPerItem input').val(CPI);
+
+
+        });
+    }
+
+
+    function get_Amount($parent,$this) {
+
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            // var PriceListID = $(this).find('div.unitPrice select.unitPrice').val();
+
+            var PriceListID = $this.val();
+
+            // $this = $(this)
+
+            if (PriceListID != undefined || PriceListID != null || PriceListID != ""){
+                var url = "{% url 'inventories:get_amount' %}";
+                $.ajax({
+                    type : "GET",
+                    url : url,
+                    dataType : 'json',
+                    data : {
+                        PriceListID : PriceListID,
+                    },
+                    success : function(data) {
+                        var status = data['status'];
+                        if(status=='true'){
+                            PurchasePrice = data['PurchasePrice']
+
+                            $parent.find('div.unitAmount input.unitAmount').val(PurchasePrice);
+
+                            var Qty = parsefloat($parent.find('div.Qty input').val());
+                            var FreeQty = parsefloat($parent.find('div.FreeQty input').val());
+
+            
+                            if (!PurchasePrice){
+                                PurchasePrice = 0    
+                            }
+                            if (!Qty){
+                                Qty = 0    
+                            }
+                            if (!FreeQty){
+                                FreeQty = 0    
+                            }
+                            var qty = Qty - FreeQty
+                            var GrossAmount = PurchasePrice * qty
+
+                            $parent.find('div.GrossAmount input').val(GrossAmount);
+                        }
+                        else{
+                            PurchasePrice = 0
+                            GrossAmount = 0
+                            $parent.find('div.unitAmount input.unitAmount').val(PurchasePrice);
+
+                            $parent.find('div.GrossAmount input').val(GrossAmount);
+                        }
+                    },
+                    error : function(data){
+                    }
+                });
+            }
+
+
+        });
+        
+
+    }
+
+    function get_discountPerc() {
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var GrossAmount = parsefloat($(this).find('div.GrossAmount input').val());
+            var DiscountAmount = parsefloat($(this).find('div.DiscountAmount input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            if (!DiscountAmount){
+                DiscountAmount = 0    
+            }
+
+            var DiscountPerc = (DiscountAmount * 100) / GrossAmount
+
+            $(this).find('div.DiscountPerc input').val(DiscountPerc);
+
+
+        });
+    }
+    function get_discountAmount() {
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var GrossAmount = parsefloat($(this).find('div.GrossAmount input').val());
+            var DiscountPerc = parsefloat($(this).find('div.DiscountPerc input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            if (!DiscountPerc){
+                DiscountPerc = 0    
+            }
+
+            var DiscountAmount = (GrossAmount * DiscountPerc) / 100
+
+            $(this).find('div.DiscountAmount input').val(DiscountAmount);
+
+
+        });
+    }
+
+    function get_totalGrossAmt() {
+        total_grossAmt = 0
+        $('.form_set_row').not(':hidden').each(function() {
+            var GrossAmount = parsefloat($(this).find('div.GrossAmount input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0
+            }
+            total_grossAmt += GrossAmount
+
+        });
+        $('input#TotalGrossAmt').val(total_grossAmt)
+    }
+
+    function get_AddlDiscPerc() {
+        
+        var TotalGrossAmount = $('input#TotalGrossAmt').val()
+        var AddlDiscAmt = $('input#AddlDiscAmt').val()
+
+        if (!TotalGrossAmount){
+            TotalGrossAmount = 0    
+        }
+        if (!AddlDiscAmt){
+            AddlDiscAmt = 0
+        }
+
+        var AddlDiscPercent = (AddlDiscAmt * 100) / TotalGrossAmount
+
+        var AddlDiscPercent_R = Number((AddlDiscPercent).toFixed(2));
+
+        $('input#AddlDiscPercent').val(AddlDiscPercent_R)
+
+    }
+    function get_AddlDiscAmt() {
+        
+        var TotalGrossAmount = $('input#TotalGrossAmt').val()
+        var AddlDiscPercent = $('input#AddlDiscPercent').val()
+
+        if (!TotalGrossAmount){
+            TotalGrossAmount = 0    
+        }
+        if (!AddlDiscPercent){
+            AddlDiscPercent = 0    
+        }
+
+        var AddlDiscAmt = (TotalGrossAmount * AddlDiscPercent) / 100
+
+        var AddlDiscAmt_R = Number((AddlDiscAmt).toFixed(2));
+
+        $('input#AddlDiscAmt').val(AddlDiscAmt_R)
+
+    }
+
+    function get_BillDiscPercent() {
+        
+        var NetTotal = $('input#id_NetTotal').val()
+        var TotalDiscount_print = $('input#id_TotalDiscount_print').val()
+
+        if (!NetTotal){
+            NetTotal = 0    
+        }
+        if (!TotalDiscount_print){
+            TotalDiscount_print = 0    
+        }
+
+        var BillDiscPercent = (TotalDiscount_print * 100) / NetTotal
+
+        var BillDiscPercent_R = Number((BillDiscPercent).toFixed(2));
+
+
+        $('input#id_BillDiscPercent').val(BillDiscPercent_R)
+
+    }
+    function get_TotalDiscount_print() {
+        
+        var NetTotal = $('input#id_NetTotal').val()
+        var BillDiscPercent = $('input#id_BillDiscPercent').val()
+
+        if (!NetTotal){
+            NetTotal = 0    
+        }
+        if (!BillDiscPercent){
+            BillDiscPercent = 0    
+        }
+
+        var TotalDiscount_print = (NetTotal * BillDiscPercent) / 100
+
+        var TotalDiscount_print_R = Number((TotalDiscount_print).toFixed(2));
+
+        $('input#id_TotalDiscount_print').val(TotalDiscount_print_R)
+
+    }
+
+    function tax_calculations() {
+
+        var tax_type = $('div.taxType select').val()
+        
+        total_TAX1Amount = 0
+        total_TAX2Amount = 0
+        total_TAX3Amount = 0
+        total_VATAmount = 0
+        total_SGSTAmount = 0
+        total_CGSTAmount = 0
+        total_IGSTAmount = 0
+        total_Tax = 0
+        total_NetAmount = 0
+        TotalDiscount = 0
+
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            var product_id = $(this).find('div.product input, .product select').val();
+
+            $(this).find('div.productID input').val(product_id);
+
+            $this = $(this)
+            var $parent = $(this).parents('div.form_set_row');
+
+   
+            var TaxableAmount = $this.find('div.TaxableAmount input').val();
+
+            if (!TaxableAmount){
+                TaxableAmount = 0    
+            }
+
+            var SGSTPerc = parsefloat($this.find('div.SGSTPerc input').val());
+            var CGSTPerc = parsefloat($this.find('div.CGSTPerc input').val());
+            var IGSTPerc = parsefloat($this.find('div.IGSTPerc input').val());
+            var TAX1Perc = parsefloat($this.find('div.TAX1Perc input').val());
+            var TAX2Perc = parsefloat($this.find('div.TAX2Perc input').val());
+            var TAX3Perc = parsefloat($this.find('div.TAX3Perc input').val());
+            var VATPerc = parsefloat($this.find('div.VATPerc input').val());
+
+            if (!SGSTPerc){
+                SGSTPerc = 0    
+            }
+            if (!CGSTPerc){
+                CGSTPerc = 0    
+            }
+            if (!IGSTPerc){
+                IGSTPerc = 0    
+            }
+            if (!TAX1Perc){
+                TAX1Perc = 0    
+            }
+            if (!TAX2Perc){
+                TAX2Perc = 0    
+            }
+            if (!TAX3Perc){
+                TAX3Perc = 0    
+            }
+            if (!VATPerc){
+                VATPerc = 0    
+            }
+
+
+            var SGSTAmount = (TaxableAmount * SGSTPerc) / 100
+            var CGSTAmount = (TaxableAmount * CGSTPerc) / 100
+            var IGSTAmount = (TaxableAmount * IGSTPerc) / 100
+            var TAX1Amount = (TaxableAmount * TAX1Perc) / 100
+            var TAX2Amount = (TaxableAmount * TAX2Perc) / 100
+            var TAX3Amount = (TaxableAmount * TAX3Perc) / 100
+            var VATAmount = (TaxableAmount * VATPerc) / 100
+
+
+            var SGSTAmount_R = Number((SGSTAmount).toFixed(2));
+            var CGSTAmount_R = Number((CGSTAmount).toFixed(2));
+            var IGSTAmount_R = Number((IGSTAmount).toFixed(2));
+            var TAX1Amount_R = Number((TAX1Amount).toFixed(2));
+            var TAX2Amount_R = Number((TAX2Amount).toFixed(2));
+            var TAX3Amount_R = Number((TAX3Amount).toFixed(2));
+            var VATAmount_R = Number((VATAmount).toFixed(2));
+
+
+            $this.find('div.SGSTAmount input').val(SGSTAmount_R);
+            $this.find('div.CGSTAmount input').val(CGSTAmount_R);
+            $this.find('div.IGSTAmount input').val(IGSTAmount_R);
+
+
+            $this.find('div.TAX1Amount input').val(TAX1Amount_R);
+            $this.find('div.TAX2Amount input').val(TAX2Amount_R);
+            $this.find('div.TAX3Amount input').val(TAX3Amount_R);
+
+            $this.find('div.VATAmount input').val(VATAmount_R);
+
+            
+            var TAX1Amount = parsefloat($this.find('div.TAX1Amount input').val());
+            var TAX2Amount = parsefloat($this.find('div.TAX2Amount input').val());
+            var TAX3Amount = parsefloat($this.find('div.TAX3Amount input').val());
+
+            var VATAmount = parsefloat($this.find('div.VATAmount input').val());
+            var SGSTAmount = parsefloat($this.find('div.SGSTAmount input').val());
+            var CGSTAmount = parsefloat($this.find('div.CGSTAmount input').val());
+            var IGSTAmount = parsefloat($this.find('div.IGSTAmount input').val());
+
+
+            var TotalTax = parsefloat($this.find('div.TotalTax input').val());
+            var NetAmount = parsefloat($this.find('div.NetAmount input').val());
+
+            if (!TAX1Amount) {
+                TAX1Amount = 0
+            }
+            if (!TAX2Amount) {
+                TAX2Amount = 0    
+            }
+            if (!TAX3Amount) {
+                TAX3Amount = 0    
+            }
+            if (!VATAmount){
+                VATAmount = 0    
+            }
+            if (!SGSTAmount){
+                SGSTAmount = 0    
+            }
+            if (!CGSTAmount){
+                CGSTAmount = 0    
+            }
+            if (!IGSTAmount){
+                IGSTAmount = 0    
+            }
+            if (!TotalTax){
+                TotalTax = 0    
+            }
+            if (!TotalTax){
+                TotalTax = 0    
+            }
+            
+            total_TAX1Amount += TAX1Amount
+            total_TAX2Amount += TAX2Amount
+            total_TAX3Amount += TAX3Amount
+
+            total_VATAmount += VATAmount
+            total_SGSTAmount += SGSTAmount
+            total_CGSTAmount += CGSTAmount
+            total_IGSTAmount += IGSTAmount
+
+            total_Tax += TotalTax
+  
+
+            var totalTax = (TAX1Amount + TAX2Amount + TAX3Amount + VATAmount + SGSTAmount + CGSTAmount + IGSTAmount)
+
+
+            var totalTax_R = Number((totalTax).toFixed(2));
+
+            $(this).find('div.TotalTax input').val(totalTax_R);
+
+            // RateWithTax
+            var Qty = parsefloat($this.find('div.Qty input').val());
+            var FreeQty = parsefloat($this.find('div.FreeQty input').val());
+
+            if (!Qty){
+                Qty = 0    
+            }
+            if (!FreeQty){
+                FreeQty = 0    
+            }
+            if (!totalTax_R){
+                totalTax_R = 0    
+            }
+
+            var R_Qty = Qty - FreeQty
+
+
+            var singleTax = (totalTax_R / R_Qty)
+
+            var unitAmount = parsefloat($this.find('div.unitAmount input').val());
+
+            if (!unitAmount){
+                unitAmount = 0
+            }
+
+            var RateWithTax = unitAmount + singleTax
+
+            var RateWithTax_R = Number((RateWithTax).toFixed(2));
+
+            $(this).find('div.RateWithTax input').val(RateWithTax_R);
+
+            // NetAmount
+            var TaxableAmount = parsefloat($this.find('div.TaxableAmount input').val());
+
+            if (!TaxableAmount){
+                TaxableAmount = 0
+            }
+
+            var NetAmount = TaxableAmount + totalTax_R
+
+            var NetAmount_R = Number((NetAmount).toFixed(2));
+
+            total_NetAmount += NetAmount_R
+
+            $(this).find('div.NetAmount input').val(NetAmount_R);
+
+            // TaxableAmount
+            var GrossAmount = parsefloat($this.find('div.GrossAmount input').val());
+            var DiscountAmount = parsefloat($this.find('div.DiscountAmount input').val());
+            var AddlDiscAmt = parsefloat($this.find('div.AddlDiscAmt input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            if (!DiscountAmount){
+                DiscountAmount = 0    
+            }
+            if (!AddlDiscAmt){
+                AddlDiscAmt = 0    
+            }
+            var total_discount = DiscountAmount + AddlDiscAmt
+            var TaxableAmount = GrossAmount - total_discount
+
+            var TaxableAmount_R = Number((TaxableAmount).toFixed(2));
+
+            $(this).find('div.TaxableAmount input').val(TaxableAmount_R);
+
+            // TotalDiscount
+
+            TotalDiscount += total_discount
+
+            //Detail additional discount perc
+            var master_AddlDiscPercent = $('input#AddlDiscPercent').val()
+
+            if (!master_AddlDiscPercent){
+                master_AddlDiscPercent = 0
+            }
+            $(this).find('div.AddlDiscPerc input').val(master_AddlDiscPercent);
+
+            //detail additional discount Amt
+
+            var GrossAmount = parsefloat($this.find('div.GrossAmount input').val());
+            var Detail_AddlDiscPerc = parsefloat($(this).find('div.AddlDiscPerc input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            if (!Detail_AddlDiscPerc){
+                Detail_AddlDiscPerc = 0    
+            }
+
+            var Detail_AddlDiscAmt = (GrossAmount * Detail_AddlDiscPerc) / 100
+
+            var Detail_AddlDiscAmt_R = Number((Detail_AddlDiscAmt).toFixed(2));
+
+            $(this).find('div.AddlDiscAmt input').val(Detail_AddlDiscAmt_R);
+
+
+
+
+        });
+
+        var total_TAX1Amount_R = Number((total_TAX1Amount).toFixed(2));
+        var total_TAX2Amount_R = Number((total_TAX2Amount).toFixed(2));
+        var total_TAX3Amount_R = Number((total_TAX3Amount).toFixed(2));
+        var total_VATAmount_R = Number((total_VATAmount).toFixed(2));
+        var total_SGSTAmount_R = Number((total_SGSTAmount).toFixed(2));
+        var total_CGSTAmount_R = Number((total_CGSTAmount).toFixed(2));
+        var total_IGSTAmount_R = Number((total_IGSTAmount).toFixed(2));
+
+        var total_Tax_R = Number((total_Tax).toFixed(2));
+        var total_NetAmount_R = Number((total_NetAmount).toFixed(2));
+        var TotalDiscount_R = Number((TotalDiscount).toFixed(2));
+
+        $('input#TAX1Amount').val(total_TAX1Amount_R)
+        $('input#TAX2Amount').val(total_TAX2Amount_R)
+        $('input#TAX3Amount').val(total_TAX3Amount_R)
+
+        $('input#id_VATAmount').val(total_VATAmount_R)
+        $('input#id_SGSTAmount').val(total_SGSTAmount_R)
+        $('input#id_CGSTAmount').val(total_CGSTAmount_R)
+        $('input#id_IGSTAmount').val(total_IGSTAmount_R)
+
+        $('input#id_TotalTax').val(total_Tax_R)
+        $('input#id_NetTotal').val(total_NetAmount_R)
+        $('input#id_TotalDiscount').val(TotalDiscount_R)
+
+        //grand total
+
+        var Bill_DiscAmt = parsefloat($('input#id_TotalDiscount_print').val());
+
+        if (!total_NetAmount_R){
+            total_NetAmount_R = 0    
+        }
+        if (!total_Tax_R){
+            total_Tax_R = 0    
+        }
+        if (!Bill_DiscAmt){
+            Bill_DiscAmt = 0    
+        }
+
+        var GrandTotal = (total_NetAmount_R + total_Tax_R) - Bill_DiscAmt
+
+        var GrandTotal_R = Number((GrandTotal).toFixed(2));
+
+        $('input#id_GrandTotal').val(GrandTotal_R)
+
+    }
+
+    function initialize_fields() {
+        $('.form_set_row').not(':hidden').each(function() {
+            var UnitAmount = parsefloat($(this).find('div.unitAmount input').val());
+            var Qty = parsefloat($(this).find('div.Qty input').val());
+            var FreeQty = parsefloat($(this).find('div.FreeQty input').val());
+            var GrossAmount = parsefloat($(this).find('div.GrossAmount input').val());
+            var TaxableAmount = parsefloat($(this).find('div.TaxableAmount input').val());
+            var AddlDiscAmt = parsefloat($(this).find('div.AddlDiscAmt input').val());
+            var AddlDiscPerc = parsefloat($(this).find('div.AddlDiscPerc input').val());
+            var DiscountAmount = parsefloat($(this).find('div.DiscountAmount input').val());
+            var DiscountPerc = parsefloat($(this).find('div.DiscountPerc input').val());
+            var CostPerItem = parsefloat($(this).find('div.CostPerItem input').val());
+            var SGSTPerc = parsefloat($(this).find('div.SGSTPerc input').val());
+            var SGSTAmount = parsefloat($(this).find('div.SGSTAmount input').val());
+            var CGSTAmount = parsefloat($(this).find('div.CGSTAmount input').val());
+            var CGSTPerc = parsefloat($(this).find('div.CGSTPerc input').val());
+            var IGSTPerc = parsefloat($(this).find('div.IGSTPerc input').val());
+            var IGSTAmount = parsefloat($(this).find('div.IGSTAmount input').val());
+            var VATPerc = parsefloat($(this).find('div.VATPerc input').val());
+            var TAX1Perc = parsefloat($(this).find('div.TAX1Perc input').val());
+            var TAX2Perc = parsefloat($(this).find('div.TAX2Perc input').val());
+            var TAX3Perc = parsefloat($(this).find('div.TAX3Perc input').val());
+            var TAX1Amount = parsefloat($(this).find('div.TAX1Amount input').val());
+            var TAX2Amount = parsefloat($(this).find('div.TAX2Amount input').val());
+            var TAX3Amount = parsefloat($(this).find('div.TAX3Amount input').val());
+            var TotalTax = parsefloat($(this).find('div.TotalTax input').val());
+            var NetAmount = parsefloat($(this).find('div.NetAmount input').val());
+            var ProductID = parsefloat($(this).find('div.pppp input').val());
+            var PriceListID = parsefloat($(this).find('div.PriceListID input').val());
+            var PurchaseDetailUniqID = parsefloat($(this).find('div.PurchaseDetailUniqID input').val());
+            zero = 0
+            if (!UnitAmount){  
+                $(this).find('div.unitAmount input').val(zero);    
+            }
+            if (!Qty){  
+                $(this).find('div.Qty input').val(zero);    
+            }
+            if (!FreeQty){  
+                $(this).find('div.FreeQty input').val(zero);    
+            }
+            if (!GrossAmount){  
+                $(this).find('div.GrossAmount input').val(zero);    
+            }
+            if (!TaxableAmount){  
+                $(this).find('div.TaxableAmount input').val(zero);    
+            }
+            if (!AddlDiscAmt){  
+                $(this).find('div.AddlDiscAmt input').val(zero);    
+            }
+            if (!AddlDiscPerc){  
+                $(this).find('div.AddlDiscPerc input').val(zero);    
+            }
+            if (!DiscountAmount){  
+                $(this).find('div.DiscountAmount input').val(zero);    
+            }
+            if (!DiscountPerc){  
+                $(this).find('div.DiscountPerc input').val(zero);    
+            }
+            if (!CostPerItem){  
+                $(this).find('div.CostPerItem input').val(zero);    
+            }
+            if (!SGSTPerc){  
+                $(this).find('div.SGSTPerc input').val(zero);    
+            }
+            if (!SGSTAmount){  
+                $(this).find('div.SGSTAmount input').val(zero);    
+            }
+            if (!CGSTPerc){  
+                $(this).find('div.CGSTPerc input').val(zero);    
+            }
+            if (!CGSTAmount){  
+                $(this).find('div.CGSTAmount input').val(zero);    
+            }
+            if (!IGSTPerc){  
+                $(this).find('div.IGSTPerc input').val(zero);    
+            }
+            if (!IGSTAmount){  
+                $(this).find('div.IGSTAmount input').val(zero);    
+            }
+            if (!VATPerc){  
+                $(this).find('div.VATPerc input').val(zero);    
+            }
+            if (!TAX1Perc){  
+                $(this).find('div.TAX1Perc input').val(zero);    
+            }
+            if (!TAX2Perc){  
+                $(this).find('div.TAX2Perc input').val(zero);    
+            }
+            if (!TAX3Perc){  
+                $(this).find('div.TAX3Perc input').val(zero);    
+            }
+            if (!TAX1Amount){  
+                $(this).find('div.TAX1Amount input').val(zero);    
+            }
+            if (!TAX2Amount){  
+                $(this).find('div.TAX2Amount input').val(zero);    
+            }
+            if (!TAX3Amount){  
+                $(this).find('div.TAX3Amount input').val(zero);    
+            }
+            if (!TotalTax){  
+                $(this).find('div.TotalTax input').val(zero);    
+            }
+            if (!NetAmount){  
+                $(this).find('div.NetAmount input').val(zero);    
+            }
+            if (!ProductID){  
+                $(this).find('div.pppp input').val(zero);    
+            }
+            if (!PriceListID){  
+                $(this).find('div.PriceListID input').val(zero);    
+            }
+            if (!PurchaseDetailUniqID){  
+                $(this).find('div.PurchaseDetailUniqID input').val(zero);    
+            }
+            
+        });
+    }
+
+    function taxSet() {
+        var TaxType = $('div.taxType select.taxType').val()
+        print("*******************")
+        if (TaxType == 30){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.tax").css("display","none")
+            $("div.TotalTax").css("display","none")
+            $("div.TAX").css("display","none")
+        }
+        else if (TaxType == 29){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.intra").css("display","none")
+            $("div.INTRA").css("display","none")
+        }
+        else if (TaxType == 28){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.inter").css("display","none")
+            $("div.INTER").css("display","none")
+        }
+        else if (TaxType == 27){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.inter").css("display","none")
+            $("div.INTER").css("display","none")
+        }
+        else if (TaxType == 26){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.gst").css("display","none")
+            $("div.GST").css("display","none")
+        }
+        
+    }
+
+    $(document).on('click', 'button.submitButton', function() {
+        submitForm()
+         
+    });
+
+    function submitForm() {
+        
+
+        var formArray = []
+        var validationArray = 0
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            var product_id = $(this).find('div.pppp input').val();
+            var PurchaseDetailUniqID = $(this).find('div.PurchaseDetailUniqID input').val();   
+            var unitAmount = $(this).find('div.unitAmount input, .unitAmount input').val();
+            var Qty = $(this).find('div.Qty input').val();
+            var FreeQty = $(this).find('div.FreeQty input').val();
+            var UnitPrice = $(this).find('div.UnitPrice input').val();
+            var RateWithTax = $(this).find('div.RateWithTax input').val();
+            var CostPerItem = $(this).find('div.CostPerItem input').val();
+            var PriceListID = $(this).find('div.PriceListID input').val();
+            var DiscountPerc = $(this).find('div.DiscountPerc input').val();
+            var DiscountAmount = $(this).find('div.DiscountAmount input').val();
+            var AddlDiscPerc = $(this).find('div.AddlDiscPerc input').val();
+            var AddlDiscAmt = $(this).find('div.AddlDiscAmt input').val();
+            var GrossAmount = $(this).find('div.GrossAmount input').val();
+            var TaxableAmount = $(this).find('div.TaxableAmount input').val();
+            var VATPerc = $(this).find('div.VATPerc input').val();
+            var VATAmount = $(this).find('div.VATAmount input').val();
+            var SGSTPerc = $(this).find('div.SGSTPerc input').val();
+            var SGSTAmount = $(this).find('div.SGSTAmount input').val();
+            var CGSTPerc = $(this).find('div.CGSTPerc input').val();
+            var CGSTAmount = $(this).find('div.CGSTAmount input').val();
+            var IGSTPerc = $(this).find('div.IGSTPerc input').val();
+            var IGSTAmount = $(this).find('div.IGSTAmount input').val();
+            var NetAmount = $(this).find('div.NetAmount input').val();
+            var TAX1Perc = $(this).find('div.TAX1Perc input').val();
+            var TAX1Amount = $(this).find('div.TAX1Amount input').val();
+            var TAX2Perc = $(this).find('div.TAX2Perc input').val();
+            var TAX2Amount = $(this).find('div.TAX2Amount input').val();
+            var TAX3Perc = $(this).find('div.TAX3Perc input').val();
+            var TAX3Amount = $(this).find('div.TAX3Amount input').val();
+
+            if (!product_id || !Qty || !unitAmount) {
+                validationArray = 1
+                
+            }
+
+            var formDict = {product_id: product_id,
+                            PurchaseDetailUniqID: PurchaseDetailUniqID,
+                            unitAmount: unitAmount,
+                            Qty: Qty,
+                            FreeQty: FreeQty,
+                            UnitPrice: UnitPrice,
+                            RateWithTax: RateWithTax,
+                            CostPerItem: CostPerItem,
+                            PriceListID: PriceListID,
+                            DiscountPerc: DiscountPerc,
+                            DiscountAmount: DiscountAmount,
+                            AddlDiscPerc: AddlDiscPerc,
+                            AddlDiscAmt: AddlDiscAmt,
+                            GrossAmount: GrossAmount,
+                            TaxableAmount: TaxableAmount,
+                            VATPerc: VATPerc,
+                            VATAmount: VATAmount,
+                            SGSTPerc: SGSTPerc,
+                            SGSTAmount: SGSTAmount,
+                            CGSTPerc: CGSTPerc,
+                            CGSTAmount: CGSTAmount,
+                            IGSTPerc: IGSTPerc,
+                            IGSTAmount: IGSTAmount,
+                            NetAmount: NetAmount,
+                            TAX1Perc: TAX1Perc,
+                            TAX1Amount: TAX1Amount,
+                            TAX2Perc: TAX2Perc,
+                            TAX2Amount: TAX2Amount,
+                            TAX3Perc: TAX3Perc,
+                            TAX3Amount: TAX3Amount,
+                            }
+
+                formArray.push(formDict)
+                // }
+            
+            
+         });
+    
+        if (validationArray == 0)
+        {
+            var RefferenceBillNo = $('div.RefferenceBillNo input').val()
+            var date = $('div.Date input').val()
+            var VenderInvoiceDate = $('div.VenderInvoiceDate input').val()
+            var CreditPeriod = $('div.CreditPeriod input').val()
+            var LedgerID = $('div.ledgerid select').val()
+            var tax_id = $('div.taxType select').val()
+            var tax_type = $("div.taxType select option:selected").text();
+            var purchaseAccount = $('div.purchaseAccount select').val()
+            var wareHouse = $('div.wareHouse select').val()
+            var voucherNo = $('div.VoucherNo input').val()
+            var customerName = $('div.CustomerName input').val()
+            var address1 = $('div.Address1 textarea').val()
+            var address2 = $('div.Address2 textarea').val()
+            var address3 = $('div.Address3 textarea').val()
+            var notes = $('div.Notes textarea').val()
+            var TotalGrossAmt = $('div.TotalGrossAmt input').val()
+            var AddlDiscAmt = $('div.AddlDiscAmt input').val()
+            var AddlDiscPercent = $('div.AddlDiscPercent input').val()
+            var TotalTax = $('div.TotalTax input').val()
+            var NetTotal = $('div.NetTotal input').val()
+            var TotalDiscount = $('div.TotalDiscount input').val()
+            var GrandTotal = $('div.GrandTotal input').val()
+            var RoundOff = $('div.RoundOff input').val()
+            var SGSTAmount = $('div.SGSTAmount input').val()
+            var CGSTAmount = $('div.CGSTAmount input').val()
+            var IGSTAmount = $('div.IGSTAmount input').val()
+            var TAX1Amount = $('div.TAX1Amount input').val()
+            var TAX2Amount = $('div.TAX2Amount input').val()
+            var TAX3Amount = $('div.TAX3Amount input').val()
+            var VATAmount = $('div.VATAmount input').val()
+            var BillDiscPercent = $('div.BillDiscPercent input').val()
+            var TotalDiscount_print = $('div.TotalDiscount_print input').val()
+            var Balance = $('div.Balance input').val()
+            // var IsActive = $('div.IsActive input').val()
+            var masterID = $('div.instanceID input').val()
+
+            IsActive = false
+            if ($('div.IsActive input').is(":checked"))
+            {
+                IsActive = true
+            }
+
+            if (!RefferenceBillNo){
+                RefferenceBillNo = 0
+            }
+            if (!CreditPeriod){
+                CreditPeriod = 0
+            }
+            if (!TotalGrossAmt){
+                TotalGrossAmt = 0
+            }
+            if (!AddlDiscAmt){
+                AddlDiscAmt = 0
+            }
+            if (!AddlDiscPercent){
+                AddlDiscPercent = 0
+            }
+            if (!TotalTax){
+                TotalTax = 0
+            }
+            if (!NetTotal){
+                NetTotal = 0
+            }
+            if (!TotalDiscount){
+                TotalDiscount = 0
+            }
+            if (!GrandTotal){
+                GrandTotal = 0
+            }
+            if (!RoundOff){
+                RoundOff = 0
+            }
+            if (!SGSTAmount){
+                SGSTAmount = 0
+            }
+            if (!CGSTAmount){
+                CGSTAmount = 0
+            }
+            if (!IGSTAmount){
+                IGSTAmount = 0
+            }
+            if (!TAX1Amount){
+                TAX1Amount = 0
+            }
+            if (!TAX2Amount){
+                TAX2Amount = 0
+            }
+            if (!TAX3Amount){
+                TAX3Amount = 0
+            }
+            if (!VATAmount){
+                VATAmount = 0
+            }
+            if (!BillDiscPercent){
+                BillDiscPercent = 0
+            }
+            if (!TotalDiscount_print){
+                TotalDiscount_print = 0
+            }
+            if (!Balance){
+                Balance = 0
+            }
+
+
+
+            var masterArray = [{RefferenceBillNo:RefferenceBillNo,
+                            date:date,
+                            VenderInvoiceDate:VenderInvoiceDate,
+                            CreditPeriod:CreditPeriod,
+                            LedgerID:LedgerID,
+                            tax_type:tax_type,
+                            tax_id:tax_id,
+                            purchaseAccount:purchaseAccount,
+                            wareHouse:wareHouse,
+                            voucherNo:voucherNo,
+                            customerName:customerName,
+                            address1:address1,
+                            address2:address2,
+                            address3:address3,
+                            notes:notes,
+                            TotalGrossAmt:TotalGrossAmt,
+                            AddlDiscAmt:AddlDiscAmt,
+                            AddlDiscPercent:AddlDiscPercent,
+                            TotalTax:TotalTax,
+                            NetTotal:NetTotal,
+                            TotalDiscount:TotalDiscount,
+                            GrandTotal:GrandTotal,
+                            RoundOff:RoundOff,
+                            SGSTAmount:SGSTAmount,
+                            CGSTAmount:CGSTAmount,
+                            IGSTAmount:IGSTAmount,
+                            TAX1Amount:TAX1Amount,
+                            TAX2Amount:TAX2Amount,
+                            TAX3Amount:TAX3Amount,
+                            VATAmount:VATAmount,
+                            BillDiscPercent:BillDiscPercent,
+                            TotalDiscount_print:TotalDiscount_print,
+                            Balance:Balance,
+                            IsActive:IsActive,
+                            masterID:masterID,
+                            }]
+
+            if (masterID != undefined || masterID != null || masterID != ""){
+                var url = "{% url 'inventories:post_purchaseEdited' %}";
+             
+                data = {
+                      masterArray: JSON.stringify(masterArray),
+                      formArray: JSON.stringify(formArray)
+                    }
+
+                $.ajax({
+                    type : "POST",
+                    url : url,
+                    dataType : 'json',
+                    data : data,
+                    
+                    success : function(data) {
+                        var status = data['status'];
+                        if(status=='true'){
+                         Swal.fire({
+                            position: 'Center',
+                            type: 'success',
+                            title: 'purchase updated Successfully',
+                            showConfirmButton: false,
+                            timer: 1000,
+                          }).then(function(){ 
+                               // location.reload();
+                               window.location = "{% url 'inventories:purchaseInvoices' %}"
+                               }
+                            );
+                        }
+                    },
+                    error : function(data){
+                    }
+
+                });
+            }
+        }
+        else{
+            Swal.fire({
+                position: 'Center',
+                type: 'warning',
+                title: 'please fill required fields',
+                showConfirmButton: false,
+                timer: 1000,
+              })
+        }
+
+    }
+
+$(function () {
+    $.ajaxSetup({
+        headers: { "X-CSRFToken": getCookie("csrftoken") }
+    });
+});
+
+
+function getCookie(c_name)
+{
+    if (document.cookie.length > 0)
+    {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1)
+        {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) c_end = document.cookie.length;
+            return unescape(document.cookie.substring(c_start,c_end));
+        }
+    }
+    return "";
+ }     
+    
+
+</script>
+<!-- myscript Ending -->
+
+<!-- <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> -->
+{% endblock %}

@@ -1,0 +1,53 @@
+[
+	{
+	    "model": "brands.Designation",
+	    "pk": 1,
+	    "fields": {
+	      "CompanyID": "",
+	      "DesignationID": 1,
+	      "BranchID" : 1,
+	      "DesignationName" : "Managing Director",
+	      "ShortName" : "MD",
+	      "DesignationUnder" : 1,
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.Designation",
+	    "pk": 2,
+	    "fields": {
+	      "CompanyID": "",
+	      "DesignationID": 2,
+	      "BranchID" : 1,
+	      "DesignationName" : "Cheif Executive Officer",
+	      "ShortName" : "CEO",
+	      "DesignationUnder" : 2,
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.Designation",
+	    "pk": 3,
+	    "fields": {
+	      "CompanyID": "",
+	      "DesignationID": 3,
+	      "BranchID" : 1,
+	      "DesignationName" : "Business Development Officer",
+	      "ShortName" : "BDO",
+	      "DesignationUnder" : 3,
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

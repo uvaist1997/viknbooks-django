@@ -1,0 +1,126 @@
+[
+	{
+	    "model": "brands.PriceCategory",
+	    "pk": 1,
+	    "fields": {
+	      "PriceCategoryID": 1,
+	      "BranchID" : 1,
+	      "PriceCategoryName" : "Standard",
+	      "ColumnName" : "Sales Price",
+	      "IsActive" : 1,
+	      "Notes" : "Default PriceCategory",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.PriceCategory",
+	    "pk": 2,
+	    "fields": {
+	      "PriceCategoryID": 2,
+	      "BranchID" : 1,
+	      "PriceCategoryName" : "Sales Price1",
+	      "ColumnName" : "Sales Price1",
+	      "IsActive" : 1,
+	      "Notes" : "Default PriceCategory",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.PriceCategory",
+	    "pk": 3,
+	    "fields": {
+	      "PriceCategoryID": 3,
+	      "BranchID" : 1,
+	      "PriceCategoryName" : "Sales Price2",
+	      "ColumnName" : "Sales Price2",
+	      "IsActive" : 1,
+	      "Notes" : "Default PriceCategory",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.PriceCategory",
+	    "pk": 4,
+	    "fields": {
+	      "PriceCategoryID": 4,
+	      "BranchID" : 1,
+	      "PriceCategoryName" : "Sales Price3",
+	      "ColumnName" : "Sales Price3",
+	      "IsActive" : 1,
+	      "Notes" : "Default PriceCategory",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.PriceCategory_Log",
+	    "pk": 1,
+	    "fields": {
+	      "ID": 1,
+	      "BranchID" : 1,
+	      "TransactionID" : 1,
+	      "PriceCategoryName" : "Standard",
+	      "ColumnName" : "Sales Price",
+	      "IsActive" : 1,
+	      "Notes" : "Default PriceCategory Log",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.PriceCategory_Log",
+	    "pk": 2,
+	    "fields": {
+	      "ID": 2,
+	      "BranchID" : 1,
+	      "TransactionID" : 1,
+	      "PriceCategoryName" : "Sales Price1",
+	      "ColumnName" : "Sales Price1",
+	      "IsActive" : 1,
+	      "Notes" : "Default PriceCategory Log",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.PriceCategory_Log",
+	    "pk": 3,
+	    "fields": {
+	      "ID": 3,
+	      "BranchID" : 1,
+	      "TransactionID" : 1,
+	      "PriceCategoryName" : "Sales Price2",
+	      "ColumnName" : "Sales Price2",
+	      "IsActive" : 1,
+	      "Notes" : "Default PriceCategory Log",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.PriceCategory_Log",
+	    "pk": 4,
+	    "fields": {
+	      "ID": 4,
+	      "BranchID" : 1,
+	      "TransactionID" : 1,
+	      "PriceCategoryName" : "Sales Price3",
+	      "ColumnName" : "Sales Price3",
+	      "IsActive" : 1,
+	      "Notes" : "Default PriceCategory Log",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

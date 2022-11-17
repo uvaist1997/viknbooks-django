@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+
+
+ <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Transactions</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">{{title}}</a></li>
+                                            <li class="breadcrumb-item active">{{title}}</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">{{title}}</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form enctype="multipart/form-data" method="post" class="ajax reset redirect">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                            <div class="col-xl-12">                        
+
+                                                <div class="row">
+                                                    <div class="form-group mb-3 col-6">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Ledger Name
+                                                        </label>
+                                                        <select name="ledger" class="form-control custom-select ">
+                                                       
+                                                            {% for l in ledger_datas %}
+                                                            <option value="{{l.LedgerID}}">{{l.LedgerName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Tax Types
+                                                        </label>
+                                                        <select name="taxType" class="form-control custom-select ">
+                                                       
+                                                            {% for t in taxType_datas %}
+                                                            <option value="{{t.TransactionTypesID}}">{{t.Name}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Purchase Account
+                                                        </label>
+                                                        <select name="purchaseAccount" class="form-control custom-select ">
+                                                       
+                                                            {% for p in purchaseAccount_datas %}
+                                                            <option value="{{p.LedgerID}}">{{p.LedgerName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Ware House
+                                                        </label>
+                                                        <select name="wareHouse" class="form-control custom-select ">
+                                                       
+                                                            {% for w in wareHouse_datas %}
+                                                            <option value="{{w.WarehouseID}}">{{w.WarehouseName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    {% for form_data in form %}
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form_data.label }}
+                                                            {{ form_data }}
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>                                              
+
+                                            </div> <!-- end col-->
+                                        </div>
+                                        <!-- end row -->
+
+                                        <div class="col-12">
+                                            <div class="card table-responsive">
+                                                <div class="purchaseDetails_formset card-body">
+                                                    <h2>Purchase Invoice Details</h2>
+                                                    <table id="datatable" class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>ProductID</th>
+                                                                <th>Product</th>
+                                                                <th>Qty</th>
+                                                                <th>FreeQty</th>
+                                                                <th>UnitPrice</th>
+                                                                <th>RateWithTax</th>
+                                                                <th>CostPerItem</th>
+                                                                <th>PriceListID</th>
+                                                                <th>DiscountAmount</th>
+                                                                <th>AddlDiscAmt</th>
+                                                                
+                                                                <th>IGSTAmount</th>
+                                                                <th>NetAmount</th>
+                                                                <th>TAX1Amount</th>
+                                                      <!--           <th>TAX2Amount</th>
+                                                                <th>TAX3Amount</th> -->
+                                                            </tr>
+                                                        </thead>
+                                                        
+                                                        <tbody>
+                                                            {% for item in purchaseDetails_formset %}
+                                                                <tr class="form_set_row">
+                                                                    <td class="hidden">{{ item.id }}</td>
+                                                                     <td class="productID">
+                                                                        <div class="productID">
+                                                                            {{item.ProductID}}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="product">
+                                                                            <select class="product">
+                                                                                {% for p in product_datas %}
+                                                                                <option value="{{p.ProductID}}" style="width: 75px;">{{p.ProductName}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                    </td>
+                                                                     <td class="Qty">  
+                                                                        <div class="" style="width: 75px;">
+                                                                            {{item.Qty}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="FreeQty">
+                                                                        <div class="">
+                                                                            {{item.FreeQty}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="UnitPrice">
+                                                                        <div class="">
+                                                                            {{item.UnitPrice}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="RateWithTax">
+                                                                        <div class="">
+                                                                            {{item.RateWithTax}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="CostPerItem">
+                                                                        <div class="">
+                                                                            {{item.CostPerItem}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="PriceListID">
+                                                                        <div class="">
+                                                                            {{item.PriceListID}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="DiscountAmount">
+                                                                        <div class="">
+                                                                            {{item.DiscountAmount}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="AddlDiscAmt">
+                                                                        <div class="">
+                                                                            {{item.AddlDiscAmt}}
+                                                                        </div>
+                                                                    </td>
+                                                                    
+                                                                    <td class="IGSTAmount">
+                                                                        <div class="">
+                                                                            {{item.IGSTAmount}}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="NetAmount">
+                                                                        <div class="">
+                                                                            {{item.NetAmount}}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="TAX1Amount">
+                                                                        <div class="">
+                                                                            {{item.TAX1Amount}}
+                                                                        </div>
+                                                                    </td>
+                                                                   <!--  <td class="TAX2Amount">
+                                                                        <div class="">
+                                                                            {{item.TAX2Amount}}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="TAX3Amount">
+                                                                        <div class="">
+                                                                            {{item.TAX3Amount}}
+                                                                        </div>
+                                                                    </td> -->
+                                                                     
+                                                                    <td class="one">{% if form.instance.pk %}{{ item.DELETE }}{% endif %}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                    {{ purchaseDetails_formset.management_form }}
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col -->
+
+
+                                            <div class="row mt-3">
+                                                <div class="col-12 text-center">
+                                                    <button type="submit" class="btn btn-success waves-effect waves-light m-1"> Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('.purchaseDetails_formset table tr.form_set_row').formset({
+                prefix: '{{ purchaseDetails_formset.prefix }}',
+                formCssClass: 'dynamic-formset1',
+                'added' : function (row) {
+                    get_product()
+                    // row.find('.LedgerID .selectpicker').select2();
+                
+                },
+                 'removed': function (row) {
+                    // row.remove();
+                    get_product()
+
+                }
+
+            });
+            $('input[type=text]').focus(function () { 
+                $(this).select();
+            });
+            $('input[type=text]').mouseup(function (e) { // fix for chrome and safari
+                e.preventDefault();
+            });
+            $('input[type=text]').select(function () {
+                $('.log').append(' Handler for .select() called. ');
+            });
+
+            get_product()
+
+        });
+
+    $(document).on('change keyup', '.product td, .product select', function() {
+        var $this = $(this);
+        var parent = $this.parents('tr.form_set_row');
+        var product = $this.val();
+
+        var product_id = parent.find('.productID td, .productID div input').val(product);
+
+    });
+
+    function get_product() {
+        
+
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            var product_id = $(this).find('.product td, .product select').val();
+
+            $(this).find('.productID td, .productID div input').val(product_id);
+
+            // $(".productID td, .productID div input").val(product_id);
+
+        });
+        
+
+    }
+    
+</script>
+{% endblock %}

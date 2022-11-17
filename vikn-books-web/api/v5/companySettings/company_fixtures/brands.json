@@ -1,0 +1,15 @@
+[
+	{
+	    "model": "brands.Brand",
+	    "pk": 1,
+	    "fields": {
+	      "BrandID": 1,
+	      "BranchID" : 1,
+	      "BrandName" : "Primary Brand",
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

@@ -1,0 +1,136 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      {% include 'reports/print_header.html' %}
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            <td>{% trans 'Description' %}</td>
+            <td class="right">{% trans 'Taxable Amount' %}</td>
+            {% if invoice_type == "tax_summary_gst" %}
+
+            <td class="right">IGST</td>
+            <td class="right">CGST</td>
+            <td class="right">SGST</td>
+            <td class="right">{% trans 'Total Tax' %}</td>
+            {% elif invoice_type == "tax_summary_vat" %}
+            <td class="right">VAT</td>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sub-head">{% trans 'OutWard Supplies' %}</td>
+          </tr>
+          {% for i in details.outward_supplies %}
+          <tr class="{% if i.Heading == 'Total'%}border-bottom{% endif %}">
+            <td class="{% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.Heading}}
+            </td>
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.TaxableAmount|floatformat:PriceRounding}}
+            </td>
+            {% if invoice_type == "tax_summary_gst" %}
+
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.IGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.CGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.SGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.TotalTax|floatformat:PriceRounding}}
+            </td>
+            {% elif invoice_type == "tax_summary_vat" %}
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.VAT|floatformat:PriceRounding}}
+            </td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <tr>
+            <td class="sub-head">{% trans 'InWard Supplies' %}</td>
+          </tr>
+          {% for i in details.inward_supplies %}
+          <tr class="{% if i.Heading == 'Total'%}border-bottom{% endif %}">
+            <td class="{% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.Heading}}
+            </td>
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.TaxableAmount|floatformat:PriceRounding}}
+            </td>
+            {% if invoice_type == "tax_summary_gst" %}
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.IGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.CGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.SGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.TotalTax|floatformat:PriceRounding}}
+            </td>
+            {% elif invoice_type == "tax_summary_vat" %}
+            <td class="right {% if i.Heading == 'Total'%}totla-bold{% endif %}">
+              {{i.VAT|floatformat:PriceRounding}}
+            </td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <tr>
+            <td class="totla-bold">{% trans 'Net GST Due' %}</td>
+            <td class="right totla-bold">
+              {{details.due_Amount.due_TaxableAmount|floatformat:PriceRounding}}
+            </td>
+            {% if invoice_type == "tax_summary_gst" %}
+            <td class="right totla-bold">
+              {{details.due_Amount.due_IGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right totla-bold">
+              {{details.due_Amount.due_CGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right totla-bold">
+              {{details.due_Amount.due_SGST|floatformat:PriceRounding}}
+            </td>
+            <td class="right totla-bold">
+              {{details.due_Amount.due_TotalTax|floatformat:PriceRounding}}
+            </td>
+            {% elif invoice_type == "tax_summary_vat" %}
+            <td class="right totla-bold">
+              {{details.due_Amount.due_VAT|floatformat:PriceRounding}}
+            </td>
+            {% endif %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+{% endinlinecss %}

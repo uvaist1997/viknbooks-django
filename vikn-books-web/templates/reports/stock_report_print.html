@@ -1,0 +1,63 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      {% include 'reports/print_header.html' %}
+
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            <td>{% trans 'Sl No' %}</td>
+            <td class="product-name">{% trans 'Barcode' %}</td>
+            <td class="product-name">{% trans 'Product' %}</td>
+            <td class="right">{% trans 'Current Stock' %}</td>
+            {% comment %} <td class="right">{% trans 'Stock In Base Unit' %}</td> {% endcomment %}
+            <td class="right">{% trans 'Purchase Price' %}</td>
+            <td class="right">{% trans 'Sales Price' %}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in details %}
+          <tr class="{% if i.ProductName == 'Total' %} all-total{% endif %}">
+            <td>
+              {% if not i.ProductName == 'Total' %} {{forloop.counter}}
+              {% endif %}
+            </td>
+            <td>{{i.Barcode}}</td>
+            <td>{{i.ProductName}}</td>
+            <td class="right">{{i.CurrentStock|floatformat:PriceRounding}} {{i.UnitName}}</td>
+            {% comment %} <td class="right">
+              {{i.CurrentBaseStock|floatformat:PriceRounding}}
+            </td> {% endcomment %}
+            <td class="right">{{i.PurchasePrice|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.SalesPrice|floatformat:PriceRounding}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+
+ {% endinlinecss %}

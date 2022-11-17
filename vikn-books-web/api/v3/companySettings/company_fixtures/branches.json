@@ -1,0 +1,14 @@
+[
+	{
+	    "model": "brands.Branch",
+	    "pk": 1,
+	    "fields": {
+	      "BranchID": 1,
+	      "BranchName" : "Primary Branch",
+	      "BranchLocation" : "Default Location",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

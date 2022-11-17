@@ -1,0 +1,202 @@
+[
+	{
+	    "model": "brands.MasterType",
+	    "pk": 1,
+	    "fields": {
+	      "MasterTypeID": 1,
+	      "BranchID" : 1,
+	      "Name" : "Card Network",
+	      "Description" : "Card Network",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType",
+	    "pk": 2,
+	    "fields": {
+	      "MasterTypeID": 2,
+	      "BranchID" : 1,
+	      "Name" : "Payment Gateway",
+	      "Description" : "Payment Gateway",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType",
+	    "pk": 3,
+	    "fields": {
+	      "MasterTypeID": 3,
+	      "BranchID" : 1,
+	      "Name" : "Payment Status",
+	      "Description" : "Payment Status",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType",
+	    "pk": 4,
+	    "fields": {
+	      "MasterTypeID": 4,
+	      "BranchID" : 1,
+	      "Name" : "Serving Type",
+	      "Description" : "Serving Type",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType",
+	    "pk": 5,
+	    "fields": {
+	      "MasterTypeID": 5,
+	      "BranchID" : 1,
+	      "Name" : "Countries",
+	      "Description" : "List of countries",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType",
+	    "pk": 6,
+	    "fields": {
+	      "MasterTypeID": 6,
+	      "BranchID" : 1,
+	      "Name" : "Sales GST Type",
+	      "Description" : "Sales GST Type",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType",
+	    "pk": 7,
+	    "fields": {
+	      "MasterTypeID": 7,
+	      "BranchID" : 1,
+	      "Name" : "Purchase GST Type",
+	      "Description" : "Purchase GST Type",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType",
+	    "pk": 8,
+	    "fields": {
+	      "MasterTypeID": 8,
+	      "BranchID" : 1,
+	      "Name" : "VAT Type",
+	      "Description" : "VAT Type",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType_Log",
+	    "pk": 1,
+	    "fields": {
+	      "ID": 1,
+	      "BranchID" : 1,
+	      "TransactionID" : 1,
+	      "Name" : "Card Network",
+	      "Description" : "Card Network",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType_Log",
+	    "pk": 2,
+	    "fields": {
+	      "ID": 2,
+	      "BranchID" : 1,
+	      "TransactionID" : 2,
+	      "Name" : "Payment Gateway",
+	      "Description" : "Payment Gateway",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType_Log",
+	    "pk": 3,
+	    "fields": {
+	      "ID": 3,
+	      "BranchID" : 1,
+	      "TransactionID" : 3,
+	      "Name" : "Payment Status",
+	      "Description" : "Payment Status",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType_Log",
+	    "pk": 4,
+	    "fields": {
+	      "ID": 4,
+	      "BranchID" : 1,
+	      "TransactionID" : 4,
+	      "Name" : "Serving Type",
+	      "Description" : "Serving Type",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType_Log",
+	    "pk": 5,
+	    "fields": {
+	      "ID": 5,
+	      "BranchID" : 1,
+	      "TransactionID" : 5,
+	      "Name" : "Countries",
+	      "Description" : "List of countries",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType_Log",
+	    "pk": 6,
+	    "fields": {
+	      "ID": 6,
+	      "BranchID" : 1,
+	      "TransactionID" : 6,
+	      "Name" : "Sales GST Type",
+	      "Description" : "Sales GST Type",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType_Log",
+	    "pk": 7,
+	    "fields": {
+	      "ID": 7,
+	      "BranchID" : 1,
+	      "TransactionID" : 7,
+	      "Name" : "Purchase GST Type",
+	      "Description" : "Purchase GST Type",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	},
+	{
+	    "model": "brands.MasterType_Log",
+	    "pk": 8,
+	    "fields": {
+	      "ID": 8,
+	      "BranchID" : 1,
+	      "TransactionID" : 8,
+	      "Name" : "VAT Type",
+	      "Description" : "VAT Type",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1
+	    }
+	}
+]

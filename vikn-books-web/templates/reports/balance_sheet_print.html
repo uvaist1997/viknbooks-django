@@ -1,0 +1,93 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+    
+      {% include 'reports/print_header.html' %}
+    {% if VoucherType == 1 %}
+      <table class="item-table">
+        <thead class="table-heading">
+        <tr>
+            <td>{% trans 'Liabilities' %}</td>
+            <td class="right"></td>
+            <td class="product-name">{% trans 'Assets' %}</td>
+            <td class="right"></td>
+          </tr>
+          <tr>
+            <td>{% trans 'Group Name' %}</td>
+            <td class="right">{% trans 'Amount' %}</td>
+            <td class="product-name">{% trans 'Group Name' %}</td>
+            <td class="right">{% trans 'Amount' %}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in details %}
+          <tr class="">            
+            <td>{{i.liabilities.group_name}}</td>
+            <td class="right">{{i.liabilities.balance|floatformat:PriceRounding}}</td>
+            <td>{{i.assets.group_name}}</td>
+            <td class="right">{{i.assets.balance|floatformat:PriceRounding}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% elif VoucherType == 2 %}
+      <table class="item-table">
+        <thead class="table-heading">
+        <tr>
+            <td>{% trans 'Liabilities' %}</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="product-name">{% trans 'Assets' %}</td>
+            <td class="right"></td>
+            <td class="right"></td>
+          </tr>
+          <tr>
+            <td>{% trans 'Group Name' %}</td>
+            <td>{% trans 'Ledger Name' %}</td>
+            <td class="right">{% trans 'Amount' %}</td>
+            <td class="product-name">{% trans 'Group Name' %}</td>
+            <td class="product-name">{% trans 'Ledger Name' %}</td>
+            <td class="right">{% trans 'Amount' %}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in details %}
+          <tr class="">
+            
+            <td>{{i.liabilities.group_name}}</td>
+            <td>{{i.liabilities.ledger_name}}</td>
+            <td class="right">{{i.liabilities.balance|floatformat:PriceRounding}}</td>
+            <td>{{i.assets.group_name}}</td>
+            <td>{{i.assets.ledger_name}}</td>
+            <td class="right">{{i.assets.balance|floatformat:PriceRounding}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+ {% endinlinecss %}

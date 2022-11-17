@@ -1,0 +1,73 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      {% include 'reports/print_header.html' %}
+
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            <td>Sl/NO</td>
+            <td class="product-name">{% trans 'Date' %}</td>
+            <td class="product-name">{% trans 'Voucher No' %}</td>
+            <td>{% trans 'VoucherType' %}</td>
+            <td class="right">{% trans 'Ledger Name' %}</td>
+            {% comment %} <td class="right">{% trans 'Stock In Base Unit' %}</td> {% endcomment %}
+            <td class="right">{% trans 'WareHouse Name' %}</td>
+            <td class="right">{% trans 'UnitName' %}</td>
+            <td class="right">{% trans 'QuantyIn' %}</td>
+            <td class="right">{% trans 'QuantyOut' %}</td>
+            <td class="right">{% trans 'Stock' %}</td>
+            {% comment %} <td class="right">{% trans 'QuantyInRate' %}</td>
+            <td class="right">{% trans 'QuantyOutRate' %}</td> {% endcomment %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in details %}
+          <tr class="{% if i.LedgerName == 'Total' %} all-total{% endif %}">
+            <td>
+              {% if not i.LedgerName == 'Total' %} {{forloop.counter}}
+              {% endif %}
+            </td>
+            <td>{{i.Date}}</td>
+            <td>{{i.VoucherNo}}</td>
+            <td>{{i.VoucherType}}</td>
+            <td>{{i.LedgerName}}</td>
+            <td>{{i.WareHouseName}}</td>
+            <td>{{i.UnitName}}</td>
+            <td class="right">{{i.QtyIn|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.QtyOut|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.Stock|floatformat:PriceRounding}}</td>
+            {% comment %} <td class="right">{{i.QuantyInRate|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.QuantyOutRate|floatformat:PriceRounding}}</td> {% endcomment %}
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+
+ {% endinlinecss %}

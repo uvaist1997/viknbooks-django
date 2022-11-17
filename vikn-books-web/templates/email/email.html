@@ -1,0 +1,112 @@
+{% load inlinecss %} {% inlinecss "email.css" %} {% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{{subject}}</title>
+  </head>
+  <body>
+    <div id="main">
+      <div id="top">
+        <div id="header">
+          <div class="center">
+            <table>
+              <tr>
+                <td class="td35">
+                  <h1 id="logo">
+                    <a href="http://www.viknbooks.com/"
+                      ><img
+                        src="https://www.demo.viknbooks.com/static/images/web/logo.png"
+                        alt="Logo"
+                    /></a>
+                  </h1>
+                </td>
+                <td class="td65">
+                  <div class="right">
+                    <div class="social">
+                      <a href="https://plus.google.com/viknbooks"
+                        ><img
+                          src="http://www.tegain.com/static/web/images/gplus.png"
+                          alt="google plus"
+                      /></a>
+                      <a href="https://www.twitter.com/viknbooks"
+                        ><img
+                          src="http://www.tegain.com/static/web/images/twitter.png"
+                          alt="twitter"
+                      /></a>
+                      <a href="https://www.facebook.com/viknbooks"
+                        ><img
+                          src="http://www.tegain.com/static/web/images/facebook.png"
+                          alt="facebook"
+                      /></a>
+                      <br class="clear" />
+                    </div>
+                    <a href="http://viknbooks.com" class="website"
+                      >viknbooks.com</a
+                    >
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id="spotlight">
+          <h2>
+            <b>VIKNBOOKS</b>
+            <span>The Complete ERP solution</span>
+          </h2>
+        </div>
+      </div>
+      <div id="content">
+        <div class="contentInner">
+          <p>Hello <b>{{current_user}}</b>,</p>
+          <p>username : {{username}}</p>
+          <p>Your password reset token is</p>
+          <p
+            style="
+              border: 3px solid;
+              padding: 10px;
+              font-weight: bold;
+              text-align: center;
+            "
+          >
+          {% if is_mobile %}
+          {{ uid }}/{{ token }}
+          {% else %}
+          {{token}}
+          {% endif %}
+
+          </p>
+          <p>
+            <a href="#"
+              >Please copy and paste the token</a
+            >
+          </p>
+          <div class="bottom">
+            <p>Best Regards,</p>
+            <p><b>The Team Viknbooks</b></p>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <p>
+          This is an automatically generated email, please do not reply to this
+          message.
+        </p>
+        <p>
+          Please feel free to contact us should you have any questions or
+          concerns regarding <a href="http://viknbooks.com">viknbooks.com</a> or
+          your email subscription at
+          <a href="mailto:viknbooks@gmail.com">viknbooks@gmail.com</a>.
+        </p>
+        <p>This email was sent to <a href="mailto:{{email}}">{{email}}</a></p>
+      </div>
+    </div>
+    <script>
+      function copyToken(text) {
+        navigator.clipboard.writeText(text);
+      }
+    </script>
+  </body>
+</html>
+{% endinlinecss %}

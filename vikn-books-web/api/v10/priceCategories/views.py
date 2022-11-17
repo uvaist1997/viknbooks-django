@@ -1,0 +1,313 @@
+from brands.models import PriceCategory, PriceCategory_Log
+from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import api_view, permission_classes, renderer_classes,authentication_classes
+from rest_framework.response import Response
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
+from api.v10.priceCategories.serializers import PriceCategorySerializer, PriceCategoryRestSerializer
+from api.v10.brands.serializers import ListSerializer
+from api.v10.priceCategories.functions import generate_serializer_errors
+from rest_framework import status
+from api.v10.priceCategories.functions import get_auto_id
+import datetime
+from main.functions import get_company, activity_log
+
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JWTTokenUserAuthentication,))
+@renderer_classes((JSONRenderer,))
+def create_priceCategory(request):
+    data = request.data
+    CompanyID = data['CompanyID']
+    CompanyID = get_company(CompanyID)
+    CreatedUserID = data['CreatedUserID']
+
+    today = datetime.datetime.now()
+    serialized = PriceCategorySerializer(data=request.data)
+
+    if serialized.is_valid():
+
+        BranchID = serialized.data['BranchID']
+        PriceCategoryName = serialized.data['PriceCategoryName']
+        ColumnName = serialized.data['ColumnName']
+        IsActive = serialized.data['IsActive']
+        Notes = serialized.data['Notes']
+
+        Action = 'A'
+        PriceCategoryID = get_auto_id(PriceCategory, BranchID, CompanyID)
+
+        is_nameExist = False
+
+        PriceCategoryNameLow = PriceCategoryName.lower()
+
+        categories = PriceCategory.objects.filter(
+            CompanyID=CompanyID)
+
+        for category in categories:
+
+            category_name = category.PriceCategoryName
+
+            categoryName = category_name.lower()
+
+            if PriceCategoryNameLow == categoryName:
+                is_nameExist = True
+
+        if not is_nameExist:
+
+            # serialized.save(UnitID=UnitID,CreatedDate=today,ModifiedDate=today)
+            PriceCategory.objects.create(
+                PriceCategoryID=PriceCategoryID,
+                BranchID=BranchID,
+                PriceCategoryName=PriceCategoryName,
+                ColumnName=ColumnName,
+                IsActive=IsActive,
+                Notes=Notes,
+                Action=Action,
+                CreatedUserID=CreatedUserID,
+                CreatedDate=today,
+                UpdatedDate=today,
+                CompanyID=CompanyID,
+            )
+
+            PriceCategory_Log.objects.create(
+                BranchID=BranchID,
+                TransactionID=PriceCategoryID,
+                PriceCategoryName=PriceCategoryName,
+                ColumnName=ColumnName,
+                IsActive=IsActive,
+                Notes=Notes,
+                Action=Action,
+                CreatedUserID=CreatedUserID,
+                CreatedDate=today,
+                UpdatedDate=today,
+                CompanyID=CompanyID,
+            )
+
+            #request , company, log_type, user, source, action, message, description
+            activity_log(request._request, CompanyID, 'Information', CreatedUserID, 'PriceCategory',
+                         'Create', 'PriceCategory created successfully.', 'PriceCategory saved successfully.')
+
+            data = {"PriceCategoryID": PriceCategoryID}
+            data.update(serialized.data)
+            response_data = {
+                "StatusCode": 6000,
+                "data": data
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        else:
+            #request , company, log_type, user, source, action, message, description
+            activity_log(request._request, CompanyID, 'Warning', CreatedUserID, 'PriceCategory',
+                         'Create', 'PriceCategory created Failed.', 'Price Category Name Already Exist!')
+
+            response_data = {
+                "StatusCode": 6001,
+                "message": "Price Category Name Already Exist!!!"
+            }
+
+        return Response(response_data, status=status.HTTP_200_OK)
+    else:
+        #request , company, log_type, user, source, action, message, description
+        activity_log(request._request, CompanyID, 'Error', CreatedUserID, 'PriceCategory', 'Create',
+                     'PriceCategory created Failed.', generate_serializer_errors(serialized._errors))
+        response_data = {
+            "StatusCode": 6001,
+            "message": generate_serializer_errors(serialized._errors)
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JWTTokenUserAuthentication,))
+@renderer_classes((JSONRenderer,))
+def edit_priceCategory(request, pk):
+    data = request.data
+    CompanyID = data['CompanyID']
+    CompanyID = get_company(CompanyID)
+    CreatedUserID = data['CreatedUserID']
+    BranchID = data['BranchID']
+    PriceCategoryName = data['PriceCategoryName']
+    Notes = data['Notes']
+
+    today = datetime.datetime.now()
+    instance = PriceCategory.objects.get(CompanyID=CompanyID, pk=pk)
+    if not PriceCategory.objects.filter(CompanyID=CompanyID, PriceCategoryName__iexact=PriceCategoryName).exclude(pk=pk).exists():
+        Action = 'M'
+        instance.PriceCategoryName = PriceCategoryName
+        instance.Notes = Notes
+        instance.Action = Action
+        instance.CreatedUserID = CreatedUserID
+        instance.UpdatedDate = today
+        instance.save()
+
+        PriceCategory_Log.objects.create(
+            BranchID=BranchID,
+            TransactionID=instance.PriceCategoryID,
+            PriceCategoryName=PriceCategoryName,
+            Notes=Notes,
+            Action=Action,
+            CreatedUserID=CreatedUserID,
+            CreatedDate=today,
+            UpdatedDate=today,
+            CompanyID=CompanyID,
+        )
+
+        response_data = {
+            "StatusCode": 6000
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
+
+
+    else:
+        #request , company, log_type, user, source, action, message, description
+        response_data = {
+            "StatusCode": 6001,
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JWTTokenUserAuthentication,))
+@renderer_classes((JSONRenderer,))
+def priceCategories(request):
+    data = request.data
+    CompanyID = data['CompanyID']
+    CompanyID = get_company(CompanyID)
+    CreatedUserID = data['CreatedUserID']
+
+    serialized1 = ListSerializer(data=request.data)
+    if serialized1.is_valid():
+        BranchID = serialized1.data['BranchID']
+        if PriceCategory.objects.filter(CompanyID=CompanyID).exists():
+            instances = PriceCategory.objects.filter(
+                CompanyID=CompanyID)
+            serialized = PriceCategoryRestSerializer(instances, many=True)
+
+            #request , company, log_type, user, source, action, message, description
+            activity_log(request._request, CompanyID, 'Information', CreatedUserID, 'PriceCategory',
+                         'List View', 'PriceCategory List Viewd Successfully', 'PriceCategory List Viewd Successfully')
+
+            response_data = {
+                "StatusCode": 6000,
+                "data": serialized.data
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        else:
+            #request , company, log_type, user, source, action, message, description
+            activity_log(request._request, CompanyID, 'Warning', CreatedUserID, 'PriceCategory', 'List View',
+                         'PriceCategory List Viewd Failed', 'Price Category Not Found under this Branch')
+
+            response_data = {
+                "StatusCode": 6001,
+                "message": "Price Category Not Found in this BranchID!"
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+    else:
+        response_data = {
+            "StatusCode": 6001,
+            "message": "Branch ID You Enterd is not Valid!!!"
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JWTTokenUserAuthentication,))
+@renderer_classes((JSONRenderer,))
+def priceCategory(request, pk):
+    data = request.data
+    CompanyID = data['CompanyID']
+    CompanyID = get_company(CompanyID)
+    CreatedUserID = data['CreatedUserID']
+
+    if PriceCategory.objects.filter(CompanyID=CompanyID, pk=pk).exists():
+        instance = PriceCategory.objects.get(CompanyID=CompanyID, pk=pk)
+        serialized = PriceCategoryRestSerializer(instance)
+
+        #request , company, log_type, user, source, action, message, description
+        activity_log(request._request, CompanyID, 'Information', CreatedUserID, 'PriceCategory', 'View',
+                     'PriceCategory Single Page Viewd Successfully', 'PriceCategory Single Page Viewd Successfully')
+        response_data = {
+            "StatusCode": 6000,
+            "data": serialized.data
+        }
+    else:
+        #request , company, log_type, user, source, action, message, description
+        activity_log(request._request, CompanyID, 'Warning', CreatedUserID, 'PriceCategory',
+                     'View', 'PriceCategory Single Page Viewd Failed', 'Price Category Not Found')
+        response_data = {
+            "StatusCode": 6001,
+            "message": "Price Category Not Found!"
+        }
+
+    return Response(response_data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JWTTokenUserAuthentication,))
+@renderer_classes((JSONRenderer,))
+def delete_priceCategory(request, pk):
+    data = request.data
+    CompanyID = data['CompanyID']
+    CompanyID = get_company(CompanyID)
+    CreatedUserID = data['CreatedUserID']
+
+    today = datetime.datetime.now()
+    instance = None
+    if PriceCategory.objects.filter(CompanyID=CompanyID, pk=pk).exists():
+        instance = PriceCategory.objects.get(CompanyID=CompanyID, pk=pk)
+    if instance:
+        BranchID = instance.BranchID
+        PriceCategoryID = instance.PriceCategoryID
+        PriceCategoryName = instance.PriceCategoryName
+        ColumnName = instance.ColumnName
+        IsActive = instance.IsActive
+        Notes = instance.Notes
+        Action = "D"
+
+        instance.delete()
+
+        PriceCategory_Log.objects.create(
+            BranchID=BranchID,
+            TransactionID=PriceCategoryID,
+            PriceCategoryName=PriceCategoryName,
+            ColumnName=ColumnName,
+            IsActive=IsActive,
+            Notes=Notes,
+            Action=Action,
+            CreatedUserID=CreatedUserID,
+            CreatedDate=today,
+            UpdatedDate=today,
+            CompanyID=CompanyID,
+        )
+
+        #request , company, log_type, user, source, action, message, description
+        activity_log(request._request, CompanyID, 'Information', CreatedUserID, 'PriceCategory',
+                     'Delete', 'PriceCategory Deleted Successfully', 'Price Category Deleted Successfully')
+
+        response_data = {
+            "StatusCode": 6000,
+            "title": "Success",
+            "message": "Price Category Deleted Successfully!"
+        }
+    else:
+        #request , company, log_type, user, source, action, message, description
+        activity_log(request._request, CompanyID, 'Warning', CreatedUserID, 'PriceCategory',
+                     'Delete', 'PriceCategory Deleted Failed', 'Price Category Not Found')
+        response_data = {
+            "StatusCode": 6001,
+            "title": "Failed",
+            "message": "Price Category Not Found!"
+        }
+
+    return Response(response_data, status=status.HTTP_200_OK)

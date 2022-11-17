@@ -1,0 +1,771 @@
+{% load static i18n %}
+{% load tag_library %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_template_four.css" %}
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+            <div class="invoice-details-container">
+              <div class="image-group">
+                {% if company.CompanyLogo %} 
+                <div class="image-container">
+                  <img src="{{company.CompanyLogo}}" onerror="this.onerror=null;this.src='{% static 'images/Logo.svg' %}';">
+                </div>
+                {% endif %}
+                <div class="organisation-info">
+                  {% if company_name %}
+                  <span class="organisation-name">{{ company_name }}</span>
+                  {% else %}
+                  <span class="organisation-name">{{ company.CompanyName }}</span>
+                  {% endif %}
+                  {% comment %} <span class="organisation-other-info address">{{company.Address1}} {{company.Address2}} {{company.Address3}} {% if company.Address3 and company.City %},{% endif %} {{company.City}} {% if company.StateName and company.City %},{% endif %} {{company.StateName}} {{company.PostalCode}}</span> {% endcomment %}
+                   {% if company.Description %}
+                  <span class="organisation-other-info description">{{company.Description}} </span>
+                  {% endif %}
+                  {% if company.VATNumber %}
+                  <span class="organisation-other-info"><b><bdo>VAT No - رقم ضريبة القيمة المضافة </bdo> : </b>{{company.VATNumber}} </span>
+                  {% endif %}
+                  {% if company.CRNumber %}
+                  <span class="organisation-other-info"><b><bdo>CR No - رقم cr </bdo>: </b> {{company.CRNumber}}</span>
+                  {% endif %}
+                  {% if company.Email %}
+                  <span class="organisation-other-info"><b><bdo>Email - البريد الإلكتروني </bdo> : </b> {{company.Email}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              {% if type == "pdf" %}
+              <div class="invoice-info">
+                <div class="invoice-name-container">
+                  {% if settings.TransactionName %}
+                    <span class="invoice-name">{{ settings.TransactionName }}</span>
+                  {% elif invoice_type == "sales_invoice" %}
+                    {% if data.VAT_Treatment == "0" %}
+                    <span class="invoice-name">Tax Invoice</span>
+                    <span class="invoice-name">فاتورة ضريبية</span>
+                    {% else %}
+                    <span class="invoice-name">Simplified Tax Invoice</span>
+                    <span class="invoice-name">فاتورة ضريبية مبسطة</span>
+                    {% endif %}
+                  {% elif invoice_type == "sales_return" %}
+                    <span class="invoice-name">Credit Note</span>
+                    <span class="invoice-name">اشعار دائن</span>
+                  {% elif invoice_type == "purchase_return" %}
+                    <span class="invoice-name">Debit Note</span>
+                    <span class="invoice-name">بيان بالخصم</span>
+                  {% elif invoice_type == "sales_estimate" %}
+                    <span class="invoice-name">Sale Estimate</span>
+                    <span class="invoice-name">تقدير المبيعات</span>
+                  {% elif invoice_type == "sales_order" %}
+                    <span class="invoice-name">Sales Order</span>
+                    <span class="invoice-name">طلب المبيعات</span>
+                  {% elif invoice_type == "purchase_invoice" %}
+                    <span class="invoice-name">Purchase Invoice</span>
+                    <span class="invoice-name">فاتورة الشراء</span>
+                  {% elif invoice_type == "purchase_order" %}
+                    <span class="invoice-name">Purchase Order</span>
+                    <span class="invoice-name">أمر شراء</span>
+                  {% endif %}
+                </div>
+                {% if invoice_type == "purchase_return" or  invoice_type == "purchase_invoice" %}
+                  {% if data.PrintCustomerName %}
+                  <span><bdo>Supplier - المورد:</bdo></span>
+                  <span><bdo><b>{{data.PrintCustomerName}}</b></bdo></span>
+                  {% else %}
+                  <span><bdo>Supplier - المورد: </bdo></span>
+                  <span><bdo><b>{{data.LedgerName}}</b></bdo></span>
+                  {% endif %}
+                {% else %}
+                  {% if data.PrintCustomerName %}
+                  <span><bdo>Customer - عميل:</bdo></span>
+                  <span class="address"><bdo><b>{{data.PrintCustomerName}}</b></bdo></span>
+                  {% else %}
+                  <span><bdo>Customer - عميل:</bdo></span>
+                  <span class="address"><bdo><b>{{data.LedgerName}}</b></bdo></span>
+                  {% endif %}
+                {% endif %}
+                
+                {% comment %} <span  class="address"><bdo>{{address|safe}} {{data.Address2}} {{data.Address3}} {% if data.Address3 and data.City %},{% endif %} {{data.City}} {% if data.StateName and data.City %},{% endif %} {{data.StateName}} {{data.PostalCode}}</bdo></span> {% endcomment %}
+                <span class="address">{{address|safe}}</span>
+
+                {% if data.Mobile %}
+                <span>Phone No.: {{data.Mobile}}</span>
+                {% endif %}
+
+                {% if settings.IsHSNCode and company.CountryName == "India" %}
+                  {% if data.GSTNumber %}
+                  <span class="address">GST No.: {{data.GSTNumber}}</span>
+                  {% endif %}
+                {% else %}
+                  {% if data.VATNumber %}
+                  <span class="address">VAT No.: {{data.VATNumber}}</span>
+                  {% endif %}
+                {% endif %}
+
+                {% if data.is_customer and settings.IsRoute and data.RouteName%}
+                  <span class="address">Route: {{data.RouteName}}</span>
+                {% endif %}
+                {% if data.is_customer and settings.IsCustomerBalance and data.LedgerBalance %}
+                  <span class="address">Balance: {{data.LedgerBalance|floatformat:PriceRounding}}</span>
+                {% endif %}
+
+                {% comment %} {% if data.VAT_Treatment_Name %}
+                <span>VAT Treatment: {{data.VAT_Treatment_Name}}</span>
+                {% endif %} {% endcomment %}
+                
+              </div>
+              {% else %}
+              <div class="invoice-info">
+                <div class="invoice-name-container">
+                  {% if settings.TransactionName %}
+                    <span class="invoice-name">{{ settings.TransactionName }}</span>
+                  {% elif invoice_type == "sales_invoice" %}
+                    {% if data.VAT_Treatment == "0" %}
+                    <span class="invoice-name">Tax Invoice</span>
+                    <span class="invoice-name">فاتورة ضريبية</span>
+                    {% else %}
+                    <span class="invoice-name">Simplified Tax Invoice</span>
+                    <span class="invoice-name">فاتورة ضريبية مبسطة</span>
+                    {% endif %}
+                  {% elif invoice_type == "sales_return" %}
+                    <span class="invoice-name">Credit Note</span>
+                    <span class="invoice-name">اشعار دائن</span>
+                  {% elif invoice_type == "purchase_return" %}
+                    <span class="invoice-name">Debit Note</span>
+                    <span class="invoice-name">بيان بالخصم</span>
+                  {% elif invoice_type == "sales_estimate" %}
+                    <span class="invoice-name">Sale Estimate</span>
+                    <span class="invoice-name">تقدير المبيعات</span>
+                  {% elif invoice_type == "sales_order" %}
+                    <span class="invoice-name">Sales Order</span>
+                    <span class="invoice-name">طلب المبيعات</span>
+                  {% elif invoice_type == "purchase_invoice" %}
+                    <span class="invoice-name">Purchase Invoice</span>
+                    <span class="invoice-name">فاتورة الشراء</span>
+                  {% elif invoice_type == "purchase_order" %}
+                    <span class="invoice-name">Purchase Order</span>
+                    <span class="invoice-name">أمر شراء</span>
+                  {% endif %}
+                </div>
+                {% if invoice_type == "purchase_return" or  invoice_type == "purchase_invoice" %}
+                <span><bdo>Supplier - المورد:</bdo></span>
+                <span class="address"><bdo><b>hello</b></bdo></span>
+              {% else %}
+                <span><bdo>Customer - المورد: </bdo></span>
+                <span class="address"><bdo><b>hello</b></bdo></span>
+              {% endif %}
+                <span class="address">Attention11</span>
+                <span class="address">Building No</span>
+                <span class="address">Street Name</span>
+                <span class="address">City, District</span>
+                <span class="address">State, Country, Postal Code</span>
+                {% comment %} <span>GST No: 523452346134</span> {% endcomment %}
+                <span class="address">Phone No: 3463457234523</span>
+                <span class="address">VAT No: 3463457234523</span>
+                {% if settings.IsRoute %}
+                  <span class="address">Route: Primary Route</span>
+                {% endif  %}
+                {% if settings.IsCustomerBalance %}
+                  <span class="address">Balance: 0.00</span>
+                {% endif %}
+              </div>
+              {% endif %}
+              </div>
+            </td>
+            <td class="invoice-details">
+              <div class="invoice-details-container">
+
+              
+          
+              <div class="organization-info">
+             
+               <div class="organization-details">
+               <bdo>
+               
+                <span class="organisation-other-info address">{{company.Address1}} {{company.Address2}} {{company.Address3}} {% if company.Address3 and company.City %},{% endif %} </span>
+                <span class="organisation-other-info address">{{company.City}} {% if company.StateName and company.City %},{% endif %} {{company.StateName}} </span>
+                <span class="organisation-other-info address"><bdo>{{company.CountryName}} {{company.PostalCode}}</span>
+                <span class="organisation-other-info address"><bdo><b>Mobile: </b>{{company.Mobile}}</span>
+               </bdo>
+                 {% comment %} {% if company.Mobile %}
+                 <span class="phone">PHONE: {{company.Mobile}}</span>
+                 {% endif %}
+ 
+                 {% if company.Email %}
+                 <span class="email">EMAIL: {{company.Email}}</span>
+                 {% endif %}
+ 
+                 {% if company.CRNumber %}
+                 <span class="email">CR No: {{company.CRNumber}}</span>
+                 {% endif %} {% endcomment %}
+               </div>
+               {% if invoice_type == "sales_invoice" or invoice_type == "sales_return" or invoice_type == "purchase_return" %}
+                {% if type != "pdf" %}
+                <img class="qr-code" src="{{data.qr_image}}" onerror="this.onerror=null;this.src='{% static 'images/viknbooks.png' %}';">
+                {% else %}
+                  {% if data.qr_image %}
+                  <img class="qr-code" src="{{data.qr_image}}"/>
+                  {% endif %}
+                {% endif %}
+               {% endif %}
+              </div>
+              
+              {% if type != "pdf" %}
+               
+              <div class="voucher-info">
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Invoice No - رقم الفاتورة:</bdo></span>
+                  <span class="voucher-text">VIKN001UI</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Date - تاريخ:</bdo></span>
+                 
+                  <span class="voucher-text">21/12/2021</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Time - الوقت:</bdo></span>
+                 
+                  <span class="voucher-text">9:00 AM</span>
+                </div>
+                <div class="voucher-group">
+                  {% if invoice_type == "sales_invoice" or invoice_type == "sales_estimate" or invoice_type == "sales_order" or invoice_type == "sales_return" %}
+                  <span class="voucher-label">Order No. - رقم الطلب</span>
+                  {% else %}
+                  <span class="voucher-label">Reference No. - رقم المرجع</span>
+                  {% endif %}
+                  <span class="voucher-text">324235</span>
+                </div>
+                {% if settings.IsPlaceOfSupply %}
+                  <div class="voucher-group">
+                  <span class="voucher-label">Place Of Supply - مكان التوريد</span>
+                  <span class="voucher-text">Makkah</span>
+                </div>
+                {% endif %}
+                
+                {% if settings.IsPaymentStatus %}
+                  <div class="voucher-group">
+                  <span class="voucher-label">Payment Status:</span>
+                  <span class="voucher-text">Paid</span>
+                </div>
+                {% endif %}
+                {% comment %} <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Place Of Supply - مكان التوريد:</bdo></span>
+                 
+                  <span class="voucher-text">Kozhikode</span>
+                </div> {% endcomment %}
+              </div>
+              {% else %}
+              <div class="voucher-info">
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Invoice No - رقم الفاتورة:</bdo></span>
+                  <span class="voucher-text">{{data.VoucherNo}}</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Date - تاريخ:</bdo></span>
+                 
+                  <span class="voucher-text">{{data.Date}}</span>
+                </div>
+
+         
+
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Time - الوقت:</bdo></span>
+                 
+                  <span class="voucher-text">{{ invoice_time }}</span>
+                </div>
+
+                {% if data.OrderNo %}
+                <div class="voucher-group">
+                  {% if invoice_type == "sales_invoice" or invoice_type == "sales_estimate" or invoice_type == "sales_order" or invoice_type == "sales_return" %}
+                  <span class="voucher-label">Order No. - رقم الطلب</span>
+                  {% else %}
+                  <span class="voucher-label">Reference No. - رقم المرجع</span>
+                  {% endif %}
+                  <span class="voucher-text">{{data.OrderNo}}</span>
+                </div>
+                {% endif %}
+
+                {% if data.RefferenceBillNo %}
+                <div class="voucher-group">
+                  <span class="voucher-label">Reference No. - رقم المرجع</span>
+                  <span class="voucher-text">{{data.RefferenceBillNo}}</span>
+                </div>
+                {% endif %}
+                 {% if settings.IsPlaceOfSupply %}
+                <div class="voucher-group">
+                  <span class="voucher-label">Place Of Supply - مكان التوريد</span>
+                  <span class="voucher-text">{{data.Place_of_Supply}}</span>
+                </div>
+                 {% endif %}
+                {% if settings.IsPaymentStatus and data.billwise_status %}
+                <div class="voucher-group">
+                  <span class="voucher-label">Payment Status:</span>
+                  <span class="voucher-text">{{data.billwise_status}}</span>
+                </div>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="item-heading"><span><bdo>Item List - قائمة الأصناف</bdo></span></div>
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            {% if settings.IsSlNo %}
+            <td class="w-9"><bdo>Sl No</bdo> <bdo class="arabic">رقم sl</bdo></td>
+            {% endif %}
+
+            {% if settings.IsProductCode %}
+            <td class="w-9"><bdo>Product Code</bdo><bdo class="arabic">كود المنتج</bdo></td>
+            {% endif %}
+
+            {% if settings.IsProductName %}
+            <td class="product-name"><bdo>Product Name</bdo><bdo class="arabic">اسم المنتج</bdo></td>
+            {% endif %}
+
+            {% if settings.IsBatchCode %}
+            <td class="product-name"><bdo>Batch Code</bdo><bdo class="arabic">رمز الدفعة</bdo></td>
+            {% endif %}
+            {% if invoice_type == "sales_invoice" %}
+              {% if settings.IsExpiryDate or settings.IsManufacturingDate %}
+              <td class="bold">{% if settings.IsManufacturingDate %}MFD {% endif %}  {% if settings.IsExpiryDate and settings.IsManufacturingDate %}- {% endif %}{% if settings.IsExpiryDate %} EXP {% endif %}</td>
+              {% endif %}
+            {% endif %}
+
+            {% if settings.IsHSNCode and company.CountryName == "India" %}
+            <td class="right w-9"><bdo>HSN Code</bdo><bdo class="arabic">رمز HSN</bdo></td>
+            {% endif %}
+
+            {% if settings.IsQuantity %}
+            <td class="right w-9"><bdo>Qty</bdo><bdo class="arabic">الكمية</bdo></td>
+            {% endif %}
+            {% if settings.IsFreeQuantity %}
+            <td class="right w-9"><bdo>Free Qty</bdo><bdo class="arabic">كمية مجانية</bdo></td>
+            {% endif %}
+
+            {% if settings.IsUnit %}
+            <td class="right w-9"><bdo>Unit</bdo><bdo class="arabic">الكمية</bdo></td>
+            {% endif %}
+
+            {% if settings.IsRate %}
+            <td class="right w-9"><bdo>Rate</bdo><bdo class="arabic">السعر</bdo></td>
+            {% endif %}
+
+            {% if settings.IsGrossAmount %}
+            <td class="right"><bdo>Gross Amount</bdo><bdo class="arabic">المبلغ الإجمالي</bdo></td>
+            {% endif %}
+
+            {% if settings.IsTax %}
+              {% if company.CountryName != "India" %}
+              <td class="right w-9"><bdo>VAT</bdo><bdo class="arabic">ضريبة</bdo></td>
+              {% else %}
+              <td class="right w-9"><bdo>TAX</bdo><bdo class="arabic">ضريبة</bdo></td>
+              {% endif %}
+            {% endif %}
+
+            {% if settings.IsDiscount %}
+            <td class="right w-9"><bdo>Discount</bdo><bdo class="arabic">خصم</bdo></td>
+            {% endif %}
+
+            {% if settings.IsNetTotal %}
+            <td class="right w-9"><bdo>Total</bdo><bdo class="arabic">مجموع</bdo></td>
+            {% endif %}
+
+        
+          </tr>
+        </thead>
+        <tbody>
+          {% if type == "pdf" %} {% for instance in details %}
+          <tr>
+            {% if settings.IsSlNo %}
+            <td>{{ forloop.counter }}</td>
+            {% endif %}
+
+            {% if settings.IsProductCode %}
+            <td>{{ instance.ProductCode }}</td>
+            {% endif %}
+
+            {% if settings.IsProductName %}
+            <td><bdo class="product-name">{{ instance.ProductName }}</bdo>
+            {% if instance.Description or instance.product_description or instance.SerialNos  %}
+              <div class="product-details">
+                {% if settings.IsProductDescription %}
+                <span >{{instance.product_description}}</span>
+                {% endif %}
+                {% if settings.IsDescription %}
+                <span >{{instance.Description}}</span>
+                {% endif %}
+                {% for serial_no in instance.SerialNos %}
+                <span>{% if settings.IsSerialNo %} {{serial_no.SerialNo}} {% endif %} {% if settings.IsSerialNo and settings.IsItemCode %} - {% endif %}  {% if settings.IsItemCode %} {{serial_no.ItemCode}} {% endif %}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            </td>
+            {% endif %}
+
+            {% if settings.IsBatchCode %}
+            <td>{{ instance.BatchCode }}</td>
+            {% endif %}
+
+             {% if invoice_type == "sales_invoice" %}
+              {% if settings.IsExpiryDate or settings.IsManufacturingDate %}
+              <td >{% if settings.IsManufacturingDate %}{{ instance.ManufactureDatePrint }} {% endif %}  {% if settings.IsExpiryDate and settings.IsManufacturingDate %}- {% endif %}{% if settings.IsExpiryDate %} {{ instance.ExpiryDatePrint }} {% endif %}</td>
+              {% endif %}
+            {% endif %}
+
+            {% if settings.IsHSNCode and company.CountryName == "India" %}
+            <td class="right">{{ instance.HSNCode }}</td>
+            {% endif %}
+
+            {% if settings.IsQuantity %}
+            <td class="right">{{ instance.Qty }}</td>
+            {% endif %}
+
+            {% if settings.IsFreeQuantity %}
+            <td class="right">{{ instance.FreeQty }}</td>
+            {% endif %}
+
+            {% if settings.IsUnit %}
+            <td class="right">{{ instance.UnitName }}</td>
+            {% endif %}
+
+            {% if settings.IsRate %}
+            <td class="right">{{ instance.UnitPrice|floatformat:PriceRounding }}</td>
+            {% endif %}
+
+            {% if settings.IsGrossAmount %}
+            <td class="right">{{ instance.GrossAmount|floatformat:PriceRounding }}</td>
+            {% endif %}
+
+            {% if settings.IsTax %}
+                {% if company.CountryName != "India" %}
+                <td class="right">{{ instance.TotalTax|floatformat:PriceRounding }}  {% if settings.IsTaxPerc %} ({{ instance.VATPerc_print }}%)  {% endif %}</td>
+                {% else %}
+                <td class="right">{{ instance.TotalTax|floatformat:PriceRounding }} {% if settings.IsTaxPerc %} ({{ instance.IGSTPerc }}%)  {% endif %}</td>
+                {% endif %}
+          
+            {% endif %}
+
+            {% if settings.IsDiscount %}
+            <td class="right">{{ instance.DiscountAmount_print|floatformat:PriceRounding }}</td>
+            {% endif %}
+
+            {% if settings.IsNetTotal %}
+            <td class="right">{{ instance.NetAmount|floatformat:PriceRounding }}</td>
+            {% endif %}
+          </tr>
+          {% endfor %} 
+          {% else %}
+          <tr>
+            {% if settings.IsSlNo %}
+            <td>Sl No</td>
+            {% endif %}
+
+            {% if settings.IsProductCode %}
+            <td>Product Code</td>
+            {% endif %}
+
+            {% if settings.IsProductName %}
+            <td>ProductName
+              <div class="product-details">
+                {% if settings.IsProductDescription %}
+                <span>Product Description</span>
+                {% endif %}
+                {% if settings.IsDescription %}
+                <span>Description</span>
+                {% endif %}
+                
+                <span>{% if settings.IsSerialNo %} Serial No {% endif %} {% if settings.IsSerialNo and settings.IsItemCode %} - {% endif %}  {% if settings.IsItemCode %} Item Code {% endif %}</span>
+              </div>
+            </td>
+            {% endif %}
+
+            {% if settings.IsBatchCode  %}
+            <td >Batch Code</td>
+            {% endif %}
+
+            {% if invoice_type == "sales_invoice" %}
+              {% if settings.IsExpiryDate or settings.IsManufacturingDate %}
+              <td >{% if settings.IsExpiryDate %}2020/25 {% endif %}  {% if settings.IsExpiryDate and settings.IsManufacturingDate %}- {% endif %}{% if settings.IsManufacturingDate %} 2021/25 {% endif %}</td>
+              {% endif %}
+            {% endif %}
+
+            {% if settings.IsHSNCode and company.CountryName == "India"  %}
+            <td class="right">HSN Code</td>
+            {% endif %}
+
+            {% if settings.IsQuantity %}
+            <td class="right">Quantity 
+              <div class="product-details">
+              {% if settings.IsUnit %}
+              <span>Unit</span>
+              {% endif %}
+            </div></td>
+            {% endif %}
+            {% if settings.IsFreeQuantity %}
+            <td class="right">Free Qty 
+              <div class="product-details">
+              {% if settings.IsUnit %}
+              <span>Unit</span>
+              {% endif %}
+            </div></td>
+            {% endif %}
+            {% if settings.IsUnit %}
+            <td class="right">Unit</td>
+            {% endif %}
+            {% if settings.IsRate %}
+            <td class="right">Rate</td>
+            {% endif %}
+
+            {% if settings.IsGrossAmount %}
+            <td class="right">Gross Amount</td>
+            {% endif %}
+
+            {% if settings.IsTax %}
+            <td class="right">Tax {% if settings.IsTaxPerc %} (15%)  {% endif %}</td>
+            {% endif %}
+
+            {% if settings.IsDiscount %}
+            <td class="right">Discount</td>
+            {% endif %}
+
+            {% if settings.IsNetTotal %}
+            <td class="right">Net Total</td>
+            {% endif %}
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+      <div class="bottom-group">
+
+        <div class="amount-in-words">
+          <table>
+            <tbody>
+              <tr>
+                <td class="heading"><bdo>Amount In Words - المبلغ بالكلمات</bdo></td>
+              </tr>
+              {% if type == "pdf" %}
+              <tr>
+                <td>{{amount_in_words}} {{country.Currency_Name}}</td>
+              </tr>
+              {% if company.CountryName != "India" and settings.IsAmountInWordsArabic%}
+                <tr>
+                  <td>{{amount_in_words_arabic}} ريال</td>
+                </tr>
+                {% endif %}
+              {% else %}
+              <tr>
+                <td>one hundred fifty {{country.Currency_Name}}</td>
+              </tr>
+              {% if company.CountryName != "India" and settings.IsAmountInWordsArabic%}
+                <tr>
+                  <td>مائة وخمسون ريال</td>
+                </tr>
+              {% endif %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="amount-group">
+          <table>
+            {% if type != "pdf" %}
+            <tbody>
+              <tr>
+                <td><bdo>Gross Amount - الإجمالي قبل الضريبة:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              <tr>
+                <td><bdo>Total Discount - خصم الفاتورة:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              <tr>
+                <td><bdo>Total Tax - إجمالي الضريبة:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              <tr>
+                <td><bdo>Round off - جولة قبالة:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+          
+              <tr>
+                <td class="grand-total"><bdo>Grand Total - الإجمالي شامل الضريبة:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              {% if settings.IsPaymentStatus %}
+              <tr>
+                <td>Paid Amount:</td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              <tr>
+                <td>Balance:</td>
+                <td class="right">{{country.Symbol}}. 00000.00</td>
+              </tr>
+              {% endif %}
+
+              {% if settings.IsTenderCash %}
+              <tr>
+                <td class="grand-total"><bdo>Tender Cash - النقد العطاء:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              <tr>
+                <td class="grand-total"><bdo>Change - الرصيد :</bdo></td>
+                <td class="right">{{country.Symbol}}. 100.00</td>
+              </tr>
+              {% endif %}
+              {% else %}
+              <tbody>
+                {% if data.GrossAmt_print|to_float > 0 %}
+                <tr>
+                  <td>Gross Amount - الإجمالي قبل الضريبة:</td>
+                  <td class="right">{{country.Symbol}}. {{data.GrossAmt_print|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+
+                {% if data.TotalDiscount_print|to_float > 0 %}
+                <tr>
+                  <td>Total Discount - خصم الفاتورة:</td>
+                  <td class="right">{{country.Symbol}}. {{data.TotalDiscount_print|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+
+                <!-- {% if data.TotalTax_print|to_float > 0 %}
+                <tr>
+                  <td>Total Tax:</td>
+                  <td class="right">{{country.Symbol}}. {{data.TotalTax_print|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %} -->
+
+                {% if data.RoundOff|to_float > 0 %}
+                <tr>
+                  <td>Round off - جولة قبالة:</td>
+                  <td class="right">{{country.Symbol}}. {{data.RoundOff|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+                {% if data.VATAmount_print and  company.CountryName != "India" and data.VATAmount_print|to_float > 0 %}
+                <tr>
+                  <td>Total VAT - إجمالي ضريبة القيمة المضافة:</td>
+                  <td class="right">{{country.Symbol}}. {{data.VATAmount_print|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                  <td class="grand-total">Grand Total - الإجمالي شامل الضريبة:</td>
+                  <td class="right">{{country.Symbol}}. {{data.GrandTotal_print|floatformat:PriceRounding}}</td>
+                </tr>
+                {% if settings.IsPaymentStatus and data.paid_amount and data.InvoiceBalance %}
+                  {% if data.is_customer %}
+                    <tr>
+                      <td>Paid Amount:</td>
+                      <td class="right">{{country.Symbol}}. {{data.paid_amount|floatformat:PriceRounding}}</td>
+                    </tr>
+                  {% else %}
+                      <tr>
+                      <td>Paid Amount:</td>
+                      <td class="right">{{country.Symbol}}. {{data.GrandTotal_print|floatformat:PriceRounding}}</td>
+                    </tr>
+                  {% endif %}
+                  <tr>
+                    <td>Balance:</td>
+                    <td class="right">{{country.Symbol}}. {{data.InvoiceBalance|floatformat:PriceRounding}}</td>
+                  </tr>
+                {% endif %}
+                {% if settings.IsTenderCash %}
+                  <tr>
+                    <td class="grand-total">Change - يتغيرون:</td>
+                    <td class="right">{{country.Symbol}}. {{data.Balance|floatformat:PriceRounding}}</td>
+                  </tr>
+                  {% endif %}
+                {% if settings.IsTenderCash %}
+                {% comment %} <tr>
+                  <td class="grand-total">Tender Cash - النقد العطاء:</td>
+                  <td class="right">{{country.Symbol}}. {{data.GrandTotal_print|floatformat:PriceRounding}}</td>
+                </tr> {% endcomment %}
+
+                <tr>
+                  <td class="grand-total">Tender Cash - النقد العطاء:</td>
+                  <td class="right">{{country.Symbol}}. {{data.TenderCash|floatformat:PriceRounding}}</td>
+                </tr>
+                
+                {% endif %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {% if settings.Notes %}
+      <div class="note-details">
+          <table>
+            <tbody>
+              <tr>
+                <td>{{settings.Notes | linebreaks}}</td>
+              </tr>
+            
+            </tbody>
+          </table>
+      </div>
+      {% endif %}
+      <div class="bottom-content">
+        <div class="terms-and-conditions">
+          {% if settings.TermsAndConditions %}
+          <label>Terms & Conditions - الشروط والأحكام</label>
+          <p>
+          {{settings.TermsAndConditions | linebreaks}}
+        </p>
+          {% elif type != "pdf" %}
+          <label>Terms & Conditions - الشروط والأحكام</label>
+          <p>
+            Your company's Terms and Conditions will be displayed here. You can
+            add it in the Invoice Preferences page under Settings.
+          </p>
+          {% endif %}
+        </div>
+        {% if settings.IsReceiverSignature %}
+        <div class="signature receiver">
+          <label>Receiver's Signature</label>
+          <label>توقيع المتلقي</label>
+        </div>
+        {% endif %}
+        {% if settings.IsAuthorizedSinature %}
+        <div class="signature">
+          <label>Authorized Signature</label>
+          <label>التوقيع المصرح به</label>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+{% if print_template %}
+<script>
+   window.print(); 
+  
+
+</script>
+{% endif %}
+{% endinlinecss %}

@@ -1,0 +1,14 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans %}You're receiving this email  for download {{ report_name }}.{% endblocktrans %}
+
+{% trans "Please go to the following page and download report:" %}
+    {% block reset_link %}
+        {{token}}
+    {% endblock %}
+{% trans "Your username, in case you've forgotten:" %} {{ user.get_username }}
+
+{% trans "Thanks for using our site!" %}
+
+{% blocktrans %}The {{ site_name }} team{% endblocktrans %}
+
+{% endautoescape %}

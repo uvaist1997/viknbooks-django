@@ -1,0 +1,16 @@
+[
+	{
+	    "model": "brands.Warehouse",
+	    "pk": 1,
+	    "fields": {
+	      "WarehouseID": 1,
+	      "BranchID" : 1,
+	      "WarehouseName" : "Primary Warehouse",
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

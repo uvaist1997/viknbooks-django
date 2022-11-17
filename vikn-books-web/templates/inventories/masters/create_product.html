@@ -1,0 +1,522 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+
+
+ <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Transactions</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">{{title}}</a></li>
+                                            <li class="breadcrumb-item active">{{title}}</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">{{title}}</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form enctype="multipart/form-data" method="post" class="ajax reset redirect">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                            <div class="col-xl-12">                        
+
+                                                <div class="row">
+                                                        <!-- Date View -->
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.ProductName.label }}
+                                                            {{ form.ProductName }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.DisplayName.label }}
+                                                            {{ form.DisplayName }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Description.label }}
+                                                            {{ form.Description }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.ProductGroupID.label }}
+                                                            <select name="account_group" class="form-control custom-select ">
+                                                                {% for product_group in product_groups %}
+                                                                <option value="{{product_group.ProductGroupID}}">{{product_group.GroupName}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.BrandID.label }}
+                                                            <select name="account_group" class="form-control custom-select ">
+                                                                {% for brand in brands %}
+                                                                <option value="{{brand.BrandID}}">{{brand.BrandName}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.InventoryType.label }}
+                                                            {{ form.InventoryType }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.StockMinimum.label }}
+                                                            {{ form.StockMinimum }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.StockReOrder.label }}
+                                                            {{ form.StockReOrder }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.StockMaximum.label }}
+                                                            {{ form.StockMaximum }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.MarginPercent.label }}
+                                                            {{ form.MarginPercent }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.ProductImage.label }}
+                                                            {{ form.ProductImage }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.WeighingCalcType.label }}
+                                                            {{ form.WeighingCalcType }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.PLUNo.label }}
+                                                            {{ form.PLUNo }}
+                                                        </div>
+                                                    </div>
+                                                    {% if is_VAT %}
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            VAT
+                                                            <select name="vat" class="form-control custom-select ">
+                                                                {% for tax in vat_instances %}
+                                                                    <option value="{{tax.TaxID}}">{{tax.TaxName}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_GST %}
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            GST
+                                                            <select name="gst" class="form-control custom-select ">
+                                                                {% for tax in gst_instances %}
+                                                                <option value="{{tax.TaxID}}">{{tax.TaxName}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX1 %}
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            TAX1
+                                                            <select name="tax1" class="form-control custom-select ">
+                                                                {% for tax in tax1_instances %}
+                                                                <option value="{{tax.TaxID}}">{{tax.TaxName}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX2 %}
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            TAX2
+                                                            <select name="tax2" class="form-control custom-select ">
+                                                                {% for tax in tax2_instances %}
+                                                                <option value="{{tax.TaxID}}">{{tax.TaxName}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX3 %}
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            TAX3
+                                                            <select name="tax3" class="form-control custom-select ">
+                                                                {% for tax in tax3_instances %}
+                                                                <option value="{{tax.TaxID}}">{{tax.TaxName}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    <!-- <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.GST.label }}
+                                                            {{ form.GST }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Tax1.label }}
+                                                            {{ form.Tax1 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Tax2.label }}
+                                                            {{ form.Tax2 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Tax3.label }}
+                                                            {{ form.Tax3 }}
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            Unit Name
+                                                            <input type="text" name="UnitNameTemp" class="form-control form" placeholder="Unit Name" id="UnitNameTemp">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            Purchase Price
+                                                            <input type="text" name="PurchasePriceTemp" class="form-control form" placeholder="Purchase Price" id="PurchasePriceTemp">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            Sales Price
+                                                            <input type="text" name="SalesPriceTemp" class="form-control form" placeholder="Sales Price" id="SalesPriceTemp">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            MRP
+                                                            <input type="text" name="MRP" class="form-control form" placeholder="MRP" id="MRP">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IsWeighingScale.label }}
+                                                            {{ form.IsWeighingScale }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IsRawMaterial.label }}
+                                                            {{ form.IsRawMaterial }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IsFinishedProduct.label }}
+                                                            {{ form.IsFinishedProduct }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IsSales.label }}
+                                                            {{ form.IsSales }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IsPurchase.label }}
+                                                            {{ form.IsPurchase }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IsFavourite.label }}
+                                                            {{ form.IsFavourite }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Active.label }}
+                                                            {{ form.Active }}
+                                                        </div>
+                                                    </div>
+                                                </div>                                              
+
+                                            </div> <!-- end col-->
+                                        </div>
+                                        <!-- end row -->
+
+                                        <div class="col-12">
+                                            <div class="card table-responsive">
+                                                <div class="pricelist_formset card-body">
+                                                    <h2>Price List Details</h2>
+                                                    <table id="datatable" class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>UnitName</th>
+                                                                <th>SalesPrice</th>
+                                                                <th>PurchasePrice</th>
+                                                                <th>MultiFactor</th>
+                                                                <th>ReverseFactor</th>
+                                                                <th>Barcode</th>
+                                                                <th>SalesPrice1</th>
+                                                                <th>SalesPrice2</th>
+                                                                <th>SalesPrice3</th>
+                                                                <th>MRP</th>
+                                                                <th>Unit In Sales</th>
+                                                                <th>Unit In Purchase</th>
+                                                                <th>Unit In Reports</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        
+                                                        <tbody>
+                                                            {% for item in pricelist_formset %}
+                                                                <tr class="form_set_row">
+                                                                    <td class="hidden">{{ item.id }}</td>
+                                                                     <td class="UnitName">
+                                                                        <div class="">
+                                                                            {{item.UnitName}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="SalesPrice">
+                                                                        <div class="">
+                                                                            {{item.SalesPrice}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="PurchasePrice">
+                                                                        <div class="">
+                                                                            {{item.PurchasePrice}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="MultiFactor">
+                                                                        <div class="">
+                                                                            {{item.MultiFactor}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="ReverseFactor">
+                                                                        <div class="">
+                                                                            <input type="text" name="ReverseFactortemp" class="form-control form" placeholder="ReverseFactortemp" id="ReverseFactortemp">
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="Barcode">
+                                                                        <div class="">
+                                                                            {{item.Barcode}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="SalesPrice1">
+                                                                        <div class="">
+                                                                            {{item.SalesPrice1}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="SalesPrice2">
+                                                                        <div class="">
+                                                                            {{item.SalesPrice2}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="SalesPrice3">
+                                                                        <div class="">
+                                                                            {{item.SalesPrice3}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="MRP">
+                                                                        <div style="width: 60px;" class="">
+                                                                            {{item.MRP}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="UnitInSales">
+                                                                        <div class="">
+                                                                            {{item.UnitInSales}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="UnitInPurchase">
+                                                                        <div class="">
+                                                                            {{item.UnitInPurchase}}
+                                                                        </div>
+                                                                    </td>
+                                                                     <td class="UnitInReports">
+                                                                        <div class="">
+                                                                            {{item.UnitInReports}}
+                                                                        </div>
+                                                                    </td>
+                                                                     
+                                                                    <td class="one">{% if form.instance.pk %}{{ item.DELETE }}{% endif %}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                    {{ pricelist_formset.management_form }}
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col -->
+
+
+                                            <div class="row mt-3">
+                                                <div class="col-12 text-center">
+                                                    <button type="submit" class="btn btn-success waves-effect waves-light m-1"> Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<style>
+#id_pricelist_formset-0-UnitName::-moz-selection { /* Code for Firefox */
+  background: #fff;
+}
+
+#id_pricelist_formset-0-UnitName::selection {
+  background: #fff;
+}
+#id_pricelist_formset-0-SalesPrice::-moz-selection { /* Code for Firefox */
+  background: #fff;
+}
+
+#id_pricelist_formset-0-SalesPrice::selection {
+  background: #fff;
+}
+#id_pricelist_formset-0-PurchasePrice::-moz-selection { /* Code for Firefox */
+  background: #fff;
+}
+
+#id_pricelist_formset-0-PurchasePrice::selection {
+  background: #fff;
+}
+#id_pricelist_formset-0-MultiFactor::-moz-selection { /* Code for Firefox */
+  background: #fff;
+}
+
+#id_pricelist_formset-0-MultiFactor::selection {
+  background: #fff;
+}
+</style>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.MultiFactor input').val(1)
+        $(document).on('change keyup click focus blur mouseenter','#UnitNameTemp, #id_pricelist_formset-0-UnitName,#id_pricelist_formset-0-SalesPrice,#id_pricelist_formset-0-PurchasePrice,#id_pricelist_formset-0-MultiFactor,#ReverseFactortemp',function(e){
+            $('#id_pricelist_formset-0-UnitName').prop("readonly","readonly");
+            $('#id_pricelist_formset-0-SalesPrice').prop("readonly","readonly");
+            $('#id_pricelist_formset-0-PurchasePrice').prop("readonly","readonly");
+            $('#id_pricelist_formset-0-MultiFactor').prop("readonly","readonly");
+            $('#ReverseFactortemp').prop("readonly","readonly");
+            $('#id_pricelist_formset-0-MultiFactor').val(1)
+        });
+
+        console.log("hello")
+            $('.pricelist_formset table tr.form_set_row').formset({
+                prefix: '{{ pricelist_formset.prefix }}',
+                formCssClass: 'dynamic-formset1',
+
+            });
+            $('input[type=text]').focus(function () { 
+                $(this).select();
+            });
+            $('input[type=text]').mouseup(function (e) { // fix for chrome and safari
+                e.preventDefault();
+            });
+            $('input[type=text]').select(function () {
+                $('.log').append(' Handler for .select() called. ');
+            });
+
+        });
+
+    $(document).on('change keyup','#SalesPriceTemp',function(){
+        var MRP = $('#MRP').val();
+        var SalesPriceTemp = $('#SalesPriceTemp').val();
+        $('#MRP').val(SalesPriceTemp);
+        if (MRP){
+            $('#id_pricelist_formset-0-MRP').val(MRP);
+        }
+    });
+    $(document).on('change keyup','#PurchasePriceTemp, #SalesPriceTemp, #MRP, #UnitNameTemp',function(){
+        var UnitNameTemp = $('#UnitNameTemp').val();
+        console.log(UnitNameTemp)
+        var PurchasePriceTemp = $('#PurchasePriceTemp').val();
+        var SalesPriceTemp = $('#SalesPriceTemp').val();
+        var MRP = $('#MRP').val();
+        // if (MRP){
+        //     $('#id_pricelist_formset-0-MRP').val(MRP);
+        // }
+        // else{
+        //     $('#MRP').val(SalesPriceTemp);
+        // }
+
+        $('#id_pricelist_formset-0-SalesPrice').val(SalesPriceTemp);
+        $('#id_pricelist_formset-0-PurchasePrice').val(PurchasePriceTemp);
+        $('#id_pricelist_formset-0-MRP').val(MRP);
+        $('#id_pricelist_formset-0-UnitName').val(UnitNameTemp);
+
+    });
+
+    
+    $(document).on('change keyup','.ReverseFactor input',function(){
+            var $this = $(this);
+            console.log($this)
+
+            var reverse_factor = $this.val();
+            var $parent = $this.parents('tr.form_set_row');
+            $parent.find('.MultiFactor input').val((1/reverse_factor).toFixed(2));
+            if (reverse_factor == "" || null || reverse_factor.match(/[a-z]/i) || 0){
+                $parent.find('.MultiFactor input').val(0);
+            }
+            $(document).on('change','.ReverseFactor input',function(){
+                reverse_factor = $this.val(0);
+            })
+        })
+        
+    
+</script>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% load static i18n %}
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <div class="image-group">
+          {% if company.CompanyLogo is not null %}
+          <div class="image-container">
+            <img src="{{company.CompanyLogo}}" onerror="this.onerror=null;this.src='{% static 'images/Logo.svg' %}';">
+          </div>
+          {% endif %}
+          <div class="organisation-info">
+            <span class="organisation-name">{{ company.CompanyName }}</span>
+            <span class="organisation-other-info address"
+              >{{company.Address1}} {{company.Address2}} {{company.Address3}} 
+              {% if company.Address3 and company.City %}, {% endif %}
+              {{company.City}} {% if company.StateName and company.City %} , 
+              {% endif %} {{company.StateName}} {{company.PostalCode}}</span
+            >
+            {% if company.GSTNumber and company.GSTNumber != 'null' %}
+            <span class="organisation-other-info"
+              ><b>{% trans "GST No" %}:</b> {{company.GSTNumber}}</span
+            >
+            {% endif %}
+            {% if company.VATNumber and company.VATNumber != 'null' %}
+            <span class="organisation-other-info"
+              ><b>{% trans "VAT No" %}:</b> {{company.VATNumber}}</span
+            >
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="invoice-info">
+          {% if FromDate %}
+          {% if not invoice_type == "stock_report"%}
+          <span class="date"
+            >{% trans "From" %}&nbsp;:<span
+              >&nbsp;&nbsp;{{FromDate}}</span
+            ></span
+          >
+          {% endif %} 
+          {% endif %} 
+          {% if ToDate %}
+          <span class="date"
+            >{% trans "To" %} &nbsp;:<span>&nbsp;&nbsp;{{ToDate}}</span></span
+          >
+          {% endif %}
+
+          <span style="font-weight: bold; font-size: 15px">
+            {% if invoice_type == "all_ledger" %}
+              {% trans 'All Ledger' %}
+            {% elif invoice_type == "ledger_wise" %}
+              {% trans 'Ledger' %} : {{ whose_report }}
+            {% elif invoice_type == "group_wise" %}
+              {% trans 'Group' %} : {{ whose_report }}
+            {% else %}
+            {{whose_report}}
+            {% endif %}
+          </span>
+        </div>
+      </td>
+      <td class="invoice-details">
+        <div class="invoice-name-container">
+          <span class="invoice-name">{{report_title}}</span>
+        </div>
+        <div class="organization-info">
+          {% if company.Phone %}
+          <span class="phone">{% trans "PHONE" %}: {{company.Phone}}</span>
+          {% endif %} {% if company.Email %}
+          <span class="email">{% trans "EMAIL" %}: {{company.Email}}</span>
+          {% endif %} {% if company.CRNumber %}
+          <span class="email">{% trans "CR No" %}: {{company.CRNumber}}</span>
+          {% endif %}
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

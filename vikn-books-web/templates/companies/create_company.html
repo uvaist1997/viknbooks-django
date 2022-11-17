@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<div class="content-page" {% if is_superuser %} style="margin-left: 0;" {% endif %}>
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
+                                <li class="breadcrumb-item active">Create Project</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{title}}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+           
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        
+                        <div class="card-body">
+                        <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-4">
+                            <li class="nav-item">
+                                <a href="#basictab1" data-toggle="tab" class="prevent-click nav-link rounded-0 pt-2 pb-2 {% if is_company %} active {% endif %}"> 
+                                    <i class="mdi mdi-account-circle mr-1"></i>
+                                    <span class="d-none d-sm-inline">Company Details</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#basictab2" data-toggle="tab" class="prevent-click nav-link rounded-0 pt-2 pb-2 {% if is_employee %} active {% endif %}">
+                                    <i class="mdi mdi-face-profile mr-1"></i>
+                                    <span class="d-none d-sm-inline">Employee Details</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#basictab3" data-toggle="tab" class="prevent-click nav-link rounded-0 pt-2 pb-2 {% if is_financial_year %} active {% endif %}">
+                                    <i class="mdi mdi-checkbox-marked-circle-outline mr-1"></i>
+                                    <span class="d-none d-sm-inline">Financial Year</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form enctype="multipart/form-data" method="post" action="" class="ajax reset {% if not is_financial_year %} no-popup {% endif %} redirect ahs-input" novalidate>
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            {% if is_company %}
+                                            <div class="col-6">
+                                                <div class="form-group mb-3">
+                                                    {{ form.CompanyName.label }}
+                                                    {{ form.CompanyName }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.Address1.label }}
+                                                    {{ form.Address1 }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.Address2.label }}
+                                                    {{ form.Address2 }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.Address3.label }}
+                                                    {{ form.Address3 }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.city.label }}
+                                                    {{ form.city }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.state.label }}
+                                                    {{ form.state }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.country.label }}
+                                                    {{ form.country }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.postalcode.label }}
+                                                    {{ form.postalcode }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.phone.label }}
+                                                    {{ form.phone }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.mobile.label }}
+                                                    {{ form.mobile }}
+                                                </div>
+                                                
+                                            </div> <!-- end col -->
+                                            <div class="col-6">
+                                                <div class="form-group mb-3">
+                                                    {{ form.email.label }}
+                                                    {{ form.email }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.website.label }}
+                                                    {{ form.website }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.currency.label }}
+                                                    {{ form.currency }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.fractionalunit.label }}
+                                                    {{ form.fractionalunit }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.vatnumber.label }}
+                                                    {{ form.vatnumber }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.gstnumber.label }}
+                                                    {{ form.gstnumber }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.tax1.label }}
+                                                    {{ form.tax1 }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.tax2.label }}
+                                                    {{ form.tax2 }}
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    {{ form.tax3.label }}
+                                                    {{ form.tax3 }}
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% if is_employee %}
+                                                <div class="col-6">
+                                                    <div class="form-group mb-3">
+                                                        {{ form.FirstName.label }}
+                                                        {{ form.FirstName }}
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        {{ form.LastName.label }}
+                                                        {{ form.LastName }}
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        {{ form.Email.label }}
+                                                        {{ form.Email }}
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="">Designation</label>
+                                                        <select class="custom-select" name="DesignationID">
+                                                            {% for designation in designations %}
+                                                            <option value="{{ designation.DesignationID }}">{{ designation.DesignationName }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="">Department</label>
+                                                        <select class="custom-select" name="DepartmentID">
+                                                            {% for department in departments %}
+                                                            <option value="{{ department.DepartmentID }}">{{ department.DepartmentName }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="">Gender</label>
+                                                        <select class="custom-select" name="Gender">
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>
+                                                        </select>
+                                                    </div>
+                                                </div> <!-- end col -->
+                                            {% endif %}
+                                            {% if is_financial_year %}
+                                                <div class="col-6">
+                                                    <div class="form-group mb-3">
+                                                        {{ form.FromDate.label }}
+                                                        {{ form.FromDate }}
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        {{ form.ToDate.label }}
+                                                        {{ form.ToDate }}
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        {{ form.Notes.label }}
+                                                        {{ form.Notes }}
+                                                    </div>
+                                                </div> <!-- end col -->
+                                            {% endif %}
+                                            <div class="col-12">
+                                                <div class="form-group text-right m-b-0">
+                                                    <button class="btn btn-primary" type="submit">{% if is_financial_year %} Submit {% else %} Proceed {% endif %}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div> <!-- end col-->
+                            </div>
+                            <!-- end row -->
+
+                        </div> <!-- end card-body -->
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row-->
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+    <style type="text/css">
+        .card-body{
+            padding-top: 0;
+        }
+        .prevent-click.nav-link.rounded-0.pt-2.pb-2{
+            /*border: 1px solid #6658dd;*/
+            cursor: default;
+            
+        } 
+    </style>
+    <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+        <script type="text/javascript">
+            $('.prevent-click').click(function (event){
+                event.stopPropagation()
+
+            });
+        </script>
+{% endblock %}

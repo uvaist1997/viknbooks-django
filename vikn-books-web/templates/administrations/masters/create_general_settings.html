@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load main_template_tags %}
+{% block content %}
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
+                                <li class="breadcrumb-item active">{{title}}</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{ title }}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <form enctype="multipart/form-data" method="post" action="" class="ajax no-popup redirect ahs-input" novalidate>
+                {% csrf_token %}
+                <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-4">
+                    <li class="nav-item">
+                        <a href="#basictab1" data-toggle="tab" class="prevent-click nav-link rounded-0 pt-2 pb-2 active"> 
+                            <i class="mdi mdi-account-circle mr-1"></i>
+                            <span class="d-none d-sm-inline">General</span>
+                        </a>
+                    </li>
+                    <li id="myli" class="nav-item" style="display: none;">
+                        <a href="#basictab2" data-toggle="tab" class="prevent-click nav-link rounded-0 pt-2 pb-2">
+                            <i class="mdi mdi-face-profile mr-1"></i>
+                            <span class="d-none d-sm-inline">RMS</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="basictab1">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <h4 class="page-title">Decimal Points</h4>
+                                    <div class="form-group row mb-3">
+                                        <label for="inputEmail3" class="col-3 col-form-label">Qty Decimal</label>
+                                        <div class="col-9">
+                                            <input type="text" class="form-control" required value="{{ QtyDecimalPoint }}" name="QtyDecimalPoint" id="inputQty Decimal Price3" placeholder="Qty Decimal Price">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="inputEmail3" class="col-3 col-form-label">Price Decimal</label>
+                                        <div class="col-9">
+                                            <input type="text" class="form-control" required value="{{ PriceDecimalPoint }}" name="PriceDecimalPoint" id="inputPrice Decimal3" placeholder="Price Decimal">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <h4 class="page-title">Tax Activate</h4>
+                                    <div class="form-group">
+
+                                        <div class="radio radio-primary mb-2">
+                                            {% if check_VAT == "True" %}
+                                            <input type="radio" value="VAT" name="Tax_Active" id="VAT" checked>
+                                            {% else %}
+                                            <input type="radio" value="VAT" name="Tax_Active" id="VAT">
+                                            {% endif %}
+                                            <label for="VAT">
+                                                VAT
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-primary mb-2">
+                                            {% if check_GST == "True" %}
+                                            <input type="radio" value="GST" name="Tax_Active" id="GST" checked>
+                                            {% else %}
+                                            <input type="radio" value="GST" name="Tax_Active" id="GST">
+                                            {% endif %}
+                                            <label for="GST">
+                                                GST
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox checkbox-primary mb-2">
+                                                {% if check_TAX1 == "True" %}
+                                                <input type="checkbox" value="True" name="Tax1" id="Tax1" checked>
+                                                {% else %}
+                                                <input type="checkbox" value="True" name="Tax1" id="Tax1">
+                                                {% endif %}
+                                                <label for="Tax1"> Tax1 </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary mb-2">
+                                                {% if check_TAX2 == "True" %}
+                                                <input type="checkbox" value="True" name="Tax2" id="Tax2" checked>
+                                                {% else %}
+                                                <input type="checkbox" value="True" name="Tax2" id="Tax2">
+                                                {% endif %}
+                                                <label for="Tax2"> Tax2 </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary mb-2">
+                                                {% if check_TAX3 == "True" %}
+                                                <input type="checkbox" value="True" name="Tax3" id="Tax3" checked>
+                                                {% else %}
+                                                <input type="checkbox" value="True" name="Tax3" id="Tax3">
+                                                {% endif %}
+                                                <label for="Tax3"> Tax3 </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <h4 class="page-title">Discount Type</h4>
+                                  <!--   <div class="radio radio-primary mb-2">
+                                        <input type="radio" value="Additional_Discount" name="Discount_Type" id="DiscountTypeAdditional">
+                                        <label for="DiscountTypeAdditional">
+                                            Additional Discount
+                                        </label>
+                                    </div> -->
+                                    <div class="checkbox checkbox-primary mb-2">
+                                        {% if check_Additional_Discount == "True" %}
+                                        <input type="checkbox" value="True" name="Additional_Discount" id="Additional_Discount" checked>
+                                        {% else %}
+                                        <input type="checkbox" value="True" name="Additional_Discount" id="Additional_Discount">
+                                        {% endif %}
+                                        <label for="Additional_Discount"> Additional Discount </label>
+                                    </div>
+                                    <div class="checkbox checkbox-primary mb-2">
+                                        {% if check_Bill_Discount == "True" %}
+                                        <input type="checkbox" value="True" name="Bill_Discount" id="Bill_Discount" checked>
+                                        {% else %}
+                                        <input type="checkbox" value="True" name="Bill_Discount" id="Bill_Discount">
+                                        {% endif %}
+                                        <label for="Bill_Discount"> Bill Discount </label>
+                                    </div>
+                                   <!--  <div class="radio radio-primary mb-2">
+                                        <input type="radio" value="Bill_Discount" name="Discount_Type" id="DiscountTypeBill">
+                                        <label for="DiscountTypeBill">
+                                            Bill Discount
+                                        </label>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <h4 class="page-title">Business Type</h4>
+                                    <div class="radio radio-primary mb-2">
+                                        {% if check_Trading == "True" %}
+                                        <input type="radio" value="Trading" onclick="myFunction1()" name="Business_Type" id="Trading" checked>
+                                        {% else %}
+                                        <input type="radio" value="Trading" onclick="myFunction1()" name="Business_Type" id="Trading">
+                                        {% endif %}
+                                        <label for="Trading">
+                                            Trading
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-primary mb-2">
+                                        {% if check_Restaurant == "True" %}
+                                        <input type="radio" value="Restaurant" onclick="myFunction2()" name="Business_Type" id="Restaurant" checked>
+                                        {% else %}
+                                        <input type="radio" value="Restaurant" onclick="myFunction2()" name="Business_Type" id="Restaurant">
+                                        {% endif %}
+                                        <label for="Restaurant">
+                                            Restaurant
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <h4 class="page-title">Inventory</h4>
+                                    <div class="custom-control custom-switch">
+                                        {% if check_Negatine_Stock == "True" %}
+                                        <input type="checkbox" class="custom-control-input" value="True" name="Negative_Stock_Show" id="customSwitch1" checked>
+                                        {% else %}
+                                        <input type="checkbox" class="custom-control-input" value="True" name="Negative_Stock_Show" id="customSwitch1">
+                                        {% endif %}
+                                        <label class="custom-control-label" for="customSwitch1">Show Negative Stock Product</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="basictab2">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <h4 class="page-title">Activate POS Qty Increment</h4>
+                                    <div class="custom-control custom-switch">
+                                        {% if check_Increment_Qty_In_POS == "True" %}
+                                        <input type="checkbox" class="custom-control-input" value="True" name="Increment_Qty_In_POS" id="customSwitch3" checked>
+                                        {% else %}
+                                        <input type="checkbox" class="custom-control-input" value="True" name="Increment_Qty_In_POS" id="customSwitch3">
+                                        {% endif %}
+                                        <label class="custom-control-label" for="customSwitch3">Increase Product Quantity</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <h4 class="page-title">Print Type</h4>
+                                    <div class="custom-control custom-switch">
+                                        <div class="form-group mb-3">
+                                            {% if check_Kitchen_Print == "True" %}
+                                            <input type="checkbox" class="custom-control-input" value="True" name="Kitchen_Print" id="customSwitch4" checked>
+                                            {% else %}
+                                            <input type="checkbox" class="custom-control-input" value="True" name="Kitchen_Print" id="customSwitch4">
+                                            {% endif %}
+                                            <label class="custom-control-label" for="customSwitch4">Kitchen Print</label>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            {% if check_Order_Print == "True" %}
+                                            <input type="checkbox" class="custom-control-input" value="True" name="Order_Print" id="customSwitch5" checked>
+                                            {% else %}
+                                            <input type="checkbox" class="custom-control-input" value="True" name="Order_Print" id="customSwitch5">
+                                            {% endif %}
+                                            <label class="custom-control-label" for="customSwitch5">Order Print</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <h4 class="page-title">Print After Save</h4>
+                                    <div class="custom-control custom-switch">
+                                        {% if check_Print_After_Save_Active == "True" %}
+                                        <input type="checkbox" class="custom-control-input" value="True" name="Print_After_Save_Active" id="customSwitch6" checked>
+                                        {% else %}
+                                        <input type="checkbox" class="custom-control-input" value="True" name="Print_After_Save_Active" id="customSwitch6">
+                                        {% endif %}
+                                        <label class="custom-control-label" for="customSwitch6">Print After Save</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript">
+
+        function myFunction1() {
+          var x = document.getElementById("myli");
+          console.log(x)
+          x.style.display = "none";
+        }  
+        function myFunction2() {
+          var x = document.getElementById("myli");
+            x.style.display = "block";
+
+        }
+        {% if check_Trading == "True" %}
+            myFunction1()
+        {% else %}
+            myFunction2()
+        {% endif %}
+</script>
+{% endblock %}

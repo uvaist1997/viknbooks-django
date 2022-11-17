@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+{% load main_template_tags %}
+
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
+                                <li class="breadcrumb-item active">{{title}}</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{title}} - {{instance.Name}}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box">
+
+                        <div class="row mb-2">
+                                <div class="col-md-12">
+                                    <div class="text-md-right">
+                                        <a href="{% url 'accounts:edit_supplier' pk=instance.pk %}" class="btn btn-info waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-pencil mr-1"></i>Edit {{title}}</a>
+
+                                        <a data-id="{{instance.pk}}" href="{% url 'accounts:delete_supplier' pk=instance.pk %}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" class="action-button remove btn btn-info waves-effect waves-light mb-2 mr-2 redirect"><i class="mdi mdi-delete mr-1"></i>Delete {{title}}</a>
+
+                               
+
+                                    </div>
+                                </div><!-- end col-->
+                            </div>
+
+                        <div class="table-responsive mt-4">
+                            <table class="table table-bordered table-centered mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td>Party ID</td>
+                                        <td>{{instance.PartyID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BranchID</td>
+                                        <td>{{instance.BranchID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LedgerID</td>
+                                        <td>{{instance.LedgerID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Party Code</td>
+                                        <td>{{instance.PartyCode}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Opening Balance</td>
+                                        <td>{{instance.OpeningBalance|to_fixed_two}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FirstName</td>
+                                        <td>{{instance.FirstName|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LastName</td>
+                                        <td>{{instance.LastName|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Contact Person</td>
+                                        <td>{{instance.ContactPerson|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address1</td>
+                                        <td>{{instance.Address1|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address2</td>
+                                        <td>{{instance.Address2|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address3</td>
+                                        <td>{{instance.Address3|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address4</td>
+                                        <td>{{instance.Address4|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>City</td>
+                                        <td>{{instance.City|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>State</td>
+                                        <td>{{instance.State|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Country</td>
+                                        <td>{{instance.Country|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Postal Code</td>
+                                        <td>{{instance.PostalCode|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OfficePhone</td>
+                                        <td>{{instance.OfficePhone|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WorkPhone</td>
+                                        <td>{{instance.WorkPhone|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile</td>
+                                        <td>{{instance.Mobile|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WebURL</td>
+                                        <td>{{instance.WebURL|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>{{instance.Email|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IsBillwiseApplicable</td>
+                                        <td>{{instance.IsBillwiseApplicable|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CreditPeriod</td>
+                                        <td>{{instance.CreditPeriod|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CreditLimit</td>
+                                        <td>{{instance.CreditLimit|default:"-"}}</td>
+                                    </tr>
+                                    <tr>                                 
+                                        <td>CurrencyID</td>
+                                        <td>{{instance.CurrencyID|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>InterestOrNot</td>
+                                        <td>{{instance.InterestOrNot|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RouteID</td>
+                                        <td>{{instance.RouteID|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VATNumber</td>
+                                        <td>{{instance.VATNumber|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GSTNumber</td>
+                                        <td>{{instance.GSTNumber|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tax1Number</td>
+                                        <td>{{instance.Tax1Number|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tax2Number</td>
+                                        <td>{{instance.Tax2Number|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tax3Number</td>
+                                        <td>{{instance.Tax3Number|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PanNumber</td>
+                                        <td>{{instance.PanNumber|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BankName1</td>
+                                        <td>{{instance.BankName1|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AccountName1</td>
+                                        <td>{{instance.AccountName1|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AccountNo1</td>
+                                        <td>{{instance.AccountNo1|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IBANOrIFSCCode1</td>
+                                        <td>{{instance.IBANOrIFSCCode1|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BankName2</td>
+                                        <td>{{instance.BankName2|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AccountName2</td>
+                                        <td>{{instance.AccountName2|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AccountNo2</td>
+                                        <td>{{instance.AccountNo2|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IBANOrIFSCCode2</td>
+                                        <td>{{instance.IBANOrIFSCCode2|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IsActive</td>
+                                        <td>{{instance.IsActive|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CreatedDate</td>
+                                        <td>{{instance.CreatedDate|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UpdatedDate</td>
+                                        <td>{{instance.UpdatedDate|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CreatedUserID</td>
+                                        <td>{{instance.CreatedUserID|default:"-"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Action</td>
+                                        <td>{{instance.Action|default:"-"}}</td>
+                                    </tr>
+                                    {% if instance.PartyImage %}
+                                    <tr>
+                                        <td>Image</td>
+                                        <td><img src="{{instance.PartyImage.url}}"></td>
+                                    </tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row-->
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+{% endblock %}

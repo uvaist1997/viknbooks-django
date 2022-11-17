@@ -1,0 +1,22 @@
+CREATE INDEX index_GeneralSetting
+ON "generalSettings_generalSettings" ("CompanyID_id", "BranchID","GeneralSettingsID","GroupName","SettingsType","SettingsValue");
+
+
+DROP INDEX index_pricelistfilter
+CREATE INDEX index_pricelistfilter
+ON "pricelist_pricelist" ("ProductID", "BranchID","CompanyID_id","PriceListID","UnitID","DefaultUnit","SalesPrice","PurchasePrice","MRP","MultiFactor","Barcode","AutoBarcode");
+
+DROP INDEX index_Productfilter
+CREATE INDEX index_Productfilter
+ON "products_product" ("ProductID", "BranchID","CompanyID_id","ProductName","ProductCode","ProductGroupID","BrandID","GST","VatID","Stock","is_inclusive");
+
+CREATE INDEX index_Batch
+ON "batch_batch" ("CompanyID_id", "BranchID","ConnectID","BatchCode","StockIn","StockOut","PurchasePrice","SalesPrice","PriceListID","ProductID","WareHouseID","VoucherType");
+
+
+CREATE INDEX index_Taxcategory
+ON "taxcategory_taxcategory" ("CompanyID_id", "BranchID","TaxID","TaxName","TaxType","PurchaseTax","SalesTax","Inclusive");
+
+
+CREATE INDEX index_stockPosting
+ON "stockPosting_stockPosting" ("CompanyID_id", "BranchID","StockPostingID","VoucherMasterID","VoucherDetailID","VoucherType","ProductID","BatchID","WareHouseID","QtyIn","QtyOut","Rate","PriceListID");

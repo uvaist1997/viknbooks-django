@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        width: 130mm;
+        font-size: 20px;
+        background: #fff;
+      }
+      .leftToright {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10px;
+        margin-right: 25px;
+      }
+      hr {
+        border-top: 1px dashed;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 20px;
+      }
+      table th {
+        text-align: left;
+        border-bottom: 1px dashed #000;
+      }
+      .textCenter {
+        text-align: center;
+      }
+      .textRight {
+        text-align: right;
+      }
+      .textLeft {
+        text-align: left;
+      }
+      .paddingRight {
+        padding-right: 25px;
+      }
+      .w-260{
+        width: 260px;    
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+  
+    <font size="5">
+      <div class="leftToright">
+        <label>Gross Amount (المبلغ الإجمالي)</label>
+        <label>{{grossTotalSimp}}</label>
+      </div>
+      <div class="leftToright">
+        <label>Discount (خصم)</label>
+        <label>{{discountedAmountSimp }}</label>
+      </div>
+      <div class="leftToright">
+        <label>Total Tax (مجموع الضريبة)</label>
+        <label>{{totalTaxSimp}}</label>
+      </div>
+    </font>
+    <hr />
+    <!-- Total Section Ends Here -->
+    <!-- Grand Total Section Starts Here -->
+    <font size="5">
+      <b>
+        <div class="leftToright">
+          <label>Grand Total (المبلغ الإجمالي)</label>
+          <label>SAR {{totalAmountDis}}</label>
+        </div>
+      </b>
+    </font>
+    <hr />
+    <!-- Grand Total Section Ends Here -->
+    <img src="{{Terms_and_Conditions}}" />
+    <center>
+      <font size="4">
+        <br />
+        <b>Powered By ViknCodes</b>
+      </font>
+    </center>
+  </body>
+</html>

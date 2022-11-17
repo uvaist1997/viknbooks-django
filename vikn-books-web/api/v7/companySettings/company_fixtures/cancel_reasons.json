@@ -1,0 +1,38 @@
+[
+	{
+	    "model": "brands.CancelReasons",
+	    "pk": 1,
+	    "fields": {
+	      "BranchID": 1,
+	      "Reason" : "Reason1",
+	      "UnitName" : "Piece",
+	      "Notes" : "Default Unit",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01"
+	    }
+	},
+	{
+	    "model": "brands.CancelReasons",
+	    "pk": 2,
+	    "fields": {
+	      "BranchID": 1,
+	      "Reason" : "Reason2",
+	      "UnitName" : "Piece",
+	      "Notes" : "Default Unit",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01"
+	    }
+	},
+	{
+	    "model": "brands.CancelReasons",
+	    "pk": 3,
+	    "fields": {
+	      "BranchID": 1,
+	      "Reason" : "Reason3",
+	      "UnitName" : "Piece",
+	      "Notes" : "Default Unit",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01"
+	    }
+	}
+]

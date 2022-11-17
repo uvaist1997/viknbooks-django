@@ -1,0 +1,26 @@
+[
+	{
+	    "model": "brands.Unit",
+	    "pk": 1,
+	    "fields": {
+	      "UnitID": 1,
+	      "BranchID" : 1,
+	      "UnitName" : "Piece",
+	      "Notes" : "Default Unit",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01"
+	    }
+	},
+	{
+	    "model": "brands.Unit_Log",
+	    "pk": 1,
+	    "fields": {
+	      "TransactionID": 1,
+	      "BranchID" : 1,
+	      "UnitName" : "Piece",
+	      "Notes" : "Default Unit",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01"
+	    }
+	}
+]

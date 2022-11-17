@@ -1,0 +1,1090 @@
+[
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 1,
+	    "fields": {
+	      "TransactionTypesID": 1,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "Visa",
+	      "Notes" : "Visa",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 2,
+	    "fields": {
+	      "TransactionTypesID": 2,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "Mastercard",
+	      "Notes" : "Mastercard",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 3,
+	    "fields": {
+	      "TransactionTypesID": 3,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "Citibank",
+	      "Notes" : "Citibank",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 4,
+	    "fields": {
+	      "TransactionTypesID": 4,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "American Express",
+	      "Notes" : "American Express",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 5,
+	    "fields": {
+	      "TransactionTypesID": 5,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "Discover",
+	      "Notes" : "Discover",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 33,
+	    "fields": {
+	      "TransactionTypesID": 33,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "None",
+	      "Notes" : "None",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 6,
+	    "fields": {
+	      "TransactionTypesID": 6,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Cash",
+	      "Notes" : "Cash",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 7,
+	    "fields": {
+	      "TransactionTypesID": 7,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Cheque",
+	      "Notes" : "Cheque",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 8,
+	    "fields": {
+	      "TransactionTypesID": 8,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "E-Walet",
+	      "Notes" : "E-Walet",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 9,
+	    "fields": {
+	      "TransactionTypesID": 9,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Debit Card",
+	      "Notes" : "Debit Card",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 10,
+	    "fields": {
+	      "TransactionTypesID": 10,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Credit Card",
+	      "Notes" : "Credit Card",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 11,
+	    "fields": {
+	      "TransactionTypesID": 11,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "DD",
+	      "Notes" : "DD",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 12,
+	    "fields": {
+	      "TransactionTypesID": 12,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Online Banking",
+	      "Notes" : "Online Banking",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 13,
+	    "fields": {
+	      "TransactionTypesID": 13,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "NONE",
+	      "Notes" : "NONE",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 14,
+	    "fields": {
+	      "TransactionTypesID": 14,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "Bounced",
+	      "Notes" : "Bounced",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 15,
+	    "fields": {
+	      "TransactionTypesID": 15,
+	      "BranchID" : 1,
+	      "MasterTypeID" :3,
+	      "Name" : "Cleared",
+	      "Notes" : "Cleared",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 16,
+	    "fields": {
+	      "TransactionTypesID": 16,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "Submitted",
+	      "Notes" : "Submitted",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 17,
+	    "fields": {
+	      "TransactionTypesID": 17,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 4,
+	      "Name" : "Dining",
+	      "Notes" : "Dining",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 18,
+	    "fields": {
+	      "TransactionTypesID": 18,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 4,
+	      "Name" : "TakeAway",
+	      "Notes" : "TakeAway",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 19,
+	    "fields": {
+	      "TransactionTypesID": 19,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 4,
+	      "Name" : "Phone Order",
+	      "Notes" : "Phone Order",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 20,
+	    "fields": {
+	      "TransactionTypesID": 20,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "None",
+	      "Notes" : "None",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 21,
+	    "fields": {
+	      "TransactionTypesID": 21,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "GST Intra-state B2B",
+	      "Notes" : "GST Intra-state B2B",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 22,
+	    "fields": {
+	      "TransactionTypesID": 22,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "GST Intra-state B2C",
+	      "Notes" : "GST Intra-state B2C",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 23,
+	    "fields": {
+	      "TransactionTypesID": 23,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "GST Inter-state B2B",
+	      "Notes" : "GST Inter-state B2B",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 24,
+	    "fields": {
+	      "TransactionTypesID": 24,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "GST Inter-state B2C",
+	      "Notes" : "GST Inter-state B2C",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 25,
+	    "fields": {
+	      "TransactionTypesID": 25,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "Export",
+	      "Notes" : "Export",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 26,
+	    "fields": {
+	      "TransactionTypesID": 26,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "None",
+	      "Notes" : "None",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 27,
+	    "fields": {
+	      "TransactionTypesID": 27,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "GST Intra-state B2B",
+	      "Notes" : "GST Intra-state B2B",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 28,
+	    "fields": {
+	      "TransactionTypesID": 28,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "GST Intra-state B2B Unregistered",
+	      "Notes" : "GST Intra-state B2B Unregistered",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 29,
+	    "fields": {
+	      "TransactionTypesID": 29,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "GST Inter-state B2B",
+	      "Notes" : "GST Inter-state B2B",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 30,
+	    "fields": {
+	      "TransactionTypesID": 30,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "Import",
+	      "Notes" : "Import",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 31,
+	    "fields": {
+	      "TransactionTypesID": 31,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 8,
+	      "Name" : "None",
+	      "Notes" : "None",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 32,
+	    "fields": {
+	      "TransactionTypesID": 32,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 8,
+	      "Name" : "VAT",
+	      "Notes" : "VAT",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes",
+	    "pk": 34,
+	    "fields": {
+	      "TransactionTypesID": 34,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "Re Submitted",
+	      "Notes" : "Re Submitted",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 1,
+	    "fields": {
+	      "ID" : 1,
+	      "TransactionID": 1,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "Visa",
+	      "Notes" : "Visa",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 2,
+	    "fields": {
+	      "ID" : 2,
+	      "TransactionID": 2,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "Mastercard",
+	      "Notes" : "Mastercard",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 3,
+	    "fields": {
+	      "ID" : 3,
+	      "TransactionID": 3,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "Citibank",
+	      "Notes" : "Citibank",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 4,
+	    "fields": {
+	      "ID" : 4,
+	      "TransactionID": 4,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "American Express",
+	      "Notes" : "American Express",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 5,
+	    "fields": {
+	      "ID" : 5,
+	      "TransactionID": 5,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "Discover",
+	      "Notes" : "Discover",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 33,
+	    "fields": {
+	      "ID" : 33,
+	      "TransactionID": 33,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 1,
+	      "Name" : "None",
+	      "Notes" : "None",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 6,
+	    "fields": {
+	      "ID" : 6,
+	      "TransactionID": 6,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Cash",
+	      "Notes" : "Cash",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 7,
+	    "fields": {
+	      "ID" : 7,
+	      "TransactionID": 7,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Cheque",
+	      "Notes" : "Cheque",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 8,
+	    "fields": {
+	      "ID" : 8,
+	      "TransactionID": 8,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "E-Walet",
+	      "Notes" : "E-Walet",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 9,
+	    "fields": {
+	      "ID" : 9,
+	      "TransactionID": 9,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Debit Card",
+	      "Notes" : "Debit Card",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 10,
+	    "fields": {
+	      "ID" :10,
+	      "TransactionID": 10,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Credit Card",
+	      "Notes" : "Credit Card",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 11,
+	    "fields": {
+	      "ID" : 11,
+	      "TransactionID": 11,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "DD",
+	      "Notes" : "DD",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 12,
+	    "fields": {
+	      "ID" : 12,
+	      "TransactionID": 12,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 2,
+	      "Name" : "Online Banking",
+	      "Notes" : "Online Banking",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 13,
+	    "fields": {
+	      "ID" : 13,
+	      "TransactionID": 13,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "NONE",
+	      "Notes" : "NONE",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 14,
+	    "fields": {
+	      "ID" : 14,
+	      "TransactionID": 14,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "Bounced",
+	      "Notes" : "Bounced",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 15,
+	    "fields": {
+	      "ID" : 15,
+	      "TransactionID": 15,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "Cleared",
+	      "Notes" : "Cleared",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 16,
+	    "fields": {
+	      "ID" : 16,
+	      "TransactionID": 16,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "Submitted",
+	      "Notes" : "Submitted",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 17,
+	    "fields": {
+	      "ID" : 17,
+	      "TransactionID": 17,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 4,
+	      "Name" : "Dining",
+	      "Notes" : "Dining",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 18,
+	    "fields": {
+	      "ID" : 18,
+	      "TransactionID": 18,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 4,
+	      "Name" : "TakeAway",
+	      "Notes" : "TakeAway",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 19,
+	    "fields": {
+	      "ID" : 19,
+	      "TransactionID": 19,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 4,
+	      "Name" : "Phone Order",
+	      "Notes" : "Phone Order",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 20,
+	    "fields": {
+	      "ID" : 20,
+	      "TransactionID": 21,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "None",
+	      "Notes" : "None",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 21,
+	    "fields": {
+	      "ID" : 21,
+	      "TransactionID": 21,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "GST Intra-state B2B",
+	      "Notes" : "GST Intra-state B2B",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 22,
+	    "fields": {
+	      "ID" : 22,
+	      "TransactionID": 22,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "GST Intra-state B2C",
+	      "Notes" : "GST Intra-state B2C",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 23,
+	    "fields": {
+	      "ID" : 23,
+	      "TransactionID": 23,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "GST Inter-state B2B",
+	      "Notes" : "GST Inter-state B2B",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 24,
+	    "fields": {
+	      "ID" : 24,
+	      "TransactionID": 24,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "GST Inter-state B2C",
+	      "Notes" : "GST Inter-state B2C",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 25,
+	    "fields": {
+	      "ID" : 25,
+	      "TransactionID": 25,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 6,
+	      "Name" : "Export",
+	      "Notes" : "Export",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 26,
+	    "fields": {
+	      "ID" : 26,
+	      "TransactionID": 26,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "None",
+	      "Notes" : "None",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 27,
+	    "fields": {
+	      "ID" : 27,
+	      "TransactionID": 27,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "GST Intra-state B2B",
+	      "Notes" : "GST Intra-state B2B",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 28,
+	    "fields": {
+	      "ID" : 28,
+	      "TransactionID": 28,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "GST Intra-state B2B Unregistered",
+	      "Notes" : "GST Intra-state B2B Unregistered",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 29,
+	    "fields": {
+	      "ID" : 29,
+	      "TransactionID": 29,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "GST Inter-state B2B",
+	      "Notes" : "GST Inter-state B2B",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 30,
+	    "fields": {
+	      "ID" : 30,
+	      "TransactionID": 30,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 7,
+	      "Name" : "Import",
+	      "Notes" : "Import",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 31,
+	    "fields": {
+	      "ID" : 31,
+	      "TransactionID": 31,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 8,
+	      "Name" : "None",
+	      "Notes" : "None",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 32,
+	    "fields": {
+	      "ID" : 32,
+	      "TransactionID": 32,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 8,
+	      "Name" : "VAT",
+	      "Notes" : "VAT",
+	      "CreatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.TransactionTypes_Log",
+	    "pk": 34,
+	    "fields": {
+	      "TransactionTypesID": 34,
+	      "BranchID" : 1,
+	      "MasterTypeID" : 3,
+	      "Name" : "Re Submitted",
+	      "Notes" : "Re Submitted",
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "CreatedUserID" : 1,
+	      "IsDefault" : 1,
+	      "Action" : "A"
+	    }
+	}
+]

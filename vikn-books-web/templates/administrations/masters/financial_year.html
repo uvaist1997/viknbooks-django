@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
+                                <li class="breadcrumb-item active">{{title}}</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{title}} - {{instance.UserTypeName}}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box">
+
+                        <div class="row mb-2">
+                                <div class="col-md-12">
+                                    <div class="text-md-right">
+                                        <a href="{% url 'administrations:edit_financial_year' pk=instance.pk %}" class="btn btn-info waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-pencil mr-1"></i>Edit {{title}}</a>
+
+                                        <a data-id="{{instance.pk}}" href="{% url 'administrations:delete_financial_year' pk=instance.pk %}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" class="action-button remove btn btn-info waves-effect waves-light mb-2 mr-2 redirect"><i class="mdi mdi-delete mr-1"></i>Delete {{title}}</a>
+
+                               
+
+                                    </div>
+                                </div><!-- end col-->
+                            </div>
+
+                        <div class="table-responsive mt-4">
+                            <table class="table table-bordered table-centered mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td>Financial Year ID</td>
+                                        <td>{{instance.FinancialYearID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Action</td>
+                                        <td>{{instance.Action}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>From Date</td>
+                                        <td>{{instance.FromDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>To Date</td>
+                                        <td>{{instance.ToDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Is Closed</td>
+                                        <td>{{instance.IsClosed}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Notes</td>
+                                        <td>{{instance.Notes}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Created Date</td>
+                                        <td>{{instance.CreatedDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Updated Date</td>
+                                        <td>{{instance.UpdatedDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Created User ID</td>
+                                        <td>{{instance.CreatedUserID}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row-->
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+{% endblock %}

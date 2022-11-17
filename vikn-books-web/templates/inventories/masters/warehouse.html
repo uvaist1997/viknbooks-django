@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
+                                <li class="breadcrumb-item active">{{title}}</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">{{title}} - {{instance.WarehouseName}}</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box">
+
+                        <div class="row mb-2">
+                                <div class="col-md-12">
+                                    <div class="text-md-right">
+                                        <a href="{% url 'inventories:edit_warehouse' pk=instance.pk %}" class="btn btn-info waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-pencil mr-1"></i>Edit {{title}}</a>
+
+                                        <a data-id="{{instance.pk}}" href="{% url 'inventories:delete_warehouse' pk=instance.pk %}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" class="action-button remove btn btn-info waves-effect waves-light mb-2 mr-2 redirect"><i class="mdi mdi-delete mr-1"></i>Delete {{title}}</a>
+
+                               
+
+                                    </div>
+                                </div><!-- end col-->
+                            </div>
+
+                        <div class="table-responsive mt-4">
+                            <table class="table table-bordered table-centered mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td>WarehouseID</td>
+                                        <td>{{instance.WarehouseID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BranchID</td>
+                                        <td>{{instance.BranchID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WarehouseName</td>
+                                        <td>{{instance.WarehouseName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Notes</td>
+                                        <td>{{instance.Notes}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CreatedUserID</td>
+                                        <td>{{instance.CreatedUserID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CreatedDate</td>
+                                        <td>{{instance.CreatedDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UpdatedDate</td>
+                                        <td>{{instance.UpdatedDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Action</td>
+                                        <td>{{instance.Action}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row-->
+            
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+{% endblock %}

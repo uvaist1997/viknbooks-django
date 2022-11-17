@@ -1,0 +1,3592 @@
+[
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 1,
+	    "fields": {
+	      "LedgerID": 1,
+	      "BranchID" : 1,
+	      "LedgerName" : "Cash In Hand",
+	      "LedgerCode" : "AL1",
+	      "AccountGroupUnder" : 9,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Cash In Hand",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 2,
+	    "fields": {
+	      "LedgerID": 2,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Receipt",
+	      "LedgerCode" : "AL2",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 3,
+	    "fields": {
+	      "LedgerID": 3,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Sales",
+	      "LedgerCode" : "AL3",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 4,
+	    "fields": {
+	      "LedgerID": 4,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Service",
+	      "LedgerCode" : "AL4",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Service",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 5,
+	    "fields": {
+	      "LedgerID": 5,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on service Sales",
+	      "LedgerCode" : "AL5",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 6,
+	    "fields": {
+	      "LedgerID": 6,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Receipt",
+	      "LedgerCode" : "AL6",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 7,
+	    "fields": {
+	      "LedgerID": 7,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Sales",
+	      "LedgerCode" : "AL7",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 8,
+	    "fields": {
+	      "LedgerID": 8,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on service Sales",
+	      "LedgerCode" : "AL8",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 9,
+	    "fields": {
+	      "LedgerID": 9,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Receipt",
+	      "LedgerCode" : "AL9",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 10,
+	    "fields": {
+	      "LedgerID": 10,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Sales",
+	      "LedgerCode" : "AL10",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 11,
+	    "fields": {
+	      "LedgerID": 11,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Service",
+	      "LedgerCode" : "AL11",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Service",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 12,
+	    "fields": {
+	      "LedgerID": 12,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Service Sales",
+	      "LedgerCode" : "AL12",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 13,
+	    "fields": {
+	      "LedgerID": 13,
+	      "BranchID" : 1,
+	      "LedgerName" : "Excise Duty on Sales",
+	      "LedgerCode" : "AL13",
+	      "AccountGroupUnder" : 87,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Excise Duty on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 14,
+	    "fields": {
+	      "LedgerID": 14,
+	      "BranchID" : 1,
+	      "LedgerName" : "Excise Duty on Service Sales",
+	      "LedgerCode" : "AL14",
+	      "AccountGroupUnder" : 87,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Excise Duty on Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 15,
+	    "fields": {
+	      "LedgerID": 15,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Receipt",
+	      "LedgerCode" : "AL15",
+	      "AccountGroupUnder" : 81,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 16,
+	    "fields": {
+	      "LedgerID": 16,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Sales",
+	      "LedgerCode" : "AL16",
+	      "AccountGroupUnder" : 81,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 17,
+	    "fields": {
+	      "LedgerID": 17,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on service Sales",
+	      "LedgerCode" : "AL17",
+	      "AccountGroupUnder" : 81,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 18,
+	    "fields": {
+	      "LedgerID": 18,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Receipt",
+	      "LedgerCode" : "AL18",
+	      "AccountGroupUnder" : 83,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 19,
+	    "fields": {
+	      "LedgerID": 19,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Sales",
+	      "LedgerCode" : "AL19",
+	      "AccountGroupUnder" : 83,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 20,
+	    "fields": {
+	      "LedgerID": 20,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on service Sales",
+	      "LedgerCode" : "AL20",
+	      "AccountGroupUnder" : 83,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 21,
+	    "fields": {
+	      "LedgerID": 21,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Receipt",
+	      "LedgerCode" : "AL21",
+	      "AccountGroupUnder" : 85,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 22,
+	    "fields": {
+	      "LedgerID": 22,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Sales",
+	      "LedgerCode" : "AL22",
+	      "AccountGroupUnder" : 85,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 23,
+	    "fields": {
+	      "LedgerID": 23,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on service Sales",
+	      "LedgerCode" : "AL23",
+	      "AccountGroupUnder" : 85,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 24,
+	    "fields": {
+	      "LedgerID": 24,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Expense",
+	      "LedgerCode" : "AL24",
+	      "AccountGroupUnder" : 79,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Expense",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 25,
+	    "fields": {
+	      "LedgerID": 25,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Receipt",
+	      "LedgerCode" : "AL25",
+	      "AccountGroupUnder" : 79,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 26,
+	    "fields": {
+	      "LedgerID": 26,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on service Sales",
+	      "LedgerCode" : "AL26",
+	      "AccountGroupUnder" : 79,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 27,
+	    "fields": {
+	      "LedgerID": 27,
+	      "BranchID" : 1,
+	      "LedgerName" : "Cheques Received",
+	      "LedgerCode" : "AL27",
+	      "AccountGroupUnder" : 15,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Cheques Received",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 28,
+	    "fields": {
+	      "LedgerID": 28,
+	      "BranchID" : 1,
+	      "LedgerName" : "Credit Card Received",
+	      "LedgerCode" : "AL28",
+	      "AccountGroupUnder" : 15,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Credit Card Received",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 29,
+	    "fields": {
+	      "LedgerID": 29,
+	      "BranchID" : 1,
+	      "LedgerName" : "Equit Share",
+	      "LedgerCode" : "AL29",
+	      "AccountGroupUnder" : 88,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Equit Share",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 30,
+	    "fields": {
+	      "LedgerID": 30,
+	      "BranchID" : 1,
+	      "LedgerName" : "Mutual Funds",
+	      "LedgerCode" : "AL30",
+	      "AccountGroupUnder" : 88,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Mutual Funds",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 31,
+	    "fields": {
+	      "LedgerID": 31,
+	      "BranchID" : 1,
+	      "LedgerName" : "Others",
+	      "LedgerCode" : "AL31",
+	      "AccountGroupUnder" : 88,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Others",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 32,
+	    "fields": {
+	      "LedgerID": 32,
+	      "BranchID" : 1,
+	      "LedgerName" : "Real Estate",
+	      "LedgerCode" : "AL32",
+	      "AccountGroupUnder" : 88,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Real Estate",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 33,
+	    "fields": {
+	      "LedgerID": 33,
+	      "BranchID" : 1,
+	      "LedgerName" : "P&L Balance",
+	      "LedgerCode" : "AL33",
+	      "AccountGroupUnder" : 7,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "P&L Balance",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 34,
+	    "fields": {
+	      "LedgerID": 34,
+	      "BranchID" : 1,
+	      "LedgerName" : "Preliminary Expense",
+	      "LedgerCode" : "AL34",
+	      "AccountGroupUnder" : 7,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Preliminary Expense",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 35,
+	    "fields": {
+	      "LedgerID": 35,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Payment",
+	      "LedgerCode" : "AL35",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 36,
+	    "fields": {
+	      "LedgerID": 36,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Purchase",
+	      "LedgerCode" : "AL36",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 37,
+	    "fields": {
+	      "LedgerID": 37,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Service Purchase",
+	      "LedgerCode" : "AL37",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 38,
+	    "fields": {
+	      "LedgerID": 38,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Payment",
+	      "LedgerCode" : "AL38",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 39,
+	    "fields": {
+	      "LedgerID": 39,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Purchase",
+	      "LedgerCode" : "AL39",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 40,
+	    "fields": {
+	      "LedgerID": 40,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Service Purchase",
+	      "LedgerCode" : "AL40",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 41,
+	    "fields": {
+	      "LedgerID": 41,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Payment",
+	      "LedgerCode" : "AL41",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 42,
+	    "fields": {
+	      "LedgerID": 42,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Purchase",
+	      "LedgerCode" : "AL42",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 43,
+	    "fields": {
+	      "LedgerID": 43,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Service Purchase",
+	      "LedgerCode" : "AL43",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 44,
+	    "fields": {
+	      "LedgerID": 44,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Payment",
+	      "LedgerCode" : "AL44",
+	      "AccountGroupUnder" : 80,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 45,
+	    "fields": {
+	      "LedgerID": 45,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Purchase",
+	      "LedgerCode" : "AL45",
+	      "AccountGroupUnder" : 80,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 46,
+	    "fields": {
+	      "LedgerID": 46,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Service Purchase",
+	      "LedgerCode" : "AL46",
+	      "AccountGroupUnder" : 80,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 47,
+	    "fields": {
+	      "LedgerID": 47,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Payment",
+	      "LedgerCode" : "AL47",
+	      "AccountGroupUnder" : 82,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 48,
+	    "fields": {
+	      "LedgerID": 48,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Purchase",
+	      "LedgerCode" : "AL48",
+	      "AccountGroupUnder" : 82,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 49,
+	    "fields": {
+	      "LedgerID": 49,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Service Purchase",
+	      "LedgerCode" : "AL49",
+	      "AccountGroupUnder" : 82,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 50,
+	    "fields": {
+	      "LedgerID": 50,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Payment",
+	      "LedgerCode" : "AL50",
+	      "AccountGroupUnder" : 84,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 51,
+	    "fields": {
+	      "LedgerID": 51,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Purchase",
+	      "LedgerCode" : "AL51",
+	      "AccountGroupUnder" : 84,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 52,
+	    "fields": {
+	      "LedgerID": 52,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Service Purchase",
+	      "LedgerCode" : "AL52",
+	      "AccountGroupUnder" : 84,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 53,
+	    "fields": {
+	      "LedgerID": 53,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Payment",
+	      "LedgerCode" : "AL53",
+	      "AccountGroupUnder" : 78,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 54,
+	    "fields": {
+	      "LedgerID": 54,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Purchase",
+	      "LedgerCode" : "AL54",
+	      "AccountGroupUnder" : 78,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 55,
+	    "fields": {
+	      "LedgerID": 55,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Sales",
+	      "LedgerCode" : "AL55",
+	      "AccountGroupUnder" : 79,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 56,
+	    "fields": {
+	      "LedgerID": 56,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Purchase(Outside State)",
+	      "LedgerCode" : "AL56",
+	      "AccountGroupUnder" : 78,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Purchase(Outside State)",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 57,
+	    "fields": {
+	      "LedgerID": 57,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Service Purchase",
+	      "LedgerCode" : "AL57",
+	      "AccountGroupUnder" : 78,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 58,
+	    "fields": {
+	      "LedgerID": 58,
+	      "BranchID" : 1,
+	      "LedgerName" : "Zakkath",
+	      "LedgerCode" : "AL58",
+	      "AccountGroupUnder" : 30,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Zakkath",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 59,
+	    "fields": {
+	      "LedgerID": 59,
+	      "BranchID" : 1,
+	      "LedgerName" : "Excise Duty on Service Purchase",
+	      "LedgerCode" : "AL59",
+	      "AccountGroupUnder" : 86,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Excise Duty on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 60,
+	    "fields": {
+	      "LedgerID": 60,
+	      "BranchID" : 1,
+	      "LedgerName" : "Additional Tax on Purchase",
+	      "LedgerCode" : "AL60",
+	      "AccountGroupUnder" : 94,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Additional Tax on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 61,
+	    "fields": {
+	      "LedgerID": 61,
+	      "BranchID" : 1,
+	      "LedgerName" : "Additional Tax on Sales",
+	      "LedgerCode" : "AL61",
+	      "AccountGroupUnder" : 89,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Additional Tax on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 62,
+	    "fields": {
+	      "LedgerID": 62,
+	      "BranchID" : 1,
+	      "LedgerName" : "Additional Tax on Service Purchase",
+	      "LedgerCode" : "AL62",
+	      "AccountGroupUnder" : 94,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Additional Tax on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 63,
+	    "fields": {
+	      "LedgerID": 63,
+	      "BranchID" : 1,
+	      "LedgerName" : "Additional Tax on Service Sales",
+	      "LedgerCode" : "AL63",
+	      "AccountGroupUnder" : 89,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Additional Tax on Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 64,
+	    "fields": {
+	      "LedgerID": 64,
+	      "BranchID" : 1,
+	      "LedgerName" : "Outstanding Salary",
+	      "LedgerCode" : "AL64",
+	      "AccountGroupUnder" : 31,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Outstanding Salary",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 65,
+	    "fields": {
+	      "LedgerID": 65,
+	      "BranchID" : 1,
+	      "LedgerName" : "Capital",
+	      "LedgerCode" : "AL65",
+	      "AccountGroupUnder" : 37,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Capital",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 66,
+	    "fields": {
+	      "LedgerID": 66,
+	      "BranchID" : 1,
+	      "LedgerName" : "Profit/Loss for Previous year",
+	      "LedgerCode" : "AL66",
+	      "AccountGroupUnder" : 39,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Profit/Loss for Previous year",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 67,
+	    "fields": {
+	      "LedgerID": 67,
+	      "BranchID" : 1,
+	      "LedgerName" : "Opening Stock",
+	      "LedgerCode" : "AL67",
+	      "AccountGroupUnder" : 45,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Opening Stock",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 68,
+	    "fields": {
+	      "LedgerID": 68,
+	      "BranchID" : 1,
+	      "LedgerName" : "Excise Duty on Purchase",
+	      "LedgerCode" : "AL68",
+	      "AccountGroupUnder" : 48,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Excise Duty on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 69,
+	    "fields": {
+	      "LedgerID": 69,
+	      "BranchID" : 1,
+	      "LedgerName" : "Purchase Account",
+	      "LedgerCode" : "AL69",
+	      "AccountGroupUnder" : 48,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Purchase Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 70,
+	    "fields": {
+	      "LedgerID": 70,
+	      "BranchID" : 1,
+	      "LedgerName" : "Purchase Return Account",
+	      "LedgerCode" : "AL70",
+	      "AccountGroupUnder" : 48,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Purchase Return Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 71,
+	    "fields": {
+	      "LedgerID": 71,
+	      "BranchID" : 1,
+	      "LedgerName" : "Surcharge Purchase",
+	      "LedgerCode" : "AL71",
+	      "AccountGroupUnder" : 48,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Surcharge Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 72,
+	    "fields": {
+	      "LedgerID": 72,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Receipt",
+	      "LedgerCode" : "AL72",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 73,
+	    "fields": {
+	      "LedgerID": 73,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Loyalty",
+	      "LedgerCode" : "AL73",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Loyalty",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 74,
+	    "fields": {
+	      "LedgerID": 74,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Sales",
+	      "LedgerCode" : "AL74",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 75,
+	    "fields": {
+	      "LedgerID": 75,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Service Sales",
+	      "LedgerCode" : "AL75",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 76,
+	    "fields": {
+	      "LedgerID": 76,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Celebration",
+	      "LedgerCode" : "AL76",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Celebration",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 77,
+	    "fields": {
+	      "LedgerID": 77,
+	      "BranchID" : 1,
+	      "LedgerName" : "Round off Purchase",
+	      "LedgerCode" : "AL77",
+	      "AccountGroupUnder" : 58,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Round off Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 78,
+	    "fields": {
+	      "LedgerID": 78,
+	      "BranchID" : 1,
+	      "LedgerName" : "Round off Sales",
+	      "LedgerCode" : "AL78",
+	      "AccountGroupUnder" : 58,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Round off Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 79,
+	    "fields": {
+	      "LedgerID": 79,
+	      "BranchID" : 1,
+	      "LedgerName" : "Round off Service Purchase",
+	      "LedgerCode" : "AL79",
+	      "AccountGroupUnder" : 58,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Round off Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 80,
+	    "fields": {
+	      "LedgerID": 80,
+	      "BranchID" : 1,
+	      "LedgerName" : "Round off Service Sales",
+	      "LedgerCode" : "AL80",
+	      "AccountGroupUnder" : 58,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Round off Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 81,
+	    "fields": {
+	      "LedgerID": 81,
+	      "BranchID" : 1,
+	      "LedgerName" : "Service  Purchase Account",
+	      "LedgerCode" : "AL81",
+	      "AccountGroupUnder" : 62,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Service  Purchase Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 82,
+	    "fields": {
+	      "LedgerID": 82,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Payment",
+	      "LedgerCode" : "AL82",
+	      "AccountGroupUnder" : 73,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 83,
+	    "fields": {
+	      "LedgerID": 83,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Purchase",
+	      "LedgerCode" : "AL83",
+	      "AccountGroupUnder" : 73,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 84,
+	    "fields": {
+	      "LedgerID": 84,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Service Purchase",
+	      "LedgerCode" : "AL84",
+	      "AccountGroupUnder" : 73,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 85,
+	    "fields": {
+	      "LedgerID": 85,
+	      "BranchID" : 1,
+	      "LedgerName" : "Sales Account",
+	      "LedgerCode" : "AL85",
+	      "AccountGroupUnder" : 74,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Sales Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 86,
+	    "fields": {
+	      "LedgerID": 86,
+	      "BranchID" : 1,
+	      "LedgerName" : "Sales Return Account",
+	      "LedgerCode" : "AL86",
+	      "AccountGroupUnder" : 74,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Sales Return Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 87,
+	    "fields": {
+	      "LedgerID": 87,
+	      "BranchID" : 1,
+	      "LedgerName" : "Service Sales Account",
+	      "LedgerCode" : "AL87",
+	      "AccountGroupUnder" : 77,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Service Sales Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 88,
+	    "fields": {
+	      "LedgerID": 88,
+	      "BranchID" : 1,
+	      "LedgerName" : "Professional Fees",
+	      "LedgerCode" : "AL88",
+	      "AccountGroupUnder" : 71,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Professional Fees",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 89,
+	    "fields": {
+	      "LedgerID": 89,
+	      "BranchID" : 1,
+	      "LedgerName" : "Revers Central GST on Purchase",
+	      "LedgerCode" : "AL89",
+	      "AccountGroupUnder" : 71,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Revers Central GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 90,
+	    "fields": {
+	      "LedgerID": 90,
+	      "BranchID" : 1,
+	      "LedgerName" : "Revers Integrated GST on Purchase",
+	      "LedgerCode" : "AL90",
+	      "AccountGroupUnder" : 71,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Revers Integrated GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 91,
+	    "fields": {
+	      "LedgerID": 91,
+	      "BranchID" : 1,
+	      "LedgerName" : "Revers State GST on Purchase",
+	      "LedgerCode" : "AL91",
+	      "AccountGroupUnder" : 71,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Revers State GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger",
+	    "pk": 92,
+	    "fields": {
+	      "LedgerID": 92,
+	      "BranchID" : 1,
+	      "LedgerName" : "Bank",
+	      "LedgerCode" : "AL92",
+	      "AccountGroupUnder" : 8,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Cr",
+	      "Notes" : "Bank",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "UpdatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 1,
+	    "fields": {
+	      "TransactionID": 1,
+	      "BranchID" : 1,
+	      "LedgerName" : "Cash In Hand",
+	      "LedgerCode" : "AL1",
+	      "AccountGroupUnder" : 9,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Cash In Hand",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 2,
+	    "fields": {
+	      "TransactionID": 2,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Receipt",
+	      "LedgerCode" : "AL2",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 3,
+	    "fields": {
+	      "TransactionID": 3,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Sales",
+	      "LedgerCode" : "AL3",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 4,
+	    "fields": {
+	      "TransactionID": 4,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Service",
+	      "LedgerCode" : "AL4",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Service",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 5,
+	    "fields": {
+	      "TransactionID": 5,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on service Sales",
+	      "LedgerCode" : "AL5",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 6,
+	    "fields": {
+	      "TransactionID": 6,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Receipt",
+	      "LedgerCode" : "AL6",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 7,
+	    "fields": {
+	      "TransactionID": 7,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Sales",
+	      "LedgerCode" : "AL7",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 8,
+	    "fields": {
+	      "TransactionID": 8,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on service Sales",
+	      "LedgerCode" : "AL8",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 9,
+	    "fields": {
+	      "TransactionID": 9,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Receipt",
+	      "LedgerCode" : "AL9",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 10,
+	    "fields": {
+	      "TransactionID": 10,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Sales",
+	      "LedgerCode" : "AL10",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 11,
+	    "fields": {
+	      "TransactionID": 11,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Service",
+	      "LedgerCode" : "AL11",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Service",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 12,
+	    "fields": {
+	      "TransactionID": 12,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Service Sales",
+	      "LedgerCode" : "AL12",
+	      "AccountGroupUnder" : 33,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 13,
+	    "fields": {
+	      "TransactionID": 13,
+	      "BranchID" : 1,
+	      "LedgerName" : "Excise Duty on Sales",
+	      "LedgerCode" : "AL13",
+	      "AccountGroupUnder" : 87,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Excise Duty on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 14,
+	    "fields": {
+	      "TransactionID": 14,
+	      "BranchID" : 1,
+	      "LedgerName" : "Excise Duty on Service Sales",
+	      "LedgerCode" : "AL14",
+	      "AccountGroupUnder" : 87,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Excise Duty on Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 15,
+	    "fields": {
+	      "TransactionID": 15,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Receipt",
+	      "LedgerCode" : "AL15",
+	      "AccountGroupUnder" : 81,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 16,
+	    "fields": {
+	      "TransactionID": 16,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Sales",
+	      "LedgerCode" : "AL16",
+	      "AccountGroupUnder" : 81,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 17,
+	    "fields": {
+	      "TransactionID": 17,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on service Sales",
+	      "LedgerCode" : "AL17",
+	      "AccountGroupUnder" : 81,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 18,
+	    "fields": {
+	      "TransactionID": 18,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Receipt",
+	      "LedgerCode" : "AL18",
+	      "AccountGroupUnder" : 83,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 19,
+	    "fields": {
+	      "TransactionID": 19,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Sales",
+	      "LedgerCode" : "AL19",
+	      "AccountGroupUnder" : 83,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 20,
+	    "fields": {
+	      "TransactionID": 20,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on service Sales",
+	      "LedgerCode" : "AL20",
+	      "AccountGroupUnder" : 83,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 21,
+	    "fields": {
+	      "TransactionID": 21,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Receipt",
+	      "LedgerCode" : "AL21",
+	      "AccountGroupUnder" : 85,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 22,
+	    "fields": {
+	      "TransactionID": 22,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Sales",
+	      "LedgerCode" : "AL22",
+	      "AccountGroupUnder" : 85,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 23,
+	    "fields": {
+	      "TransactionID": 23,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on service Sales",
+	      "LedgerCode" : "AL23",
+	      "AccountGroupUnder" : 85,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 24,
+	    "fields": {
+	      "TransactionID": 24,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Expense",
+	      "LedgerCode" : "AL24",
+	      "AccountGroupUnder" : 79,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Expense",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 25,
+	    "fields": {
+	      "TransactionID": 25,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Receipt",
+	      "LedgerCode" : "AL25",
+	      "AccountGroupUnder" : 79,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 26,
+	    "fields": {
+	      "TransactionID": 26,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on service Sales",
+	      "LedgerCode" : "AL26",
+	      "AccountGroupUnder" : 79,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 27,
+	    "fields": {
+	      "TransactionID": 27,
+	      "BranchID" : 1,
+	      "LedgerName" : "Cheques Received",
+	      "LedgerCode" : "AL27",
+	      "AccountGroupUnder" : 15,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Cheques Received",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 28,
+	    "fields": {
+	      "TransactionID": 28,
+	      "BranchID" : 1,
+	      "LedgerName" : "Credit Card Received",
+	      "LedgerCode" : "AL28",
+	      "AccountGroupUnder" : 15,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Credit Card Received",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 29,
+	    "fields": {
+	      "TransactionID": 29,
+	      "BranchID" : 1,
+	      "LedgerName" : "Equit Share",
+	      "LedgerCode" : "AL29",
+	      "AccountGroupUnder" : 88,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Equit Share",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 30,
+	    "fields": {
+	      "TransactionID": 30,
+	      "BranchID" : 1,
+	      "LedgerName" : "Mutual Funds",
+	      "LedgerCode" : "AL30",
+	      "AccountGroupUnder" : 88,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Mutual Funds",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 31,
+	    "fields": {
+	      "TransactionID": 31,
+	      "BranchID" : 1,
+	      "LedgerName" : "Others",
+	      "LedgerCode" : "AL31",
+	      "AccountGroupUnder" : 88,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Others",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 32,
+	    "fields": {
+	      "TransactionID": 32,
+	      "BranchID" : 1,
+	      "LedgerName" : "Real Estate",
+	      "LedgerCode" : "AL32",
+	      "AccountGroupUnder" : 88,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Real Estate",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 33,
+	    "fields": {
+	      "TransactionID": 33,
+	      "BranchID" : 1,
+	      "LedgerName" : "P&L Balance",
+	      "LedgerCode" : "AL33",
+	      "AccountGroupUnder" : 7,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "P&L Balance",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 34,
+	    "fields": {
+	      "TransactionID": 34,
+	      "BranchID" : 1,
+	      "LedgerName" : "Preliminary Expense",
+	      "LedgerCode" : "AL34",
+	      "AccountGroupUnder" : 7,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Preliminary Expense",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 35,
+	    "fields": {
+	      "TransactionID": 35,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Payment",
+	      "LedgerCode" : "AL35",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 36,
+	    "fields": {
+	      "TransactionID": 36,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Purchase",
+	      "LedgerCode" : "AL36",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 37,
+	    "fields": {
+	      "TransactionID": 37,
+	      "BranchID" : 1,
+	      "LedgerName" : "Central GST on Service Purchase",
+	      "LedgerCode" : "AL37",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Central GST on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 38,
+	    "fields": {
+	      "TransactionID": 38,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Payment",
+	      "LedgerCode" : "AL38",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 39,
+	    "fields": {
+	      "TransactionID": 39,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Purchase",
+	      "LedgerCode" : "AL39",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 40,
+	    "fields": {
+	      "TransactionID": 40,
+	      "BranchID" : 1,
+	      "LedgerName" : "Integrated GST on Service Purchase",
+	      "LedgerCode" : "AL40",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Integrated GST on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 41,
+	    "fields": {
+	      "TransactionID": 41,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Payment",
+	      "LedgerCode" : "AL41",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 42,
+	    "fields": {
+	      "TransactionID": 42,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Purchase",
+	      "LedgerCode" : "AL42",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 43,
+	    "fields": {
+	      "TransactionID": 43,
+	      "BranchID" : 1,
+	      "LedgerName" : "State GST on Service Purchase",
+	      "LedgerCode" : "AL43",
+	      "AccountGroupUnder" : 22,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "State GST on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 44,
+	    "fields": {
+	      "TransactionID": 44,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Payment",
+	      "LedgerCode" : "AL44",
+	      "AccountGroupUnder" : 80,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 45,
+	    "fields": {
+	      "TransactionID": 45,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Purchase",
+	      "LedgerCode" : "AL45",
+	      "AccountGroupUnder" : 80,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 46,
+	    "fields": {
+	      "TransactionID": 46,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax1 on Service Purchase",
+	      "LedgerCode" : "AL46",
+	      "AccountGroupUnder" : 80,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax1 on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 47,
+	    "fields": {
+	      "TransactionID": 47,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Payment",
+	      "LedgerCode" : "AL47",
+	      "AccountGroupUnder" : 82,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 48,
+	    "fields": {
+	      "TransactionID": 48,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Purchase",
+	      "LedgerCode" : "AL48",
+	      "AccountGroupUnder" : 82,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 49,
+	    "fields": {
+	      "TransactionID": 49,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax2 on Service Purchase",
+	      "LedgerCode" : "AL49",
+	      "AccountGroupUnder" : 82,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax2 on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 50,
+	    "fields": {
+	      "TransactionID": 50,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Payment",
+	      "LedgerCode" : "AL50",
+	      "AccountGroupUnder" : 84,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 51,
+	    "fields": {
+	      "TransactionID": 51,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Purchase",
+	      "LedgerCode" : "AL51",
+	      "AccountGroupUnder" : 84,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 52,
+	    "fields": {
+	      "TransactionID": 52,
+	      "BranchID" : 1,
+	      "LedgerName" : "Tax3 on Service Purchase",
+	      "LedgerCode" : "AL52",
+	      "AccountGroupUnder" : 84,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Tax3 on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 53,
+	    "fields": {
+	      "TransactionID": 53,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Payment",
+	      "LedgerCode" : "AL53",
+	      "AccountGroupUnder" : 78,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 54,
+	    "fields": {
+	      "TransactionID": 54,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Purchase",
+	      "LedgerCode" : "AL54",
+	      "AccountGroupUnder" : 78,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 55,
+	    "fields": {
+	      "TransactionID": 55,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Sales",
+	      "LedgerCode" : "AL55",
+	      "AccountGroupUnder" : 79,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 56,
+	    "fields": {
+	      "TransactionID": 56,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Purchase(Outside State)",
+	      "LedgerCode" : "AL56",
+	      "AccountGroupUnder" : 78,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Purchase(Outside State)",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 57,
+	    "fields": {
+	      "TransactionID": 57,
+	      "BranchID" : 1,
+	      "LedgerName" : "VAT on Service Purchase",
+	      "LedgerCode" : "AL57",
+	      "AccountGroupUnder" : 78,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "VAT on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 58,
+	    "fields": {
+	      "TransactionID": 58,
+	      "BranchID" : 1,
+	      "LedgerName" : "Zakkath",
+	      "LedgerCode" : "AL58",
+	      "AccountGroupUnder" : 30,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Zakkath",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 59,
+	    "fields": {
+	      "TransactionID": 59,
+	      "BranchID" : 1,
+	      "LedgerName" : "Excise Duty on Service Purchase",
+	      "LedgerCode" : "AL59",
+	      "AccountGroupUnder" : 86,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Excise Duty on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 60,
+	    "fields": {
+	      "TransactionID": 60,
+	      "BranchID" : 1,
+	      "LedgerName" : "Additional Tax on Purchase",
+	      "LedgerCode" : "AL60",
+	      "AccountGroupUnder" : 94,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Additional Tax on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 61,
+	    "fields": {
+	      "TransactionID": 61,
+	      "BranchID" : 1,
+	      "LedgerName" : "Additional Tax on Sales",
+	      "LedgerCode" : "AL61",
+	      "AccountGroupUnder" : 89,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Additional Tax on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 62,
+	    "fields": {
+	      "TransactionID": 62,
+	      "BranchID" : 1,
+	      "LedgerName" : "Additional Tax on Service Purchase",
+	      "LedgerCode" : "AL62",
+	      "AccountGroupUnder" : 94,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Additional Tax on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 63,
+	    "fields": {
+	      "TransactionID": 63,
+	      "BranchID" : 1,
+	      "LedgerName" : "Additional Tax on Service Sales",
+	      "LedgerCode" : "AL63",
+	      "AccountGroupUnder" : 89,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Additional Tax on Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 64,
+	    "fields": {
+	      "TransactionID": 64,
+	      "BranchID" : 1,
+	      "LedgerName" : "Outstanding Salary",
+	      "LedgerCode" : "AL64",
+	      "AccountGroupUnder" : 31,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Outstanding Salary",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 65,
+	    "fields": {
+	      "TransactionID": 65,
+	      "BranchID" : 1,
+	      "LedgerName" : "Capital",
+	      "LedgerCode" : "AL65",
+	      "AccountGroupUnder" : 37,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Capital",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 66,
+	    "fields": {
+	      "TransactionID": 66,
+	      "BranchID" : 1,
+	      "LedgerName" : "Profit/Loss for Previous year",
+	      "LedgerCode" : "AL66",
+	      "AccountGroupUnder" : 39,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Profit/Loss for Previous year",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 67,
+	    "fields": {
+	      "TransactionID": 67,
+	      "BranchID" : 1,
+	      "LedgerName" : "Opening Stock",
+	      "LedgerCode" : "AL67",
+	      "AccountGroupUnder" : 45,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Opening Stock",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 68,
+	    "fields": {
+	      "TransactionID": 68,
+	      "BranchID" : 1,
+	      "LedgerName" : "Excise Duty on Purchase",
+	      "LedgerCode" : "AL68",
+	      "AccountGroupUnder" : 48,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Excise Duty on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 69,
+	    "fields": {
+	      "TransactionID": 69,
+	      "BranchID" : 1,
+	      "LedgerName" : "Purchase Account",
+	      "LedgerCode" : "AL69",
+	      "AccountGroupUnder" : 48,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Purchase Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 70,
+	    "fields": {
+	      "TransactionID": 70,
+	      "BranchID" : 1,
+	      "LedgerName" : "Purchase Return Account",
+	      "LedgerCode" : "AL70",
+	      "AccountGroupUnder" : 48,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Purchase Return Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 71,
+	    "fields": {
+	      "TransactionID": 71,
+	      "BranchID" : 1,
+	      "LedgerName" : "Surcharge Purchase",
+	      "LedgerCode" : "AL71",
+	      "AccountGroupUnder" : 48,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Surcharge Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 72,
+	    "fields": {
+	      "TransactionID": 72,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Receipt",
+	      "LedgerCode" : "AL72",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Receipt",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 73,
+	    "fields": {
+	      "TransactionID": 73,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Loyalty",
+	      "LedgerCode" : "AL73",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Loyalty",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 74,
+	    "fields": {
+	      "TransactionID": 74,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Sales",
+	      "LedgerCode" : "AL74",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 75,
+	    "fields": {
+	      "TransactionID": 75,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Service Sales",
+	      "LedgerCode" : "AL75",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 76,
+	    "fields": {
+	      "TransactionID": 76,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Celebration",
+	      "LedgerCode" : "AL76",
+	      "AccountGroupUnder" : 55,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Celebration",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 77,
+	    "fields": {
+	      "TransactionID": 77,
+	      "BranchID" : 1,
+	      "LedgerName" : "Round off Purchase",
+	      "LedgerCode" : "AL77",
+	      "AccountGroupUnder" : 58,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Round off Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 78,
+	    "fields": {
+	      "TransactionID": 78,
+	      "BranchID" : 1,
+	      "LedgerName" : "Round off Sales",
+	      "LedgerCode" : "AL78",
+	      "AccountGroupUnder" : 58,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Round off Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 79,
+	    "fields": {
+	      "TransactionID": 79,
+	      "BranchID" : 1,
+	      "LedgerName" : "Round off Service Purchase",
+	      "LedgerCode" : "AL79",
+	      "AccountGroupUnder" : 58,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Round off Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 80,
+	    "fields": {
+	      "TransactionID": 80,
+	      "BranchID" : 1,
+	      "LedgerName" : "Round off Service Sales",
+	      "LedgerCode" : "AL80",
+	      "AccountGroupUnder" : 58,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Round off Service Sales",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 81,
+	    "fields": {
+	      "TransactionID": 81,
+	      "BranchID" : 1,
+	      "LedgerName" : "Service  Purchase Account",
+	      "LedgerCode" : "AL81",
+	      "AccountGroupUnder" : 62,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Service  Purchase Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 82,
+	    "fields": {
+	      "TransactionID": 82,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Payment",
+	      "LedgerCode" : "AL82",
+	      "AccountGroupUnder" : 73,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Payment",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 83,
+	    "fields": {
+	      "TransactionID": 83,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Purchase",
+	      "LedgerCode" : "AL83",
+	      "AccountGroupUnder" : 73,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 84,
+	    "fields": {
+	      "TransactionID": 84,
+	      "BranchID" : 1,
+	      "LedgerName" : "Discount on Service Purchase",
+	      "LedgerCode" : "AL84",
+	      "AccountGroupUnder" : 73,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Discount on Service Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 85,
+	    "fields": {
+	      "TransactionID": 85,
+	      "BranchID" : 1,
+	      "LedgerName" : "Sales Account",
+	      "LedgerCode" : "AL85",
+	      "AccountGroupUnder" : 74,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Sales Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 86,
+	    "fields": {
+	      "TransactionID": 86,
+	      "BranchID" : 1,
+	      "LedgerName" : "Sales Return Account",
+	      "LedgerCode" : "AL86",
+	      "AccountGroupUnder" : 74,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Sales Return Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 87,
+	    "fields": {
+	      "TransactionID": 87,
+	      "BranchID" : 1,
+	      "LedgerName" : "Service Sales Account",
+	      "LedgerCode" : "AL87",
+	      "AccountGroupUnder" : 77,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Service Sales Account",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 88,
+	    "fields": {
+	      "TransactionID": 88,
+	      "BranchID" : 1,
+	      "LedgerName" : "Professional Fees",
+	      "LedgerCode" : "AL88",
+	      "AccountGroupUnder" : 71,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Professional Fees",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 89,
+	    "fields": {
+	      "TransactionID": 89,
+	      "BranchID" : 1,
+	      "LedgerName" : "Revers Central GST on Purchase",
+	      "LedgerCode" : "AL89",
+	      "AccountGroupUnder" : 71,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Revers Central GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 90,
+	    "fields": {
+	      "TransactionID": 90,
+	      "BranchID" : 1,
+	      "LedgerName" : "Revers Integrated GST on Purchase",
+	      "LedgerCode" : "AL90",
+	      "AccountGroupUnder" : 71,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Revers Integrated GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 91,
+	    "fields": {
+	      "TransactionID": 91,
+	      "BranchID" : 1,
+	      "LedgerName" : "Revers State GST on Purchase",
+	      "LedgerCode" : "AL91",
+	      "AccountGroupUnder" : 71,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Dr",
+	      "Notes" : "Revers State GST on Purchase",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	},
+	{
+	    "model": "brands.AccountLedger_Log",
+	    "pk": 92,
+	    "fields": {
+	      "TransactionID": 92,
+	      "BranchID" : 1,
+	      "LedgerName" : "Bank",
+	      "LedgerCode" : "BK1",
+	      "AccountGroupUnder" : 8,
+	      "OpeningBalance" : 0,
+	      "CrOrDr" : "Cr",
+	      "Notes" : "Bank",
+	      "IsActive" : 1,
+	      "IsDefault" : 1,
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

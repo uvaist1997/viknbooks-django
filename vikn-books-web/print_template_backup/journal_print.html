@@ -1,0 +1,304 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "journal.css" %}
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <div class="image-group">
+                {% if company.CompanyLogo %}
+                <div class="image-container">
+                  <img src="{{company.CompanyLogo}}" alt="" />
+                </div>
+                {% endif %}
+                <div class="organisation-info">
+                  {% if company_name %}
+                  <span class="organisation-name">{{ company_name }}</span>
+                  {% else %}
+                  <span class="organisation-name"
+                    >{{ company.CompanyName }}</span
+                  >
+                  {% endif %}
+                  <span class="organisation-other-info address"
+                    >{{company.Address1}} {{company.Address2}}
+                    {{company.Address3}} {% if company.Address3 and company.City %},{% endif %} {{company.City}} {% if company.StateName and company.City %} {% endif %} {{company.StateName}}
+                    {{company.PostalCode}}</span>
+                  {% if company.GSTNumber %}
+                  <span class="organisation-other-info"
+                    ><b>GST No:</b> {{company.GSTNumber}}</span
+                  >
+                  {% endif %}
+                  {% if company.VATNumber %}
+                  <span class="organisation-other-info"
+                    ><b>VAT No:</b> {{company.VATNumber}}</span
+                  >
+                  {% endif %}
+                </div>
+              </div>
+            </td>
+            <td class="invoice-details">
+              <div class="invoice-name-container">
+                {% if settings.TransactionName %}
+                <span class="invoice-name">{{settings.TransactionName}}</span>
+                {% elif invoice_type == "journal" %}
+                <span class="invoice-name">Journal Voucher</span>
+                {% elif invoice_type == "payment_voucher" %}
+                <span class="invoice-name">Payment Voucher</span>
+                {% else %}
+                <span class="invoice-name">Receipt Voucher</span>
+                {% endif %}
+              </div>
+              <div class="organization-info">
+                {% if company.Mobile %}
+                <span class="phone">PHONE: {{company.Mobile}}</span>
+                {% endif %} 
+                {% if company.Email %}
+                <span class="email">EMAIL: {{company.Email}}</span>
+                {% endif %} 
+                {% if company.CRNumber %}
+                <span class="email">CR No: {{company.CRNumber}}</span>
+                {% endif %}
+              </div>
+              {% if type != "pdf" %}
+              <div class="voucher-info">
+                <div class="voucher-group">
+                  <span class="voucher-label">Voucher No:</span>
+                  <span class="voucher-text">VIKN001UI</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label">Date</span>
+
+                  <span class="voucher-text">21/12/2021</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label">Time</span>
+
+                  <span class="voucher-text">9:00 AM</span>
+                </div>
+              </div>
+              {% else %}
+              <div class="voucher-info">
+                <div class="voucher-group">
+                  <span class="voucher-label">Voucher No:</span>
+                  <span class="voucher-text">{{data.VoucherNo}}</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label">Date</span>
+
+                  <span class="voucher-text">{{data.Date}}</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label">Time</span>
+
+                  <span class="voucher-text">{{ invoice_time }}</span>
+                </div>
+                <!-- <div class="voucher-group">
+                  <span class="voucher-label">Place Of Supply:</span>
+                 
+                  <span class="voucher-text">{{data.Place_of_Supply}}</span>
+                </div> -->
+              </div>
+              {% endif %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="item-heading"><span>Item List</span></div>
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            <td>Sl No</td>
+            <td class="product-name">Ledger Name</td>
+            <td class="right">Credit</td>
+            <td class="right">Debit</td>
+            {% if settings.IsNarration %}<td class="right">Narration</td>{% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% if type == "pdf" %} {% for instance in details %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ instance.LedgerName }}</td>
+            <td class="right">
+              {{ instance.Credit|floatformat:PriceRounding }}
+            </td>
+            <td class="right">
+              {{ instance.Debit|floatformat:PriceRounding }}
+            </td>
+            {% if settings.IsNarration %}<td class="right"> {{ instance.Narration }} </td>{% endif %}
+          </tr>
+          {% endfor %} {% else %}
+          <tr>
+            <td>1</td>
+            <td>Ledger Name</td>
+            <td class="right">Credit</td>
+            <td class="right">Debit</td>
+            {% if settings.IsNarration %}<td class="right">Narration</td>{% endif %}
+          </tr>
+          {% endif %}
+          {% if type == "pdf" %} 
+            <tr>
+              <td colspan="2">Total</td>
+              
+              <td class="right" rowspan="7">
+                {{ data.TotalDebit|floatformat:PriceRounding }}
+              </td>
+              <td class="right" rowspan="7">
+                {{ data.TotalCredit|floatformat:PriceRounding }}
+              </td>
+              {% if settings.IsNarration %}<td></td>{% endif %}
+            </tr>
+          {% else %}
+          <tr>
+            <td colspan="2">Total</td>
+            <td class="right">10.00</td>
+            <td class="right">0</td>
+            {% if settings.IsNarration %}<td class="right"></td>{% endif %}
+          </tr>
+          {% endif %}
+        </tbody>
+
+
+      </table>
+      {% comment %} <div class="bottom-group">
+        <div class="payment- tails">
+          <div class="heading">
+          {% if invoice_type == "payment_voucher" %}
+            <span>payment details</span>
+          {% elif invoice_type == "receipt_voucher" %}
+            <span>Receipt details</span>
+          {% endif %}
+          
+          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td>Payment Mode:</td>
+                {% if data.VoucherType == "CP" %}
+                <td>Cash In Hand</td>
+                {% else %}
+                <td>Bank</td>
+                {% endif %}
+              </tr>
+              <!-- <tr>
+                  <td>Payment through:</td>
+                  <td>{{country.Symbol}}. 100000.00</td>
+                </tr>
+                <tr>
+                  <td>Amount:</td>
+                  <td>{{country.Symbol}}. 100000.00</td>
+                </tr> -->
+            </tbody>
+          </table>
+        </div> {% endcomment %}
+{% comment %} 
+        <div class="amount-group">
+          <table>
+            {% if type != "pdf" %}
+            <tbody>
+              <tr>
+                <td class="grand-total">Total Amount:</td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              {% if settings.IsTenderCash %}
+              <tr>
+                <td class="grand-total">Tender Cash:</td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              {% endif %} {% else %}
+            </tbody>
+
+            <tbody>
+              <tr>
+                <td class="grand-total">Total Amount:</td>
+                <td class="right">
+                  {{country.Symbol}}.
+                  {{data.TotalDebit|floatformat:PriceRounding}}
+                </td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div> {% endcomment %}
+      {% comment %} <div class="amount-in-words">
+        <table>
+          <tbody>
+            <tr>
+              <td class="heading">Amount In Words</td>
+            </tr>
+            {% if type == "pdf" %}
+            <tr>
+              <td>{{amount_in_words}} {{country.Currency_Name}}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td>one hundred fifty {{country.Currency_Name}}</td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div> {% endcomment %}
+      {% if settings.IsNote %}
+       
+        <div class="note-details">
+          <table>
+            <tbody>
+              <tr>
+                {% if data.Notes %}
+                <td>{{data.Notes | linebreaks}}</td>
+                {% else %}
+                <td>{{settings.Notes | linebreaks}}</td>
+                {% endif %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+      {% endif %}
+      <div class="bottom-content">
+        <div class="terms-and-conditions">
+          {% if settings.TermsAndConditions %}
+          <label>Terms & Conditions</label>
+          <p>{{settings.TermsAndConditions | linebreaks}}</p>
+          {% elif type != "pdf" %}
+          <label>Terms & Conditions</label>
+          <p>
+            Your company's Terms and Conditions will be displayed here. You can
+            add it in the Invoice Preferences page under Settings.
+          </p>
+          {% endif %}
+        </div>
+        <div class="signature">
+          <label>Authorized Signature</label>
+        </div>
+      </div>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+{% if print_template %}
+<script>
+  window.print();
+</script>
+{% endif %} {% endinlinecss %}

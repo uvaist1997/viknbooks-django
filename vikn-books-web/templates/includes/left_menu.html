@@ -1,0 +1,445 @@
+{% load static %} 
+{% if not is_superuser %}
+<div class="left-side-menu">
+
+                <div class="h-100" data-simplebar>
+
+                    <!-- User box -->
+                    <div class="user-box text-center">
+                        <img src="{% static 'images/users/user-1.jpg' %}" alt="user-img" title="Mat Helme"
+                            class="rounded-circle avatar-md">
+                        <div class="dropdown">
+                            <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
+                                data-toggle="dropdown">Geneva Kennedy</a>
+                            <div class="dropdown-menu user-pro-dropdown">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-user mr-1"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-settings mr-1"></i>
+                                    <span>Settings</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-lock mr-1"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-log-out mr-1"></i>
+                                    <span>Logout</span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <p class="text-muted">Admin Head</p>
+                    </div>
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+
+                        <ul id="side-menu">
+
+                            <li>
+                                <a href="{% url 'dashboard' %}">
+                                    <i data-feather="airplay"></i>
+                                    <span> Dashboard </span>
+                                </a>
+                            </li>
+                            {% if not is_superuser  %} 
+                            <li>
+                                <a href="#sidebarAccounts" data-toggle="collapse">
+                                    <i data-feather="dollar-sign"></i>
+                                    <span> Accounts </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarAccounts">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="#sidebarAccounts2" data-toggle="collapse">
+                                                Masters <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarAccounts2">
+                                                <ul class="nav-second-level">
+                                                        <li>
+                                                            <a href="{% url 'accounts:accountLedgers' %}">Account Ledger</a>
+                                                        </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:account_groups' %}">Account Groups</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:customers' %}">Customers</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:suppliers' %}">Suppliers</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:transactionTypes' %}">Transaction Types</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:banks' %}">Banks</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <a href="#sidebarAccounts3" data-toggle="collapse">
+                                                Transactions <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarAccounts3">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="{% url 'accounts:cash_payments' %}">Cash Payment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:cash_receipts' %}">Cash Receipt</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:journal_entries' %}">Journal Entry</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:bank_payments' %}">Bank Payment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:bank_receipts' %}">Bank Receipt</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <a href="#sidebarAccounts4" data-toggle="collapse">
+                                                Reports <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarAccounts4">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="{% url 'accounts:ledgerReport_webView' %}">Ledger Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:trialBalance_webView' %}">Trial Balance</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Profit and Loss A/C</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Balance Sheet</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Day Book</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">VAT Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Daily Report</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a href="#sidebarInventory" data-toggle="collapse">
+                                    <i data-feather="clipboard"></i>
+                                    <span> Inventory </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarInventory">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="#sidebarInventory2" data-toggle="collapse">
+                                                Masters <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarInventory2">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="{% url 'inventories:productGroups' %}">Product Group</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:brands' %}">Brand</a>
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <a href="{% url 'inventories:kitchens' %}">Kitchen</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:taxCategories' %}">Tax</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:priceCategories' %}">Price Category</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:warehouses' %}">Warehouse</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:productCategories' %}">Product Category</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:products' %}">Products</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:routes' %}">Route</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:flavours' %}">Flavour</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <a href="#sidebarInventory3" data-toggle="collapse">
+                                                Transactions <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarInventory3">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="javascript: void(0);">Purchase Order</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'inventories:purchaseInvoices' %}">Purchase Invoice</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Purchase Return</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Sales Order</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Sales Invoice</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Sales Return</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Opening Stock</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Stock Transfer</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Work Order</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <a href="#sidebarInventory4" data-toggle="collapse">
+                                                Reports <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarInventory4">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="javascript: void(0);">Stock Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Stock Value Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Purchase Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Sales Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Sales Order Report</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <a href="#sidebarPayroll" data-toggle="collapse">
+                                    <i data-feather="droplet"></i>
+                                    <span> Payroll </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarPayroll">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="#sidebarPayroll2" data-toggle="collapse">
+                                                Masters <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarPayroll2">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="{% url 'payrolls:departments' %}">Department</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'payrolls:designations' %}">Designation</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'payrolls:employees' %}">Employee</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a href="#sidebarAdministration" data-toggle="collapse">
+                                    <i data-feather="users"></i>
+                                    <span> Administration </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarAdministration">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="#sidebarAdministration2" data-toggle="collapse">
+                                                Masters <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarAdministration2">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="{% url 'administrations:users' %}">User</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'administrations:user_types' %}">UserType</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'administrations:financial_years' %}">Financial Year</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Settings</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'administrations:create_general_settings' %}">General Settings</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Barcode Print</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'administrations:update_company_settings' pk=datastore_pk %}">Company Settings</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            {% elif not is_company_create %}
+                            <li>
+                                <a href="#sidebarAccounts" data-toggle="collapse">
+                                    <i data-feather="bar-chart-2"></i>
+                                    <span> Companies </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarAccounts">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="#sidebarAccounts2" data-toggle="collapse">
+                                                Masters <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarAccounts2">
+                                                <ul class="nav-second-level">
+                                                        <li>
+                                                            <a href="{% url 'accounts:accountLedgers' %}">Account Ledger</a>
+                                                        </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:account_groups' %}">Account Groups</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Customers</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Suppliers</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Transaction Types</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:banks' %}">Banks</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <a href="#sidebarAccounts3" data-toggle="collapse">
+                                                Transactions <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarAccounts3">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="{% url 'accounts:cash_payments' %}">Cash Payment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Cash Receipt</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Journal Entry</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Bank Payment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Bank Receipt</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <a href="#sidebarAccounts4" data-toggle="collapse">
+                                                Reports <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarAccounts4">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="{% url 'accounts:ledgerReport_webView' %}">Ledger Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'accounts:trialBalance_webView' %}">Trial Balance</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Profit and Loss A/C</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Balance Sheet</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Day Book</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">VAT Report</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Daily Report</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                    </div>
+                    <!-- End Sidebar -->
+
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- Sidebar -left -->
+
+</div>
+{% endif %}
+

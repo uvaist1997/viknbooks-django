@@ -1,0 +1,93 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      {% include 'reports/print_header.html' %}
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            <td>{% trans "Sl No" %}</td>
+            {% if VoucherType == '1'%}
+            <td>{% trans "Product Name" %}</td>
+            {% else %}
+            <td>{% trans "Supplier" %}</td>
+            {% endif %}
+            <td class="right">{% trans "Last Purchase Price" %}</td>
+            <td class="right">{% trans "Last Purchase Qty" %}</td>
+            <td class="right">{% trans "Total Sales" %}</td>
+            <td class="right">{% trans "Total Sales Amount" %}</td>
+            <td class="right">{% trans "Avg Sales Rate" %}</td>
+            <td class="right">{% trans "Total Purchase" %}</td>
+            <td class="right">{% trans "Total PurchaseAmount" %}</td>
+            <td class="right">{% trans "Avg Purchase Rate" %}</td>
+            <td class="right">{% trans "Total Sales Return" %}</td>
+            <td class="right">{% trans "Total Sales Return Amount" %}</td>
+            <td class="right">{% trans "Avg Sales Return Rate" %}</td>
+            <td class="right">{% trans "Total Purchase Return" %}</td>
+            <td class="right">{% trans "Total Purchase Return Amount" %}</td>
+            <td class="right">{% trans "Avg Purchase Return Rate" %}</td>
+            <td class="right">{% trans "Current Stock" %}</td>
+            <td>{% trans "Unit" %}</td>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in details %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            {% if VoucherType == '1'%}
+            <td>{{i.ProductName}}</td>
+            {% else %}
+            <td>{{i.Supplier}}</td>
+            {% endif %}
+            
+            <td class="right">{{i.LastPurchasePrice|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.LastPurchaseQty|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalSales|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalSalesAmount|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.AvgSalesRate|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalPurchase|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalPurchaseAmount|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.AvgPurchaseRate|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalSalesReturn|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalSalesReturnAmount|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.AvgSalesReturnRate|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalPurchaseReturn|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.TotalPurchaseReturnAmount|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.AvgPurchaseReturnRate|floatformat:PriceRounding}}</td>
+            <td class="right">{{i.CurrentStock|floatformat:PriceRounding}}</td>
+            <td>{{i.Unit}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+{% if print_template %}
+<script>
+  {% comment %} window.print();
+  window.close(); {% endcomment %}
+</script>
+{% endif %} {% endinlinecss %}

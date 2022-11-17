@@ -1,0 +1,41 @@
+{% load static i18n %}
+
+<table class="underline-head">
+  <tbody >
+    <tr>
+      <td class="container-width font-bold">
+        <div class="time-date-head font-bold">
+            <p id="time" name="time" style="font-size: 12px;font-weight: 999;">{{current_time}}</p>
+            <p style="font-size: 12px;font-weight: 999;">{{today}}</p>
+        </div>
+        
+      </td>
+      <td class="invoice-details container-width text-center">
+        {% comment %} <div class="organization-info text-center"> {% endcomment %}
+          {% if company.CompanyLogo is not null %}
+          <div class="image-container1">
+            <img src="{{company.CompanyLogo}}" onerror="this.onerror=null;this.src='{% static 'images/Logo.svg' %}';">
+          </div>
+          {%else %}
+            <div class="text-center">
+              <span class="organisation-name">{{ company.CompanyName }}</span>
+            </div>
+          {% endif %}
+          <span style="font-size: 12px;font-weight: 999">As of {{asof_date}}</span>
+        {% comment %} </div> {% endcomment %}
+      </td>
+      <td class="title-head container-width">
+        <div class="invoice-name-container">
+          <span class="title-name">{{report_title}}</span>
+        </div>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% comment %} <script>
+  console.log("successssssssssssssssssssssssssssss")
+  var datetime = new Date().toLocaleTimeString();
+  console.log(datetime);
+  document.getElementById("time").textContent = datetime;
+</script> {% endcomment %}

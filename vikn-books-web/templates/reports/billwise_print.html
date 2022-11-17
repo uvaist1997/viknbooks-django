@@ -1,0 +1,85 @@
+{% load static i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "print_report1.css" %}
+
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      {% include 'reports/report_header.html' %}
+      <table class="item-table" cellspacing="10">
+        <thead class="table-heading">
+          <tr>
+            <td class="product-name">{% trans 'Type' %}</td>
+            <td class="product-name">{% trans 'Date' %}</td>
+            <td class="product-name">{% trans 'Invoice No' %}</td>
+            <td class="product-name">{% trans 'P.O.#' %}</td>
+            <td class="product-name">{% trans 'Terms' %}</td>
+            <td class="product-name">{% trans 'Due Date' %}</td>
+            <td class="product-name">{% trans 'Class' %}</td>
+            <td class="right">{% trans 'Aging' %}</td>
+            <td class="right">{% trans 'Open Balance' %}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in details %}
+          <tr>
+            {% if i.InvoiceNo and i.InvoiceNo != "-" %}
+              <td class="text-center">{{i.Type}}</td>
+              {%elif i.InvoiceNo == "-" %}
+              <td class="font-bold" style="font-size: 13px;font-weight: 900">{{i.Type}}</td>
+              {%elif i.InvoiceNo == "" and i.index == "Total" %}
+              <td class="font-bold" style="font-size: 14px;font-weight: 999">TOTAL</td>
+            {% else %}
+              <td class="font-bold" style="font-size: 15px;font-weight: 999">{{i.Type}}</td>
+            {% endif %}
+            <td>{{i.Date}}</td>
+            <td>{{i.InvoiceNo}}</td>
+            {% if i.PO %}
+            <td>{{i.PO}}</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+            <td>{{i.Terms}}</td>
+            <td>{{i.DueDate}}</td>
+            <td>{{i.Class}}</td>
+            <td class="right">{{i.aging|floatformat:PriceRounding}}</td>
+            {% if i.InvoiceNo == "-" %}
+            <td class="right" style="border-top: 1px solid black;">{{i.OpenBalance|floatformat:PriceRounding}}</td>
+            {% elif i.InvoiceNo == "" and i.index == "Total" %}
+              <td class="right" style="border-top: 1px solid black;border-bottom: double">{{i.OpenBalance|floatformat:PriceRounding}}</td>
+            {% elif i.InvoiceNo == "" %}
+              <td class="right"></td>
+              {% else %}
+            <td class="right">{{i.OpenBalance|floatformat:PriceRounding}}</td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+{% if print_template %}
+<script>
+  {% comment %} window.print();
+  window.close(); {% endcomment %}
+</script>
+{% endif %} {% endinlinecss %}

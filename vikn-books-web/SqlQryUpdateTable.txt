@@ -1,0 +1,50 @@
+Sql query for update table in  phpadmin
+---------------------------------------------------
+UPDATE "salesMasters_salesMaster" as s SET "Country_of_Supply" = '94e4ce66-26cc-4851-af1e-ecc068e80224' where "CompanyID_id" = '2ee86397-902d-4136-94ab-9f7efd004004' and "Country_of_Supply" = 'Saudi Arabia'
+
+stock posting pricelist
+----------------------
+UPDATE "stockPosting_stockPosting" as s SET "pricelist_id" = p.id from  "pricelist_pricelist" as "p" 
+ where p."PriceListID" = s."PriceListID" and p."CompanyID_id" = s."CompanyID_id"
+
+stock posting warehouse
+----------------------
+UPDATE "stockPosting_stockPosting" as s SET "warehouse_id" = p.id from  "warehouse_warehouse" as "p" 
+ where p."WarehouseID" = s."WareHouseID" and p."CompanyID_id" = s."CompanyID_id"
+ -------------------------------------------------------------------------
+ branch update qry
+----------------------
+UPDATE "branch_branch" as s SET "integrated_gst_on_sales_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 7 and "CompanyID_id" = s."CompanyID_id"),"central_gst_on_sales_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 3 and "CompanyID_id" = s."CompanyID_id"),"state_gst_on_sales_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 10 and "CompanyID_id" = s."CompanyID_id"),"central_gst_on_expense_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 35 and "CompanyID_id" = s."CompanyID_id"),"central_gst_on_purchase_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 36 and "CompanyID_id" = s."CompanyID_id"),"state_gst_on_purchase_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 42 and "CompanyID_id" = s."CompanyID_id"),"integrated_gst_on_purchase_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 90 and "CompanyID_id" = s."CompanyID_id"),"state_gst_on_payment_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 41 and "CompanyID_id" = s."CompanyID_id"),"vat_on_sales_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 55 and "CompanyID_id" = s."CompanyID_id"),"vat_on_purchase_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 56 and "CompanyID_id" = s."CompanyID_id"),"vat_on_expense_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerName" = 'VAT on Expense' and "CompanyID_id" = s."CompanyID_id"),"round_off_sales_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 78 and "CompanyID_id" = s."CompanyID_id"),"discount_on_sales_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 74 and "CompanyID_id" = s."CompanyID_id"),"discount_on_purchase_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 83 and "CompanyID_id" = s."CompanyID_id"),"discount_on_payment_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 82 and "CompanyID_id" = s."CompanyID_id"),"discount_on_receipt_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 72 and "CompanyID_id" = s."CompanyID_id"),"discount_on_loyalty_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 73 and "CompanyID_id" = s."CompanyID_id"),"round_off_purchase_id" = (SELECT id from  "accountLedger_accountLedger" 
+ where "LedgerID" = 77 and "CompanyID_id" = s."CompanyID_id")
+ 
+ 
+ UPDATE "branch_branch" as s SET "DisplayName" = (SELECT "CompanyName" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"Building" = (SELECT "Address1" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"City" = (SELECT "Address2" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"state_id" = (SELECT "State_id" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"country_id" = (SELECT "Country_id" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"PostalCode" = (SELECT "PostalCode" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"Phone" = (SELECT "Phone" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"Email" = (SELECT "Email" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"VATNumber" = (SELECT "VATNumber" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"GSTNumber" = (SELECT "GSTNumber" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"is_gst" = (SELECT "is_gst" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id"),"is_vat" = (SELECT "is_vat" from  "companySettings_companySettings" 
+ where "id" = s."CompanyID_id")

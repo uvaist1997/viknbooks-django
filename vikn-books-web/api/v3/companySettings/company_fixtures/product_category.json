@@ -1,0 +1,15 @@
+[
+	{
+	    "model": "brands.ProductCategory",
+	    "pk": 1,
+	    "fields": {
+	      "ProductCategoryID": 1,
+	      "BranchID" : 1,
+	      "CategoryName" : "Primary Category",
+	      "Notes" : "Default Note",
+	      "CreatedUserID" : 1,
+	      "CreatedDate" : "2020-06-01",
+	      "Action" : "A"
+	    }
+	}
+]

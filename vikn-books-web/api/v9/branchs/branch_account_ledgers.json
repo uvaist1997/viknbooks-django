@@ -1,0 +1,194 @@
+[
+    {
+        "LedgerName": "VAT on Sales",
+        "AccountGroupUnder": 79,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "VAT on Sales",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "VAT on Purchase",
+        "AccountGroupUnder": 78,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "VAT on Purchase",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "VAT on Expense",
+        "AccountGroupUnder": 78,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "VAT on Expense",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Integrated GST on Sales",
+        "AccountGroupUnder": 33,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Integrated GST on Sales",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Central GST on Sales",
+        "AccountGroupUnder": 33,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Central GST on Sales",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "State GST on Sales",
+        "AccountGroupUnder": 33,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "State GST on Sales",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Central GST on Expense",
+        "AccountGroupUnder": 22,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Central GST on Expense",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Central GST on Purchase",
+        "AccountGroupUnder": 22,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Central GST on Purchase",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "State GST on Purchase",
+        "AccountGroupUnder": 22,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "State GST on Purchase",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Integrated GST on Purchase",
+        "AccountGroupUnder": 22,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Integrated GST on Purchase",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "State GST on Payment",
+        "AccountGroupUnder": 22,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "State GST on Payment",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Round off Sales",
+        "AccountGroupUnder": 71,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Round off Sales",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Discount on Sales",
+        "AccountGroupUnder": 55,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Discount on Sales",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Discount on Purchase",
+        "AccountGroupUnder": 73,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Discount on Purchase",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Discount on Payment",
+        "AccountGroupUnder": 73,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Discount on Payment",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Discount on Receipt",
+        "AccountGroupUnder": 55,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Discount on Receipt",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Discount on Loyalty",
+        "AccountGroupUnder": 55,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Discount on Loyalty",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Round off Purchase",
+        "AccountGroupUnder": 70,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Round off Purchase",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Cash In Hand",
+        "AccountGroupUnder": 9,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Cash In Hand",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Bank",
+        "AccountGroupUnder": 8,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Bank",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Sales Account",
+        "AccountGroupUnder": 74,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Sales Account",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Sales Return Account",
+        "AccountGroupUnder": 74,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Sales Return Account",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Purchase Account",
+        "AccountGroupUnder": 48,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Purchase Account",
+        "Action": "A"
+    },
+    {
+        "LedgerName": "Purchase Return Account",
+        "AccountGroupUnder": 78,
+        "OpeningBalance": 0,
+        "CrOrDr": "Dr",
+        "Notes": "Purchase Return Account",
+        "Action": "A"
+    }
+]

@@ -1,0 +1,443 @@
+{% load static i18n %}
+{% load tag_library %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="{% static 'css/print.css' %}" /> -->
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+  </head>
+  {% load inlinecss %} {% inlinecss "expense.css" %}
+  <body>
+    {% if type != "pdf" %}
+    <div class="header">
+      <div class="empty"></div>
+    </div>
+    {% endif %}
+    <div class="body">
+      <table class="top-table">
+        <tbody>
+          <tr>
+            <td>
+            <div class="invoice-details-container">
+              <div class="image-group">
+                {% if company.CompanyLogo %} 
+                <div class="image-container">
+                  <img src="{{company.CompanyLogo}}" onerror="this.onerror=null;this.src='{% static 'images/Logo.svg' %}';">
+                </div>
+                {% endif %}
+                <div class="organisation-info">
+                  {% if company_name %}
+                  <span class="organisation-name">{{ company_name }}</span>
+                  {% else %}
+                  <span class="organisation-name">{{ company.CompanyName }}</span>
+                  {% endif %}
+                  {% comment %} <span class="organisation-other-info address">{{company.Address1}} {{company.Address2}} {{company.Address3}} {% if company.Address3 and company.City %},{% endif %} {{company.City}} {% if company.StateName and company.City %},{% endif %} {{company.StateName}} {{company.PostalCode}}</span> {% endcomment %}
+                   {% if company.Description %}
+                  <span class="organisation-other-info description">{{company.Description}} </span>
+                  {% endif %}
+                  {% if company.VATNumber %}
+                  <span class="organisation-other-info"><b><bdo >VAT No - رقم ضريبة القيمة المضافة </bdo> : </b> <bdo style="unicode-bidi:bidi-override;">{{company.VATNumber}}</bdo> </span>
+                  {% endif %}
+                  {% if company.CRNumber %}
+                  <span class="organisation-other-info"><b><bdo>CR No - رقم cr </bdo>: </b> {{company.CRNumber}}</span>
+                  {% endif %}
+                  {% if company.Email %}
+                  <span class="organisation-other-info"><b><bdo>Email {% if company.CountryName != "India" %}- البريد الإلكتروني {% endif %}</bdo> : </b> {{company.Email}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              {% if type == "pdf" %}
+              <div class="invoice-info">
+                  <div class="invoice-name-container">
+                  {% if settings.TransactionName %}
+                    <span class="invoice-name">{{ settings.TransactionName }}</span>
+                  {% elif invoice_type == "expense" %}
+                    <span class="invoice-name">Expense Voucher {% if company.CountryName != "India" %}- قسيمة المصاريف {% endif %}</span>
+                  {% endif %}
+              </div>
+                {% if data.SupplierName %}
+                <span><bdo>Supplier {% if company.CountryName != "India" %}- المورد {% endif %}: <b>{{data.SupplierName}}</b></bdo></span>
+                {% else %}
+                <span><bdo>Customer {% if company.CountryName != "India" %}- عميل {% endif %}: <b>{{data.LedgerName}}</b></bdo></span>
+                {% endif %}
+              
+                {% comment %} <span class="address"><bdo>{{address|safe}} {{data.Address2}} {{data.Address3}} {% if data.Address3 and data.City %},{% endif %} {{data.City}} {% if data.StateName and data.City %},{% endif %} {{data.StateName}} {{data.PostalCode}}</bdo></span> {% endcomment %}
+                <span class="address">{{address|safe}}</span>
+
+                {% if data.Mobile %}
+                <span>Phone No.: {{data.Mobile}}</span>
+                {% endif %}
+
+                {% if company.CountryName == "India" %}
+                  {% if data.GSTNumber %}
+                  <span>GST No.: {{data.GSTNumber}}</span>
+                  {% endif %}
+                {% else %}
+                  {% if data.VATNumber %}
+                  <span>VAT No.: {{data.VATNumber}}</span>
+                  {% endif %}
+                {% endif %}
+
+                
+              </div>
+              {% else %}
+              <div class="invoice-info">
+                <div class="invoice-name-container">
+                  {% if settings.TransactionName %}
+                    <span class="invoice-name">{{ settings.TransactionName }}</span>
+                  {% elif invoice_type == "expense" %}
+                    <span class="invoice-name">Expense Voucher {% if company.CountryName != "India" %}-  قسيمة المصاريف {% endif %}</span>
+                  {% endif %}
+              </div>
+              {% if invoice_type == "purchase_return" or  invoice_type == "purchase_invoice" %}
+                <span><bdo>Supplier {% if company.CountryName != "India" %}- المورد{% endif %}: hello</bdo></span>
+              {% else %}
+                <span><bdo>Customer {% if company.CountryName != "India" %}- عميل{% endif %}: hello</bdo></span>
+              {% endif %}
+                <span class="address">Billing Address: Building No. UP 9/1230 B Unnikulam, Poonoor, Kerala 673574</span>
+                {% comment %} <span>GST No: 523452346134</span> {% endcomment %}
+                <span>Phone No: 3463457234523</span>
+              </div>
+              {% endif %}
+              </div>
+            </td>
+            <td class="invoice-details">
+              <div class="invoice-details-container">
+
+              
+          
+              <div class="organization-info">
+             
+               <div class="organization-details">
+               <bdo>
+               
+                <span class="organisation-other-info address">{{company.Address1}} {{company.Address2}} {{company.Address3}} {% if company.Address3 and company.City %},{% endif %} </span>
+                <span class="organisation-other-info address">{{company.City}} {% if company.StateName and company.City %},{% endif %} {{company.StateName}} </span>
+                <span class="organisation-other-info address"><bdo>{{company.CountryName}} {{company.PostalCode}}</span>
+                  {% if company.Mobile %}
+                <span class="organisation-other-info address"><bdo><b>Mobile: </b>{{company.Mobile}}</span>
+                  {% endif %}
+               </bdo>
+                 {% comment %} {% if company.Mobile %}
+                 <span class="phone">PHONE: {{company.Mobile}}</span>
+                 {% endif %}
+ 
+                 {% if company.Email %}
+                 <span class="email">EMAIL: {{company.Email}}</span>
+                 {% endif %}
+ 
+                 {% if company.CRNumber %}
+                 <span class="email">CR No: {{company.CRNumber}}</span>
+                 {% endif %} {% endcomment %}
+               </div>
+               {% if invoice_type == "sales_invoice" or invoice_type == "sales_return" or invoice_type == "purchase_return" %}
+                {% if type != "pdf" %}
+                <img src="{{data.qr_image}}" onerror="this.onerror=null;this.src='{% static 'images/viknbooks.png' %}';">
+                {% else %}
+                  {% if data.qr_image %}
+                  <img class="qr-code" src="{{data.qr_image}}"/>
+                  {% endif %}
+                {% endif %}
+               {% endif %}
+              </div>
+              
+              {% if type != "pdf" %}
+               
+              <div class="voucher-info">
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Voucher No {% if company.CountryName != "India" %}- قسيمة لا{% endif %}:</bdo></span>
+                  <span class="voucher-text">VIKN001UI</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Date {% if company.CountryName != "India" %}- تاريخ{% endif %}:</bdo></span>
+                 
+                  <span class="voucher-text">21/12/2021</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Time {% if company.CountryName != "India" %}- الوقت{% endif %}:</bdo></span>
+                 
+                  <span class="voucher-text">9:00 AM</span>
+                </div>
+                {% comment %} <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Place Of Supply - مكان التوريد:</bdo></span>
+                 
+                  <span class="voucher-text">Kozhikode</span>
+                </div> {% endcomment %}
+              </div>
+              {% else %}
+              <div class="voucher-info">
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Voucher No {% if company.CountryName != "India" %}- قسيمة لا{% endif %}:</bdo></span>
+                  <span class="voucher-text">{{data.VoucherNo}}</span>
+                </div>
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Date {% if company.CountryName != "India" %}- تاريخ{% endif %}:</bdo></span>
+                 
+                  <span class="voucher-text">{{data.Date}}</span>
+                </div>
+
+                <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Time {% if company.CountryName != "India" %}- الوقت{% endif %}:</bdo></span>
+                 
+                  <span class="voucher-text">{{ invoice_time }}</span>
+                </div>
+
+                {% comment %} <div class="voucher-group">
+                  <span class="voucher-label"><bdo>Place Of Supply - مكان التوريد:</bdo></span>
+                 
+                  <span class="voucher-text">{{data.Place_of_Supply}}</span>
+                </div> {% endcomment %}
+              </div>
+              {% endif %}
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="item-heading"><span><bdo>Item List {% if company.CountryName != "India" %}- قائمة الأصناف{% endif %}</bdo></span></div>
+      <table class="item-table">
+        <thead class="table-heading">
+          <tr>
+            <td class="w-9"><bdo>Sl No</bdo> {% if company.CountryName != "India" %}<bdo class="arabic">رقم sl</bdo>{% endif %}</td>
+
+
+            <td class="product-name"><bdo>Ledger Name</bdo>{% if company.CountryName != "India" %}<bdo class="arabic">اسم دفتر الأستاذ</bdo>{% endif %}</td>
+
+            <td class="right w-9"><bdo>Amount</bdo>{% if company.CountryName != "India" %}<bdo class="arabic">مقدار </bdo>{% endif %}</td>
+
+            <td class="right w-9"><bdo>Tax %</bdo>{% if company.CountryName != "India" %}<bdo class="arabic">٪ الضريبة</bdo>{% endif %}</td>
+
+            <td class="right w-9"><bdo>Tax Amount</bdo>{% if company.CountryName != "India" %}<bdo class="arabic">قيمة الضريبة</bdo>{% endif %}</td>
+
+            <td class="right w-9"><bdo>Total</bdo>{% if company.CountryName != "India" %}<bdo class="arabic">المجموع</bdo>{% endif %}</td>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% if type == "pdf" %} {% for instance in details %}
+          <tr>
+            {% if settings.IsSlNo %}
+            <td>{{ forloop.counter }}</td>
+            {% endif %}
+
+            <td><bdo class="product-name">{{ instance.LedgerName }}</bdo></td>
+              <td class="right">{{ instance.Amount|floatformat:PriceRounding  }}</td>
+              <td class="right">{{ instance.TaxPerc|floatformat:PriceRounding  }}</td>
+              <td class="right">{{ instance.TaxAmount|floatformat:PriceRounding  }}</td>
+              <td class="right">{{ instance.Total|floatformat:PriceRounding  }}</td>
+
+          </tr>
+          {% endfor %} 
+          {% else %}
+          <tr>
+            <td>Sl No</td>
+
+            <td>Ledger Name</td>
+
+            <td class="right">Amount</td>
+
+            <td class="right">Tax %</td>
+            <td class="right">Tax Amount</td>
+            <td class="right">Total</td>
+
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+      <div class="bottom-group">
+
+        <div class="amount-in-words">
+          <table>
+            <tbody>
+              <tr>
+                <td class="heading"><bdo>Amount In Words {% if company.CountryName != "India" %}- المبلغ بالكلمات{% endif %}</bdo></td>
+              </tr>
+              {% if type == "pdf" %}
+              <tr>
+                <td>{{amount_in_words}} {{country.Currency_Name}}</td>
+              </tr>
+                {% if company.CountryName != "India"%}
+                <tr>
+                  <td>{{amount_in_words_arabic}} {% if company.CountryName != "India" %}ريال {% endif %}</td>
+                </tr>
+                {% endif %}
+              {% else %}
+              <tr>
+                <td>one hundred fifty {{country.Currency_Name}}</td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="amount-group">
+          <table>
+            {% if type != "pdf" %}
+            <tbody>
+              <tr>
+                <td><bdo>Gross Amount {% if company.CountryName != "India" %}- الإجمالي قبل الضريبة{% endif %}:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              <tr>
+                <td><bdo>Bill Discount {% if company.CountryName != "India" %}- خصم الفاتورة{% endif %}:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              <tr>
+                <td><bdo>Total Tax {% if company.CountryName != "India" %}- إجمالي الضريبة{% endif %}:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              <tr>
+                <td><bdo>Round off {% if company.CountryName != "India" %}- جولة قبالة{% endif %}:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+          
+              <tr>
+                <td class="grand-total"><bdo>Grand Total {% if company.CountryName != "India" %}- الإجمالي شامل الضريبة{% endif %}:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              {% if settings.IsTenderCash %}
+              <tr>
+                <td class="grand-total"><bdo>Tender Cash {% if company.CountryName != "India" %}- النقد العطاء{% endif %}:</bdo></td>
+                <td class="right">{{country.Symbol}}. 100000.00</td>
+              </tr>
+              {% endif %}
+              {% else %}
+              <tbody>
+                {% if data.TotalGrossAmt|to_float > 0 %}
+                <tr>
+                  <td>Gross Amount {% if company.CountryName != "India" %}- الإجمالي قبل الضريبة{% endif %}:</td>
+                  <td class="right">{{country.Symbol}}. {{data.TotalGrossAmt|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+
+                {% if data.BillDiscAmount|to_float > 0 %}
+                <tr>
+                  <td>Bill Discount {% if company.CountryName != "India" %}- خصم الفاتورة{% endif %}:</td>
+                  <td class="right">{{country.Symbol}}. {{data.BillDiscAmount|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+
+                <!-- {% if data.TotalTax_print|to_float > 0 %}
+                <tr>
+                  <td>Total Tax:</td>
+                  <td class="right">{{country.Symbol}}. {{data.TotalTax_print|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %} -->
+
+                {% if data.RoundOff|to_float > 0 %}
+                <tr>
+                  <td>Round off {% if company.CountryName != "India" %}- جولة قبالة{% endif %}:</td>
+                  <td class="right">{{country.Symbol}}. {{data.RoundOff|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+                {% if data.TotalVATAmount and  company.CountryName != "India" and data.TotalVATAmount|to_float > 0 %}
+                <tr>
+                  <td>Total VAT {% if company.CountryName != "India" %}- إجمالي ضريبة القيمة المضافة {% endif %}:</td>
+                  <td class="right">{{country.Symbol}}. {{data.TotalVATAmount|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+                {% if company.CountryName == "India" %}
+                  {% if data.TotalSGSTAmount|to_float > 0 %}
+                  <tr>
+                    <td class="grand-total">SGST :</td>
+                    <td class="right">{{country.Symbol}}. {{data.TotalSGSTAmount|floatformat:PriceRounding}}</td>
+                  </tr>
+                  {% endif %}
+
+                 {% if data.TotalCGSTAmount|to_float > 0 %}
+                  <tr>
+                    <td class="grand-total">CGST :</td>
+                    <td class="right">{{country.Symbol}}. {{data.TotalCGSTAmount|floatformat:PriceRounding}}</td>
+                  </tr>
+                  {% endif %}
+
+                 {% if data.TotalIGSTAmount|to_float > 0 %}
+                  <tr>
+                    <td class="grand-total">IGST :</td>
+                    <td class="right">{{country.Symbol}}. {{data.TotalIGSTAmount|floatformat:PriceRounding}}</td>
+                  </tr>
+                  {% endif %}
+              {% endif %}
+
+                {% if data.GrandTotal|to_float > 0 %}
+                <tr>
+                  <td class="grand-total">Grand Total {% if company.CountryName != "India" %}- الإجمالي شامل الضريبة{% endif %}:</td>
+                  <td class="right">{{country.Symbol}}. {{data.GrandTotal|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+                {% if settings.IsTenderCash %}
+                <tr>
+                  <td class="grand-total">Tender Cash {% if company.CountryName != "India" %}- النقد العطاء{% endif %}:</td>
+                  <td class="right">{{country.Symbol}}. {{data.GrandTotal|floatformat:PriceRounding}}</td>
+                </tr>
+                {% endif %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {% if settings.IsNote %}
+      <div class="note-details">
+          <table>
+            <tbody>
+              <tr>
+                {% if data.Notes %}
+                <td>{{data.Notes | linebreaks}}</td>
+                {% else %}
+                <td>{{settings.Notes | linebreaks}}</td>
+                {% endif %}
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      {% endif %}
+      <div class="bottom-content">
+        <div class="terms-and-conditions">
+          {% if settings.TermsAndConditions %}
+          <label>Terms & Conditions {% if company.CountryName != "India" %}- الشروط والأحكام{% endif %}</label>
+          <p>
+          {{settings.TermsAndConditions | linebreaks}}
+        </p>
+          {% elif type != "pdf" %}
+          <label>Terms & Conditions {% if company.CountryName != "India" %}- الشروط والأحكام{% endif %}</label>
+          <p>
+            Your company's Terms and Conditions will be displayed here. You can
+            add it in the Invoice Preferences page under Settings.
+          </p>
+          {% endif %}
+        </div>
+        {% if settings.IsReceiverSignature %}
+        <div class="signature receiver">
+          <label>Receiver's Signature</label>
+          {% if company.CountryName != "India" %}<label>توقيع المتلقي</label>{% endif %}
+        </div>
+        {% endif %}
+
+        {% if settings.IsAuthorizedSinature %}
+        <div class="signature">
+          <label>Authorized Signature</label>
+          {% if company.CountryName != "India" %}<label>التوقيع المصرح به</label>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>
+{% if print_template %}
+<script>
+   window.print(); 
+  
+
+</script>
+{% endif %}
+{% endinlinecss %}

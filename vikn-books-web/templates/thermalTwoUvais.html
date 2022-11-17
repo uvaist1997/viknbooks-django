@@ -1,0 +1,687 @@
+{% load static %}
+{% load tag_library %}
+{% if type != pdf %}
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        width: 130mm;
+        font-size: 20px;
+        background: #fff;
+        padding-top: 20px;
+      }
+      label{
+        font-size: 10pt;
+      }
+      .leftToright {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10px;
+      }
+      hr {
+        border-top: 1px dashed;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 20px;
+      }
+      table th {
+        text-align: left;
+        border-bottom: 1px dashed #000;
+      }
+      .textCenter {
+        text-align: center;
+      }
+      .textRight {
+        text-align: right;
+      }
+      .textLeft {
+        text-align: left;
+      }
+      .paddingRight {
+        padding-right: 25px;
+      }
+      .w-260 {
+        width: 260px;
+        display: inline-block;
+      }
+      .w-180 {
+        width: 180px;
+        display: inline-block;
+        font-size: 10pt;
+      }
+      label{
+        font-size: 10pt;
+      }
+      .jc-sb {
+        display: flex;
+        justify-content: space-between;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      .terms-and-conditions {
+        text-align: center;
+        line-height: 26px;
+        font-size:10pt;
+      }
+      .mb-5 {
+        margin-bottom: 5px;
+      }
+      .mb-10 {
+        margin-bottom: 10px;
+      }
+      .mt-20 {
+        margin-top: 20px;
+      }
+      .mt-10 {
+        margin-top: 10px;
+      }
+      .p-5 {
+        padding: 5px;
+        font-size:9pt;
+        padding: 2px 0;
+      }
+      .terms-and-conditions p {
+         font-size:10pt;
+        margin: 0;
+      }
+      .block{
+        display:block
+      }
+       img{
+        width:110px;
+      }
+      .heading{
+        font-size:10pt;
+      }
+      .tax{
+        font-size:10pt;
+      }
+      .terms-and-conditions{
+        font-size:10pt;
+        margin:0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Head Section Starts Here -->
+    {% if company.CompanyLogo and settings.IsLogo %}
+    <div class="company-logo textCenter mb-5">
+      <img src="{{company.CompanyLogo}}" width="100px" alt="" onerror="this.onerror=null;this.src='{% static 'images/Logo.svg' %}';">
+    </div>
+    {% endif %}
+    <center>
+      {% if company_name %}
+      <b><span style="font-size: 14pt;">{{ company_name }}</span></b>
+      {% else %}
+      <b><span style="font-size: 14pt;">{{ company.CompanyName }}</span></b>
+      {% endif %}
+      {% if company.Description %}
+      <b><span style="font-size: 14pt;" class="block">{{ company.Description }}</span></b>
+      {% endif %}
+      <br />
+      <br >
+        {{company.City}}
+        <br />
+        <div class="tax">
+        {% if company.GSTNumber and company.GSTNumber != "null" %}
+        GST No: {{company.GSTNumber}}
+        {% endif %}
+        {% if company.VATNumber and company.VATNumber != "null" %}
+        VAT No: {{company.VATNumber}}
+        {% endif %}
+      </div>
+        <br />
+        {% if settings.TransactionName %}
+            <strong>{{ settings.TransactionName }}</strong>
+        {% elif invoice_type == "sales_invoice" %}
+          {% if data.VAT_Treatment == "0" %}
+          <strong class="heading">Tax Invoice</strong></br>
+          <strong class="heading">فاتورة ضريبية</strong>
+          {% else %}
+          <strong class="heading">Simplified Tax Invoice</strong>
+          <strong class="heading">فاتورة ضريبية مبسطة</strong>
+          {% endif %}
+          {% elif invoice_type == "sales_return" %}
+            <strong>Credit Note</strong></br>
+            <strong>اشعار دائن</strong>
+          {% elif invoice_type == "purchase_return" %}
+            <strong>Debit Note</strong></br>
+            <strong>بيان بالخصم</strong>
+          {% elif invoice_type == "sales_estimate" %}
+            <strong>Sales Estimate</strong></br>
+            <strong>تقدير المبيعات</strong>
+          {% elif invoice_type == "sales_order" %}
+              <strong>Sales Order</strong></br>
+              <strong>طلب المبيعات </strong>
+          {% elif invoice_type == "purchase_invoice" %}
+              <strong>Purchase Invoice</strong></br>
+              <strong>فاتورة الشراء</strong>
+          {% elif invoice_type == "purchase_order" %}
+              <strong>Purchase Order</strong>
+              <strong>أمر شراء</strong>
+          {% endif %}
+        <br />
+        <hr />
+      </font>
+    </center>
+    <!-- Head Section Ends Here -->
+    <!-- Sub Section Starts Here -->
+    <font size="5">
+      <div class="textLeft jc-sb">
+        <label  class="w-180">Date:</label>
+        <label>{{data.Date}}</label>
+        <label class="textRight w-180">:تاريخ</label>
+      </div>
+      <div class="textLeft jc-sb">
+        <label class="w-180">Invoice No:</label>
+        <label>{{data.VoucherNo}}</label>
+        <label class="textRight w-180">:رقم الفاتورة</label>
+      </div>
+      {% if invoice_type == "sales_invoice" or invoice_type == "sales_estimate" or invoice_type == "sales_order" or invoice_type == "sales_return" %}
+        {% if data.OrderNo %}
+        <div class="textLeft jc-sb">
+          <label class="w-180">Order No:</label>
+          <label>{{data.OrderNo}}</label>
+          <label class="textRight w-180">:رقم الطلب</label>
+        </div>
+        {% endif %}
+      {% else %}
+        {% if data.RefferenceBillNo %}
+          <div class="textLeft jc-sb">
+            <label class="w-180">Reference No:</label>
+            <label>{{data.RefferenceBillNo}}</label>
+            <label class="textRight w-180">:رقم المرجع</label>
+          </div>
+        {% endif %}
+      {% endif %}
+        {% if data.EmployeeName %}
+        <div class="textLeft jc-sb">
+          <label class="w-180">Salesman:</label>
+          <label>{{data.EmployeeName}}</label>
+          <label class="textRight w-180">:بائع</label>
+        </div>
+        {% endif %}
+    </font>
+    <hr />
+    <font size="5">
+      {% if data.LedgerName %}
+      <div class="textLeft jc-sb">
+        <label class="w-180">Customer Name:</label>
+        {% if data.PrintCustomerName %}
+        <label>{{data.PrintCustomerName}}</label>
+        {% else %}
+        <label>{{data.LedgerName}}</label>
+        {% endif %}
+        <label class="textRight w-180">:اسم الزبون</label>
+      </div> 
+     {% endif %}
+      {% if data.GSTNumber and data.GSTNumber != "null" %}
+      <div class="textLeft jc-sb">
+        <label class="w-180">GST No:</label>
+        <label>{{data.GSTNumber}}</label>
+        <label class="textRight w-180">:ظريبه الشراء</label>
+      </div>
+      {% endif %}
+      {% if data.VATNumber and data.VATNumber != "null" %}
+      <div class="textLeft jc-sb">
+        <label class="w-180">VAT No:</label>
+        <label>{{data.VATNumber}}</label>
+        <label class="textRight w-180">:ظريبه الشراء</label>
+      </div>
+      {% endif %}
+      {% if data.Mobile %}
+      <div class="textLeft jc-sb">
+        <label class="w-180">Phone No:</label>
+        <label>{{data.Mobile}}</label>
+        <label class="textRight w-180">:رقم التليفون</label>
+      </div>
+      {% endif %}
+     
+      {% if data.LedgerBalance|to_float > 0 %}
+      <div class="textLeft jc-sb">
+        <label class="w-180">Balance:</label>
+        <label>{{country.Symbol}}. {{data.LedgerBalance}}</label>
+        <label class="textRight w-180">:الرصيد</label>
+      </div>
+      {% endif %}
+    </font>
+    {% if LedgerName or GSTNumber or VATNumber or Mobile %}
+    <hr />
+    {% endif %}
+    <!-- Sub Section Ends Here -->
+    <!-- Item Section Starts Here -->
+    <!-- Item Section Starts Here -->
+    <table>
+      <thead>
+        
+        <tr>
+          <th class="textCenter p-5">SL<br />رقم sl
+          </th>
+          <th style="width: 55%" class="p-5">Product Details<br />تفاصيل المنتج
+          </th>
+          <th class="textCenter p-5" style="width: 10px">Qty<br />كمية  </th>
+            <th class="textCenter p-5" style="width: 10px">Unit <br />وحدة
+          </th>
+          <th class="textRight p-5">Rate<br />معدل
+          </th>
+          <th class="textRight p-5">Total<br />مجموع
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for instance in details %}
+        <tr>
+          <td class="textCenter p-5">{{ forloop.counter }}</td>
+          <td class="p-5">{{ instance.ProductName }}</br>{{instance.product_description}}</td>
+          <td class="textCenter p-5">{{ instance.Qty }}</td>
+          <td class="textCenter p-5">{{ instance.UnitName }}</td> 
+          <td class="textRight p-5">{{ instance.UnitPrice|floatformat:PriceRounding }}</td>
+          <td class="textRight p-5">{{ instance.NetAmount|floatformat:PriceRounding }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr />
+    <!-- Item Section Ends Here -->
+    <!-- Total Section Starts Here -->
+    <font size="5">
+      {% if data.NetTotal_print|to_float > 0 %}
+      <div class="leftToright">
+        <label>Net Total - الإجمالي الصافي</label>
+        <label>{{country.Symbol}}. {{ instance.NetAmount|floatformat:PriceRounding }}</label>
+      </div>
+      {% endif %}
+      {% if data.TotalDiscount_print|to_float > 0 %}
+      <div class="leftToright">
+        <label>Discount Amt - مقدار الخصم</label>
+        <label>{{country.Symbol}}. {{data.TotalDiscount_print|floatformat:PriceRounding}}</label>
+      </div>
+      {% endif %}
+      {% if data.VATAmount_print and  company.CountryName != "India" and data.VATAmount_print|to_float > 0 %}
+      <div class="leftToright">
+        <label>Total VAT - إجمالي ضريبة القيمة المضافة</label>
+        <label>{{country.Symbol}}. {{data.VATAmount_print|floatformat:PriceRounding}}</label>
+      </div>
+      {% endif %}
+      <div class="leftToright bold">
+        <label>Grand Total - المجموع الإجمالي</label>
+        <label>{{country.Symbol}}. {{data.GrandTotal_print|floatformat:PriceRounding}}</label>
+      </div>
+    </font>
+    {% if settings.IsTenderCash %}
+    <hr />
+    <font size="5">
+      {% if data.BankAmount|to_float > 0 %}
+      <div class="leftToright">
+        <label>Bank Amount - </label>
+        <label>{{country.Symbol}}. {{data.BankAmount|floatformat:PriceRounding}}</label>
+      </div>
+    {% endif %}
+    {% if data.CashReceived|to_float > 0 %}
+      <div class="leftToright">
+        <label>Cash Received - </label>
+        <label>{{country.Symbol}}. {{data.CashReceived|floatformat:PriceRounding}}</label>
+      </div>
+      {% endif %}
+      {% if data.Balance_print|to_float > 0 %}
+      <div class="leftToright bold">
+        <label>Current Balance - </label>
+        <label>{{country.Symbol}}. {{data.Balance_print|floatformat:PriceRounding}}</label>
+      </div>
+      {% endif %}
+    </font>
+    {% endif %}
+    <!-- Total Section Ends Here -->
+    <!-- Grand Total Section Starts Here -->
+
+    <!-- Grand Total Section Ends Here -->
+    {% if settings.TermsAndConditions %}
+    <div class="terms-and-conditions">
+      <p>
+        {{settings.TermsAndConditions}}
+      </p>
+    </div>
+    {% endif %}
+    {% if invoice_type == "sales_invoice" or invoice_type == "sales_return" or invoice_type == "purchase_return" %}
+      {% if company.CountryName != "India" %}
+      <div class="qr-code textCenter">
+        <img src="{{data.qr_image}}" width="230px" />
+      </div>
+    {% endif %}
+    {% endif %}
+    <center class="mt-10">
+      <font size="4">
+        <b>Powered By ViknCodes</b>
+      </font>
+    </center>
+    {% if settings.Notes %}
+    <div class="terms-and-conditions">
+      <p> {{settings.Notes}}</p>
+    </div>
+    {% endif %}
+  </body>
+  </html>
+  {% else %}
+  <html>
+  <head>
+    <style>
+      html,
+      body {
+        width: 130mm;
+        font-size: 20px;
+        background: #fff;
+        padding-top: 20px;
+      }
+      .leftToright {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10px;
+      }
+      hr {
+        border-top: 1px dashed;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 20px;
+      }
+      table th {
+        text-align: left;
+        border-bottom: 1px dashed #000;
+      }
+      .textCenter {
+        text-align: center;
+      }
+      .textRight {
+        text-align: right;
+      }
+      .textLeft {
+        text-align: left;
+      }
+      .paddingRight {
+        padding-right: 25px;
+      }
+      .w-260 {
+        width: 260px;
+        display: inline-block;
+      }
+      .w-180 {
+        width: 180px;
+        display: inline-block;
+        font-size: 10pt;
+      }
+      label{
+        font-size: 10pt;
+      }
+      .jc-sb {
+        display: flex;
+        justify-content: space-between;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      .terms-and-conditions {
+        text-align: center;
+        line-height: 26px;
+      }
+      .mb-5 {
+        margin-bottom: 5px;
+      }
+      .mb-10 {
+        margin-bottom: 10px;
+      }
+      .mt-20 {
+        margin-top: 20px;
+      }
+      .mt-10 {
+        margin-top: 10px;
+      }
+      .p-5 {
+        padding: 2px 0;
+        font-size:9pt;
+      }
+      .terms-and-conditions p {
+         font-size:10pt;
+        margin: 0;
+      }
+      .block{
+        display:block
+      }
+      img{
+        width:110px;
+      }
+      .heading{
+        font-size:10pt;
+      }
+      .tax{
+        font-size:10pt;
+      }
+  
+    </style>
+  </head>
+  <body>
+    <!-- Head Section Starts Here -->
+    {% if company.CompanyLogo and settings.IsLogo %}
+    <div class="company-logo textCenter mb-5">
+      <img src="{{company.CompanyLogo}}" width="100px" alt="" onerror="this.onerror=null;this.src='{% static 'images/Logo.svg' %}';">
+    </div>
+    {% endif %}
+    <center>
+      {% if company_name %}
+      <b><span style="font-size: 14pt;">{{ company_name }}</span></b>
+      {% else %}
+      <b><span style="font-size: 14pt;">{{ company.CompanyName }}</span></b>
+      {% endif %}
+      {% if company.Description %}
+      <b><span style="font-size: 14pt;" class="block">{{  company.Description }}</span></b>
+      {% endif %}
+      <br />
+      <br >
+        {{company.City}}
+        <br />
+        <div class="tax">
+        {% if company.GSTNumber and company.GSTNumber != "null" %}
+        GST No: {{company.GSTNumber}}
+        {% endif %}
+        {% if company.VATNumber and company.VATNumber != "null" %}
+        VAT No: {{company.VATNumber}}
+        {% endif %}
+        </div>
+        <br />
+        {% if invoice_type == "sales_invoice" %}
+          {% if data.VAT_Treatment == "0" %}
+          <strong class="heading">Tax Invoice</strong></br>
+          <strong class="heading">فاتورة ضريبية</strong>
+          {% else %}
+          <strong class="heading">Simplified Tax Invoice</strong>
+          <strong class="heading">فاتورة ضريبية مبسطة</strong>
+          {% endif %}
+          {% elif invoice_type == "sales_return" %}
+          <strong>Credit Note</strong></br>
+          <strong>اشعار دائن</strong>
+          {% elif invoice_type == "purchase_return" %}
+          <strong>Debit Note</strong></br>
+          <strong>بيان بالخصم</strong>
+        {% endif %}
+        <br />
+        <hr />
+      </font>
+    </center>
+    <!-- Head Section Ends Here -->
+    <!-- Sub Section Starts Here -->
+    <font size="5">
+      <div class="textLeft jc-sb">
+        <label  class="w-180">Date:</label>
+        <label>25/10/2000</label>
+        <label class="textRight w-180">:تاريخ</label>
+      </div>
+      <div class="textLeft jc-sb">
+        <label class="w-180">Invoice No:</label>
+        <label>34235234</label>
+        <label class="textRight w-180">:رقم الفاتورة</label>
+      </div>
+      {% if invoice_type == "sales_invoice" or invoice_type == "sales_estimate" or invoice_type == "sales_order" or invoice_type == "sales_return" %}
+        <div class="textLeft jc-sb">
+          <label class="w-180">Order No:</label>
+          <label>34235234</label>
+          <label class="textRight w-180">:رقم الطلب</label>
+        </div>
+      {% else %}
+        <div class="textLeft jc-sb">
+          <label class="w-180">Reference No:</label>
+          <label>34235234</label>
+          <label class="textRight w-180">:رقم المرجع</label>
+        </div>
+      {% endif %}
+
+      <div class="textLeft jc-sb">
+        <label class="w-180">Salesman:</label>
+        <label>Frank</label>
+        <label class="textRight w-180">:بائع</label>
+      </div>
+    </font>
+    <hr />
+    <font size="5">
+      <div class="textLeft jc-sb">
+        <label class="w-180">Customer Name:</label>
+        <label>Tommy</label>
+        <label class="textRight w-180">:اسم الزبون</label>
+      </div>
+      {% if company.CountryName == "India" %}
+      <div class="textLeft jc-sb">
+        <label class="w-180">GST23 No:</label>
+        <label>3423423423</label>
+        <label class="textRight w-180">:ظريبه الشراء</label>
+      </div>
+      {% endif %}
+
+      <div class="textLeft jc-sb">
+        <label class="w-180">Phone No:</label>
+        <label>23423523423</label>
+        <label class="textRight w-180">:رقم التليفون</label>
+      </div>
+      <div class="textLeft jc-sb">
+        <label class="w-180">VAT No:</label>
+        <label>1234567890</label>
+        <label class="textRight w-180">:ظريبه الشراء</label>
+      </div>
+      <div class="textLeft jc-sb">
+        <label class="w-180">Balance:</label>
+        <label>Rs.2400.00</label>
+        <label class="textRight w-180">:الرصيد</label>
+      </div>
+    </font>
+    <hr />
+    <!-- Sub Section Ends Here -->
+    <!-- Item Section Starts Here -->
+    <!-- Item Section Starts Here -->
+    <table>
+      <thead>
+        <tr>
+          <th class="textCenter p-5">SL<br />رقم sl
+          </th>
+          <th style="width: 55%" class="p-5">Product Details<br />تفاصيل المنتج
+          </th>
+          <th class="textCenter p-5" style="width: 10px">Qty<br />كمية</th>
+          </th>
+          <th class="textCenter p-5" style="width: 10px">Unit <br />وحدة</th>
+          <th class="textRight p-5">Rate<br />معدل
+          </th>
+          <th class="textRight p-5">Total<br />مجموع
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="textCenter p-5">1</td>
+          <td class="p-5">Pen basket</br>Description</td>
+          <td class="textCenter p-5">1</td>
+          <td class="textRight p-5">25.00</td>
+          <td class="textRight p-5">25.00</td>
+        </tr>
+        <tr>
+          <td class="textCenter p-5">2</td>
+          <td class="p-5">Pen uni max</br>Description</td>
+          <td class="textCenter p-5">1</td>
+          <td class="textRight p-5">25.00</td>
+          <td class="textRight p-5">25.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <!-- Item Section Ends Here -->
+    <!-- Total Section Starts Here -->
+    <font size="5">
+      <div class="leftToright">
+        <label>Net Total - الإجمالي الصافي</label>
+        <label>Rs.2400.00</label>
+      </div>
+      <div class="leftToright">
+        <label>Discount Amt - مقدار الخصم</label>
+        <label>Rs.2400.00</label>
+      </div>
+      <div class="leftToright">
+        <label>Total VAT - إجمالي ضريبة القيمة المضافة</label>
+        <label>Rs.2400.00</label>
+      </div>
+      <div class="leftToright bold">
+        <label>Grand Total - المجموع الإجمالي</label>
+        <label>Rs.2400.00</label>
+      </div>
+    </font>
+    {% if settings.IsTenderCash %}
+    <hr />
+    <font size="5">
+      <div class="leftToright">
+        <label>Bank Amount - مبلغ البنك</label>
+        <label>Rs.2400.00</label>
+      </div>
+      <div class="leftToright">
+        <label>Cash Received - المبلغ المستلم</label>
+        <label>Rs.2400.00</label>
+      </div>
+      <div class="leftToright bold">
+        <label>Current Balance - الرصيد الحالي</label>
+        <label>Rs.2400.00</label>
+      </div>
+    </font>
+    {% endif %}
+    <hr />
+    <!-- Total Section Ends Here -->
+    <!-- Grand Total Section Starts Here -->
+
+    <!-- Grand Total Section Ends Here -->
+    {% if settings.TermsAndConditions %}
+    <div class="terms-and-conditions">
+      <p>
+        {{settings.TermsAndConditions}}
+      </p>
+    </div>
+    {% endif %}
+    {% if invoice_type == "sales_invoice" or invoice_type == "sales_return" or invoice_type == "purchase_return" %}
+      <div class="qr-code textCenter">
+        <img src="{% static 'images/viknbooks.png' %}" width="230px" />
+      </div>
+    {% endif %}
+    <center class="mt-10">
+      <font size="4">
+        <b>Powered By ViknCodes</b>
+      </font>
+    </center>
+    {% if settings.Notes %}
+    <div class="terms-and-conditions">
+      <p> {{settings.Notes}}</p>
+    </div>
+    {% endif %}
+  </body>
+  </html>
+  {% endif %}
+  {% if print_template %}
+  <script>
+    window.print()
+  </script>
+  {% endif %}

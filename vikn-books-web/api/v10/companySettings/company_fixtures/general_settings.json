@@ -1,0 +1,452 @@
+[
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 1,
+    "fields": {
+      "GeneralSettingsID": "1",
+      "BranchID": "1",
+      "GroupName": "Tax_Active",
+      "SettingsType": "VAT",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 2,
+    "fields": {
+      "GeneralSettingsID": "2",
+      "BranchID": "1",
+      "GroupName": "Tax_Active",
+      "SettingsType": "GST",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 3,
+    "fields": {
+      "GeneralSettingsID": "3",
+      "BranchID": "1",
+      "GroupName": "Tax_Active",
+      "SettingsType": "TAX1",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 4,
+    "fields": {
+      "GeneralSettingsID": "4",
+      "BranchID": "1",
+      "GroupName": "Tax_Active",
+      "SettingsType": "TAX2",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 5,
+    "fields": {
+      "GeneralSettingsID": "5",
+      "BranchID": "1",
+      "GroupName": "Tax_Active",
+      "SettingsType": "TAX3",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 6,
+    "fields": {
+      "GeneralSettingsID": "6",
+      "BranchID": "1",
+      "GroupName": "Business_Type",
+      "SettingsType": "Trading",
+      "SettingsValue": "true",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 7,
+    "fields": {
+      "GeneralSettingsID": "7",
+      "BranchID": "1",
+      "GroupName": "Business_Type",
+      "SettingsType": "Restaurant",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 8,
+    "fields": {
+      "GeneralSettingsID": "8",
+      "BranchID": "1",
+      "GroupName": "Decimal_Point",
+      "SettingsType": "QtyDecimalPoint",
+      "SettingsValue": "2",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 9,
+    "fields": {
+      "GeneralSettingsID": "9",
+      "BranchID": "1",
+      "GroupName": "Decimal_Point",
+      "SettingsType": "PriceDecimalPoint",
+      "SettingsValue": "2",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 10,
+    "fields": {
+      "GeneralSettingsID": "10",
+      "BranchID": "1",
+      "GroupName": "Decimal_Point",
+      "SettingsType": "RoundingFigure",
+      "SettingsValue": "2",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 11,
+    "fields": {
+      "GeneralSettingsID": "11",
+      "BranchID": "1",
+      "GroupName": "RMS_Qty_POS_Increment",
+      "SettingsType": "Increment_Qty_In_POS",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 12,
+    "fields": {
+      "GeneralSettingsID": "12",
+      "BranchID": "1",
+      "GroupName": "RMS_Print_After_Save",
+      "SettingsType": "Print_After_Save_Active",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 13,
+    "fields": {
+      "GeneralSettingsID": "13",
+      "BranchID": "1",
+      "GroupName": "RMS_Print_Type",
+      "SettingsType": "Kitchen_Print",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 14,
+    "fields": {
+      "GeneralSettingsID": "14",
+      "BranchID": "1",
+      "GroupName": "RMS_Print_Type",
+      "SettingsType": "Order_Print",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 15,
+    "fields": {
+      "GeneralSettingsID": "15",
+      "BranchID": "1",
+      "GroupName": "Discount_Type",
+      "SettingsType": "Additional_Discount",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 16,
+    "fields": {
+      "GeneralSettingsID": "16",
+      "BranchID": "1",
+      "GroupName": "Discount_Type",
+      "SettingsType": "Bill_Discount",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 17,
+    "fields": {
+      "GeneralSettingsID": "17",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "Negatine_Stock",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 18,
+    "fields": {
+      "GeneralSettingsID": "18",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "Free_Quantity_In_Sales",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 19,
+    "fields": {
+      "GeneralSettingsID": "19",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "Free_Quantity_In_Purchase",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 20,
+    "fields": {
+      "GeneralSettingsID": "20",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "Show_Sales_Type",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 21,
+    "fields": {
+      "GeneralSettingsID": "21",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "Show_Purchase_Type",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 22,
+    "fields": {
+      "GeneralSettingsID": "22",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "MultiUnit",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 23,
+    "fields": {
+      "GeneralSettingsID": "23",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "PriceCategory",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 24,
+    "fields": {
+      "GeneralSettingsID": "24",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "InclusiveRateSales",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 24,
+    "fields": {
+      "GeneralSettingsID": "24",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "InclusiveRatePurchase",
+      "SettingsValue": "false",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 26,
+    "fields": {
+      "GeneralSettingsID": "26",
+      "BranchID": "1",
+      "GroupName": "Default_Values",
+      "SettingsType": "Purchase_GST_Type",
+      "SettingsValue": "27",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 27,
+    "fields": {
+      "GeneralSettingsID": "27",
+      "BranchID": "1",
+      "GroupName": "Default_Values",
+      "SettingsType": "Sales_GST_Type",
+      "SettingsValue": "22",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 28,
+    "fields": {
+      "GeneralSettingsID": "28",
+      "BranchID": "1",
+      "GroupName": "Default_Values",
+      "SettingsType": "Sales_VAT_Type",
+      "SettingsValue": "31",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 29,
+    "fields": {
+      "GeneralSettingsID": "29",
+      "BranchID": "1",
+      "GroupName": "Default_Values",
+      "SettingsType": "Purchase_VAT_Type",
+      "SettingsValue": "31",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.GeneralSettings",
+    "pk": 30,
+    "fields": {
+      "GeneralSettingsID": "30",
+      "BranchID": "1",
+      "GroupName": "Inventory",
+      "SettingsType": "EnableBillwise",
+      "SettingsValue": "true",
+      "Action": "M",
+      "CreatedDate": "2020-06-01",
+      "UpdatedDate": "2020-06-01",
+      "CreatedUserID": "1"
+    }
+  }
+]

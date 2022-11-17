@@ -1,0 +1,3041 @@
+from django.db.models import F, Q, Sum
+from rest_framework import serializers
+
+from api.v10.priceLists.serializers import PriceListRestSerializer
+from api.v10.sales.serializers import SerialNumberSerializer, ShippingAddressListSerializer
+
+# from api.v10.sales import functions as func
+from api.v10.workOrder.serializers import Batch_ListSerializer
+from brands.models import (
+    AccountLedger,
+    Batch,
+    BillWiseDetails,
+    BillWiseMaster,
+    Country,
+    LedgerPosting,
+    Parties,
+    PriceList,
+    Product,
+    QrCode,
+    SalesReturnDetails,
+    SalesReturnMaster,
+    SerialNumbers,
+    State,
+    TaxCategory,
+    Unit,
+    UserAdrress,
+    Warehouse,
+    Employee,
+)
+from main.functions import converted_float, generateQrCode, get_ProductStock, get_company
+
+
+def get_treatment_name(Treatment, type):
+    TreatmentName = ""
+    if type == "GST" and Treatment:
+        GST_Treatments = [
+            {"value": "0", "name": "Registered Business - Regular"},
+            {"value": "1", "name": "Registered Business - Composition"},
+            {"value": "2", "name": "Unregistered Business"},
+            {"value": "3", "name": "Consumer"},
+            {"value": "4", "name": "Overseas"},
+            {"value": "5", "name": "Special Economic Zone"},
+            {"value": "6", "name": "Deemed Export"},
+        ]
+
+        try:
+            TreatmentName = GST_Treatments[int(Treatment)]["name"]
+        except:
+            TreatmentName = ""
+    elif type == "VAT":
+        VAT_Treatments = [
+            {"value": "0", "name": "Business to Business(B2B)"},
+            {"value": "1", "name": "Business to Customer(B2C)"},
+        ]
+        try:
+            TreatmentName = VAT_Treatments[int(Treatment)]["name"]
+        except:
+            TreatmentName = ""
+
+    return TreatmentName
+
+
+def GST_finalList_fun(instance, Detail, type_tx, PriceRounding, TransactionType):
+    shipping_tax_amount = 0
+    half_shipping_tax_amount = 0
+    if TransactionType == "Sales":
+        shipping_tax_amount = instance.shipping_tax_amount
+        half_shipping_tax_amount = converted_float(shipping_tax_amount) / 2
+    if type_tx == "SGST":
+        SGST_perc_list = []
+        GST_final_list = []
+        for i in Detail:
+            if not i.SGSTPerc in SGST_perc_list and i.SGSTPerc > 0:
+                SGST_perc_list.append(i.SGSTPerc)
+                SGSTAmount = converted_float(i.SGSTAmount) + converted_float(
+                    half_shipping_tax_amount
+                )
+                GST_final_list.append(
+                    {
+                        "key": round(converted_float(i.SGSTPerc), PriceRounding),
+                        "val": converted_float(SGSTAmount),
+                    }
+                )
+            else:
+                for f in GST_final_list:
+                    if round(converted_float(f["key"]), 2) == round(
+                        converted_float(i.SGSTPerc), 2
+                    ):
+                        val_amt = f["val"]
+                        f["val"] = converted_float(val_amt) + converted_float(
+                            i.SGSTAmount
+                        )
+    else:
+        IGST_perc_list = []
+        GST_final_list = []
+        for i in Detail:
+            if not i.IGSTPerc in IGST_perc_list and i.IGSTPerc > 0:
+                IGST_perc_list.append(i.IGSTPerc)
+                IGSTAmount = converted_float(i.IGSTAmount) + converted_float(
+                    half_shipping_tax_amount
+                )
+                GST_final_list.append(
+                    {
+                        "key": round(converted_float(i.IGSTPerc), PriceRounding),
+                        "val": converted_float(IGSTAmount),
+                    }
+                )
+            else:
+                for f in GST_final_list:
+                    if round(converted_float(f["key"]), 2) == round(
+                        converted_float(i.IGSTPerc), 2
+                    ):
+                        val_amt = f["val"]
+                        f["val"] = converted_float(val_amt) + converted_float(
+                            i.IGSTAmount
+                        )
+
+    return GST_final_list
+
+
+class SalesReturnMasterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SalesReturnMaster
+        fields = (
+            "id",
+            "BranchID",
+            "Action",
+            "VoucherNo",
+            "VoucherDate",
+            "RefferenceBillNo",
+            "LoyaltyCustomerID",
+            "RefferenceBillDate",
+            "CreditPeriod",
+            "LedgerID",
+            "PriceCategoryID",
+            "EmployeeID",
+            "SalesAccount",
+            "DeliveryMasterID",
+            "OrderMasterID",
+            "CustomerName",
+            "Address1",
+            "Address2",
+            "Address3",
+            "Notes",
+            "FinacialYearID",
+            "TotalGrossAmt",
+            "TotalTax",
+            "NetTotal",
+            "AdditionalCost",
+            "GrandTotal",
+            "RoundOff",
+            "CashReceived",
+            "CashAmount",
+            "BankAmount",
+            "WarehouseID",
+            "TableID",
+            "SeatNumber",
+            "NoOfGuests",
+            "INOUT",
+            "TokenNumber",
+            "IsActive",
+            "IsPosted",
+            "SalesType",
+            "CreatedUserID",
+            "CreatedDate",
+            "TaxID",
+            "TaxType",
+            "VATAmount",
+            "SGSTAmount",
+            "CGSTAmount",
+            "IGSTAmount",
+            "TAX1Amount",
+            "TAX2Amount",
+            "TAX3Amount",
+            "AddlDiscPercent",
+            "AddlDiscAmt",
+            "TotalDiscount",
+            "BillDiscPercent",
+            "BillDiscAmt",
+        )
+
+
+class SalesReturnMaster1RestSerializer(serializers.ModelSerializer):
+
+    TotalTax = serializers.SerializerMethodField()
+    GrandTotal = serializers.SerializerMethodField()
+    LedgerName = serializers.SerializerMethodField()
+    TotalTax_rounded = serializers.SerializerMethodField()
+    GrandTotal_Rounded = serializers.SerializerMethodField()
+    TotalGrossAmt_Rounded = serializers.SerializerMethodField()
+    is_billwised = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SalesReturnMaster
+        fields = (
+            "id",
+            "SalesReturnMasterID",
+            "VoucherNo",
+            "VoucherDate",
+            "RefferenceBillNo",
+            "Country_of_Supply",
+            "State_of_Supply",
+            "GST_Treatment",
+            "RefferenceBillDate",
+            "LedgerName",
+            "CustomerName",
+            "TotalTax",
+            "TotalTax_rounded",
+            "GrandTotal",
+            "GrandTotal_Rounded",
+            "VAT_Treatment",
+            "TotalGrossAmt_Rounded",
+            "is_billwised",
+        )
+
+    def get_is_billwised(self, instance):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = instance.BranchID
+        VoucherNo = instance.VoucherNo
+        SalesReturnMasterID = instance.SalesReturnMasterID
+        is_billwised = False
+        if (
+            BillWiseMaster.objects.filter(
+                CompanyID=CompanyID,
+                BranchID=BranchID,
+                InvoiceNo=VoucherNo,
+                TransactionID=SalesReturnMasterID,
+                VoucherType="SR",
+            )
+            .exclude(Payments=0)
+            .exists()
+        ):
+            is_billwised = True
+        return is_billwised
+
+    def get_LedgerName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        LedgerName = ""
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=LedgerID
+        ).exists():
+            ledger = AccountLedger.objects.get(CompanyID=CompanyID, LedgerID=LedgerID)
+            LedgerName = ledger.LedgerName
+
+        return LedgerName
+
+    def get_TotalTax(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalTax = instances.TotalTax
+
+        TotalTax = round(TotalTax, PriceRounding)
+
+        return converted_float(TotalTax)
+
+    def get_GrandTotal(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        GrandTotal = instances.GrandTotal
+
+        GrandTotal = round(GrandTotal, PriceRounding)
+
+        return converted_float(GrandTotal)
+
+    def get_TotalGrossAmt_Rounded(self, instances):
+        PriceRounding = int(self.context.get("PriceRounding"))
+        TotalGrossAmt = instances.TotalGrossAmt
+
+        TotalGrossAmt_rounded = round(TotalGrossAmt, PriceRounding)
+
+        return str(TotalGrossAmt_rounded)
+
+    def get_TotalTax_rounded(self, instances):
+        PriceRounding = int(self.context.get("PriceRounding"))
+        TotalTax = instances.TotalTax
+
+        TotalTax_rounded = round(TotalTax, PriceRounding)
+
+        return str(TotalTax_rounded)
+
+    def get_GrandTotal_Rounded(self, instances):
+        PriceRounding = int(self.context.get("PriceRounding"))
+        GrandTotal = instances.GrandTotal
+
+        GrandTotal_Rounded = round(GrandTotal, PriceRounding)
+
+        return str(GrandTotal_Rounded)
+
+
+class SalesReturnMasterRestSerializer(serializers.ModelSerializer):
+
+    SalesReturnDetails = serializers.SerializerMethodField()
+    DetailID = serializers.SerializerMethodField()
+    TotalGrossAmt = serializers.SerializerMethodField()
+    AddlDiscPercent = serializers.SerializerMethodField()
+    AddlDiscAmt = serializers.SerializerMethodField()
+    TotalDiscount = serializers.SerializerMethodField()
+    TotalTax = serializers.SerializerMethodField()
+    NetTotal = serializers.SerializerMethodField()
+    AdditionalCost = serializers.SerializerMethodField()
+    GrandTotal = serializers.SerializerMethodField()
+    RoundOff = serializers.SerializerMethodField()
+    CashReceived = serializers.SerializerMethodField()
+    CashAmount = serializers.SerializerMethodField()
+    BankAmount = serializers.SerializerMethodField()
+    LedgerName = serializers.SerializerMethodField()
+    AccountName = serializers.SerializerMethodField()
+    WareHouseName = serializers.SerializerMethodField()
+    Types = serializers.SerializerMethodField()
+    VATAmount = serializers.SerializerMethodField()
+    SGSTAmount = serializers.SerializerMethodField()
+    CGSTAmount = serializers.SerializerMethodField()
+    IGSTAmount = serializers.SerializerMethodField()
+    TAX1Amount = serializers.SerializerMethodField()
+    TAX2Amount = serializers.SerializerMethodField()
+    TAX3Amount = serializers.SerializerMethodField()
+    BillDiscPercent = serializers.SerializerMethodField()
+    BillDiscAmt = serializers.SerializerMethodField()
+    is_customer = serializers.SerializerMethodField()
+    LoyaltyCustomerID = serializers.SerializerMethodField()
+    Country_of_Supply_name = serializers.SerializerMethodField()
+    State_of_Supply_name = serializers.SerializerMethodField()
+    qr_image = serializers.SerializerMethodField()
+    GrandTotal_print = serializers.SerializerMethodField()
+    NetTotal_print = serializers.SerializerMethodField()
+    TotalDiscount_print = serializers.SerializerMethodField()
+    TotalTax_print = serializers.SerializerMethodField()
+    TotalGrossAmt_print = serializers.SerializerMethodField()
+    # =====
+    Tax_no = serializers.SerializerMethodField()
+    CRNo = serializers.SerializerMethodField()
+    Mobile = serializers.SerializerMethodField()
+    City = serializers.SerializerMethodField()
+    State = serializers.SerializerMethodField()
+    Country = serializers.SerializerMethodField()
+    PostalCode = serializers.SerializerMethodField()
+    Date = serializers.SerializerMethodField()
+    GrossAmt_print = serializers.SerializerMethodField()
+    VATAmount_print = serializers.SerializerMethodField()
+    TotalTaxableAmount_print = serializers.SerializerMethodField()
+    ProductList = serializers.SerializerMethodField()
+    Balance = serializers.SerializerMethodField()
+    SGST_final_list = serializers.SerializerMethodField()
+    IGST_final_list = serializers.SerializerMethodField()
+    VATNumber = serializers.SerializerMethodField()
+    VAT_Treatment_Name = serializers.SerializerMethodField()
+    Place_of_Supply = serializers.SerializerMethodField()
+    GSTNumber = serializers.SerializerMethodField()
+    billing_address_single = serializers.SerializerMethodField()
+    BillingAddressList = serializers.SerializerMethodField()
+    Address1 = serializers.SerializerMethodField()
+    TenderCash = serializers.SerializerMethodField()
+    is_billwised = serializers.SerializerMethodField()
+    EmployeeName = serializers.SerializerMethodField()
+    EmployeePhone = serializers.SerializerMethodField()
+    billwiseDetails_datas = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SalesReturnMaster
+        fields = (
+            "id",
+            "TotalTaxableAmount_print",
+            "VATAmount_print",
+            "GrossAmt_print",
+            "Date",
+            "Tax_no",
+            "CRNo",
+            "Mobile",
+            "City",
+            "State",
+            "Country",
+            "PostalCode",
+            "NetTotal_print",
+            "TotalGrossAmt_print",
+            "TotalTax_print",
+            "TotalDiscount_print",
+            "GrandTotal_print",
+            "qr_image",
+            "LoyaltyCustomerID",
+            "TotalTaxableAmount",
+            "SalesReturnMasterID",
+            "BranchID",
+            "Action",
+            "VoucherNo",
+            "VoucherDate",
+            "RefferenceBillNo",
+            "RefferenceBillDate",
+            "CreditPeriod",
+            "LedgerID",
+            "LedgerName",
+            "WareHouseName",
+            "AddlDiscPercent",
+            "AddlDiscAmt",
+            "PriceCategoryID",
+            "EmployeeID",
+            "EmployeeName",
+            "EmployeePhone",
+            "SalesAccount",
+            "AccountName",
+            "DeliveryMasterID",
+            "OrderMasterID",
+            "CustomerName",
+            "Address1",
+            "Address2",
+            "Address3",
+            "is_customer",
+            "Notes",
+            "FinacialYearID",
+            "TotalGrossAmt",
+            "TotalTax",
+            "NetTotal",
+            "ProductList",
+            "AdditionalCost",
+            "GrandTotal",
+            "RoundOff",
+            "CashReceived",
+            "CashAmount",
+            "BankAmount",
+            "WarehouseID",
+            "TableID",
+            "SeatNumber",
+            "NoOfGuests",
+            "INOUT",
+            "TokenNumber",
+            "IsActive",
+            "IsPosted",
+            "SalesType",
+            "Types",
+            "CreatedUserID",
+            "CreatedDate",
+            "TaxID",
+            "TaxType",
+            "VATAmount",
+            "SGSTAmount",
+            "CGSTAmount",
+            "IGSTAmount",
+            "TAX1Amount",
+            "TAX2Amount",
+            "TAX3Amount",
+            "TotalDiscount",
+            "BillDiscPercent",
+            "BillDiscAmt",
+            "KFCAmount",
+            "Country_of_Supply_name",
+            "State_of_Supply_name",
+            "SalesReturnDetails",
+            "DetailID",
+            "Country_of_Supply",
+            "State_of_Supply",
+            "GST_Treatment",
+            "VAT_Treatment",
+            "Balance",
+            "SGST_final_list",
+            "IGST_final_list",
+            "VATNumber",
+            "GSTNumber",
+            "VAT_Treatment_Name",
+            "Place_of_Supply",
+            "billing_address_single",
+            "BillingAddressList",
+            "TenderCash",
+            "CashID",
+            "BankID",
+            "is_billwised",
+            "billwiseDetails_datas"
+        )
+        
+    def get_EmployeeName(self, instance):
+        CompanyID = self.context.get("CompanyID")
+        EmployeeID = instance.EmployeeID
+        EmployeeName = ""
+        if Employee.objects.filter(CompanyID=CompanyID, EmployeeID=EmployeeID).exists():
+            EmployeeName = (
+                Employee.objects.filter(CompanyID=CompanyID, EmployeeID=EmployeeID)
+                .first()
+                .FirstName
+            )
+        return EmployeeName
+
+        
+    def get_EmployeePhone(self, instance):
+        CompanyID = self.context.get("CompanyID")
+        EmployeeID = instance.EmployeeID
+        Phone = ""
+        if Employee.objects.filter(CompanyID=CompanyID, EmployeeID=EmployeeID).exists():
+            Phone = (
+                Employee.objects.filter(CompanyID=CompanyID, EmployeeID=EmployeeID)
+                .first()
+                .Phone
+            )
+        return Phone
+
+    def get_billwiseDetails_datas(self, instance):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = instance.BranchID
+        InvoiceNo = instance.VoucherNo
+        billwiseDetails_datas = []
+        if BillWiseDetails.objects.filter(CompanyID=CompanyID, BranchID=BranchID, PaymentInvoiceNo=InvoiceNo, PaymentVoucherType="SR", Payments__gt=0).exists():
+            details = BillWiseDetails.objects.filter(
+                CompanyID=CompanyID, BranchID=BranchID, PaymentInvoiceNo=InvoiceNo, PaymentVoucherType="SR", Payments__gt=0)
+            for i in details:
+                master_ins = BillWiseMaster.objects.filter(CompanyID=CompanyID, BranchID=BranchID, BillwiseMasterID=i.BillwiseMasterID).first()
+                InvoiceAmount = master_ins.InvoiceAmount
+                Payments = master_ins.Payments
+                AmountDue = converted_float(InvoiceAmount) - converted_float(Payments)
+                item = {
+                    "Amount": i.Payments,
+                    "AmountDue": AmountDue,
+                    "BillwiseMasterID": i.BillwiseMasterID,
+                    "CustomerID": master_ins.CustomerID,
+                    "DueDate": master_ins.DueDate,
+                    "InvoiceAmount": master_ins.InvoiceAmount,
+                    "InvoiceNo": master_ins.InvoiceNo,
+                    "Payments": master_ins.Payments,
+                    "TransactionID": master_ins.TransactionID,
+                    "VoucherDate": master_ins.VoucherDate,
+                    "VoucherType": master_ins.VoucherType,
+                    "actualAmount": AmountDue,
+                    "created_date": instance.CreatedDate,
+                    "full_amt": False,
+                    "id": master_ins.id,
+                    "show_negative": False
+                }
+                billwiseDetails_datas.append(item)
+        return billwiseDetails_datas
+    
+    
+    def get_is_billwised(self, instance):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = instance.BranchID
+        InvoiceNo = instance.VoucherNo
+        is_billwised = False
+        if BillWiseDetails.objects.filter(CompanyID=CompanyID, BranchID=BranchID, InvoiceNo=InvoiceNo, VoucherType="SR", Payments__gt=0).exclude(PaymentVoucherType="SR").exists():
+            is_billwised = True
+        return is_billwised
+
+    def get_TenderCash(self, instance):
+        CompanyID = self.context.get("CompanyID")
+        CashReceived = instance.CashReceived
+        BankAmount = instance.BankAmount
+        TenderCash = CashReceived+BankAmount
+        return str(TenderCash)
+        
+    def get_Address1(self, instance):
+        Address1 = instance.Address1
+        if instance.BillingAddress:
+            CustomerStateName = ""
+            if instance.BillingAddress.state:
+                CustomerStateName = instance.BillingAddress.state.Name
+            Address1 = (
+                str(instance.BillingAddress.Address1)
+                + str(",")
+                + str(instance.BillingAddress.City)
+                + str(",")
+                + str(CustomerStateName)
+                + str(",")
+                + str(instance.BillingAddress.PostalCode)
+            )
+        return Address1
+    
+    def get_billing_address_single(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        LedgerID = instances.LedgerID
+        BillingAddress = instances.BillingAddress
+        billing_address_single = {}
+        CustomerStateName = ""
+        if BillingAddress:
+            if BillingAddress.state:
+                CustomerStateName = BillingAddress.state.Name
+            Billing_Address = (
+                str(BillingAddress.Address1)
+                + str(",")
+                + str(BillingAddress.City)
+                + str(",")
+                + str(CustomerStateName)
+                + str(",")
+                + str(BillingAddress.PostalCode)
+            )
+            billing_address_single = {
+                "id": str(BillingAddress.id),
+                "Attention": BillingAddress.Attention,
+                "Address1": Billing_Address,
+                "Mobile": BillingAddress.Mobile,
+            }
+        return billing_address_single
+
+    def get_BillingAddressList(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CompanyID = self.context.get("CompanyID")
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        BillingAddressList = []
+        if UserAdrress.objects.filter(
+            CompanyID=CompanyID, Branch__BranchID=BranchID, Party__LedgerID=LedgerID, Type="BillingAddress"
+        ).exists():
+            shipping_instances = UserAdrress.objects.filter(
+                CompanyID=CompanyID, Branch__BranchID=BranchID, Party__LedgerID=LedgerID, Type="BillingAddress"
+            )
+            serialized = ShippingAddressListSerializer(
+                shipping_instances, many=True, context={"CompanyID": CompanyID}
+            )
+            BillingAddressList = serialized.data
+        return BillingAddressList
+
+    def get_GSTNumber(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        GSTNumber = ""
+        if Parties.objects.filter(
+            CompanyID=CompanyID, BranchID=BranchID, LedgerID=LedgerID
+        ).exists():
+            pary_ins = Parties.objects.filter(
+                CompanyID=CompanyID, BranchID=BranchID, LedgerID=LedgerID
+            ).first()
+            GSTNumber = pary_ins.GSTNumber
+        return str(GSTNumber)
+
+    def get_Place_of_Supply(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        State_Name = ""
+
+        try:
+            if State.objects.filter(pk=instances.State_of_Supply).exists():
+                State_Name = State.objects.get(pk=instances.State_of_Supply).Name
+        except:
+            pass
+
+        return State_Name
+
+    def get_VAT_Treatment_Name(self, instance):
+        CompanyID = self.context.get("CompanyID")
+        VAT_Treatment = instance.VAT_Treatment
+        VAT_Treatment_Name = ""
+        VAT_Treatment_Name = get_treatment_name(VAT_Treatment, "VAT")
+        return VAT_Treatment_Name
+
+    def get_VATNumber(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        VATNumber = ""
+        if Parties.objects.filter(
+            CompanyID=CompanyID, BranchID=BranchID, LedgerID=LedgerID
+        ).exists():
+            pary_ins = Parties.objects.filter(
+                CompanyID=CompanyID, BranchID=BranchID, LedgerID=LedgerID
+            ).first()
+            VATNumber = pary_ins.VATNumber
+        return str(VATNumber)
+
+    def get_SGST_final_list(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        BranchID = instances.BranchID
+        SalesReturnMasterID = instances.SalesReturnMasterID
+        sales_details = SalesReturnDetails.objects.filter(
+            CompanyID=CompanyID,
+            SalesReturnMasterID=SalesReturnMasterID,
+            BranchID=BranchID,
+        )
+        SGST_final_list = GST_finalList_fun(
+            instances, sales_details, "SGST", PriceRounding, "SalesReturn"
+        )
+        return SGST_final_list
+
+    def get_IGST_final_list(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        BranchID = instances.BranchID
+        SalesReturnMasterID = instances.SalesReturnMasterID
+        sales_details = SalesReturnDetails.objects.filter(
+            CompanyID=CompanyID,
+            SalesReturnMasterID=SalesReturnMasterID,
+            BranchID=BranchID,
+        )
+        IGST_final_list = GST_finalList_fun(
+            instances, sales_details, "IGST", PriceRounding, "SalesReturn"
+        )
+        return IGST_final_list
+
+    def get_ProductList(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = instances.BranchID
+        SalesReturnMasterID = instances.SalesReturnMasterID
+        WarehouseID = instances.WarehouseID
+        sales_details = SalesReturnDetails.objects.filter(
+            CompanyID=CompanyID,
+            SalesReturnMasterID=SalesReturnMasterID,
+            BranchID=BranchID,
+        )
+
+        product_ids = sales_details.values_list("ProductID", flat=True)
+        produc_instances = Product.objects.filter(
+            CompanyID=CompanyID, ProductID__in=product_ids
+        )
+        ProductList = []
+        for p in produc_instances:
+            sale_ins = sales_details.filter(ProductID=p.ProductID).first()
+            BatchCode = sale_ins.BatchCode
+            PriceListID = sale_ins.PriceListID
+            price_ins = PriceList.objects.filter(
+                CompanyID=CompanyID, PriceListID=PriceListID
+            ).first()
+            SalesPrice = price_ins.SalesPrice
+            PurchasePrice = price_ins.PurchasePrice
+            Stock = get_ProductStock(
+                CompanyID, BranchID, p.ProductID, WarehouseID, BatchCode
+            )
+            ProductList.append(
+                {
+                    "id": str(p.id),
+                    "product_id": str(p.id),
+                    "ProductCode": p.ProductCode,
+                    "ProductName": p.ProductName,
+                    "ProductID": p.ProductID,
+                    "Stock": Stock,
+                    "SalesPrice": str(SalesPrice),
+                    "PurchasePrice": str(PurchasePrice),
+                }
+            )
+
+        return ProductList
+
+    def get_Balance(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        Balance = 0
+        if LedgerPosting.objects.filter(
+            CompanyID=CompanyID, BranchID=BranchID, LedgerID=LedgerID
+        ).exists():
+            ledgers = LedgerPosting.objects.filter(
+                CompanyID=CompanyID, BranchID=BranchID, LedgerID=LedgerID
+            )
+            total_debit = ledgers.aggregate(Sum("Debit"))
+            total_debit = total_debit["Debit__sum"]
+            total_credit = ledgers.aggregate(Sum("Credit"))
+            total_credit = total_credit["Credit__sum"]
+            Balance = converted_float(total_debit) - converted_float(total_credit)
+        return converted_float(Balance)
+
+    def get_VATAmount_print(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        VATAmount = instances.VATAmount
+        VATAmount = str(round(VATAmount, PriceRounding))
+        return str(VATAmount)
+
+    def get_GrossAmt_print(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        GrossAmount = instances.TotalGrossAmt
+
+        GrossAmt_print = str(round(GrossAmount, PriceRounding))
+
+        return str(GrossAmt_print)
+
+    def get_Date(self, instances):
+        PriceRounding = int(self.context.get("PriceRounding"))
+        VoucherDate = instances.VoucherDate
+        return str(VoucherDate)
+
+    def get_Tax_no(self, instances):
+
+        CompanyID = self.context.get("CompanyID")
+        Tax_no = ""
+        if Parties.objects.filter(
+            LedgerID=instances.LedgerID, CompanyID=CompanyID
+        ).exists():
+            Tax_no = Parties.objects.get(
+                LedgerID=instances.LedgerID, CompanyID=CompanyID
+            ).VATNumber
+
+        return str(Tax_no)
+
+    def get_CRNo(self, instances):
+
+        CompanyID = self.context.get("CompanyID")
+        CR_no = ""
+        if Parties.objects.filter(
+            LedgerID=instances.LedgerID, CompanyID=CompanyID
+        ).exists():
+            CR_no = Parties.objects.get(
+                LedgerID=instances.LedgerID, CompanyID=CompanyID
+            ).CRNo
+
+        return str(CR_no)
+
+    def get_Mobile(self, instances):
+
+        CompanyID = self.context.get("CompanyID")
+        Mobile = ""
+        if Parties.objects.filter(
+            LedgerID=instances.LedgerID, CompanyID=CompanyID
+        ).exists():
+            Mobile = Parties.objects.get(
+                LedgerID=instances.LedgerID, CompanyID=CompanyID
+            ).Mobile
+
+        return str(Mobile)
+
+    def get_City(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        City = ""
+
+        LedgerID = instances.LedgerID
+        if Parties.objects.filter(LedgerID=LedgerID, CompanyID=CompanyID).exists():
+            City = (
+                Parties.objects.filter(LedgerID=LedgerID, CompanyID=CompanyID)
+                .first()
+                .City
+            )
+
+        return City
+
+    def get_State(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        State_Name = ""
+        LedgerID = instances.LedgerID
+        if Parties.objects.filter(LedgerID=LedgerID, CompanyID=CompanyID).exists():
+            if Parties.objects.get(LedgerID=LedgerID, CompanyID=CompanyID).State:
+                pk = (
+                    Parties.objects.filter(LedgerID=LedgerID, CompanyID=CompanyID)
+                    .first()
+                    .State
+                )
+                if State.objects.filter(pk=pk).exists():
+                    State_Name = State.objects.get(pk=pk).Name
+
+        return State_Name
+
+    def get_Country(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        Country_Name = ""
+
+        LedgerID = instances.LedgerID
+        if Parties.objects.filter(LedgerID=LedgerID, CompanyID=CompanyID).exists():
+            if Parties.objects.get(LedgerID=LedgerID, CompanyID=CompanyID).Country:
+                pk = (
+                    Parties.objects.filter(LedgerID=LedgerID, CompanyID=CompanyID)
+                    .first()
+                    .Country
+                )
+                if Country.objects.filter(pk=pk).exists():
+                    Country_Name = Country.objects.get(pk=pk).Country_Name
+
+        return Country_Name
+
+    def get_PostalCode(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PostalCode = ""
+        LedgerID = instances.LedgerID
+        if Parties.objects.filter(LedgerID=LedgerID, CompanyID=CompanyID).exists():
+            PostalCode = (
+                Parties.objects.filter(LedgerID=LedgerID, CompanyID=CompanyID)
+                .first()
+                .PostalCode
+            )
+
+        return PostalCode
+
+    def get_TotalGrossAmt_print(self, instances):
+        PriceRounding = int(self.context.get("PriceRounding"))
+
+        TotalGrossAmt = instances.TotalGrossAmt
+
+        if TotalGrossAmt:
+            TotalGrossAmt = round(TotalGrossAmt, PriceRounding)
+        else:
+            TotalGrossAmt = 0
+
+        return str(TotalGrossAmt)
+
+    def get_Country_of_Supply_name(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        Country_of_Supply = instances.Country_of_Supply
+        Country_of_Supply_name = ""
+        if Country_of_Supply:
+            if Country.objects.filter(id=Country_of_Supply).exists():
+                Country_of_Supply_name = Country.objects.get(
+                    id=Country_of_Supply
+                ).Country_Name
+        return Country_of_Supply_name
+
+    def get_State_of_Supply_name(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        State_of_Supply = instances.State_of_Supply
+        State_of_Supply_name = ""
+        if State_of_Supply:
+            if State.objects.filter(id=State_of_Supply).exists():
+                State_of_Supply_name = State.objects.get(id=State_of_Supply).Name
+        return State_of_Supply_name
+
+    def get_TotalTax_print(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalTax = instances.TotalTax
+
+        TotalTax = str(round(TotalTax, PriceRounding))
+
+        return str(TotalTax)
+
+    def get_TotalTaxableAmount_print(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalTaxableAmount = instances.TotalTaxableAmount
+        TotalTaxableAmount = str(round(TotalTaxableAmount, PriceRounding))
+        return str(TotalTaxableAmount)
+
+    def get_TotalDiscount_print(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalDiscount = instances.TotalDiscount
+
+        TotalDiscount = str(round(TotalDiscount, PriceRounding))
+
+        return str(TotalDiscount)
+
+    def get_NetTotal_print(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        NetTotal = instances.NetTotal
+
+        NetTotal = str(round(NetTotal, PriceRounding))
+
+        return str(NetTotal)
+
+    def get_GrandTotal_print(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        PriceRounding = self.context.get("PriceRounding")
+
+        GrandTotal = instances.GrandTotal
+        GrandTotal_print = str(round(GrandTotal, PriceRounding))
+        return str(GrandTotal_print)
+
+    # def get_qr_image(self, instances):
+    #     CompanyID = self.context.get("CompanyID")
+    #     LedgerID = instances.LedgerID
+    #     BranchID = instances.BranchID
+    #     pk = str(instances.id)
+    #     qr_image = None
+    #     if QrCode.objects.filter(voucher_type="SR", master_id=pk).exists():
+    #         qr_image = QrCode.objects.get(
+    #             voucher_type="SR", master_id=pk).qr_code.url
+
+    #     return qr_image
+
+    # def get_qr_image(self, instances):
+    #     CompanyID = self.context.get("CompanyID")
+    #     request = self.context.get("request")
+    #     LedgerID = instances.LedgerID
+    #     BranchID = instances.BranchID
+    #     pk = str(instances.id)
+    #     qr_code = None
+    #     if QrCode.objects.filter(voucher_type="SR", master_id=pk).exists():
+    #         qr_code = QrCode.objects.get(voucher_type="SR", master_id=pk)
+    #     serialized = QRCodeSerializer(
+    #         qr_code, context={"CompanyID": CompanyID, "request": request}
+    #     )
+
+    #     return serialized.data.get("qr_code")
+    
+    def get_qr_image(self, instance):
+        CompanyID = self.context.get("CompanyID")
+        request = self.context.get("request")
+        generateQrCode(instance, "SR")
+        pk = str(instance.id)
+        if QrCode.objects.filter(voucher_type="SR", master_id=pk).exists():
+            qr_code = QrCode.objects.get(voucher_type="SR", master_id=pk)
+        serialized = QRCodeSerializer(
+            qr_code, context={"CompanyID": CompanyID, "request": request}
+        )
+        return serialized.data.get("qr_code")
+    
+
+    def get_LoyaltyCustomerID(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        try:
+            LoyaltyCustomerID = instances.LoyaltyCustomerID.LoyaltyCustomerID
+        except:
+            LoyaltyCustomerID = None
+
+        return LoyaltyCustomerID
+
+    def get_SalesReturnDetails(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        salesReturn_details = SalesReturnDetails.objects.filter(
+            CompanyID=CompanyID,
+            SalesReturnMasterID=instances.SalesReturnMasterID,
+            BranchID=instances.BranchID,
+        ).order_by("SalesReturnDetailsID")
+        serialized = SalesReturnDetailsRestSerializer(
+            salesReturn_details,
+            many=True,
+            context={"CompanyID": CompanyID, "PriceRounding": PriceRounding},
+        )
+
+        return serialized.data
+
+    def get_DetailID(self, instances):
+
+        return 0
+
+    def get_is_customer(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        is_customer = False
+        groups = [10, 29]
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=LedgerID, AccountGroupUnder__in=groups
+        ).exists():
+            is_customer = True
+
+        return is_customer
+
+    def get_WareHouseName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        WarehouseID = instances.WarehouseID
+        BranchID = instances.BranchID
+
+        wareHouse = Warehouse.objects.get(CompanyID=CompanyID, WarehouseID=WarehouseID)
+
+        WareHouseName = wareHouse.WarehouseName
+
+        return WareHouseName
+
+    def get_LedgerName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        LedgerName = ""
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=LedgerID
+        ).exists():
+            ledger = AccountLedger.objects.get(CompanyID=CompanyID, LedgerID=LedgerID)
+            LedgerName = ledger.LedgerName
+
+        return LedgerName
+
+    def get_AccountName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        SalesAccount = instances.SalesAccount
+        BranchID = instances.BranchID
+        AccountName = ""
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=SalesAccount
+        ).exists():
+            AccountName = AccountLedger.objects.get(
+                CompanyID=CompanyID, LedgerID=SalesAccount
+            ).LedgerName
+
+        return AccountName
+
+    def get_Types(self, instances):
+
+        Types = instances.SalesType
+
+        return Types
+
+    def get_TotalGrossAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalGrossAmt = instances.TotalGrossAmt
+
+        TotalGrossAmt = round(TotalGrossAmt, PriceRounding)
+
+        return converted_float(TotalGrossAmt)
+
+    def get_AddlDiscPercent(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AddlDiscPercent = instances.AddlDiscPercent
+
+        # AddlDiscPercent = round(AddlDiscPercent,PriceRounding)
+
+        return converted_float(AddlDiscPercent)
+
+    def get_AddlDiscAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AddlDiscAmt = instances.AddlDiscAmt
+
+        # AddlDiscAmt = round(AddlDiscAmt,PriceRounding)
+
+        return converted_float(AddlDiscAmt)
+
+    def get_TotalDiscount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalDiscount = instances.TotalDiscount
+        if TotalDiscount == None:
+            TotalDiscount = 0
+
+        return converted_float(TotalDiscount)
+
+    def get_TotalTax(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalTax = instances.TotalTax
+
+        # TotalTax = round(TotalTax,PriceRounding)
+
+        return converted_float(TotalTax)
+
+    def get_NetTotal(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        NetTotal = instances.NetTotal
+
+        # NetTotal = round(NetTotal,PriceRounding)
+
+        return converted_float(NetTotal)
+
+    def get_AdditionalCost(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AdditionalCost = instances.AdditionalCost
+
+        # AdditionalCost = round(AdditionalCost,PriceRounding)
+
+        return converted_float(AdditionalCost)
+
+    def get_GrandTotal(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        GrandTotal = instances.GrandTotal
+
+        # GrandTotal = round(GrandTotal,PriceRounding)
+
+        return converted_float(GrandTotal)
+
+    def get_RoundOff(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        RoundOff = instances.RoundOff
+
+        # RoundOff = round(RoundOff,PriceRounding)
+
+        return converted_float(RoundOff)
+
+    def get_CashReceived(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CashReceived = instances.CashReceived
+
+        # CashReceived = round(CashReceived,PriceRounding)
+
+        return converted_float(CashReceived)
+
+    def get_CashAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CashAmount = instances.CashAmount
+
+        # CashAmount = round(CashAmount,PriceRounding)
+
+        return converted_float(CashAmount)
+
+    def get_BankAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BankAmount = instances.BankAmount
+
+        # BankAmount = round(BankAmount,PriceRounding)
+
+        return converted_float(BankAmount)
+
+    def get_VATAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        VATAmount = instances.VATAmount
+
+        # VATAmount = round(VATAmount,PriceRounding)
+
+        return converted_float(VATAmount)
+
+    def get_SGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        SGSTAmount = instances.SGSTAmount
+
+        # SGSTAmount = round(SGSTAmount,PriceRounding)
+
+        return converted_float(SGSTAmount)
+
+    def get_CGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CGSTAmount = instances.CGSTAmount
+
+        # CGSTAmount = round(CGSTAmount,PriceRounding)
+
+        return converted_float(CGSTAmount)
+
+    def get_IGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        IGSTAmount = instances.IGSTAmount
+
+        # IGSTAmount = round(IGSTAmount,PriceRounding)
+
+        return converted_float(IGSTAmount)
+
+    def get_TAX1Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX1Amount = instances.TAX1Amount
+
+        # TAX1Amount = round(TAX1Amount,PriceRounding)
+
+        return converted_float(TAX1Amount)
+
+    def get_TAX2Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX2Amount = instances.TAX2Amount
+
+        # TAX2Amount = round(TAX2Amount,PriceRounding)
+
+        return converted_float(TAX2Amount)
+
+    def get_TAX3Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX3Amount = instances.TAX3Amount
+
+        # TAX3Amount = round(TAX3Amount,PriceRounding)
+
+        return converted_float(TAX3Amount)
+
+    def get_BillDiscPercent(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BillDiscPercent = instances.BillDiscPercent
+
+        # BillDiscPercent = round(BillDiscPercent,PriceRounding)
+
+        return converted_float(BillDiscPercent)
+
+    def get_BillDiscAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BillDiscAmt = instances.BillDiscAmt
+
+        # BillDiscAmt = round(BillDiscAmt,PriceRounding)
+
+        return converted_float(BillDiscAmt)
+
+
+class SalesReturnDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SalesReturnDetails
+        fields = (
+            "id",
+            "BranchID",
+            "Action",
+            "SalesReturnMasterID",
+            "DeliveryDetailsID",
+            "OrderDetailsID",
+            "ProductID",
+            "Qty",
+            "FreeQty",
+            "UnitPrice",
+            "RateWithTax",
+            "CostPerPrice",
+            "PriceListID",
+            "DiscountPerc",
+            "DiscountAmount",
+            "GrossAmount",
+            "TaxableAmount",
+            "VATPerc",
+            "VATAmount",
+            "SGSTPerc",
+            "SGSTAmount",
+            "CGSTPerc",
+            "CGSTAmount",
+            "IGSTPerc",
+            "IGSTAmount",
+            "NetAmount",
+            "Flavour",
+            "CreatedUserID",
+            "AddlDiscPercent",
+            "AddlDiscAmt",
+            "TAX1Perc",
+            "TAX1Amount",
+            "TAX2Perc",
+            "TAX2Amount",
+            "TAX3Perc",
+            "TAX3Amount",
+        )
+
+
+class SalesReturnDetailsRestSerializer(serializers.ModelSerializer):
+
+    ProductName = serializers.SerializerMethodField()
+    unq_id = serializers.SerializerMethodField()
+    detailID = serializers.SerializerMethodField()
+    TotalTax = serializers.SerializerMethodField()
+    UnitName = serializers.SerializerMethodField()
+    AddlDiscPerc = serializers.SerializerMethodField()
+    AddlDiscAmt = serializers.SerializerMethodField()
+    Qty = serializers.SerializerMethodField()
+    FreeQty = serializers.SerializerMethodField()
+    UnitPrice = serializers.SerializerMethodField()
+    InclusivePrice = serializers.SerializerMethodField()
+    RateWithTax = serializers.SerializerMethodField()
+    CostPerPrice = serializers.SerializerMethodField()
+    DiscountPerc = serializers.SerializerMethodField()
+    DiscountAmount = serializers.SerializerMethodField()
+    GrossAmount = serializers.SerializerMethodField()
+    TaxableAmount = serializers.SerializerMethodField()
+    VATAmount = serializers.SerializerMethodField()
+    SGSTAmount = serializers.SerializerMethodField()
+    CGSTAmount = serializers.SerializerMethodField()
+    IGSTAmount = serializers.SerializerMethodField()
+    TAX1Amount = serializers.SerializerMethodField()
+    TAX2Amount = serializers.SerializerMethodField()
+    TAX3Amount = serializers.SerializerMethodField()
+    NetAmount = serializers.SerializerMethodField()
+    is_VAT_inclusive = serializers.SerializerMethodField()
+    is_GST_inclusive = serializers.SerializerMethodField()
+    is_TAX1_inclusive = serializers.SerializerMethodField()
+    is_TAX2_inclusive = serializers.SerializerMethodField()
+    is_TAX3_inclusive = serializers.SerializerMethodField()
+    unitPriceRounded = serializers.SerializerMethodField()
+    quantityRounded = serializers.SerializerMethodField()
+    actualSalesPrice = serializers.SerializerMethodField()
+    netAmountRounded = serializers.SerializerMethodField()
+    id = serializers.SerializerMethodField()
+    BatchCode = serializers.SerializerMethodField()
+    UnitList = serializers.SerializerMethodField()
+    is_inclusive = serializers.SerializerMethodField()
+    ActualUnitPrice = serializers.SerializerMethodField()
+    is_show_details = serializers.SerializerMethodField()
+    SerialNos = serializers.SerializerMethodField()
+    ProductCode = serializers.SerializerMethodField()
+    HSNCode = serializers.SerializerMethodField()
+    ProductTaxName = serializers.SerializerMethodField()
+    GST_Inclusive = serializers.SerializerMethodField()
+    Vat_Inclusive = serializers.SerializerMethodField()
+    SalesPrice = serializers.SerializerMethodField()
+    ActualProductTaxName = serializers.SerializerMethodField()
+    ActualProductTaxID = serializers.SerializerMethodField()
+    unitPrice_print = serializers.SerializerMethodField()
+    NetAmount_print = serializers.SerializerMethodField()
+    VATPerc_print = serializers.SerializerMethodField()
+    VATAmount_print = serializers.SerializerMethodField()
+    NetAmount_print = serializers.SerializerMethodField()
+    DiscountAmount_print = serializers.SerializerMethodField()
+    TaxableAmount_print = serializers.SerializerMethodField()
+    product_description = serializers.SerializerMethodField()
+    BatchList = serializers.SerializerMethodField()
+    ManufactureDatePrint = serializers.SerializerMethodField()
+    ExpiryDatePrint = serializers.SerializerMethodField()
+    ProductCodeVal = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SalesReturnDetails
+        fields = (
+            "id",
+            "TaxableAmount_print",
+            "DiscountAmount_print",
+            "NetAmount_print",
+            "VATPerc_print",
+            "VATAmount_print",
+            "unq_id",
+            "NetAmount_print",
+            "unitPrice_print",
+            "SalesReturnDetailsID",
+            "Description",
+            "BranchID",
+            "Action",
+            "SalesReturnMasterID",
+            "DeliveryDetailsID",
+            "OrderDetailsID",
+            "ProductID",
+            "ProductName",
+            "Qty",
+            "FreeQty",
+            "UnitPrice",
+            "InclusivePrice",
+            "detailID",
+            "TotalTax",
+            "UnitName",
+            "ProductTaxID",
+            "RateWithTax",
+            "CostPerPrice",
+            "PriceListID",
+            "DiscountPerc",
+            "DiscountAmount",
+            "KFCAmount",
+            "KFCPerc",
+            "GST_Inclusive",
+            "Vat_Inclusive",
+            "SalesPrice",
+            "GrossAmount",
+            "TaxableAmount",
+            "VATPerc",
+            "VATAmount",
+            "SGSTPerc",
+            "SGSTAmount",
+            "CGSTPerc",
+            "is_inclusive",
+            "UnitList",
+            "CGSTAmount",
+            "IGSTPerc",
+            "IGSTAmount",
+            "NetAmount",
+            "Flavour",
+            "CreatedUserID",
+            "CreatedDate",
+            "UpdatedDate",
+            "AddlDiscPerc",
+            "AddlDiscAmt",
+            "TAX1Perc",
+            "TAX1Amount",
+            "TAX2Perc",
+            "TAX2Amount",
+            "TAX3Perc",
+            "TAX3Amount",
+            "ActualProductTaxName",
+            "ActualProductTaxID",
+            "is_VAT_inclusive",
+            "is_GST_inclusive",
+            "is_TAX1_inclusive",
+            "is_TAX2_inclusive",
+            "is_TAX3_inclusive",
+            "ProductTaxName",
+            "unitPriceRounded",
+            "quantityRounded",
+            "actualSalesPrice",
+            "netAmountRounded",
+            "BatchCode",
+            "ActualUnitPrice",
+            "is_show_details",
+            "SerialNos",
+            "ProductCode",
+            "HSNCode",
+            "product_description",
+            "BatchList",
+            "ManufactureDatePrint",
+            "ExpiryDatePrint",
+            "ProductCodeVal",
+        )
+    
+    def get_ManufactureDatePrint(self, sales_details):
+        ManufactureDate = ""
+        CompanyID = self.context.get("CompanyID")
+        BranchID = sales_details.BranchID
+        BatchCode = sales_details.BatchCode
+        if Batch.objects.filter(
+            CompanyID=CompanyID, BranchID=BranchID, BatchCode=BatchCode
+        ).exists():
+            batch_details = Batch.objects.filter(
+                CompanyID=CompanyID, BranchID=BranchID, BatchCode=BatchCode
+            ).first()
+            ManufactureDate = batch_details.ManufactureDate
+            if ManufactureDate:
+                Date = ManufactureDate.strftime("%Y/%d")
+                ManufactureDate = Date
+        return ManufactureDate
+
+    def get_ExpiryDatePrint(self, sales_details):
+        ExpiryDate = ""
+        CompanyID = self.context.get("CompanyID")
+        BranchID = sales_details.BranchID
+        BatchCode = sales_details.BatchCode
+        if Batch.objects.filter(
+            CompanyID=CompanyID, BranchID=BranchID, BatchCode=BatchCode
+        ).exists():
+            batch_details = Batch.objects.filter(
+                CompanyID=CompanyID, BranchID=BranchID, BatchCode=BatchCode
+            ).first()
+            ExpiryDate = batch_details.ExpiryDate
+            if ExpiryDate:
+                Date = ExpiryDate.strftime("%Y/%d")
+                ExpiryDate = Date
+        return ExpiryDate
+
+    def get_BatchList(self, sales_details):
+        BatchCode_list = []
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = int(self.context.get("PriceRounding"))
+        BranchID = sales_details.BranchID
+        ProductID = sales_details.ProductID
+        BatchCode_list = []
+        if Batch.objects.filter(
+            CompanyID=CompanyID, BranchID=BranchID, ProductID=ProductID
+        ).exists():
+            batch_details = Batch.objects.filter(
+                CompanyID=CompanyID, BranchID=BranchID, ProductID=ProductID
+            )
+            BatchCode_list = Batch_ListSerializer(
+                batch_details,
+                many=True,
+                context={"CompanyID": CompanyID, "PriceRounding": PriceRounding},
+            )
+            BatchCode_list = BatchCode_list.data
+        return BatchCode_list
+
+    def get_product_description(self, purchaseReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = purchaseReturn_details.BranchID
+        ProductID = purchaseReturn_details.ProductID
+        Description = ""
+        if Product.objects.filter(CompanyID=CompanyID, ProductID=ProductID).exists():
+            Description = Product.objects.get(
+                CompanyID=CompanyID, ProductID=ProductID
+            ).Description
+        return str(Description)
+
+    def get_TaxableAmount_print(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+
+        TaxableAmount = salesReturn_details.TaxableAmount
+        TaxableAmount = round(TaxableAmount, PriceRounding)
+
+        return str(TaxableAmount)
+
+    def get_DiscountAmount_print(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        DiscountAmount = salesReturn_details.DiscountAmount
+        DiscountAmount = round(DiscountAmount, PriceRounding)
+
+        return str(DiscountAmount)
+
+    def get_VATPerc_print(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        VATPerc = salesReturn_details.VATPerc
+        print(VATPerc, "((((((((**VATPerc****))))))))")
+
+        VATPerc = round(VATPerc, PriceRounding)
+
+        return str(VATPerc)
+
+    def get_VATAmount_print(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        VATAmount = salesReturn_details.VATAmount
+        print(VATAmount, "((((((((***VATAmount***))))))))")
+
+        VATAmount = round(VATAmount, PriceRounding)
+
+        return str(VATAmount)
+
+    def get_NetAmount_print(self, purchaseReturn_details):
+        PriceRounding = int(self.context.get("PriceRounding"))
+        NetAmount = purchaseReturn_details.NetAmount
+        NetAmount = round(NetAmount, PriceRounding)
+        return str(NetAmount)
+
+    def get_unitPrice_print(self, purchaseReturn_details):
+        PriceRounding = int(self.context.get("PriceRounding"))
+        UnitPrice = purchaseReturn_details.UnitPrice
+        UnitPrice = round(UnitPrice, PriceRounding)
+        return str(UnitPrice)
+
+    def get_ActualProductTaxName(self, sales_details):
+        CompanyID = self.context.get("CompanyID")
+        ProductTaxID = sales_details.ProductTaxID
+        BranchID = sales_details.BranchID
+        ActualProductTaxName = ""
+        if TaxCategory.objects.filter(CompanyID=CompanyID, TaxID=ProductTaxID).exists():
+            ActualProductTaxName = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=ProductTaxID
+            ).TaxName
+        return ActualProductTaxName
+
+    def get_ActualProductTaxID(self, sales_details):
+        CompanyID = self.context.get("CompanyID")
+        ActualProductTaxID = sales_details.ProductTaxID
+        return ActualProductTaxID
+
+    def get_Vat_Inclusive(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        ProductTaxID = salesReturn_details.ProductTaxID
+        if ProductTaxID:
+            VatID = ProductTaxID
+        else:
+            VatID = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID).VatID
+        Inclusive = False
+        if VatID:
+            Inclusive = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=VatID
+            ).Inclusive
+        return Inclusive
+
+    def get_GST_Inclusive(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        ProductTaxID = salesReturn_details.ProductTaxID
+        Inclusive = False
+        if ProductTaxID:
+            GST = ProductTaxID
+        else:
+            GST = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID).GST
+        if GST:
+            Inclusive = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=GST
+            ).Inclusive
+        return Inclusive
+
+    def get_SalesPrice(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        PriceListID = salesReturn_details.PriceListID
+        BranchID = salesReturn_details.BranchID
+        SalesPrice = 0
+        if PriceList.objects.filter(
+            CompanyID=CompanyID, PriceListID=PriceListID
+        ).exists():
+            SalesPrice = PriceList.objects.get(
+                CompanyID=CompanyID, PriceListID=PriceListID
+            ).SalesPrice
+        return converted_float(SalesPrice)
+
+    def get_ProductTaxName(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        ProductTaxID = salesReturn_details.ProductTaxID
+        BranchID = salesReturn_details.BranchID
+        ProductTaxName = ""
+        if TaxCategory.objects.filter(CompanyID=CompanyID, TaxID=ProductTaxID).exists():
+            ProductTaxName = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=ProductTaxID
+            ).TaxName
+        return ProductTaxName
+
+    def get_is_show_details(self, instances):
+        return False
+
+    def get_ProductName(self, salesReturn_details):
+
+        CompanyID = self.context.get("CompanyID")
+
+        ProductID = salesReturn_details.ProductID
+        BranchID = salesReturn_details.BranchID
+
+        if Product.objects.filter(CompanyID=CompanyID, ProductID=ProductID).exists():
+
+            product = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID)
+
+            ProductName = product.ProductName
+        else:
+            ProductName = ""
+
+        return ProductName
+
+    def get_ProductCode(self, sales_details):
+        CompanyID = self.context.get("CompanyID")
+        ProductID = sales_details.ProductID
+        product = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID)
+        ProductCode = product.ProductCode
+        return ProductCode
+
+    def get_ProductCodeVal(self, sales_details):
+        CompanyID = self.context.get("CompanyID")
+        ProductID = sales_details.ProductID
+        product = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID)
+        ProductCode = product.ProductCode
+        return ProductCode
+
+    def get_HSNCode(self, sales_details):
+
+        CompanyID = self.context.get("CompanyID")
+
+        ProductID = sales_details.ProductID
+        BranchID = sales_details.BranchID
+
+        product = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID)
+
+        HSNCode = product.HSNCode
+        return HSNCode
+
+    def get_UnitList(self, salesReturn_details):
+
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+
+        ProductID = salesReturn_details.ProductID
+        BranchID = salesReturn_details.BranchID
+
+        UnitList = PriceList.objects.filter(CompanyID=CompanyID, ProductID=ProductID)
+
+        serialized = PriceListRestSerializer(
+            UnitList,
+            many=True,
+            context={"CompanyID": CompanyID, "PriceRounding": PriceRounding},
+        )
+
+        return serialized.data
+
+    def get_is_inclusive(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        is_inclusive = Product.objects.get(
+            CompanyID=CompanyID, ProductID=ProductID
+        ).is_inclusive
+
+        return is_inclusive
+
+    def get_BatchCode(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BatchCode = salesReturn_details.BatchCode
+        BranchID = salesReturn_details.BranchID
+        if not BatchCode:
+            BatchCode = 0
+
+        return BatchCode
+
+    def get_id(self, instances):
+        id = instances.id
+
+        return str(id)
+
+    def get_InclusivePrice(self, salesReturn_details):
+        PriceRounding = int(self.context.get("PriceRounding"))
+        # PriceRounding = 2
+        InclusivePrice = salesReturn_details.InclusivePrice
+        if not InclusivePrice:
+            InclusivePrice = 0
+
+        return converted_float(InclusivePrice)
+
+    def get_unitPriceRounded(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        UnitPrice = salesReturn_details.UnitPrice
+        # UnitPrice = round(UnitPrice,PriceRounding)
+        return converted_float(UnitPrice)
+
+    def get_quantityRounded(self, salesReturn_details):
+        Qty = salesReturn_details.Qty
+        return converted_float(Qty)
+
+    def get_ActualUnitPrice(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        PriceListID = salesReturn_details.PriceListID
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        SalesPrice = 0
+        if PriceList.objects.filter(
+            ProductID=ProductID, CompanyID=CompanyID, PriceListID=PriceListID
+        ).exists():
+            SalesPrice = PriceList.objects.get(
+                ProductID=ProductID, CompanyID=CompanyID, PriceListID=PriceListID
+            ).SalesPrice
+        return converted_float(SalesPrice)
+
+    def get_actualSalesPrice(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        PriceListID = salesReturn_details.PriceListID
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        SalesPrice = 0
+        if PriceList.objects.filter(
+            ProductID=ProductID, CompanyID=CompanyID, PriceListID=PriceListID
+        ).exists():
+            SalesPrice = PriceList.objects.get(
+                ProductID=ProductID, CompanyID=CompanyID, PriceListID=PriceListID
+            ).SalesPrice
+        return converted_float(SalesPrice)
+
+    def get_netAmountRounded(self, salesReturn_details):
+        NetAmount = salesReturn_details.NetAmount
+        return converted_float(NetAmount)
+
+    def get_is_VAT_inclusive(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        Inclusive = False
+        VatID = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID).VatID
+        if VatID:
+            Inclusive = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=VatID
+            ).Inclusive
+        return Inclusive
+
+    def get_is_GST_inclusive(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        Inclusive = False
+        GST = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID).GST
+        if GST:
+            Inclusive = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=GST
+            ).Inclusive
+        return Inclusive
+
+    def get_is_TAX1_inclusive(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        Inclusive = False
+        Tax1 = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID).Tax1
+        if Tax1:
+            Inclusive = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=Tax1
+            ).Inclusive
+        return Inclusive
+
+    def get_is_TAX2_inclusive(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        Inclusive = False
+        Tax2 = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID).Tax2
+        if Tax2:
+            Inclusive = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=Tax2
+            ).Inclusive
+        return Inclusive
+
+    def get_is_TAX3_inclusive(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        BranchID = salesReturn_details.BranchID
+        ProductID = salesReturn_details.ProductID
+        Inclusive = False
+        Tax3 = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID).Tax3
+        if Tax3:
+            Inclusive = TaxCategory.objects.get(
+                CompanyID=CompanyID, TaxID=Tax3
+            ).Inclusive
+        return Inclusive
+
+    def get_AddlDiscPerc(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        AddlDiscPerc = salesReturn_details.AddlDiscPercent
+
+        if not AddlDiscPerc:
+            AddlDiscPerc = 0
+
+        return converted_float(AddlDiscPerc)
+
+    def get_AddlDiscAmt(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        AddlDiscAmt = salesReturn_details.AddlDiscAmt
+
+        if not AddlDiscAmt:
+            AddlDiscAmt = 0
+
+        return converted_float(AddlDiscAmt)
+
+    def get_UnitName(self, purchase_details):
+
+        CompanyID = self.context.get("CompanyID")
+
+        PriceListID = purchase_details.PriceListID
+        BranchID = purchase_details.BranchID
+
+        if PriceList.objects.filter(
+            CompanyID=CompanyID, PriceListID=PriceListID, BranchID=BranchID
+        ).exists():
+            UnitID = PriceList.objects.get(
+                CompanyID=CompanyID, PriceListID=PriceListID
+            ).UnitID
+            UnitName = Unit.objects.get(CompanyID=CompanyID, UnitID=UnitID).UnitName
+        else:
+            UnitName = ""
+
+        return UnitName
+
+    def get_TotalTax(self, purchase_details):
+
+        CompanyID = self.context.get("CompanyID")
+
+        TAX1Amount = purchase_details.TAX1Amount
+        TAX2Amount = purchase_details.TAX2Amount
+        TAX3Amount = purchase_details.TAX3Amount
+        VATAmount = purchase_details.VATAmount
+        IGSTAmount = purchase_details.IGSTAmount
+        SGSTAmount = purchase_details.SGSTAmount
+        CGSTAmount = purchase_details.CGSTAmount
+
+        TotalTax = (
+            TAX1Amount
+            + TAX2Amount
+            + TAX3Amount
+            + VATAmount
+            + CGSTAmount
+            + SGSTAmount
+            + IGSTAmount
+        )
+
+        return converted_float(TotalTax)
+
+    def get_unq_id(self, purchase_details):
+
+        CompanyID = self.context.get("CompanyID")
+
+        unq_id = purchase_details.id
+
+        return str(unq_id)
+
+    def get_detailID(self, purchase_details):
+
+        detailID = 0
+        return detailID
+
+    def get_Qty(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        Qty = salesReturn_details.Qty
+
+        if not Qty:
+            Qty = 0
+
+        return converted_float(Qty)
+
+    def get_FreeQty(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        FreeQty = salesReturn_details.FreeQty
+
+        if not FreeQty:
+            FreeQty = 0
+
+        return converted_float(FreeQty)
+
+    def get_UnitPrice(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        UnitPrice = salesReturn_details.UnitPrice
+
+        if not UnitPrice:
+            UnitPrice = 0
+
+        return converted_float(UnitPrice)
+
+    def get_RateWithTax(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        RateWithTax = salesReturn_details.RateWithTax
+
+        if not RateWithTax:
+            RateWithTax = 0
+
+        return converted_float(RateWithTax)
+
+    def get_CostPerPrice(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        CostPerPrice = salesReturn_details.CostPerPrice
+
+        if not CostPerPrice:
+            CostPerPrice = 0
+
+        return converted_float(CostPerPrice)
+
+    def get_DiscountPerc(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        DiscountPerc = salesReturn_details.DiscountPerc
+
+        if not DiscountPerc:
+            DiscountPerc = 0
+
+        return converted_float(DiscountPerc)
+
+    def get_DiscountAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        DiscountAmount = salesReturn_details.DiscountAmount
+
+        if not DiscountAmount:
+            DiscountAmount = 0
+
+        return converted_float(DiscountAmount)
+
+    def get_GrossAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        GrossAmount = salesReturn_details.GrossAmount
+
+        if not GrossAmount:
+            GrossAmount = 0
+
+        return converted_float(GrossAmount)
+
+    def get_TaxableAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        TaxableAmount = salesReturn_details.TaxableAmount
+
+        if not TaxableAmount:
+            TaxableAmount = 0
+
+        return converted_float(TaxableAmount)
+
+    def get_VATAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        VATAmount = salesReturn_details.VATAmount
+
+        if not VATAmount:
+            VATAmount = 0
+
+        return converted_float(VATAmount)
+
+    def get_SGSTAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        SGSTAmount = salesReturn_details.SGSTAmount
+
+        if not SGSTAmount:
+            SGSTAmount = 0
+
+        return converted_float(SGSTAmount)
+
+    def get_CGSTAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        CGSTAmount = salesReturn_details.CGSTAmount
+
+        if not CGSTAmount:
+            CGSTAmount = 0
+
+        return converted_float(CGSTAmount)
+
+    def get_IGSTAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        IGSTAmount = salesReturn_details.IGSTAmount
+
+        if not IGSTAmount:
+            IGSTAmount = 0
+
+        return converted_float(IGSTAmount)
+
+    def get_TAX1Amount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX1Amount = salesReturn_details.TAX1Amount
+
+        if not TAX1Amount:
+            TAX1Amount = 0
+
+        return converted_float(TAX1Amount)
+
+    def get_TAX2Amount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX2Amount = salesReturn_details.TAX2Amount
+
+        if not TAX2Amount:
+            TAX2Amount = 0
+
+        return converted_float(TAX2Amount)
+
+    def get_TAX3Amount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX3Amount = salesReturn_details.TAX3Amount
+
+        if not TAX3Amount:
+            TAX3Amount = 0
+
+        return converted_float(TAX3Amount)
+
+    def get_NetAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        NetAmount = salesReturn_details.NetAmount
+
+        if not NetAmount:
+            NetAmount = 0
+
+        return converted_float(NetAmount)
+
+    def get_SerialNos(self, sales_details):
+        SerialNos = []
+        CompanyID = self.context.get("CompanyID")
+        BranchID = sales_details.BranchID
+        SalesMasterID = sales_details.SalesReturnMasterID
+        SalesDetailsID = sales_details.SalesReturnDetailsID
+        if SerialNumbers.objects.filter(
+            CompanyID=CompanyID,
+            BranchID=BranchID,
+            SalesMasterID=SalesMasterID,
+            SalesDetailsID=SalesDetailsID,
+            VoucherType="SR",
+        ).exists():
+            Serial_details = SerialNumbers.objects.filter(
+                CompanyID=CompanyID,
+                BranchID=BranchID,
+                SalesMasterID=SalesMasterID,
+                SalesDetailsID=SalesDetailsID,
+                VoucherType="SR",
+            )
+            SerialNos = SerialNumberSerializer(
+                Serial_details, many=True, context={"CompanyID": CompanyID}
+            )
+            SerialNos = SerialNos.data
+        return SerialNos
+
+
+class SalesReturnMasterReportSerializer(serializers.ModelSerializer):
+
+    SalesReturnDetails = serializers.SerializerMethodField()
+    DetailID = serializers.SerializerMethodField()
+    TotalGrossAmt = serializers.SerializerMethodField()
+    AddlDiscPercent = serializers.SerializerMethodField()
+    AddlDiscAmt = serializers.SerializerMethodField()
+    TotalDiscount = serializers.SerializerMethodField()
+    TotalTax = serializers.SerializerMethodField()
+    NetTotal = serializers.SerializerMethodField()
+    AdditionalCost = serializers.SerializerMethodField()
+    GrandTotal = serializers.SerializerMethodField()
+    RoundOff = serializers.SerializerMethodField()
+    CashReceived = serializers.SerializerMethodField()
+    CashAmount = serializers.SerializerMethodField()
+    BankAmount = serializers.SerializerMethodField()
+    LedgerName = serializers.SerializerMethodField()
+    AccountName = serializers.SerializerMethodField()
+    WareHouseName = serializers.SerializerMethodField()
+    Types = serializers.SerializerMethodField()
+    VATAmount = serializers.SerializerMethodField()
+    SGSTAmount = serializers.SerializerMethodField()
+    CGSTAmount = serializers.SerializerMethodField()
+    IGSTAmount = serializers.SerializerMethodField()
+    TAX1Amount = serializers.SerializerMethodField()
+    TAX2Amount = serializers.SerializerMethodField()
+    TAX3Amount = serializers.SerializerMethodField()
+    BillDiscPercent = serializers.SerializerMethodField()
+    BillDiscAmt = serializers.SerializerMethodField()
+    CashSalesReturn = serializers.SerializerMethodField()
+    BankSalesReturn = serializers.SerializerMethodField()
+    CreditSalesReturn = serializers.SerializerMethodField()
+    id = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SalesReturnMaster
+        fields = (
+            "id",
+            "SalesReturnMasterID",
+            "BranchID",
+            "Action",
+            "VoucherNo",
+            "VoucherDate",
+            "RefferenceBillNo",
+            "RefferenceBillDate",
+            "CreditPeriod",
+            "LedgerID",
+            "LedgerName",
+            "WareHouseName",
+            "AddlDiscPercent",
+            "AddlDiscAmt",
+            "PriceCategoryID",
+            "EmployeeID",
+            "SalesAccount",
+            "AccountName",
+            "DeliveryMasterID",
+            "OrderMasterID",
+            "CustomerName",
+            "Address1",
+            "Address2",
+            "Address3",
+            "Notes",
+            "FinacialYearID",
+            "TotalGrossAmt",
+            "TotalTax",
+            "NetTotal",
+            "AdditionalCost",
+            "GrandTotal",
+            "RoundOff",
+            "CashReceived",
+            "CashAmount",
+            "BankAmount",
+            "WarehouseID",
+            "TableID",
+            "SeatNumber",
+            "NoOfGuests",
+            "INOUT",
+            "TokenNumber",
+            "IsActive",
+            "IsPosted",
+            "SalesType",
+            "Types",
+            "CreatedUserID",
+            "CreatedDate",
+            "TaxID",
+            "TaxType",
+            "VATAmount",
+            "SGSTAmount",
+            "CGSTAmount",
+            "IGSTAmount",
+            "TAX1Amount",
+            "TAX2Amount",
+            "TAX3Amount",
+            "TotalDiscount",
+            "BillDiscPercent",
+            "BillDiscAmt",
+            "CashSalesReturn",
+            "BankSalesReturn",
+            "CreditSalesReturn",
+            "SalesReturnDetails",
+            "DetailID",
+        )
+
+    def get_SalesReturnDetails(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        salesReturn_details = SalesReturnDetails.objects.filter(
+            CompanyID=CompanyID,
+            SalesReturnMasterID=instances.SalesReturnMasterID,
+            BranchID=instances.BranchID,
+        )
+        serialized = SalesReturnDetailsRestSerializer(
+            salesReturn_details,
+            many=True,
+            context={"CompanyID": CompanyID, "PriceRounding": PriceRounding},
+        )
+
+        return serialized.data
+
+    def get_id(self, instances):
+        id = instances.id
+
+        return str(id)
+
+    def get_CashSalesReturn(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        FromDate = self.context.get("FromDate")
+        ToDate = self.context.get("ToDate")
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        TotalDebit = 0
+        TotalCredit = 0
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=LedgerID, AccountGroupUnder=9
+        ).exists():
+            if LedgerPosting.objects.filter(
+                CompanyID=CompanyID,
+                LedgerID=LedgerID,
+                Date__gte=FromDate,
+                Date__lte=ToDate,
+                VoucherType="SR",
+                VoucherMasterID=instances.SalesReturnMasterID,
+            ).exists():
+                ledger_ins = LedgerPosting.objects.filter(
+                    CompanyID=CompanyID,
+                    LedgerID=LedgerID,
+                    Date__gte=FromDate,
+                    Date__lte=ToDate,
+                    VoucherType="SR",
+                    VoucherMasterID=instances.SalesReturnMasterID,
+                )
+                for i in ledger_ins:
+                    TotalDebit += converted_float(i.Debit)
+                    TotalCredit += converted_float(i.Credit)
+
+        CashSales = converted_float(TotalDebit) - converted_float(TotalCredit)
+        return CashSales
+
+    def get_BankSalesReturn(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        FromDate = self.context.get("FromDate")
+        ToDate = self.context.get("ToDate")
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        TotalDebit = 0
+        TotalCredit = 0
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=LedgerID, AccountGroupUnder=8
+        ).exists():
+            if LedgerPosting.objects.filter(
+                CompanyID=CompanyID,
+                LedgerID=LedgerID,
+                Date__gte=FromDate,
+                Date__lte=ToDate,
+                VoucherType="SR",
+            ).exists():
+                ledger_ins = LedgerPosting.objects.filter(
+                    CompanyID=CompanyID,
+                    LedgerID=LedgerID,
+                    Date__gte=FromDate,
+                    Date__lte=ToDate,
+                    VoucherType="SR",
+                )
+                for i in ledger_ins:
+                    TotalDebit += converted_float(i.Debit)
+                    TotalCredit += converted_float(i.Credit)
+
+        BankSales = converted_float(TotalDebit) - converted_float(TotalCredit)
+        return BankSales
+
+    def get_CreditSalesReturn(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        FromDate = self.context.get("FromDate")
+        ToDate = self.context.get("ToDate")
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        TotalDebit = 0
+        TotalCredit = 0
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=LedgerID, AccountGroupUnder__in=[10, 29]
+        ).exists():
+            if LedgerPosting.objects.filter(
+                CompanyID=CompanyID,
+                LedgerID=LedgerID,
+                Date__gte=FromDate,
+                Date__lte=ToDate,
+                VoucherType="SR",
+            ).exists():
+                ledger_ins = LedgerPosting.objects.filter(
+                    CompanyID=CompanyID,
+                    LedgerID=LedgerID,
+                    Date__gte=FromDate,
+                    Date__lte=ToDate,
+                    VoucherType="SR",
+                )
+                for i in ledger_ins:
+                    TotalDebit += converted_float(i.Debit)
+                    TotalCredit += converted_float(i.Credit)
+
+        CreditSales = converted_float(TotalDebit) - converted_float(TotalCredit)
+        return CreditSales
+
+    def get_DetailID(self, instances):
+
+        return 0
+
+    def get_WareHouseName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        WarehouseID = instances.WarehouseID
+        BranchID = instances.BranchID
+
+        wareHouse = Warehouse.objects.get(CompanyID=CompanyID, WarehouseID=WarehouseID)
+
+        WareHouseName = wareHouse.WarehouseName
+
+        return WareHouseName
+
+    def get_LedgerName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        LedgerName = ""
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=LedgerID
+        ).exists():
+            ledger = AccountLedger.objects.get(CompanyID=CompanyID, LedgerID=LedgerID)
+            LedgerName = ledger.LedgerName
+
+        return LedgerName
+
+    def get_AccountName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        SalesAccount = instances.SalesAccount
+        BranchID = instances.BranchID
+
+        ledger = AccountLedger.objects.get(
+            CompanyID=CompanyID, LedgerID=SalesAccount, BranchID=BranchID
+        )
+
+        AccountName = ledger.LedgerName
+
+        return AccountName
+
+    def get_Types(self, instances):
+
+        Types = instances.SalesType
+
+        return Types
+
+    def get_TotalGrossAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalGrossAmt = instances.TotalGrossAmt
+
+        TotalGrossAmt = round(TotalGrossAmt, PriceRounding)
+
+        return converted_float(TotalGrossAmt)
+
+    def get_AddlDiscPercent(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AddlDiscPercent = instances.AddlDiscPercent
+
+        AddlDiscPercent = round(AddlDiscPercent, PriceRounding)
+
+        return converted_float(AddlDiscPercent)
+
+    def get_AddlDiscAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AddlDiscAmt = instances.AddlDiscAmt
+
+        AddlDiscAmt = round(AddlDiscAmt, PriceRounding)
+
+        return converted_float(AddlDiscAmt)
+
+    def get_TotalDiscount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalDiscount = instances.TotalDiscount
+        if not TotalDiscount == None:
+            TotalDiscount = round(TotalDiscount, PriceRounding)
+        else:
+            TotalDiscount = 0
+
+        return converted_float(TotalDiscount)
+
+    def get_TotalTax(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalTax = instances.TotalTax
+
+        TotalTax = round(TotalTax, PriceRounding)
+
+        return converted_float(TotalTax)
+
+    def get_NetTotal(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        NetTotal = instances.NetTotal
+
+        NetTotal = round(NetTotal, PriceRounding)
+
+        return converted_float(NetTotal)
+
+    def get_AdditionalCost(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AdditionalCost = instances.AdditionalCost
+
+        AdditionalCost = round(AdditionalCost, PriceRounding)
+
+        return converted_float(AdditionalCost)
+
+    def get_GrandTotal(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        GrandTotal = instances.GrandTotal
+
+        GrandTotal = round(GrandTotal, PriceRounding)
+
+        return converted_float(GrandTotal)
+
+    def get_RoundOff(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        RoundOff = instances.RoundOff
+
+        RoundOff = round(RoundOff, PriceRounding)
+
+        return converted_float(RoundOff)
+
+    def get_CashReceived(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CashReceived = instances.CashReceived
+
+        CashReceived = round(CashReceived, PriceRounding)
+
+        return converted_float(CashReceived)
+
+    def get_CashAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CashAmount = instances.CashAmount
+
+        CashAmount = round(CashAmount, PriceRounding)
+
+        return converted_float(CashAmount)
+
+    def get_BankAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BankAmount = instances.BankAmount
+
+        BankAmount = round(BankAmount, PriceRounding)
+
+        return converted_float(BankAmount)
+
+    def get_VATAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        VATAmount = instances.VATAmount
+
+        VATAmount = round(VATAmount, PriceRounding)
+
+        return converted_float(VATAmount)
+
+    def get_SGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        SGSTAmount = instances.SGSTAmount
+
+        SGSTAmount = round(SGSTAmount, PriceRounding)
+
+        return converted_float(SGSTAmount)
+
+    def get_CGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CGSTAmount = instances.CGSTAmount
+
+        CGSTAmount = round(CGSTAmount, PriceRounding)
+
+        return converted_float(CGSTAmount)
+
+    def get_IGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        IGSTAmount = instances.IGSTAmount
+
+        IGSTAmount = round(IGSTAmount, PriceRounding)
+
+        return converted_float(IGSTAmount)
+
+    def get_TAX1Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX1Amount = instances.TAX1Amount
+
+        TAX1Amount = round(TAX1Amount, PriceRounding)
+
+        return converted_float(TAX1Amount)
+
+    def get_TAX2Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX2Amount = instances.TAX2Amount
+
+        TAX2Amount = round(TAX2Amount, PriceRounding)
+
+        return converted_float(TAX2Amount)
+
+    def get_TAX3Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX3Amount = instances.TAX3Amount
+
+        TAX3Amount = round(TAX3Amount, PriceRounding)
+
+        return converted_float(TAX3Amount)
+
+    def get_BillDiscPercent(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BillDiscPercent = instances.BillDiscPercent
+
+        BillDiscPercent = round(BillDiscPercent, PriceRounding)
+
+        return converted_float(BillDiscPercent)
+
+    def get_BillDiscAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BillDiscAmt = instances.BillDiscAmt
+
+        BillDiscAmt = round(BillDiscAmt, PriceRounding)
+
+        return converted_float(BillDiscAmt)
+
+
+class SalesRetrnDetailsReportSerializer(serializers.ModelSerializer):
+
+    MasterID = serializers.SerializerMethodField()
+    DetailsID = serializers.SerializerMethodField()
+    ProductName = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SalesReturnDetails
+        fields = (
+            "id",
+            "DetailsID",
+            "BranchID",
+            "Action",
+            "MasterID",
+            "DeliveryDetailsID",
+            "OrderDetailsID",
+            "ProductID",
+            "ProductName",
+            "Qty",
+            "FreeQty",
+            "UnitPrice",
+            "RateWithTax",
+            "CostPerPrice",
+            "PriceListID",
+            "DiscountPerc",
+            "DiscountAmount",
+            "GrossAmount",
+            "TaxableAmount",
+            "VATPerc",
+            "VATAmount",
+            "SGSTPerc",
+            "SGSTAmount",
+            "CGSTPerc",
+            "CGSTAmount",
+            "IGSTPerc",
+            "IGSTAmount",
+            "NetAmount",
+            "Flavour",
+            "CreatedUserID",
+            "CreatedDate",
+            "UpdatedDate",
+            "AddlDiscPercent",
+            "AddlDiscAmt",
+            "TAX1Perc",
+            "TAX1Amount",
+            "TAX2Perc",
+            "TAX2Amount",
+            "TAX3Perc",
+            "TAX3Amount",
+        )
+
+    def get_MasterID(self, salesReturn_details):
+
+        MasterID = salesReturn_details.SalesReturnMasterID
+
+        return MasterID
+
+    def get_ProductName(self, salesReturn_details):
+
+        CompanyID = self.context.get("CompanyID")
+
+        ProductID = salesReturn_details.ProductID
+        BranchID = salesReturn_details.BranchID
+
+        product = Product.objects.get(
+            CompanyID=CompanyID, ProductID=ProductID, BranchID=BranchID
+        )
+
+        if product:
+            ProductName = product.ProductName
+        else:
+            ProductName = ""
+
+        return ProductName
+
+    def get_DetailsID(self, salesReturn_details):
+
+        DetailsID = salesReturn_details.SalesReturnDetailsID
+
+        return Detail
+
+
+class SalesReturnMasterPrintSerializer(serializers.ModelSerializer):
+
+    Details = serializers.SerializerMethodField()
+    DetailID = serializers.SerializerMethodField()
+    TotalGrossAmt = serializers.SerializerMethodField()
+    AddlDiscPercent = serializers.SerializerMethodField()
+    AddlDiscAmt = serializers.SerializerMethodField()
+    TotalDiscount = serializers.SerializerMethodField()
+    TotalTax = serializers.SerializerMethodField()
+    NetTotal = serializers.SerializerMethodField()
+    AdditionalCost = serializers.SerializerMethodField()
+    GrandTotal = serializers.SerializerMethodField()
+    RoundOff = serializers.SerializerMethodField()
+    CashReceived = serializers.SerializerMethodField()
+    CashAmount = serializers.SerializerMethodField()
+    BankAmount = serializers.SerializerMethodField()
+    LedgerName = serializers.SerializerMethodField()
+    AccountName = serializers.SerializerMethodField()
+    WareHouseName = serializers.SerializerMethodField()
+    Types = serializers.SerializerMethodField()
+    VATAmount = serializers.SerializerMethodField()
+    SGSTAmount = serializers.SerializerMethodField()
+    CGSTAmount = serializers.SerializerMethodField()
+    IGSTAmount = serializers.SerializerMethodField()
+    TAX1Amount = serializers.SerializerMethodField()
+    TAX2Amount = serializers.SerializerMethodField()
+    TAX3Amount = serializers.SerializerMethodField()
+    BillDiscPercent = serializers.SerializerMethodField()
+    BillDiscAmt = serializers.SerializerMethodField()
+    TaxNo = serializers.SerializerMethodField()
+    Date = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SalesReturnMaster
+        fields = (
+            "SalesReturnMasterID",
+            "BranchID",
+            "Action",
+            "VoucherNo",
+            "VoucherDate",
+            "RefferenceBillNo",
+            "RefferenceBillDate",
+            "CreditPeriod",
+            "LedgerID",
+            "LedgerName",
+            "WareHouseName",
+            "AddlDiscPercent",
+            "AddlDiscAmt",
+            "PriceCategoryID",
+            "EmployeeID",
+            "SalesAccount",
+            "AccountName",
+            "DeliveryMasterID",
+            "OrderMasterID",
+            "CustomerName",
+            "Address1",
+            "Address2",
+            "Address3",
+            "Notes",
+            "FinacialYearID",
+            "TotalGrossAmt",
+            "TotalTax",
+            "NetTotal",
+            "TaxNo",
+            "AdditionalCost",
+            "GrandTotal",
+            "RoundOff",
+            "CashReceived",
+            "CashAmount",
+            "BankAmount",
+            "WarehouseID",
+            "TableID",
+            "SeatNumber",
+            "NoOfGuests",
+            "INOUT",
+            "TokenNumber",
+            "IsActive",
+            "IsPosted",
+            "SalesType",
+            "Types",
+            "CreatedUserID",
+            "CreatedDate",
+            "TaxID",
+            "TaxType",
+            "VATAmount",
+            "SGSTAmount",
+            "CGSTAmount",
+            "IGSTAmount",
+            "TAX1Amount",
+            "TAX2Amount",
+            "TAX3Amount",
+            "TotalDiscount",
+            "BillDiscPercent",
+            "BillDiscAmt",
+            "DetailID",
+            "Details",
+            "Date"
+        )
+        
+    def get_Date(self,instance):
+        return str(instance.VoucherDate)
+
+    def get_TaxNo(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        LedgerID = instances.LedgerID
+        TaxNo = ""
+        if Parties.objects.filter(CompanyID=CompanyID, LedgerID=LedgerID).exists():
+            party_instance = Parties.objects.filter(
+                CompanyID=CompanyID, LedgerID=LedgerID
+            ).first()
+            if party_instance.VATNumber:
+                TaxNo = party_instance.VATNumber
+            elif party_instance.GSTNumber:
+                TaxNo = party_instance.GSTNumber
+        return TaxNo
+
+    def get_Details(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        PriceRounding = self.context.get("PriceRounding")
+        salesReturn_details = SalesReturnDetails.objects.filter(
+            CompanyID=CompanyID,
+            SalesReturnMasterID=instances.SalesReturnMasterID,
+            BranchID=instances.BranchID,
+        )
+        serialized = SalesReturnPrintSerializer(
+            salesReturn_details,
+            many=True,
+            context={"CompanyID": CompanyID, "PriceRounding": PriceRounding},
+        )
+
+        return serialized.data
+
+    def get_DetailID(self, instances):
+
+        return 0
+
+    def get_WareHouseName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        WarehouseID = instances.WarehouseID
+        BranchID = instances.BranchID
+
+        wareHouse = Warehouse.objects.get(CompanyID=CompanyID, WarehouseID=WarehouseID)
+
+        WareHouseName = wareHouse.WarehouseName
+
+        return WareHouseName
+
+    def get_LedgerName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+
+        LedgerID = instances.LedgerID
+        BranchID = instances.BranchID
+        LedgerName = ""
+        if AccountLedger.objects.filter(
+            CompanyID=CompanyID, LedgerID=LedgerID
+        ).exists():
+            ledger = AccountLedger.objects.get(CompanyID=CompanyID, LedgerID=LedgerID)
+            LedgerName = ledger.LedgerName
+
+        return LedgerName
+
+    def get_AccountName(self, instances):
+        CompanyID = self.context.get("CompanyID")
+        SalesAccount = instances.SalesAccount
+        BranchID = instances.BranchID
+
+        ledger = AccountLedger.objects.get(
+            CompanyID=CompanyID, LedgerID=SalesAccount, BranchID=BranchID
+        )
+
+        AccountName = ledger.LedgerName
+
+        return AccountName
+
+    def get_Types(self, instances):
+
+        Types = instances.SalesType
+
+        return Types
+
+    def get_TotalGrossAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalGrossAmt = instances.TotalGrossAmt
+
+        TotalGrossAmt = round(TotalGrossAmt, PriceRounding)
+
+        return converted_float(TotalGrossAmt)
+
+    def get_AddlDiscPercent(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AddlDiscPercent = instances.AddlDiscPercent
+
+        AddlDiscPercent = round(AddlDiscPercent, PriceRounding)
+
+        return converted_float(AddlDiscPercent)
+
+    def get_AddlDiscAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AddlDiscAmt = instances.AddlDiscAmt
+
+        AddlDiscAmt = round(AddlDiscAmt, PriceRounding)
+
+        return converted_float(AddlDiscAmt)
+
+    def get_TotalDiscount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalDiscount = instances.TotalDiscount
+        if not TotalDiscount == None:
+            TotalDiscount = round(TotalDiscount, PriceRounding)
+        else:
+            TotalDiscount = 0
+
+        return converted_float(TotalDiscount)
+
+    def get_TotalTax(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TotalTax = instances.TotalTax
+
+        TotalTax = round(TotalTax, PriceRounding)
+
+        return converted_float(TotalTax)
+
+    def get_NetTotal(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        NetTotal = instances.NetTotal
+
+        NetTotal = round(NetTotal, PriceRounding)
+
+        return converted_float(NetTotal)
+
+    def get_AdditionalCost(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        AdditionalCost = instances.AdditionalCost
+
+        AdditionalCost = round(AdditionalCost, PriceRounding)
+
+        return converted_float(AdditionalCost)
+
+    def get_GrandTotal(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        GrandTotal = instances.GrandTotal
+
+        GrandTotal = round(GrandTotal, PriceRounding)
+
+        return converted_float(GrandTotal)
+
+    def get_RoundOff(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        RoundOff = instances.RoundOff
+
+        RoundOff = round(RoundOff, PriceRounding)
+
+        return converted_float(RoundOff)
+
+    def get_CashReceived(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CashReceived = instances.CashReceived
+
+        CashReceived = round(CashReceived, PriceRounding)
+
+        return converted_float(CashReceived)
+
+    def get_CashAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CashAmount = instances.CashAmount
+
+        CashAmount = round(CashAmount, PriceRounding)
+
+        return converted_float(CashAmount)
+
+    def get_BankAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BankAmount = instances.BankAmount
+
+        BankAmount = round(BankAmount, PriceRounding)
+
+        return converted_float(BankAmount)
+
+    def get_VATAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        VATAmount = instances.VATAmount
+
+        VATAmount = round(VATAmount, PriceRounding)
+
+        return converted_float(VATAmount)
+
+    def get_SGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        SGSTAmount = instances.SGSTAmount
+
+        SGSTAmount = round(SGSTAmount, PriceRounding)
+
+        return converted_float(SGSTAmount)
+
+    def get_CGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        CGSTAmount = instances.CGSTAmount
+
+        CGSTAmount = round(CGSTAmount, PriceRounding)
+
+        return converted_float(CGSTAmount)
+
+    def get_IGSTAmount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        IGSTAmount = instances.IGSTAmount
+
+        IGSTAmount = round(IGSTAmount, PriceRounding)
+
+        return converted_float(IGSTAmount)
+
+    def get_TAX1Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX1Amount = instances.TAX1Amount
+
+        TAX1Amount = round(TAX1Amount, PriceRounding)
+
+        return converted_float(TAX1Amount)
+
+    def get_TAX2Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX2Amount = instances.TAX2Amount
+
+        TAX2Amount = round(TAX2Amount, PriceRounding)
+
+        return converted_float(TAX2Amount)
+
+    def get_TAX3Amount(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        TAX3Amount = instances.TAX3Amount
+
+        TAX3Amount = round(TAX3Amount, PriceRounding)
+
+        return converted_float(TAX3Amount)
+
+    def get_BillDiscPercent(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BillDiscPercent = instances.BillDiscPercent
+
+        BillDiscPercent = round(BillDiscPercent, PriceRounding)
+
+        return converted_float(BillDiscPercent)
+
+    def get_BillDiscAmt(self, instances):
+        PriceRounding = self.context.get("PriceRounding")
+        BillDiscAmt = instances.BillDiscAmt
+
+        BillDiscAmt = round(BillDiscAmt, PriceRounding)
+
+        return converted_float(BillDiscAmt)
+
+
+class SalesReturnPrintSerializer(serializers.ModelSerializer):
+
+    ProductName = serializers.SerializerMethodField()
+    Qty = serializers.SerializerMethodField()
+    UnitPrice = serializers.SerializerMethodField()
+    NetAmount = serializers.SerializerMethodField()
+    UnitName = serializers.SerializerMethodField()
+    Description = serializers.SerializerMethodField()
+    
+
+    class Meta:
+        model = SalesReturnDetails
+        fields = ("ProductName", "Qty", "UnitPrice",
+                  "UnitName", "NetAmount", "Description")
+
+    def get_Description(self, sales_details):
+        CompanyID = self.context.get("CompanyID")
+        ProductID = sales_details.ProductID
+        BranchID = sales_details.BranchID
+        product = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID)
+        Description = product.Description
+        return Description
+    
+    
+    def get_ProductName(self, salesReturn_details):
+        CompanyID = self.context.get("CompanyID")
+        ProductID = salesReturn_details.ProductID
+        BranchID = salesReturn_details.BranchID
+
+        if Product.objects.filter(CompanyID=CompanyID, ProductID=ProductID).exists():
+
+            product = Product.objects.get(CompanyID=CompanyID, ProductID=ProductID)
+
+            ProductName = product.ProductName
+        else:
+            ProductName = ""
+
+        return ProductName
+
+    def get_UnitName(self, purchase_details):
+
+        CompanyID = self.context.get("CompanyID")
+
+        PriceListID = purchase_details.PriceListID
+        BranchID = purchase_details.BranchID
+
+        if PriceList.objects.filter(
+            CompanyID=CompanyID, PriceListID=PriceListID, BranchID=BranchID
+        ).exists():
+            UnitID = PriceList.objects.get(
+                CompanyID=CompanyID, PriceListID=PriceListID, BranchID=BranchID
+            ).UnitID
+            UnitName = Unit.objects.get(
+                BranchID=BranchID, UnitID=UnitID, CompanyID=CompanyID
+            ).UnitName
+        else:
+            UnitName = ""
+
+        return UnitName
+
+    def get_Qty(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        Qty = salesReturn_details.Qty
+
+        if Qty:
+            Qty = round(Qty, PriceRounding)
+        else:
+            Qty = 0
+
+        return converted_float(Qty)
+
+    def get_UnitPrice(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        UnitPrice = salesReturn_details.UnitPrice
+
+        if UnitPrice:
+            UnitPrice = round(UnitPrice, PriceRounding)
+        else:
+            UnitPrice = 0
+
+        return converted_float(UnitPrice)
+
+    def get_NetAmount(self, salesReturn_details):
+        PriceRounding = self.context.get("PriceRounding")
+        NetAmount = salesReturn_details.NetAmount
+
+        if NetAmount:
+            NetAmount = round(NetAmount, PriceRounding)
+        else:
+            NetAmount = 0
+
+        return converted_float(NetAmount)
+
+
+class QRCodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QrCode
+        fields = ("qr_code",)

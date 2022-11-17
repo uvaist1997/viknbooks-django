@@ -1,0 +1,14 @@
+from django.conf.urls import include, url
+
+from api.v9.units import views
+
+urlpatterns = [
+    url(r"^create-unit/$", views.create_unit, name="create_unit"),
+    url(r"^units/$", views.units, name="units"),
+    url(r"^view/unit/(?P<pk>.*)/$", views.unit, name="unit"),
+    url(r"^edit/unit/(?P<pk>.*)/$", views.edit_unit, name="edit_unit"),
+    url(r"^delete/unit/(?P<pk>.*)/$", views.delete_unit, name="delete_unit"),
+    url(r"^delete/selected-unit/$", views.delete_selected, name="delete_selected"),
+    url(r"^search-units/$", views.search_units, name="search_units"),
+    url(r"^setDefault-units/$", views.setDefault_units, name="setDefault_units"),
+]

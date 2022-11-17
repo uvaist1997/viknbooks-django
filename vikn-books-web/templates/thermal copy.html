@@ -1,0 +1,164 @@
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        width: 130mm;
+        font-size: 20px;
+        background: #fff;
+      }
+      .leftToright {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10px;
+        margin-right: 25px;
+      }
+      hr {
+        border-top: 1px dashed;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 20px;
+      }
+      table th {
+        text-align: left;
+        border-bottom: 1px dashed #000;
+      }
+      .textCenter {
+        text-align: center;
+      }
+      .textRight {
+        text-align: right;
+      }
+      .textLeft {
+        text-align: left;
+      }
+      .paddingRight {
+        padding-right: 25px;
+      }
+      .w-260{
+        width: 260px;    
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Head Section Starts Here -->
+    <center>
+      <b><span style="font-size: 35px">{{companyName}}</span></b>
+      <br />
+      <font size="6">
+        {{companyAddress1}}
+        <br />
+        {{companyAddress2}}
+        <br />
+        {{CompanyCountry}}
+        <br />
+        <bdo>الرقم الضريبي : {{companyTaxNumber}}</bdo>
+        <br />
+        <bdo>هاتف : {{companyPhone}}</bdo>
+        <br /><br />
+        <u>{{InvoiceTypeEng}}</u>
+        <br />
+        {{InvoiceTypeArabic}}
+        <br />
+        <hr />
+      </font>
+    </center>
+    <!-- Head Section Ends Here -->
+    <!-- Sub Section Starts Here -->
+    <font size="5">
+      <div class="textLeft">
+        <label class="w-260">Voucher No (رقم الفاتورة)</label>
+        <label>{{VoucherNumber}}</label>
+      </div>
+      <div class="textLeft">
+        <label class="w-260">Date (تاريخ)</label>
+        <label>{{simpleDate}}</label>
+      </div>
+      <div class="textLeft">
+        <label class="w-260">Name (اسم)</label>
+        <label>{{custName}}</label>
+      </div>
+      <div class="textLeft">
+        <label class="w-260">Phone (هاتف)</label>
+        <label>{{Phone}}</label>
+      </div>
+    </font>
+    <hr />
+    <!-- Sub Section Ends Here -->
+    <!-- Item Section Starts Here -->
+    <!-- Item Section Starts Here -->
+    <table>
+      <thead>
+        <tr>
+          <th class="textCenter">SL<br /><font size="3">(رقم)</font></th>
+          <th style="width: 55%">
+            Product Name<br /><font size="3">(اسم المنتج)</font>
+          </th>
+          <th class="textCenter" style="width: 10px">
+            Qty<br /><font size="3">(كمية)</font>
+          </th>
+          <th class="textRight">Rate<br /><font size="3">(معدل)</font></th>
+          <th class="textRight paddingRight">
+            Net<br /><font size="3">(المبلغ )</font>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="textCenter">1</td>
+          <td>Pen basket<br />(قلم باسكة)</td>
+          <td class="textCenter">1</td>
+          <td class="textRight">25.00</td>
+          <td class="textRight paddingRight">25.00</td>
+        </tr>
+        <tr>
+          <td class="textCenter">2</td>
+          <td>Pen uni max<br />(قلم يني مبكس)</td>
+          <td class="textCenter">1</td>
+          <td class="textRight">25.00</td>
+          <td class="textRight paddingRight">25.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <!-- Item Section Ends Here -->
+    <!-- Total Section Starts Here -->
+    <font size="5">
+      <div class="leftToright">
+        <label>Gross Amount (المبلغ الإجمالي)</label>
+        <label>{{grossTotalSimp}}</label>
+      </div>
+      <div class="leftToright">
+        <label>Discount (خصم)</label>
+        <label>{{discountedAmountSimp }}</label>
+      </div>
+      <div class="leftToright">
+        <label>Total Tax (مجموع الضريبة)</label>
+        <label>{{totalTaxSimp}}</label>
+      </div>
+    </font>
+    <hr />
+    <!-- Total Section Ends Here -->
+    <!-- Grand Total Section Starts Here -->
+    <font size="5">
+      <b>
+        <div class="leftToright">
+          <label>Grand Total (المبلغ الإجمالي)</label>
+          <label>SAR {{totalAmountDis}}</label>
+        </div>
+      </b>
+    </font>
+    <hr />
+    <!-- Grand Total Section Ends Here -->
+    <img src="{{Terms_and_Conditions}}" />
+    <center>
+      <font size="4">
+        <br />
+        <b>Powered By ViknCodes</b>
+      </font>
+    </center>
+  </body>
+</html>

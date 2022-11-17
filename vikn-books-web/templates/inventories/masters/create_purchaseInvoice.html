@@ -1,0 +1,1488 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+
+
+ <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Transactions</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">{{title}}</a></li>
+                                            <li class="breadcrumb-item active">{{title}}</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">{{title}}</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form enctype="multipart/form-data" method="post" class="ajax reset redirect">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                            <div class="col-xl-12">                        
+
+                                                <div class="row">
+                                                    <div class="form-group mb-3 col-6">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Ledger Name
+                                                        </label>
+                                                        <select name="ledger" class="form-control custom-select ">
+                                                       
+                                                            {% for l in ledger_datas %}
+                                                            <option value="{{l.LedgerID}}">{{l.LedgerName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6 taxType">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Tax Types
+                                                        </label>
+                                                        <select name="taxType" class="form-control custom-select taxType">
+                                                       
+                                                            {% for t in taxType_datas %}
+                                                            <option value="{{t.id}}">{{t.Name}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Purchase Account
+                                                        </label>
+                                                        <select name="purchaseAccount" class="form-control custom-select ">
+                                                       
+                                                            {% for p in purchaseAccount_datas %}
+                                                            <option value="{{p.LedgerID}}">{{p.LedgerName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3 col-6">
+                                                        <label class="checkbox__label" for="gridCheck">
+                                                            Ware House
+                                                        </label>
+                                                        <select name="wareHouse" class="form-control custom-select ">
+                                                       
+                                                            {% for w in wareHouse_datas %}
+                                                            <option value="{{w.WarehouseID}}">{{w.WarehouseName}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.RefferenceBillNo.label }}
+                                                            {{ form.RefferenceBillNo }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Date.label }}
+                                                            {{ form.Date }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.VenderInvoiceDate.label }}
+                                                            {{ form.VenderInvoiceDate }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.CreditPeriod.label }}
+                                                            {{ form.CreditPeriod }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.VoucherNo.label }}
+                                                            {{ form.VoucherNo }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.CustomerName.label }}
+                                                            {{ form.CustomerName }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Address1.label }}
+                                                            {{ form.Address1 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Address2.label }}
+                                                            {{ form.Address2 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Address3.label }}
+                                                            {{ form.Address3 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Notes.label }}
+                                                            {{ form.Notes }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TotalGrossAmt.label }}
+                                                            {{ form.TotalGrossAmt }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.AddlDiscAmt.label }}
+                                                            {{ form.AddlDiscAmt }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.AddlDiscPercent.label }}
+                                                            {{ form.AddlDiscPercent }}
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-6 TotalTax ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TotalTax.label }}
+                                                            {{ form.TotalTax }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.NetTotal.label }}
+                                                            {{ form.NetTotal }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TotalDiscount.label }}
+                                                            {{ form.TotalDiscount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.GrandTotal.label }}
+                                                            {{ form.GrandTotal }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.RoundOff.label }}
+                                                            {{ form.RoundOff }}
+                                                        </div>
+                                                    </div>
+                                                    {% if is_VAT %}
+                                                    <div class="col-6 VATAmount TAX ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.VATAmount.label }}
+                                                            {{ form.VATAmount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_GST %}
+                                                    <div class="col-6 SGSTAmount TAX INTRA GST ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.SGSTAmount.label }}
+                                                            {{ form.SGSTAmount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 CGSTAmount TAX INTRA GST ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.CGSTAmount.label }}
+                                                            {{ form.CGSTAmount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 IGSTAmount TAX GST INTER ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IGSTAmount.label }}
+                                                            {{ form.IGSTAmount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX1 %}
+                                                    <div class="col-6 TAX1Amount TAX ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TAX1Amount.label }}
+                                                            {{ form.TAX1Amount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX2 %}
+                                                    <div class="col-6 TAX2Amount TAX ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TAX2Amount.label }}
+                                                            {{ form.TAX2Amount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    {% if is_TAX3 %}
+                                                    <div class="col-6 TAX3Amount TAX ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TAX3Amount.label }}
+                                                            {{ form.TAX3Amount }}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    <div class="col-6 TAX3Amount ALL">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.BillDiscPercent.label }}
+                                                            {{ form.BillDiscPercent }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.TotalDiscount_print.label }}
+                                                            {{ form.TotalDiscount_print }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.Balance.label }}
+                                                            {{ form.Balance }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-3">
+                                                            {{ form.IsActive.label }}
+                                                            {{ form.IsActive }}
+                                                        </div>
+                                                    </div>
+                                                </div>                                              
+
+                                            </div> <!-- end col-->
+                                        </div>
+                                        <!-- end row -->
+
+                                        <div class="col-12">
+                                            <div class="card table-responsive">
+                                                <div class="purchaseDetails_formset card-body">
+                                                    <h2>Purchase Invoice Details</h2>
+                                                    <div class="row form_set_row">
+                                                        {% for item in purchaseDetails_formset %}
+                                                        <div class="hidden">{{ item.id }}
+                                                            
+                                                        </div>
+                                                        
+
+                                                        <div class="col-3 form-group mb-3 product">
+                                                                Products
+                                                            <select name="product" class="form-control custom-select product">
+                                                                
+                                                                <option> Please Select Product </option>
+                                                                
+                                                           
+                                                                {% for p in product_datas %}
+                                                                <option value="{{p.ProductID}}" style="width: 75px;">{{p.ProductName}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+
+                                                        
+
+                                                        <div class="col-3 form-group mb-3 unitPrice">
+                                                                Unit Name
+                                                            <select name="unitPrice" id="unitPrice" class="form-control custom-select unitPrice">
+                                                                <option> ---------- </option>
+                                                           
+                                                                
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 unitAmount">
+                                                                {{ item.UnitPrice.label }}
+                                                                {{ item.UnitPrice }}
+                                                                <!-- Unit Price -->
+                                                                <!-- <input type="text" name="unitAmount" class="form-control form unitAmount" readonly=""> -->
+                                                                <!-- {% if is_edit %}
+                                                                    <input type="text" name="unitAmount" class="form-control form unitAmount" readonly="">
+                                                                {% else %} -->
+                                                                <!-- {% endif %} -->
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 Qty">
+                                                                {{ item.Qty.label }}
+                                                                {{ item.Qty }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 FreeQty">
+                                                                {{ item.FreeQty.label }}
+                                                                {{ item.FreeQty }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 GrossAmount">
+                                                                {{ item.GrossAmount.label }}
+                                                                {{ item.GrossAmount }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 DiscountAmount">
+                                                                {{ item.DiscountAmount.label }}
+                                                                {{ item.DiscountAmount }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 DiscountPerc">
+                                                                {{ item.DiscountPerc.label }}
+                                                                {{ item.DiscountPerc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 AddlDiscAmt">
+                                                                {{ item.AddlDiscAmt.label }}
+                                                                {{ item.AddlDiscAmt }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 AddlDiscPerc">
+                                                                {{ item.AddlDiscPerc.label }}
+                                                                {{ item.AddlDiscPerc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 TaxableAmount">
+                                                                {{ item.TaxableAmount.label }}
+                                                                {{ item.TaxableAmount }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 CostPerItem">
+                                                                {{ item.CostPerItem.label }}
+                                                                {{ item.CostPerItem }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 RateWithTax">
+                                                                {{ item.RateWithTax.label }}
+                                                                {{ item.RateWithTax }}
+                                                            </div>
+                                                        </div>
+                                                      {% if is_VAT %}
+                                                        
+                                                        <div class="col-3 tax all">
+                                                            <div class="form-group mb-3 VATPerc">
+                                                                {{ item.VATPerc.label }}
+                                                                {{ item.VATPerc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax all">
+                                                            <div class="form-group mb-3 VATAmount">
+                                                                {{ item.VATAmount.label }}
+                                                                {{ item.VATAmount }}
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if is_GST %}
+                                                        <div class="col-3 tax intra gst all">
+                                                            <div class="form-group mb-3 SGSTPerc">
+                                                                {{ item.SGSTPerc.label }}
+                                                                {{ item.SGSTPerc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax intra gst all">
+                                                            <div class="form-group mb-3 SGSTAmount">
+                                                                {{ item.SGSTAmount.label }}
+                                                                {{ item.SGSTAmount }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax intra gst all">
+                                                            <div class="form-group mb-3 CGSTPerc">
+                                                                {{ item.CGSTPerc.label }}
+                                                                {{ item.CGSTPerc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax intra gst all">
+                                                            <div class="form-group mb-3 CGSTAmount">
+                                                                {{ item.CGSTAmount.label }}
+                                                                {{ item.CGSTAmount }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax inter gst all">
+                                                            <div class="form-group mb-3 IGSTPerc">
+                                                                {{ item.IGSTPerc.label }}
+                                                                {{ item.IGSTPerc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax inter gst all">
+                                                            <div class="form-group mb-3 IGSTAmount">
+                                                                {{ item.IGSTAmount.label }}
+                                                                {{ item.IGSTAmount }}
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if is_TAX1 %}
+                                                        <div class="col-3 tax all">
+                                                            <div class="form-group mb-3 TAX1Perc">
+                                                                {{ item.TAX1Perc.label }}
+                                                                {{ item.TAX1Perc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax all">
+                                                            <div class="form-group mb-3 TAX1Amount">
+                                                                {{ item.TAX1Amount.label }}
+                                                                {{ item.TAX1Amount }}
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if is_TAX2 %}
+                                                        <div class="col-3 tax all">
+                                                            <div class="form-group mb-3 TAX2Perc">
+                                                                {{ item.TAX2Perc.label }}
+                                                                {{ item.TAX2Perc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax all">
+                                                            <div class="form-group mb-3 TAX2Amount">
+                                                                {{ item.TAX2Amount.label }}
+                                                                {{ item.TAX2Amount }}
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if is_TAX3 %}
+                                                        <div class="col-3 tax all">
+                                                            <div class="form-group mb-3 TAX3Perc">
+                                                                {{ item.TAX3Perc.label }}
+                                                                {{ item.TAX3Perc }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3 tax all">
+                                                            <div class="form-group mb-3 TAX3Amount">
+                                                                {{ item.TAX3Amount.label }}
+                                                                {{ item.TAX3Amount }}
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        <div class="col-3 tax" >
+                                                            <div class="form-group mb-3 TotalTax">
+                                                                TotalTax
+                                                                <input type="text" name="TotalTax" class="form-control form TotalTax" readonly="" value="0">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="form-group mb-3 NetAmount">
+                                                                {{ item.NetAmount.label }}
+                                                                {{ item.NetAmount }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3" style="visibility: hidden;height: 5px">
+                                                            <div class="form-group mb-3 productID">
+                                                                {{ item.ProductID.label }}
+                                                                {{ item.ProductID }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3" style="visibility: hidden;">
+                                                            <div class="form-group mb-3 PriceListID">
+                                                                {{ item.PriceListID.label }}
+                                                                {{ item.PriceListID }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="one">
+                                                                {% if form.instance.pk %}{{ item.DELETE }}{% endif %}
+                                                            </div>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>  
+
+                                                    {{ purchaseDetails_formset.management_form }}
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col -->
+
+
+                                            <div class="row mt-3">
+                                                <div class="col-12 text-center">
+                                                    <button type="submit" class="btn btn-success waves-effect waves-light m-1"> Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.purchaseDetails_formset div.form_set_row').formset({
+            prefix: '{{ purchaseDetails_formset.prefix }}',
+            formCssClass: 'dynamic-formset1',
+            'added' : function (row) {
+                // get_product()
+                // row.find('.LedgerID .selectpicker').select2();
+                tax_calculations()
+                taxSet()
+                initialize_fields()
+            
+            },
+             'removed': function (row) {
+                // row.remove();
+                // get_product()
+                tax_calculations()
+                // initialize_fields()
+
+            }
+
+        });
+        $('input[type=text]').focus(function () { 
+            $(this).select();
+        });
+        $('input[type=text]').mouseup(function (e) { // fix for chrome and safari
+            e.preventDefault();
+        });
+        $('input[type=text]').select(function () {
+            $('.log').append(' Handler for .select() called. ');
+        });
+
+
+        // get_product()
+        get_totalGrossAmt()
+        taxSet()
+        // initialize_fields()
+        tax_calculations()
+
+    });
+
+    $(document).on('change', 'div.product input, .product select', function() {
+        // var $this = $(this);
+        // var parent = $this.parents('div.form_set_row');
+        // var product = $this.val();
+
+        // var product_id = parent.find('div.productID input').val(product);
+
+        var $parent = $(this).parents('.form_set_row');
+        var $this = $(this);
+
+        get_product($parent,$this)
+        tax_calculations()
+        // get_totalTax1Amount()
+
+
+    });
+    $(document).on('change', 'div.unitPrice select.unitPrice', function() {
+
+        var $parent = $(this).parents('.form_set_row');
+        var $this = $(this);
+
+         get_PriceListID()
+         // get_grossAmount()
+         get_Amount($parent,$this)
+         // get_taxableAmount()
+         tax_calculations()
+
+    });
+
+    $(document).on('change', 'div.taxType select.taxType', function() {
+       taxSet()
+       tax_calculations()
+
+    });
+
+    $(document).on('keyup', 'div.Qty input', function() {
+
+         get_grossAmount()
+         get_totalGrossAmt()
+         tax_calculations()
+         get_BillDiscPercent()
+         get_coastPerItem()
+         get_totalGrossAmt()
+         // get_taxableAmount()
+
+    });
+
+    $(document).on('keyup', 'div.FreeQty input', function() {
+
+         get_grossAmount()
+         get_totalGrossAmt()
+         tax_calculations()
+         get_BillDiscPercent()
+
+         // get_taxableAmount()
+
+    });
+
+    $(document).on('keyup', 'div.DiscountAmount input', function() {
+
+         // get_taxableAmount()
+         get_coastPerItem()
+         get_discountPerc()
+         tax_calculations()
+         get_BillDiscPercent()
+
+    });
+
+    $(document).on('keyup', 'input#AddlDiscAmt', function() {
+
+         // get_taxableAmount()
+         get_coastPerItem()
+         get_AddlDiscPerc()
+         tax_calculations()
+         get_BillDiscPercent()
+
+    });
+    $(document).on('keyup', 'input#AddlDiscPercent', function() {
+
+         // get_taxableAmount()
+         get_coastPerItem()
+         get_AddlDiscAmt()
+         tax_calculations()
+         get_BillDiscPercent()
+
+
+    });
+    $(document).on('keyup', 'input#id_TotalDiscount_print', function() {
+
+         get_BillDiscPercent()
+
+    });
+    $(document).on('keyup', 'input#id_BillDiscPercent', function() {
+
+         get_TotalDiscount_print()
+
+    });
+    $(document).on('keyup', 'div.TaxableAmount input', function() {
+
+         get_coastPerItem()
+
+    });
+
+    $(document).on('keyup', 'div.DiscountPerc input', function() {
+
+        get_discountAmount()
+        // get_taxableAmount()
+        get_coastPerItem()
+        tax_calculations()
+
+    });
+
+
+    function get_product($parent,$this) {
+
+        total_TAX1Amount = 0
+        var tax_type = $('div.taxType select').val()
+
+        // $('.form_set_row').not(':hidden').each(function() {
+            
+        //     var product_id = $(this).find('div.product input, .product select').val();
+
+        //     $(this).find('div.productID input').val(product_id);
+
+        //     $this = $(this)
+            // var $parent = $(this).parents('div.form_set_row');
+        var product_id = $this.val();
+
+        if (product_id != undefined || product_id != null || product_id != ""){
+            var url = "{% url 'inventories:get_unitPrice' %}";
+            $.ajax({
+                type : "GET",
+                url : url,
+                dataType : 'json',
+                data : {
+                    product_id : product_id,
+                },
+                success : function(data) {
+                    var status = data['status'];
+                    if(status=='true'){
+                    
+                        options = '<option value=""> ---------- </option>';
+                        var test_details = data.test_arr;
+
+                        for (var i = 0; i < test_details.length; i++) {
+                            option = test_details[i];
+
+                             options += '<option value="' + option['PriceListID'] + '">' + option['UnitName'] + '</option>';
+
+                        }
+                        $parent.find('select#unitPrice').html(options);
+
+                        var Tax1_PurchaseTax = data['Tax1_PurchaseTax'];
+                        var Tax2_PurchaseTax = data['Tax2_PurchaseTax'];
+                        var Tax3_PurchaseTax = data['Tax3_PurchaseTax'];
+                        var GST_PurchaseTax = data['GST_PurchaseTax'];
+                        var Vat_PurchaseTax = data['Vat_PurchaseTax'];
+
+                        var half_gst = GST_PurchaseTax / 2
+
+                        // var GST_PurchaseTax = GST_PurchaseTax
+                        // var cgstAndSgst_purchaseTax = half_gst
+
+
+                        if (tax_type == 30){
+                            Tax1_PurchaseTax = 0
+                            Tax2_PurchaseTax = 0
+                            Tax3_PurchaseTax = 0
+                            GST_PurchaseTax = 0
+                            Vat_PurchaseTax = 0
+                        }
+                        else if (tax_type == 29) {
+                            half_gst = 0
+                        }
+                        else if (tax_type == 28) {
+                            GST_PurchaseTax = 0
+                        }
+                        else if (tax_type == 27) {
+                            GST_PurchaseTax = 0
+                        }
+                        else if (tax_type == 26) {
+                            GST_PurchaseTax = 0
+                            Vat_PurchaseTax = 0
+                            half_gst = 0
+                        }
+
+                        $parent.find('div.TAX1Perc input').val(Tax1_PurchaseTax);
+                        $parent.find('div.TAX2Perc input').val(Tax2_PurchaseTax);
+                        $parent.find('div.TAX3Perc input').val(Tax3_PurchaseTax);
+
+                        $parent.find('div.IGSTPerc input').val(GST_PurchaseTax);
+                        $parent.find('div.SGSTPerc input').val(half_gst);
+                        $parent.find('div.CGSTPerc input').val(half_gst);
+
+                        $parent.find('div.VATPerc input').val(Vat_PurchaseTax);
+                  
+                    }
+                    else{
+                        var options = '<option value=""> ---------- </option>';
+                        var message = data.message;
+                        options += '<option value="' + message + '">' + message + '</option>';
+
+                        $parent.find('select#unitPrice').html(options);
+                        
+                    }
+                },
+                error : function(data){
+                }
+            });
+        }
+            
+
+        // });
+
+        
+    }
+
+
+    function get_PriceListID() {
+
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            var PriceListID = $(this).find('div.unitPrice select.unitPrice').val();
+
+            $(this).find('div.PriceListID input.PriceListID').val(PriceListID);
+
+        });
+    }
+
+    function get_grossAmount() {
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var unit_price = parseFloat($(this).find('div.unitAmount input.unitAmount').val());
+
+            var Qty = parseFloat($(this).find('div.Qty input').val());
+            var FreeQty = parseFloat($(this).find('div.FreeQty input').val());
+
+            if (!unit_price){
+                unit_price = 0    
+            }
+            if (!Qty){
+                Qty = 0    
+            }
+            if (!FreeQty){
+                FreeQty = 0    
+            }
+            var qty = Qty - FreeQty
+            var GrossAmount = unit_price * qty
+
+            $(this).find('div.GrossAmount input').val(GrossAmount);
+
+
+        });
+    }
+
+    // function get_taxableAmount() {
+    //     $('.form_set_row').not(':hidden').each(function() {
+
+    //         var GrossAmount = parseFloat($(this).find('div.GrossAmount input').val());
+    //         var DiscountAmount = parseFloat($(this).find('div.DiscountAmount input').val());
+    //         var AddlDiscAmt = parseFloat($('input#AddlDiscAmt').val());
+
+    //         var total_discount = DiscountAmount + AddlDiscAmt
+    //         var TaxableAmount = GrossAmount - total_discount
+
+    //         $(this).find('div.TaxableAmount input').val(TaxableAmount);
+
+
+    //     });
+    // }
+
+    function get_coastPerItem() {
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var TaxableAmount = parseFloat($(this).find('div.TaxableAmount input').val());
+            var Qty = parseFloat($(this).find('div.Qty input').val());
+            var FreeQty = parseFloat($(this).find('div.FreeQty input').val());
+
+            if (!TaxableAmount){
+                TaxableAmount = 0    
+            }
+            if (!Qty){
+                Qty = 0    
+            }
+            if (!FreeQty){
+                FreeQty = 0    
+            }
+            
+            var total_qty = Qty + FreeQty
+            var CostPerItem = TaxableAmount / total_qty
+
+            CPI = Number((CostPerItem).toFixed(2));
+
+            $(this).find('div.CostPerItem input').val(CPI);
+
+
+        });
+    }
+
+
+    function get_Amount($parent,$this) {
+
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            // var PriceListID = $(this).find('div.unitPrice select.unitPrice').val();
+
+            var PriceListID = $this.val();
+
+            // $this = $(this)
+
+            if (PriceListID != undefined || PriceListID != null || PriceListID != ""){
+                var url = "{% url 'inventories:get_amount' %}";
+                $.ajax({
+                    type : "GET",
+                    url : url,
+                    dataType : 'json',
+                    data : {
+                        PriceListID : PriceListID,
+                    },
+                    success : function(data) {
+                        var status = data['status'];
+                        if(status=='true'){
+                            PurchasePrice = data['PurchasePrice']
+
+                            $parent.find('div.unitAmount input.unitAmount').val(PurchasePrice);
+
+                            var Qty = parseFloat($parent.find('div.Qty input').val());
+                            var FreeQty = parseFloat($parent.find('div.FreeQty input').val());
+
+                            
+                            if (!PurchasePrice){
+                                PurchasePrice = 0    
+                            }
+                            if (!Qty){
+                                Qty = 0    
+                            }
+                            if (!FreeQty){
+                                FreeQty = 0    
+                            }
+                            var qty = Qty - FreeQty
+                            var GrossAmount = PurchasePrice * qty
+
+                            $parent.find('div.GrossAmount input').val(GrossAmount);
+                        }
+                        else{
+                            PurchasePrice = 0
+                            GrossAmount = 0
+                            $parent.find('div.unitAmount input.unitAmount').val(PurchasePrice);
+
+                            $parent.find('div.GrossAmount input').val(GrossAmount);
+                        }
+                    },
+                    error : function(data){
+                    }
+                });
+            }
+
+
+        });
+        
+
+    }
+
+    function get_discountPerc() {
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var GrossAmount = parseFloat($(this).find('div.GrossAmount input').val());
+            var DiscountAmount = parseFloat($(this).find('div.DiscountAmount input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            if (!DiscountAmount){
+                DiscountAmount = 0    
+            }
+
+            var DiscountPerc = (DiscountAmount * 100) / GrossAmount
+
+            $(this).find('div.DiscountPerc input').val(DiscountPerc);
+
+
+        });
+    }
+    function get_discountAmount() {
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var GrossAmount = parseFloat($(this).find('div.GrossAmount input').val());
+            var DiscountPerc = parseFloat($(this).find('div.DiscountPerc input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            if (!DiscountPerc){
+                DiscountPerc = 0    
+            }
+
+            var DiscountAmount = (GrossAmount * DiscountPerc) / 100
+
+            $(this).find('div.DiscountAmount input').val(DiscountAmount);
+
+
+        });
+    }
+
+    function get_totalGrossAmt() {
+        total_grossAmt = 0
+        $('.form_set_row').not(':hidden').each(function() {
+
+            var GrossAmount = parseFloat($(this).find('div.GrossAmount input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            
+            total_grossAmt += GrossAmount
+
+        });
+        $('input#TotalGrossAmt').val(total_grossAmt)
+    }
+
+    function get_AddlDiscPerc() {
+        
+        var TotalGrossAmount = $('input#TotalGrossAmt').val()
+        var AddlDiscAmt = $('input#AddlDiscAmt').val()
+
+        if (!TotalGrossAmount){
+            TotalGrossAmount = 0    
+        }
+        if (!AddlDiscAmt){
+            AddlDiscAmt = 0
+        }
+
+        var AddlDiscPercent = (AddlDiscAmt * 100) / TotalGrossAmount
+
+        var AddlDiscPercent_R = Number((AddlDiscPercent).toFixed(2));
+
+        $('input#AddlDiscPercent').val(AddlDiscPercent_R)
+
+    }
+    function get_AddlDiscAmt() {
+        
+        var TotalGrossAmount = $('input#TotalGrossAmt').val()
+        var AddlDiscPercent = $('input#AddlDiscPercent').val()
+
+        if (!TotalGrossAmount){
+            TotalGrossAmount = 0    
+        }
+        if (!AddlDiscPercent){
+            AddlDiscPercent = 0    
+        }
+
+        var AddlDiscAmt = (TotalGrossAmount * AddlDiscPercent) / 100
+
+        var AddlDiscAmt_R = Number((AddlDiscAmt).toFixed(2));
+
+        $('input#AddlDiscAmt').val(AddlDiscAmt_R)
+
+    }
+
+    function get_BillDiscPercent() {
+        
+        var NetTotal = $('input#id_NetTotal').val()
+        var TotalDiscount_print = $('input#id_TotalDiscount_print').val()
+
+        if (!NetTotal){
+            NetTotal = 0    
+        }
+        if (!TotalDiscount_print){
+            TotalDiscount_print = 0    
+        }
+
+        var BillDiscPercent = (TotalDiscount_print * 100) / NetTotal
+
+        var BillDiscPercent_R = Number((BillDiscPercent).toFixed(2));
+
+        $('input#id_BillDiscPercent').val(BillDiscPercent_R)
+
+    }
+    function get_TotalDiscount_print() {
+        
+        var NetTotal = $('input#id_NetTotal').val()
+        var BillDiscPercent = $('input#id_BillDiscPercent').val()
+
+        if (!NetTotal){
+            NetTotal = 0    
+        }
+        if (!BillDiscPercent){
+            BillDiscPercent = 0    
+        }
+
+        var TotalDiscount_print = (NetTotal * BillDiscPercent) / 100
+
+        var TotalDiscount_print_R = Number((TotalDiscount_print).toFixed(2));
+
+        $('input#id_TotalDiscount_print').val(TotalDiscount_print_R)
+
+    }
+
+    function tax_calculations() {
+
+        var tax_type = $('div.taxType select').val()
+        
+        total_TAX1Amount = 0
+        total_TAX2Amount = 0
+        total_TAX3Amount = 0
+        total_VATAmount = 0
+        total_SGSTAmount = 0
+        total_CGSTAmount = 0
+        total_IGSTAmount = 0
+        total_Tax = 0
+        total_NetAmount = 0
+        TotalDiscount = 0
+
+        $('.form_set_row').not(':hidden').each(function() {
+            
+            var product_id = $(this).find('div.product input, .product select').val();
+
+            $(this).find('div.productID input').val(product_id);
+
+            $this = $(this)
+            var $parent = $(this).parents('div.form_set_row');
+
+   
+            var TaxableAmount = $this.find('div.TaxableAmount input').val();
+
+            if (!TaxableAmount){
+                TaxableAmount = 0    
+            }
+
+            var SGSTPerc = parseFloat($this.find('div.SGSTPerc input').val());
+            var CGSTPerc = parseFloat($this.find('div.CGSTPerc input').val());
+            var IGSTPerc = parseFloat($this.find('div.IGSTPerc input').val());
+            var TAX1Perc = parseFloat($this.find('div.TAX1Perc input').val());
+            var TAX2Perc = parseFloat($this.find('div.TAX2Perc input').val());
+            var TAX3Perc = parseFloat($this.find('div.TAX3Perc input').val());
+            var VATPerc = parseFloat($this.find('div.VATPerc input').val());
+
+            if (!SGSTPerc){
+                SGSTPerc = 0    
+            }
+            if (!CGSTPerc){
+                CGSTPerc = 0    
+            }
+            if (!IGSTPerc){
+                IGSTPerc = 0    
+            }
+            if (!TAX1Perc){
+                TAX1Perc = 0    
+            }
+            if (!TAX2Perc){
+                TAX2Perc = 0    
+            }
+            if (!TAX3Perc){
+                TAX3Perc = 0    
+            }
+            if (!VATPerc){
+                VATPerc = 0    
+            }
+
+
+            var SGSTAmount = (TaxableAmount * SGSTPerc) / 100
+            var CGSTAmount = (TaxableAmount * CGSTPerc) / 100
+            var IGSTAmount = (TaxableAmount * IGSTPerc) / 100
+            var TAX1Amount = (TaxableAmount * TAX1Perc) / 100
+            var TAX2Amount = (TaxableAmount * TAX2Perc) / 100
+            var TAX3Amount = (TaxableAmount * TAX3Perc) / 100
+            var VATAmount = (TaxableAmount * VATPerc) / 100
+
+
+            var SGSTAmount_R = Number((SGSTAmount).toFixed(2));
+            var CGSTAmount_R = Number((CGSTAmount).toFixed(2));
+            var IGSTAmount_R = Number((IGSTAmount).toFixed(2));
+            var TAX1Amount_R = Number((TAX1Amount).toFixed(2));
+            var TAX2Amount_R = Number((TAX2Amount).toFixed(2));
+            var TAX3Amount_R = Number((TAX3Amount).toFixed(2));
+            var VATAmount_R = Number((VATAmount).toFixed(2));
+
+
+            $this.find('div.SGSTAmount input').val(SGSTAmount_R);
+            $this.find('div.CGSTAmount input').val(CGSTAmount_R);
+            $this.find('div.IGSTAmount input').val(IGSTAmount_R);
+
+
+            $this.find('div.TAX1Amount input').val(TAX1Amount_R);
+            $this.find('div.TAX2Amount input').val(TAX2Amount_R);
+            $this.find('div.TAX3Amount input').val(TAX3Amount_R);
+
+            $this.find('div.VATAmount input').val(VATAmount_R);
+
+            
+            var TAX1Amount = parseFloat($this.find('div.TAX1Amount input').val());
+            var TAX2Amount = parseFloat($this.find('div.TAX2Amount input').val());
+            var TAX3Amount = parseFloat($this.find('div.TAX3Amount input').val());
+
+            var VATAmount = parseFloat($this.find('div.VATAmount input').val());
+            var SGSTAmount = parseFloat($this.find('div.SGSTAmount input').val());
+            var CGSTAmount = parseFloat($this.find('div.CGSTAmount input').val());
+            var IGSTAmount = parseFloat($this.find('div.IGSTAmount input').val());
+
+
+            var TotalTax = parseFloat($this.find('div.TotalTax input').val());
+            var NetAmount = parseFloat($this.find('div.NetAmount input').val());
+
+            if (!TAX1Amount) {
+                TAX1Amount = 0
+            }
+            if (!TAX2Amount) {
+                TAX2Amount = 0    
+            }
+            if (!TAX3Amount) {
+                TAX3Amount = 0    
+            }
+            if (!VATAmount){
+                VATAmount = 0    
+            }
+            if (!SGSTAmount){
+                SGSTAmount = 0    
+            }
+            if (!CGSTAmount){
+                CGSTAmount = 0    
+            }
+            if (!IGSTAmount){
+                IGSTAmount = 0    
+            }
+            if (!TotalTax){
+                TotalTax = 0    
+            }
+            if (!TotalTax){
+                TotalTax = 0    
+            }
+            
+            total_TAX1Amount += TAX1Amount
+            total_TAX2Amount += TAX2Amount
+            total_TAX3Amount += TAX3Amount
+
+            total_VATAmount += VATAmount
+            total_SGSTAmount += SGSTAmount
+            total_CGSTAmount += CGSTAmount
+            total_IGSTAmount += IGSTAmount
+
+            total_Tax += TotalTax
+  
+
+            var totalTax = (TAX1Amount + TAX2Amount + TAX3Amount + VATAmount + SGSTAmount + CGSTAmount + IGSTAmount)
+
+
+            var totalTax_R = Number((totalTax).toFixed(2));
+
+            $(this).find('div.TotalTax input').val(totalTax_R);
+
+            // RateWithTax
+            var Qty = parseFloat($this.find('div.Qty input').val());
+            var FreeQty = parseFloat($this.find('div.FreeQty input').val());
+
+            if (!Qty){
+                Qty = 0    
+            }
+            if (!FreeQty){
+                FreeQty = 0    
+            }
+            if (!totalTax_R){
+                totalTax_R = 0    
+            }
+
+            var R_Qty = Qty - FreeQty
+
+
+            var singleTax = (totalTax_R / R_Qty)
+
+            var unitAmount = parseFloat($this.find('div.unitAmount input').val());
+
+            if (!unitAmount){
+                unitAmount = 0
+            }
+
+            var RateWithTax = unitAmount + singleTax
+
+            var RateWithTax_R = Number((RateWithTax).toFixed(2));
+
+            $(this).find('div.RateWithTax input').val(RateWithTax_R);
+
+            // NetAmount
+            var TaxableAmount = parseFloat($this.find('div.TaxableAmount input').val());
+
+            if (!TaxableAmount){
+                TaxableAmount = 0
+            }
+
+            var NetAmount = TaxableAmount + totalTax_R
+
+            var NetAmount_R = Number((NetAmount).toFixed(2));
+
+            total_NetAmount += NetAmount_R
+
+            $(this).find('div.NetAmount input').val(NetAmount_R);
+
+            // TaxableAmount
+            var GrossAmount = parseFloat($this.find('div.GrossAmount input').val());
+            var DiscountAmount = parseFloat($this.find('div.DiscountAmount input').val());
+            var AddlDiscAmt = parseFloat($('input#AddlDiscAmt').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            if (!DiscountAmount){
+                DiscountAmount = 0    
+            }
+            if (!AddlDiscAmt){
+                AddlDiscAmt = 0    
+            }
+
+            var total_discount = DiscountAmount + AddlDiscAmt
+            var TaxableAmount = GrossAmount - total_discount
+
+            var TaxableAmount_R = Number((TaxableAmount).toFixed(2));
+
+            $(this).find('div.TaxableAmount input').val(TaxableAmount_R);
+
+            // TotalDiscount
+
+            TotalDiscount += total_discount
+
+            //Detail additional discount perc
+            var master_AddlDiscPercent = $('input#AddlDiscPercent').val()
+
+            if (!master_AddlDiscPercent){
+                master_AddlDiscPercent = 0
+            }
+            $(this).find('div.AddlDiscPerc input').val(master_AddlDiscPercent);
+
+            //detail additional discount Amt
+
+            var GrossAmount = parseFloat($this.find('div.GrossAmount input').val());
+            var Detail_AddlDiscPerc = parseFloat($(this).find('div.AddlDiscPerc input').val());
+
+            if (!GrossAmount){
+                GrossAmount = 0    
+            }
+            if (!Detail_AddlDiscPerc){
+                Detail_AddlDiscPerc = 0    
+            }
+
+            var Detail_AddlDiscAmt = (GrossAmount * Detail_AddlDiscPerc) / 100
+
+            var Detail_AddlDiscAmt_R = Number((Detail_AddlDiscAmt).toFixed(2));
+
+            $(this).find('div.AddlDiscAmt input').val(Detail_AddlDiscAmt_R);
+
+
+        });
+
+        var total_TAX1Amount_R = Number((total_TAX1Amount).toFixed(2));
+        var total_TAX2Amount_R = Number((total_TAX2Amount).toFixed(2));
+        var total_TAX3Amount_R = Number((total_TAX3Amount).toFixed(2));
+        var total_VATAmount_R = Number((total_VATAmount).toFixed(2));
+        var total_SGSTAmount_R = Number((total_SGSTAmount).toFixed(2));
+        var total_CGSTAmount_R = Number((total_CGSTAmount).toFixed(2));
+        var total_IGSTAmount_R = Number((total_IGSTAmount).toFixed(2));
+
+        var total_Tax_R = Number((total_Tax).toFixed(2));
+        var total_NetAmount_R = Number((total_NetAmount).toFixed(2));
+        var TotalDiscount_R = Number((TotalDiscount).toFixed(2));
+
+        $('input#TAX1Amount').val(total_TAX1Amount_R)
+        $('input#TAX2Amount').val(total_TAX2Amount_R)
+        $('input#TAX3Amount').val(total_TAX3Amount_R)
+
+        $('input#id_VATAmount').val(total_VATAmount_R)
+        $('input#id_SGSTAmount').val(total_SGSTAmount_R)
+        $('input#id_CGSTAmount').val(total_CGSTAmount_R)
+        $('input#id_IGSTAmount').val(total_IGSTAmount_R)
+
+        $('input#id_TotalTax').val(total_Tax_R)
+        $('input#id_NetTotal').val(total_NetAmount_R)
+        $('input#id_TotalDiscount').val(TotalDiscount_R)
+
+        //grand total
+
+        var Bill_DiscAmt = parseFloat($('input#id_TotalDiscount_print').val());
+
+        if (!total_NetAmount_R){
+            total_NetAmount_R = 0    
+        }
+        if (!total_Tax_R){
+            total_Tax_R = 0    
+        }
+        if (!Bill_DiscAmt){
+            Bill_DiscAmt = 0    
+        }
+
+        var GrandTotal = (total_NetAmount_R + total_Tax_R) - Bill_DiscAmt
+
+        var GrandTotal_R = Number((GrandTotal).toFixed(2));
+
+        $('input#id_GrandTotal').val(GrandTotal_R)
+
+    }
+
+    function initialize_fields() {
+        $('.form_set_row').not(':hidden').each(function() {
+            var UnitAmount = parseFloat($(this).find('div.unitAmount input').val());
+            var Qty = parseFloat($(this).find('div.Qty input').val());
+            var FreeQty = parseFloat($(this).find('div.FreeQty input').val());
+            var GrossAmount = parseFloat($(this).find('div.GrossAmount input').val());
+            var DiscountAmount = parseFloat($(this).find('div.DiscountAmount input').val());
+            var DiscountPerc = parseFloat($(this).find('div.DiscountPerc input').val());
+            var CostPerItem = parseFloat($(this).find('div.CostPerItem input').val());
+            var SGSTPerc = parseFloat($(this).find('div.SGSTPerc input').val());
+            var CGSTPerc = parseFloat($(this).find('div.CGSTPerc input').val());
+            var IGSTPerc = parseFloat($(this).find('div.IGSTPerc input').val());
+            var VATPerc = parseFloat($(this).find('div.VATPerc input').val());
+            var TAX1Perc = parseFloat($(this).find('div.TAX1Perc input').val());
+            var TAX2Perc = parseFloat($(this).find('div.TAX2Perc input').val());
+            var TAX3Perc = parseFloat($(this).find('div.TAX3Perc input').val());
+            zero = 0
+            if (!UnitAmount){  
+                $(this).find('div.unitAmount input').val(zero);    
+            }
+            if (!Qty){  
+                $(this).find('div.Qty input').val(zero);    
+            }
+            if (!FreeQty){  
+                $(this).find('div.FreeQty input').val(zero);    
+            }
+            if (!GrossAmount){  
+                $(this).find('div.GrossAmount input').val(zero);    
+            }
+            if (!DiscountAmount){  
+                $(this).find('div.DiscountAmount input').val(zero);    
+            }
+            if (!DiscountPerc){  
+                $(this).find('div.DiscountPerc input').val(zero);    
+            }
+            if (!CostPerItem){  
+                $(this).find('div.CostPerItem input').val(zero);    
+            }
+            if (!SGSTPerc){  
+                $(this).find('div.SGSTPerc input').val(zero);    
+            }
+            if (!CGSTPerc){  
+                $(this).find('div.CGSTPerc input').val(zero);    
+            }
+            if (!IGSTPerc){  
+                $(this).find('div.IGSTPerc input').val(zero);    
+            }
+            if (!VATPerc){  
+                $(this).find('div.VATPerc input').val(zero);    
+            }
+            if (!TAX1Perc){  
+                $(this).find('div.TAX1Perc input').val(zero);    
+            }
+            if (!TAX2Perc){  
+                $(this).find('div.TAX2Perc input').val(zero);    
+            }
+            if (!TAX3Perc){  
+                $(this).find('div.TAX3Perc input').val(zero);    
+            }
+            
+        });
+    }
+
+    function taxSet() {
+        
+        var TaxType = $('div.taxType select.taxType').val()
+        if (TaxType == 30){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.tax").css("display","none")
+            $("div.TotalTax").css("display","none")
+            $("div.TAX").css("display","none")
+        }
+        else if (TaxType == 29){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.intra").css("display","none")
+            $("div.INTRA").css("display","none")
+        }
+        else if (TaxType == 28){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.inter").css("display","none")
+            $("div.INTER").css("display","none")
+        }
+        else if (TaxType == 27){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.inter").css("display","none")
+            $("div.INTER").css("display","none")
+        }
+        else if (TaxType == 26){
+            $("div.ALL").css("display","block")
+            $("div.all").css("display","block")
+
+            $("div.gst").css("display","none")
+            $("div.GST").css("display","none")
+        }
+        
+    }
+    
+
+
+    
+</script>
+{% endblock %}

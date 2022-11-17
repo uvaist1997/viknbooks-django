@@ -1,0 +1,1043 @@
+[
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 1,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Sales",
+      "name": "Sales Order",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 2,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Sales",
+      "name": "Sales Invoice",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 3,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Sales",
+      "name": "Sales Return",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 4,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Sales",
+      "name": "Sales Estimate",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 5,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Purchase",
+      "name": "Purchase Order",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 6,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Purchase",
+      "name": "Purchase Invoice",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 7,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Purchase",
+      "name": "Purchase Return",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 8,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Purchase",
+      "name": "Purchase Estimate",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 9,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Payment",
+      "name": "Payment Voucher",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 10,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Receipt",
+      "name": "Receipt Voucher",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 11,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Product",
+      "name": "Product",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 12,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Product",
+      "name": "Brands",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 13,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Product",
+      "name": "Product Groups",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 14,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Product",
+      "name": "Product Category",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 15,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Contacts",
+      "name": "Customer",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 16,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Contacts",
+      "name": "Supplier",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 17,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Contacts",
+      "name": "Employee",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 18,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Trial Balance",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 19,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Profit And Loss Account",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 20,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Balance Sheet",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 21,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Outstanding Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 22,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Daily Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 23,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Cash Book",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 24,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Bank Book",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 25,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Receipt Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 26,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Payment Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 27,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Ledger Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 28,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Bill Wise Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 29,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Sales Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 30,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Sales Summary Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 31,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Sales Register Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 32,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Sales Return Register Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 33,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Sales Integrated Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 34,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Purchase Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 35,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Purchase Order Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 36,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Purchase Register Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 37,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Supplier Vs Product Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 38,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Stock Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 39,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Stock Value Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 40,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Stock Ledger Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 41,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Product Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 42,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Product Analysis Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 43,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Inventory Flow Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 44,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Batch Wise Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 45,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Excess Stock Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 46,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Shortage Stock Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 47,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Opening Stock Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 48,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Tax Summary",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 49,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "VAT Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 50,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "GSTR1 Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 51,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Sales GST Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 52,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Purchase GST Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 53,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Accounts",
+      "name": "Account Group",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 54,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Accounts",
+      "name": "Account Ledger",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 55,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Accounts",
+      "name": "Banks",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 56,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Accounts",
+      "name": "Tax Category",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 57,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Loyalty",
+      "name": "Loyalty Customer",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 58,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Loyalty",
+      "name": "Loyalty Program",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 59,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Inventory",
+      "name": "Work Order",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 60,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Inventory",
+      "name": "Stock Transfer",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 61,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Inventory",
+      "name": "Opening Stock",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 62,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Inventory",
+      "name": "Stock Management",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 63,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Finance",
+      "name": "Journal",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 64,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Finance",
+      "name": "Expense",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  },
+
+  {
+    "model": "brands.UserRoleSettingsModel",
+    "pk": 65,
+    "fields": {
+      "BranchID": "1",
+      "parent": "Report",
+      "name": "Purchase Integrated Report",
+      "view_permission": true,
+      "save_permission": true,
+      "edit_permission": true,
+      "delete_permission": true,
+      "print_permission": true,
+      "UpdatedDate": "2020-06-01",
+      "UpdatedUserID": "1"
+    }
+  }
+]

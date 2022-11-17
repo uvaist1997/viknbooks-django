@@ -1,0 +1,15 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans %}You're receiving this email  for Renew Organization Plan.{% endblocktrans %}
+
+{% trans "User Name:" %} {{ user_name }}
+{% trans "email:" %} {{ user_email }}
+{% trans "phone:" %} {{ user_phone }}
+{% trans "Organization Name:" %} {{ company_name }}
+{% trans "Expiry Date:" %} {{ company_expiry_date }}
+{% trans "Address:" %} {{ company_address }}
+
+{% trans "Thanks for using our site!" %}
+
+{% blocktrans %}The {{ site_name }} team{% endblocktrans %}
+
+{% endautoescape %}
